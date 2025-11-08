@@ -1,0 +1,114 @@
+@import '../../mixins';
+@import '../../variables';
+
+header {
+  padding: 1rem 0;
+  position: relative;
+  @include bg-green;
+  @include layout;
+  .logo {
+    grid-column: 2;
+    width: 12.75rem;
+    height: 4.56rem;
+    @media (max-width: 1023px) {
+      grid-column: 6/8;
+    }
+  }
+  nav {
+    grid-column: 3/12;
+    @media (max-width: 1023px) {
+      grid-column: 2/12;
+    }
+
+    @media (max-width: 767px) {
+      grid-column: 1/13;
+      padding: 0 1rem;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      list-style: none;
+
+      .home {
+        width: 5.81rem;
+
+        img {
+          width: 0.875rem;
+          height: 0.8125rem;
+        }
+      }
+
+      .capoeira {
+        width: 7.94rem;
+
+        img {
+          width: 1.375rem;
+          height: 1.375rem;
+        }
+      }
+
+      .timePlace {
+        width: 10.31rem;
+
+        img {
+          width: 0.625rem;
+          height: 0.8125rem;
+        }
+      }
+
+      .services {
+        width: 15.375rem;
+
+        img {
+          width: 1.5rem;
+          height: 0.875rem;
+        }
+      }
+
+      .authPage {
+        width: 11.25rem;
+
+        img {
+          width: 0.8125rem;
+          height: 0.8125rem;
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0.3125rem;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 300;
+        transition: all 200ms ease;
+
+        @media (max-width: 767px) {
+          font-size: 0.875rem;
+        }
+        div {
+          width: 1.69rem;
+          height: 1.69rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: $beige-gold;
+          border-radius: 100%;
+        }
+      }
+
+      .active {
+        transition: all 200ms ease;
+        font-weight: 600;
+        color: black;
+      }
+    }
+  }
+}

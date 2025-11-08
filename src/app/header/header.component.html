@@ -1,1 +1,22 @@
-<p>header works!</p>
+<header>
+  <img class="logo" src="assets/logo.png" alt="Logo de l'association Equilibrio" />
+  <nav>
+    <ul>
+      @for (headerLink of headerLinks; track headerLink.title) {
+      <li class="{{ headerLink.navItem }}">
+        <a
+          routerLink="{{ headerLink.path }}"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="active"
+        >
+          <div>
+            <img [src]="headerLink.src" alt="Icone {{ headerLink.title }}" />
+          </div>
+
+          {{ headerLink.title }}
+        </a>
+      </li>
+      }
+    </ul>
+  </nav>
+</header>

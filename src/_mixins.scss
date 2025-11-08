@@ -1,0 +1,10 @@
+@mixin layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+
+@mixin bg-green {
+  background: #236c03;
+  background: linear-gradient(0deg, rgba(35, 108, 3, 0.6) 0%, rgba(35, 108, 3, 1) 100%);
+}

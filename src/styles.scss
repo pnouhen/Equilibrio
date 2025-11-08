@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Montserrat', sans-serif;
+
+  // Responsive font-size management
+  @media (min-width: 1441px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: clamp(11.38px, calc(100vw * 11.11 / 1000), 16px);
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: clamp(11.38px, calc(100vw * 14.82 / 1000), 16px);
+  }
+
+  @media (max-width: 767px) {
+    font-size: clamp(6px, calc(100vw * 18.25 / 1000), 14px);
+  }
+}
+
+body {
+  margin: 0 auto;
+}
+
+p {
+  margin: 0;
+}
