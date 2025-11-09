@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-logo',
-  imports: [RouterOutlet],
+  imports: [RouterLink],
   templateUrl: './logo.component.html',
   styleUrl: './logo.component.scss',
 })

@@ -36,12 +36,12 @@ export class HeaderComponent implements OnInit {
   }
 
   handleDisplayNav(): void {
-    this.displayNav = !this.displayNav
-    const nav = document.getElementById("nav")
-    if(this.displayNav) {
-      nav?.classList.add('display')
+    this.displayNav = !this.displayNav;
+    const nav = document.getElementById('nav');
+    if (this.displayNav) {
+      nav?.classList.add('display');
     } else {
-      nav?.classList.remove('display')
+      nav?.classList.remove('display');
     }
   }
 }

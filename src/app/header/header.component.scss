@@ -50,8 +50,8 @@ header {
       max-height: 0;
       overflow: hidden;
       transform: scaleY(0);
-  transform-origin: top;
-  transition: all 0.3s ease;
+      transform-origin: top;
+      transition: all 0.3s ease;
     }
 
     ul {
@@ -146,7 +146,7 @@ header {
 
   .display {
     max-height: 500px;
-      transform: scaleY(1);
+    transform: scaleY(1);
   }
   //  The logo is in a div in development
   .alignDev {
