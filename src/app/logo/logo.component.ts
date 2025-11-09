@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DisplayNavService } from '../services/displayNav.service';
 
 @Component({
   selector: 'app-logo',
@@ -8,5 +9,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './logo.component.scss',
 })
 export class LogoComponent {
+    constructor(public displayNavService: DisplayNavService) {} // inject service
 
+removeNav(): void {
+    this.displayNavService.removeNav();
+  }
 }

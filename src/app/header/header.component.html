@@ -3,18 +3,18 @@
 
   @if(menuBurger) {
   <div class="menuBurger">
-    @if(!displayNav){
+    @if(!displayNavService.displayNav){
     <img
       src="assets/bars-solid.svg"
       alt="Icone menu"
       class="bars-solid"
-      (click)="handleDisplayNav()"
+      (click)="addNav()"
     />} @else {
     <img
       src="assets/xmark-solid.svg"
       alt="Icone fermeture menu"
       class="xmark-solid"
-      (click)="handleDisplayNav()"
+      (click)="removeNav()"
     />
     }
   </div>
@@ -28,6 +28,7 @@
           routerLink="{{ headerLink.path }}"
           [routerLinkActiveOptions]="{ exact: true }"
           routerLinkActive="active"
+          (click)="removeNav()"
         >
           <div>
             <img [src]="headerLink.src" alt="Icone {{ headerLink.title }}" />

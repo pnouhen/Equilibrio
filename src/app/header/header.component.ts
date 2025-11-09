@@ -2,17 +2,20 @@ import { LogoComponent } from './../logo/logo.component';
 import { Component, OnInit } from '@angular/core';
 import { NavItem } from '../models/NavItem';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { DisplayNavService } from '../services/displayNav.service';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   imports: [LogoComponent, RouterLink, RouterLinkActive, RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  styleUrls: ['./header.component.scss'], // correction
 })
 export class HeaderComponent implements OnInit {
   headerLinks!: NavItem[];
   menuBurger!: boolean;
-  displayNav: boolean = false;
+
+  constructor(public displayNavService: DisplayNavService) {} // inject service
 
   ngOnInit(): void {
     this.headerLinks = [
@@ -22,26 +25,25 @@ export class HeaderComponent implements OnInit {
       new NavItem(
         'assets/capoeira-fight.svg',
         'Prestations et Animations',
-        'services',
+        'prestations',
         'prestations-et-animations'
       ),
       new NavItem('assets/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
     ];
 
     this.updateMenuBurger();
+    window.addEventListener('resize', () => this.updateMenuBurger());
   }
 
   updateMenuBurger(): void {
     this.menuBurger = window.innerWidth < 768;
   }
 
-  handleDisplayNav(): void {
-    this.displayNav = !this.displayNav;
-    const nav = document.getElementById('nav');
-    if (this.displayNav) {
-      nav?.classList.add('display');
-    } else {
-      nav?.classList.remove('display');
-    }
+  addNav(): void {
+    this.displayNavService.addNav();
+  }
+
+  removeNav(): void {
+    this.displayNavService.removeNav();
   }
 }
