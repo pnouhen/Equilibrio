@@ -47,14 +47,13 @@ footer {
     justify-content: end;
     align-items: end;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       grid-column: 10/13;
       justify-content: start;
     }
     
     @media (max-width: 767px) {
       grid-column: 2/12;
-      justify-content: center;
     }
   }
 

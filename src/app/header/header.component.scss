@@ -8,12 +8,6 @@ header {
   background: linear-gradient(0deg, rgba(35, 108, 3, 0.6) 0%, rgba(35, 108, 3, 1) 100%);
   @include layout;
 
-  @media (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
   .menuBurger {
     @media (max-width: 767px) {
       position: absolute;
