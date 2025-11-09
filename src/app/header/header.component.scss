@@ -2,11 +2,43 @@
 @import '../../variables';
 
 header {
+  position: relative;
   padding: 1rem 0;
   background: $green;
   background: linear-gradient(0deg, rgba(35, 108, 3, 0.6) 0%, rgba(35, 108, 3, 1) 100%);
   @include layout;
-  
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .menuBurger {
+    @media (max-width: 767px) {
+      position: absolute;
+      top: 1.67rem;
+      right: 3.25rem;
+      width: 1.25rem;
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .bars-solid {
+        height: 1.71rem;
+      }
+
+      .xmark-solid {
+        height: 100%;
+      }
+    }
+  }
+
   nav {
     grid-column: 4/12;
     @media (max-width: 1023px) {
@@ -14,8 +46,12 @@ header {
     }
 
     @media (max-width: 767px) {
-      grid-column: 1/13;
       padding: 0 1rem;
+      max-height: 0;
+      overflow: hidden;
+      transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.3s ease;
     }
 
     ul {
@@ -26,6 +62,12 @@ header {
       justify-content: space-between;
       align-items: end;
       list-style: none;
+
+      @media (max-width: 767px) {
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem;
+      }
 
       .home {
         width: 5.81rem;
@@ -83,9 +125,6 @@ header {
         font-weight: 300;
         transition: all 200ms ease;
 
-        @media (max-width: 767px) {
-          font-size: 0.875rem;
-        }
         div {
           width: 1.69rem;
           height: 1.69rem;
@@ -98,19 +137,24 @@ header {
       }
 
       .active {
-        transition: all 200ms ease;
+        transition: opacity 200ms ease;
         font-weight: 600;
         color: black;
       }
     }
   }
 
+  .display {
+    max-height: 500px;
+      transform: scaleY(1);
+  }
   //  The logo is in a div in development
   .alignDev {
     grid-column: 2/4;
 
     @media (max-width: 1023px) {
-      grid-column: 6/8;
+      grid-column: 1/13;
+      margin: 0 auto;
     }
   }
 }

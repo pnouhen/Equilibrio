@@ -5,6 +5,12 @@ img {
   cursor: pointer;
 
   @media (max-width: 1023px) {
-    grid-column: 6/8;
+    grid-column: 1/13;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 767px) {
+    width: 8.5rem;
+    height: 3.04rem;
   }
 }

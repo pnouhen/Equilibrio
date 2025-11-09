@@ -1,6 +1,26 @@
 <header>
-      <app-logo class="alignDev"/>
-  <nav>
+  <app-logo class="alignDev" />
+
+  @if(menuBurger) {
+  <div class="menuBurger">
+    @if(!displayNav){
+    <img
+      src="assets/bars-solid.svg"
+      alt="Icone menu"
+      class="bars-solid"
+      (click)="handleDisplayNav()"
+    />} @else {
+    <img
+      src="assets/xmark-solid.svg"
+      alt="Icone fermeture menu"
+      class="xmark-solid"
+      (click)="handleDisplayNav()"
+    />
+    }
+  </div>
+  } 
+
+  <nav id="nav">
     <ul>
       @for (headerLink of headerLinks; track headerLink.title) {
       <li class="{{ headerLink.navItem }}">

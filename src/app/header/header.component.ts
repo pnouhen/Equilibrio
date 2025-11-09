@@ -5,12 +5,14 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [LogoComponent,RouterLink, RouterLinkActive, RouterModule],
+  imports: [LogoComponent, RouterLink, RouterLinkActive, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
   headerLinks!: NavItem[];
+  menuBurger!: boolean;
+  displayNav: boolean = false;
 
   ngOnInit(): void {
     this.headerLinks = [
@@ -25,5 +27,21 @@ export class HeaderComponent implements OnInit {
       ),
       new NavItem('assets/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
     ];
+
+    this.updateMenuBurger();
+  }
+
+  updateMenuBurger(): void {
+    this.menuBurger = window.innerWidth < 768;
+  }
+
+  handleDisplayNav(): void {
+    this.displayNav = !this.displayNav
+    const nav = document.getElementById("nav")
+    if(this.displayNav) {
+      nav?.classList.add('display')
+    } else {
+      nav?.classList.remove('display')
+    }
   }
 }

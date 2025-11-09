@@ -17,9 +17,9 @@ footer {
     @media (max-width: 1023px) {
       grid-column: 2/4;
     }
-
+    
     @media (max-width: 767px) {
-      grid-column: 2/5;
+      grid-column: 2/7;
     }
   }
 
@@ -29,9 +29,9 @@ footer {
     @media (max-width: 1023px) {
       grid-column: 5/9;
     }
-
+    
     @media (max-width: 767px) {
-      grid-column: 5/10;
+      grid-column: 2/12;
     }
   }
 
@@ -51,6 +51,11 @@ footer {
       grid-column: 10/13;
       justify-content: start;
     }
+    
+    @media (max-width: 767px) {
+      grid-column: 2/12;
+      justify-content: center;
+    }
   }
 
  //  The logo is in a div in development
@@ -58,7 +63,8 @@ footer {
     grid-column: 2/4;
 
     @media (max-width: 1023px) {
-      grid-column: 6/8;
+      grid-column: 1/13;
+      margin: 0 auto;
     }
   }
 }
