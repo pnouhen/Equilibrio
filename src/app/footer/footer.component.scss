@@ -1,0 +1,64 @@
+@import '../../mixins';
+@import '../../variables';
+
+footer {
+  padding: 1rem 0;
+  background: $green;
+  background: linear-gradient(0deg, rgba(35, 108, 3, 1) 0%, rgba(35, 108, 3, 0.6) 100%);
+  @include layout;
+
+  div {
+    align-items: end;
+        @include spaceText;
+  }
+
+  .tel {
+    grid-column: 4/6;
+    @media (max-width: 1023px) {
+      grid-column: 2/4;
+    }
+
+    @media (max-width: 767px) {
+      grid-column: 2/5;
+    }
+  }
+
+  .mail {
+    grid-column: 6/9;
+
+    @media (max-width: 1023px) {
+      grid-column: 5/9;
+    }
+
+    @media (max-width: 767px) {
+      grid-column: 5/10;
+    }
+  }
+
+  a,p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .legalesMentions {
+    grid-column: 10/12;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+
+    @media (max-width: 767px) {
+      grid-column: 10/13;
+      justify-content: start;
+    }
+  }
+
+ //  The logo is in a div in development
+  .alignDev {
+    grid-column: 2/4;
+
+    @media (max-width: 1023px) {
+      grid-column: 6/8;
+    }
+  }
+}

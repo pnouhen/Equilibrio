@@ -4,7 +4,7 @@
   gap: 1.25rem;
 }
 
-@mixin bg-green {
-  background: #236c03;
-  background: linear-gradient(0deg, rgba(35, 108, 3, 0.6) 0%, rgba(35, 108, 3, 1) 100%);
+@mixin spaceText {
+  display: flex;
+  gap: 5px;
 }

@@ -3,19 +3,12 @@
 
 header {
   padding: 1rem 0;
-  position: relative;
-  @include bg-green;
+  background: $green;
+  background: linear-gradient(0deg, rgba(35, 108, 3, 0.6) 0%, rgba(35, 108, 3, 1) 100%);
   @include layout;
-  .logo {
-    grid-column: 2;
-    width: 12.75rem;
-    height: 4.56rem;
-    @media (max-width: 1023px) {
-      grid-column: 6/8;
-    }
-  }
+  
   nav {
-    grid-column: 3/12;
+    grid-column: 4/12;
     @media (max-width: 1023px) {
       grid-column: 2/12;
     }
@@ -109,6 +102,15 @@ header {
         font-weight: 600;
         color: black;
       }
+    }
+  }
+
+  //  The logo is in a div in development
+  .alignDev {
+    grid-column: 2/4;
+
+    @media (max-width: 1023px) {
+      grid-column: 6/8;
     }
   }
 }

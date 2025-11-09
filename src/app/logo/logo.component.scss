@@ -1,0 +1,10 @@
+img {
+  grid-column: 2/4;
+  width: 12.75rem;
+  height: 4.56rem;
+  cursor: pointer;
+
+  @media (max-width: 1023px) {
+    grid-column: 6/8;
+  }
+}
