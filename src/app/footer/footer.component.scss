@@ -20,7 +20,7 @@ footer {
     }
 
     @media (max-width: 767px) {
-      grid-column: 2/7;
+      grid-column: 2/12;
     }
   }
 
@@ -39,7 +39,14 @@ footer {
   a,
   p {
     color: white;
-    font-size: 1rem;
+    font-size: 1.125rem;
+  }
+
+  p {
+    font-weight: 400;
+  }
+
+  a {
     font-weight: 300;
   }
 

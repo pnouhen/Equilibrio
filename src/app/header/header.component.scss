@@ -66,7 +66,7 @@ header {
       }
 
       .home {
-        width: 5.81rem;
+        width: 6.54rem;
 
         img {
           width: 0.875rem;
@@ -75,7 +75,7 @@ header {
       }
 
       .capoeira {
-        width: 7.94rem;
+        width: 8.94rem;
 
         img {
           width: 1.375rem;
@@ -84,7 +84,7 @@ header {
       }
 
       .timePlace {
-        width: 10.31rem;
+        width: 11.6rem;
 
         img {
           width: 0.625rem;
@@ -93,7 +93,7 @@ header {
       }
 
       .prestations {
-        width: 15.375rem;
+        width: 17.3rem;
 
         img {
           width: 1.5rem;
@@ -102,7 +102,7 @@ header {
       }
 
       .authPage {
-        width: 11.25rem;
+        width: 12.66rem;
 
         img {
           width: 0.8125rem;
@@ -110,32 +110,34 @@ header {
         }
       }
 
-      a {
-        display: flex;
-        align-items: center;
-        gap: 0.3125rem;
-        color: white;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 1rem;
-        font-weight: 300;
-        transition: all 200ms ease;
-
-        div {
-          width: 1.69rem;
-          height: 1.69rem;
+      li {
+        a {
           display: flex;
-          justify-content: center;
           align-items: center;
-          background: $beige-gold;
-          border-radius: 100%;
-        }
-      }
+          gap: 0.3125rem;
+          color: white;
+          cursor: pointer;
+          text-decoration: none;
+          font-size: 1.125rem;
+          font-weight: 300;
+          transition: all 200ms ease;
 
-      .active {
-        transition: opacity 200ms ease;
-        font-weight: 600;
-        color: black;
+          div {
+            width: 1.69rem;
+            height: 1.69rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: $beige-gold;
+            border-radius: 100%;
+          }
+        }
+
+        .active {
+          transition: opacity 200ms ease;
+          font-weight: 600;
+          color: black;
+        }
       }
     }
   }
