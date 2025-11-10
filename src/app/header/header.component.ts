@@ -1,8 +1,9 @@
 import { LogoComponent } from './../logo/logo.component';
 import { Component, OnInit } from '@angular/core';
 import { NavItem } from '../models/NavItem';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { DisplayNavService } from '../services/displayNav.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -15,8 +16,7 @@ export class HeaderComponent implements OnInit {
   headerLinks!: NavItem[];
   menuBurger!: boolean;
 
-  constructor(public displayNavService: DisplayNavService) {} // inject service
-
+  constructor(public displayNavService: DisplayNavService, private router: Router) {}
   ngOnInit(): void {
     this.headerLinks = [
       new NavItem('assets/home.svg', 'Acceuil', 'home', ''),
@@ -31,8 +31,16 @@ export class HeaderComponent implements OnInit {
       new NavItem('assets/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
     ];
 
+    // Display the menu burger
     this.updateMenuBurger();
     window.addEventListener('resize', () => this.updateMenuBurger());
+
+    // Detects route changes to close the navigation menu
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.removeNav();
+      });
   }
 
   updateMenuBurger(): void {
