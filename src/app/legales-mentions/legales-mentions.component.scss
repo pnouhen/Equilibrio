@@ -1,0 +1,33 @@
+@import '../../mixins';
+@import '../../variables';
+
+section {
+  background: $gray;
+  box-shadow: 0 0 1rem 0rem rgba(0, 0, 0, 0.6);
+
+  h2 {
+    grid-column: 2/13;
+  }
+
+  article {
+    grid-column: 3/12;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (max-width: 767px) {
+        grid-column: 2/12;
+    }
+
+    .heberger {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .link {
+        @include spaceText;
+      }
+    }
+  }
+}

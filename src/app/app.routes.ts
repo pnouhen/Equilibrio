@@ -3,7 +3,8 @@ import { HomeComponent } from './home/home.component';
 import { CapoeiraComponent } from './capoeira/capoeira.component';
 import { TimePlaceComponent } from './time-place/time-place.component';
 import { PrestationsComponent } from './prestations/prestations.component';
-import { AuthPageComponent } from './auth-page/auth-page.component';
+import { AuthPageComponent } from './authPage/authPage.component';
+import { LegalesMentionsComponent } from './legales-mentions/legales-mentions.component';
 
 export const routes: Routes = [
     {path: "", component: HomeComponent},
@@ -11,4 +12,5 @@ export const routes: Routes = [
     {path:"lieux-et-horaires", component:TimePlaceComponent},
     {path:"prestations-et-animations", component:PrestationsComponent},
     {path:"espace-adherents", component:AuthPageComponent},
+    {path:"mentions-legales", component:LegalesMentionsComponent},
 ];

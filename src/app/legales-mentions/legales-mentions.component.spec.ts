@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthPageComponent } from './auth-page.component';
+import { LegalesMentionsComponent } from './legales-mentions.component';
 
-describe('AuthPageComponent', () => {
-  let component: AuthPageComponent;
-  let fixture: ComponentFixture<AuthPageComponent>;
+describe('LegalesMentionsComponent', () => {
+  let component: LegalesMentionsComponent;
+  let fixture: ComponentFixture<LegalesMentionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AuthPageComponent]
+      imports: [LegalesMentionsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AuthPageComponent);
+    fixture = TestBed.createComponent(LegalesMentionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

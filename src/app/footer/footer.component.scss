@@ -5,11 +5,12 @@ footer {
   padding: 1rem 0;
   background: $green;
   background: linear-gradient(0deg, rgba(35, 108, 3, 1) 0%, rgba(35, 108, 3, 0.6) 100%);
+  box-shadow: 0.25rem 0 1rem 0 rgba(0, 0, 0, 0.6);
   @include layout;
 
   div {
     align-items: end;
-        @include spaceText;
+    @include spaceText;
   }
 
   .tel {
@@ -17,7 +18,7 @@ footer {
     @media (max-width: 1023px) {
       grid-column: 2/4;
     }
-    
+
     @media (max-width: 767px) {
       grid-column: 2/7;
     }
@@ -29,13 +30,14 @@ footer {
     @media (max-width: 1023px) {
       grid-column: 5/9;
     }
-    
+
     @media (max-width: 767px) {
       grid-column: 2/12;
     }
   }
 
-  a,p {
+  a,
+  p {
     color: white;
     font-size: 1rem;
     font-weight: 300;
@@ -51,13 +53,13 @@ footer {
       grid-column: 10/13;
       justify-content: start;
     }
-    
+
     @media (max-width: 767px) {
       grid-column: 2/12;
     }
   }
 
- //  The logo is in a div in development
+  //  The logo is in a div in development
   .alignDev {
     grid-column: 2/4;
 
