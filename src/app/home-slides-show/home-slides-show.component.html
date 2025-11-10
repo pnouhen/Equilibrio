@@ -1,0 +1,22 @@
+<section>
+  <div class="container">
+    <div class="mainImages">
+      @for(image of imageSlidesShow; track image.alt; let isLast = $last) {
+      <img [src]="image.src" [alt]="image.alt" class="imageSlidesShow" />
+      }
+    </div>
+
+    <div class="allImages">
+      @for(image of imageSlidesShow; track image.alt; let isLast = $last) {
+      <div [class]="!isLast ? 'borderRight' : ''">
+        <img
+          [src]="image.src"
+          [alt]="image.alt"
+          (click)="clickImage({ alt: image.alt })"
+          [class.active]="indexMainImage === imageSlidesShow.indexOf(image)"
+        />
+      </div>
+      }
+    </div>
+  </div>
+</section>

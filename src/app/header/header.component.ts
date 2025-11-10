@@ -1,6 +1,6 @@
 import { LogoComponent } from './../logo/logo.component';
 import { Component, OnInit } from '@angular/core';
-import { NavItem } from '../models/NavItem';
+import { NavItem } from '../models/NavItem.model';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { DisplayNavService } from '../services/displayNav.service';
 import { filter } from 'rxjs';
@@ -19,16 +19,16 @@ export class HeaderComponent implements OnInit {
   constructor(public displayNavService: DisplayNavService, private router: Router) {}
   ngOnInit(): void {
     this.headerLinks = [
-      new NavItem('assets/home.svg', 'Acceuil', 'home', ''),
-      new NavItem('assets/berimbau.svg', 'La capoeira', 'capoeira', 'la-capoeira'),
-      new NavItem('assets/map.svg', 'Lieux & Horaires', 'timePlace', 'lieux-et-horaires'),
+      new NavItem('assets/header/home.svg', 'Acceuil', 'home', ''),
+      new NavItem('assets/header/berimbau.svg', 'La capoeira', 'capoeira', 'la-capoeira'),
+      new NavItem('assets/header/map.svg', 'Lieux & Horaires', 'timePlace', 'lieux-et-horaires'),
       new NavItem(
-        'assets/capoeira-fight.svg',
+        'assets/header/capoeira-fight.svg',
         'Prestations et Animations',
         'prestations',
         'prestations-et-animations'
       ),
-      new NavItem('assets/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
+      new NavItem('assets/header/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
     ];
 
     // Display the menu burger
