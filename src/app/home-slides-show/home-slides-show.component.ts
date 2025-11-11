@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Image } from '../models/Image.model';
 
 @Component({
   selector: 'app-home-slides-show',
-  imports: [],
   templateUrl: './home-slides-show.component.html',
-  styleUrl: './home-slides-show.component.scss',
+  styleUrls: ['./home-slides-show.component.scss'], // corrigé : styleUrls au pluriel
 })
-export class HomeSlidesShowComponent implements OnInit {
+export class HomeSlidesShowComponent implements OnInit, AfterViewInit, OnDestroy {
+
   imageSlidesShow!: Image[];
 
   stopSlideShow: boolean = false;
-  indexMainImage: number = -1;
+  indexMainImage: number = 0;
   translateX: number = 0;
+
+  private slideInterval!: any;
+
+  @ViewChild('slidesShow', { static: false }) slidesShow!: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
     this.imageSlidesShow = [
@@ -21,48 +25,67 @@ export class HomeSlidesShowComponent implements OnInit {
       new Image('assets/slidesShow/rentree-2025.webp', 'Bientôt la rentrée'),
       new Image('assets/slidesShow/rentree2023.webp', 'Commencer la capoeira dès 3 ans'),
     ];
-
-    this.loop();
   }
 
-  updateTranslateX(): void {
-    const arrayImageSlidesShow = document.querySelectorAll('.imageSlidesShow');
-    const imageSlidesShow = document.querySelector('.mainImages img');
-    this.translateX = 0 - (imageSlidesShow?.clientWidth || 0);
-
-    arrayImageSlidesShow.forEach((el) => {
-      const image = el as HTMLElement;
-      image.style.transform = `translateX(${this.translateX * this.indexMainImage}px)`;
-    });
+  ngAfterViewInit(): void {
+    this.startAutoSlide();
   }
 
-  generateSlidesShow(): void {
-    if (this.indexMainImage < this.imageSlidesShow.length - 1) {
-      this.indexMainImage = this.indexMainImage + 1;
-    } else {
+  ngOnDestroy(): void {
+    // Clear the interval when the component is destroyed
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
+  }
+
+  updateSlidePosition(): void {
+  if (!this.slidesShow) return;
+
+  const slides = this.slidesShow.nativeElement.querySelectorAll('img') as NodeListOf<HTMLImageElement>;
+  if (!slides.length) return;
+
+  const slideWidth = slides[0].clientWidth;
+  this.translateX = -(slideWidth * this.indexMainImage);
+
+   // If we arrive at the cloned image → instant return to the 1st
+    if (slides[this.indexMainImage]?.classList.contains('clone')) {
+    setTimeout(() => {
+      // Delete temporarily the transition 
+      this.slidesShow.nativeElement.classList.remove('transition');
+
+      // Return to the first real image
       this.indexMainImage = 0;
-    }
+      this.translateX = 0;
 
-    this.updateTranslateX();
+      // Restart the transition after a short delay
+      setTimeout(() => {
+        this.slidesShow.nativeElement.classList.add('transition');
+      }, 20);
+    }, 400); // corresponds to the CSS transition time
   }
+}
 
-  loop(): void {
+  // Go to the next image in the carousel
+  goToNextSlide(): void {
     if (!this.stopSlideShow) {
-      this.generateSlidesShow();
-      setTimeout(() => this.loop(), 3000);
+      this.indexMainImage++;
+      this.updateSlidePosition();
     }
   }
 
-  clickImage(image: { alt: string }): void {
-    this.stopSlideShow = true;
-    this.indexMainImage = this.imageSlidesShow.findIndex((img) => img.alt === image.alt);
-
-    this.updateTranslateX();
+  startAutoSlide(): void {
+    this.slideInterval = setInterval(() => this.goToNextSlide(), 2000);
   }
 
- imageSelected(image: { alt: string }): void {
-  this.imageSlidesShow.findIndex((img) => img.alt === image.alt);
-}
-}
+  //Display image in click and stop the slidesShow
+  selectSlide(image: { alt: string }): void {
+    this.stopSlideShow = true;
 
-// TODO Manque le retour fluide après la dernière image
+    // Find the index of the clicked image using the alt key.
+    const index = this.imageSlidesShow.findIndex((img) => img.alt === image.alt);
+    if (index !== -1) {
+      this.indexMainImage = index;
+      this.updateSlidePosition();
+    }
+  }
+}

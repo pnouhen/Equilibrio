@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
   }
 
   updateMenuBurger(): void {
-    this.menuBurger = window.innerWidth < 768;
+    this.menuBurger = window.innerWidth <= 1024;
   }
 
   addNav(): void {

@@ -1,1 +1,27 @@
-<app-home-slides-show/>
+<app-home-slides-show />
+
+<div class="container">
+  <div class="trainingResumes">
+    <h2>Rentrée 2025-2026</h2>
+
+    <ul>
+      @for(training of trainingResumes; track training.place) {
+      <li>
+        <p class="place">{{ training.place }} :</p>
+
+        <p class="day">{{ training.day }}</p>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <div class="brazilianDances">
+    <h2>Dansez aux rythmes du Brésil :</h2>
+    <a href="https://sites.google.com/view/dansesbresiliennes-limoges/accueil">
+      <img
+        src="/assets/img/danses-bresiliennes.webp"
+        alt="Affiche pour les cours de danses brésiliennes"
+      />
+    </a>
+  </div>
+</div>

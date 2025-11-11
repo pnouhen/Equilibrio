@@ -1,9 +1,14 @@
 <section>
   <div class="container">
-    <div class="mainImages">
+    <div
+      #slidesShow
+      class="slidesShow transition"
+      [style.transform]="'translateX(' + translateX + 'px)'"
+    >
       @for(image of imageSlidesShow; track image.alt; let isLast = $last) {
-      <img [src]="image.src" [alt]="image.alt" class="imageSlidesShow" />
+      <img [src]="image.src" [alt]="image.alt" />
       }
+      <img [src]="imageSlidesShow[0].src" [alt]="imageSlidesShow[0].alt" class="clone" />
     </div>
 
     <div class="allImages">
@@ -12,7 +17,7 @@
         <img
           [src]="image.src"
           [alt]="image.alt"
-          (click)="clickImage({ alt: image.alt })"
+          (click)="selectSlide({ alt: image.alt })"
           [class.active]="indexMainImage === imageSlidesShow.indexOf(image)"
         />
       </div>

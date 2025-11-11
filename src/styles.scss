@@ -14,11 +14,11 @@
     font-size: clamp(11.38px, calc(100vw * 11.11 / 1000), 16px);
   }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
-    font-size: clamp(11.38px, calc(100vw * 14.82 / 1000), 16px);
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: clamp(11.38px, calc(100vw * 14.82 / 1000), 14px);
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     font-size: 12px;
   }
 }
@@ -41,8 +41,7 @@ h2 {
 
 h3 {
   font-size: 1.75rem;
-  font-weight: bold;
-  color: $red;
+  @include redBold;
 }
 
 h4 {
