@@ -1,0 +1,13 @@
+<section>
+  <h2>Sélectionner la ville la plus proche :</h2>
+
+  <ul>
+    @for(card of locationCards; track card.id){
+    <li>
+      <a>
+        <img src="{{card.src}}" alt="{{card.alt}}" />
+      </a>
+    </li>
+    }
+  </ul>
+</section>
