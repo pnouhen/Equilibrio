@@ -56,6 +56,7 @@ a {
 }
 
 section {
-  padding: 20px 0;
+  padding-top: 1.25rem;
+  padding-bottom: 2.5rem;
   @include layout;
 }
