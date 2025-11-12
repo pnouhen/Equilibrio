@@ -9,12 +9,14 @@
       alt="Icone menu"
       class="bars-solid"
       (click)="addNav()"
+      loading="lazy"
     />} @else {
     <img
       src="assets/header/xmark-solid.svg"
       alt="Icone fermeture menu"
       class="xmark-solid"
       (click)="removeNav()"
+      loading="lazy"
     />
     }
   </div>
@@ -31,7 +33,7 @@
           (click)="removeNav()"
         >
           <div>
-            <img [src]="headerLink.src" alt="Icone {{ headerLink.title }}" />
+            <img [src]="headerLink.src" alt="Icone {{ headerLink.title }}" loading="lazy" />
           </div>
 
           {{ headerLink.title }}
