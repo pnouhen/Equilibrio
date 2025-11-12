@@ -8,15 +8,20 @@ section {
   ul {
     grid-column: 2/12;
   }
+  
 
   ul {
-    width: 100%;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: 3.125rem;
     list-style: none;
+
+    @media (min-width: 1441px) {
+        justify-content: flex-start;
+        gap: 3.125rem;
+    }
 
     @media (max-width: 1024px) {
         display: grid;
@@ -30,11 +35,11 @@ section {
     }
 
     li {
-        margin: auto;
       width: 12.5rem;
       height: 12.5rem;
 
       @media (max-width:768px) {
+                margin: auto;
         width: 200px;
         height: 200px;
       }
