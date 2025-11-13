@@ -4,8 +4,8 @@
   <ul>
     @for(card of locationCards; track card.id){
     <li>
-      <a>
-        <img src="{{card.src}}" alt="{{card.alt}}" />
+      <a [routerLink]="['/lieux-et-horaires', card.id]">
+        <img src="{{ card.src }}" alt="{{ card.alt }}" />
       </a>
     </li>
     }

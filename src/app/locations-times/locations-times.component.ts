@@ -1,9 +1,10 @@
-import { LocationsCard } from './../models/LocationsCard';
+import { RouterLink } from '@angular/router';
+import { LocationsCard } from '../models/LocationsCard.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-locations-times',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './locations-times.component.html',
   styleUrl: './locations-times.component.scss',
 })

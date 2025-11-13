@@ -1,4 +1,4 @@
-import { TrainingResume } from './../models/TrainingResume';
+import { TrainingResume } from '../models/TrainingResume.model';
 import { Component, OnInit } from '@angular/core';
 import { HomeSlidesShowComponent } from '../home-slides-show/home-slides-show.component';
 
