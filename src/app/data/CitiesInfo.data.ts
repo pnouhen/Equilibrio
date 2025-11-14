@@ -36,12 +36,11 @@ export const CITIES: CityInfo[] = [
       new TrainingCategory('À partir de 15 ans (ados et adultes)', [
         new TrainingSchedule('Lundi', '19h30', '21h'),
         new TrainingSchedule('Mercredi', '19h30', '21h'),
-        new TrainingSchedule('Jeudi', '20h15', '21h30', 'mixedTraining'),
+        new TrainingSchedule('Jeudi', '20h15', '21h30', 'lightTraining'),
         new TrainingSchedule('Vendredi', '19h30', '21h'),
-        new TrainingSchedule('Samedi', '11h', '12h30', 'lightTraining'),
+        new TrainingSchedule('Samedi', '11h', '12h30', 'mixedTraining'),
       ]),
     ],
-    ['mixedTraining', 'lightTraining']
   ),
 
   // Couzeix
@@ -112,21 +111,20 @@ export const CITIES: CityInfo[] = [
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [
-        new TrainingSchedule('Lundi', '18h', '19h', 'twoProfessors'),
+        new TrainingSchedule('Lundi', '18h', '19h', 'twoTeachers'),
         new TrainingSchedule('Samedi', '10h', '11h'),
       ]),
 
       new TrainingCategory('Enfants 7/10 ans', [
-        new TrainingSchedule('Lundi', '18h', '19h', 'twoProfessors'),
+        new TrainingSchedule('Lundi', '18h', '19h', 'twoTeachers'),
         new TrainingSchedule('Samedi', '11h', '12h30'),
       ]),
 
       new TrainingCategory('Ados Adulte', [
         new TrainingSchedule('Lundi', '19h30', '21h'),
-        new TrainingSchedule('Samedi', '11h', '12h30', 'mixedTraining'),
+        new TrainingSchedule('Samedi', '11h', '12h30', 'twoTeachers'),
       ]),
     ],
-    ['twoProfessors', 'mixedTraining']
   ),
 
   // Tulle
@@ -142,10 +140,9 @@ export const CITIES: CityInfo[] = [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '10h', '11h')]),
 
       new TrainingCategory('Enfants Ados Adulte', [
-        new TrainingSchedule('Samedi', '11h', '12h30', 'twoProfessors'),
+        new TrainingSchedule('Samedi', '11h', '12h30', 'twoTeachers'),
       ]),
     ],
-    ['twoProfessors']
   ),
 
   // La Souterraine

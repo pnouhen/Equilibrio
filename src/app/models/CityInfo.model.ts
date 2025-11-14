@@ -10,6 +10,5 @@ export class CityInfo {
     public adress: string,
     public numberPhone: string,
     public TrainingCategory: TrainingCategory[] = [],
-    public conditions: string[] = []
   ) {}
 }

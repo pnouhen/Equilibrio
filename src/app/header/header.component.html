@@ -5,14 +5,14 @@
   <div class="menuBurger">
     @if(!displayNavService.displayNav){
     <img
-      src="assets/header/bars-solid.svg"
+      src="assets/icon/bars-solid.svg"
       alt="Icone menu"
       class="bars-solid"
       (click)="addNav()"
       loading="lazy"
     />} @else {
     <img
-      src="assets/header/xmark-solid.svg"
+      src="assets/icon/xmark-solid.svg"
       alt="Icone fermeture menu"
       class="xmark-solid"
       (click)="removeNav()"
@@ -28,7 +28,7 @@
       <li class="{{ headerLink.navItem }}">
         <a
           routerLink="{{ headerLink.path }}"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="{ exact: shouldUseExactMatch(headerLink.path) }"
           routerLinkActive="active"
           (click)="removeNav()"
         >

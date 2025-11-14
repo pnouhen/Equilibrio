@@ -19,16 +19,21 @@ export class HeaderComponent implements OnInit {
   constructor(public displayNavService: DisplayNavService, private router: Router) {}
   ngOnInit(): void {
     this.headerLinks = [
-      new NavItem('assets/header/home.svg', 'Acceuil', 'home', ''),
-      new NavItem('assets/header/berimbau.svg', 'La capoeira', 'capoeira', 'la-capoeira'),
-      new NavItem('assets/header/map.svg', 'Lieux & Horaires', 'timePlace', 'lieux-et-horaires'),
+      new NavItem('assets/icon/home.svg', 'Acceuil', 'home', ''),
+      new NavItem('assets/icon/berimbau.svg', 'La capoeira', 'capoeira', 'la-capoeira'),
+      new NavItem('assets/icon/map.svg', 'Lieux & Horaires', 'timePlace', 'lieux-et-horaires'),
       new NavItem(
-        'assets/header/capoeira-fight.svg',
+        'assets/icon/capoeira-fight.svg',
         'Prestations et Animations',
         'prestations',
         'prestations-et-animations'
       ),
-      new NavItem('assets/header/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
+      new NavItem(
+        'assets/icon/auth-page.svg',
+        'Espace adhérents',
+        'authPage',
+        'espace-adherents'
+      ),
     ];
 
     // Display the menu burger
@@ -53,5 +58,14 @@ export class HeaderComponent implements OnInit {
 
   removeNav(): void {
     this.displayNavService.removeNav();
+  }
+
+  // Active routerLinkActive for paths : lieux-et-horaires/:city
+  shouldUseExactMatch(path: string): boolean {
+    if (path === 'lieux-et-horaires') {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
