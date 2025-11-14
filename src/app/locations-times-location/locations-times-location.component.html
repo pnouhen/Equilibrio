@@ -31,7 +31,7 @@
       @if(category.conditions.length > 0) {
       <ul class="conditions">
         @for(condition of category.conditions; track condition) {
-        <li>{{ getTextCondition(condition, category.conditions) }}</li>
+        <li>{{ condition}}</li>
         }
       </ul>
       }

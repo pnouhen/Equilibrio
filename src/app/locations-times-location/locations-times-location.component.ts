@@ -19,44 +19,66 @@ export class LocationsTimesLocationComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // Retrieve the ID
+    // Retrieve ID
     this.id = this.route.snapshot.paramMap.get('city');
 
-    // Retrieve the corresponding city
-    if (this.id) {
-      this.info = CITIES.find((city) => city.id === this.id);
+    // Retrieve city info
+    this.info = this.id ? CITIES.find((city) => city.id === this.id) : undefined;
+
+    if (!this.info) {
+      this.categories = [];
+      return;
     }
 
-    // Transform categories and extract unique conditions from schedules
-    this.categories =
-      this.info?.TrainingCategory.map((category) => ({
+    // Build categories
+    this.categories = this.info.TrainingCategory.map((category) => {
+      const conditions = category.trainingSchedule
+        // Keep only the objects that have a defined condition
+        .filter((schedule) => Boolean(schedule.condition))
+        // Transform the list to retrieve only the condition value
+        .map((schedule) => schedule.condition!);
+
+      return {
         title: category.title,
-        trainingSchedule: category.trainingSchedule,
-        conditions: category.trainingSchedule
-          // Keep only the schedules that have a defined condition
-          .filter((schedule: any) => Boolean(schedule.condition))
-          // Extracts just the value of the conditional property
-          .map((schedule: any) => schedule.condition),
-      })) || [];
-
-    // Add stars to schedules whose condition matches those listed in the `conditions` table of `categories`
-    this.categories.forEach((category) => {
-      // Create a condition → stars lookup table
-      const conditionsStars = category.conditions.map((condi, index) => {
-        return { condition: condi, stars: this.getStarCountByConditionIndex(index) };
-      });
-
-      // Browse each schedule in the category
-      category.trainingSchedule.forEach((schedule) => {
-        // If the schedule has a condition, replace it with the stars
-        if (schedule.condition) {
-          const newScheduleCondi = conditionsStars.find(
-            (condiSchedule) => condiSchedule.condition === schedule.condition
-          );
-          schedule.condition = newScheduleCondi?.stars;
-        }
-      });
+        trainingSchedule: category.trainingSchedule.map((s) => ({ ...s })),
+        conditions: [...conditions],
+      };
     });
+
+    // Add stars to each schedule
+    this.categories = this.categories.map((category) => {
+      // Transforming the conditions → adding the stars
+      const conditionsStars = category.conditions.map((condi, index) => ({
+        condition: condi,
+        stars: this.getStarCountByConditionIndex(index),
+      }));
+
+      // Transforming schedules → replace the condition with asterisks
+      const newTrainingSchedule = category.trainingSchedule.map((schedule) => {
+        if (!schedule.condition) return { ...schedule };
+
+        // Search for matching under Stars conditions
+        const found = conditionsStars.find((c) => c.condition === schedule.condition);
+        return { ...schedule, condition: found?.stars || schedule.condition };
+      });
+
+      return {
+        ...category,
+        trainingSchedule: newTrainingSchedule,
+      };
+    });
+
+    // Transform conditions into text
+    this.categories = this.categories.map((category) => ({
+      ...category,
+      conditions: category.conditions.map((conditionCategory, index) => {
+        const found = CONDITIONSTRAINING.find(
+          (conditionTraining) => conditionTraining.condition === conditionCategory
+        );
+        if (!found) return conditionCategory;
+        return `${this.getStarCountByConditionIndex(index)} ${found.text}`;
+      }),
+    }));
   }
 
   getStarCountByConditionIndex(index: number): string {
@@ -64,25 +86,11 @@ export class LocationsTimesLocationComponent implements OnInit {
   }
 
   changeClassCategories(categoriesLength: number): string {
-    console.log(categoriesLength);
-
     if (categoriesLength === 1) return 'categories oneCategory';
     if (categoriesLength === 2) return 'categories twoCategories';
     if (categoriesLength === 3) return 'categories threeCategories';
-    if(categoriesLength === 4) return 'categories thridCategories'
+    if (categoriesLength === 4) return 'categories thridCategories';
 
     return 'categories';
-  }
-
-  getTextCondition(conditionText: string, categories: string[]): string {
-    // Link the condition to the text
-    const condition = CONDITIONSTRAINING.find((c) => c.condition === conditionText);
-
-    if (condition) {
-      // Find index for generate the number stars
-      const index = categories.findIndex((c) => c === conditionText);
-      return `${this.getStarCountByConditionIndex(index)} ${condition.text}`;
-    }
-    return '';
   }
 }
