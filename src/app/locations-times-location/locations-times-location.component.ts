@@ -4,10 +4,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CITIES } from '../data/CitiesInfo.data';
 import { CityInfo } from '../models/CityInfo.model';
 import { TrainingSchedule } from '../models/TrainingSchedule.model';
+import { LocationsTimesLocationMapComponent } from '../locations-times-location-map/locations-times-location-map.component';
 
 @Component({
   selector: 'app-locations-times-location',
-  imports: [RouterLink],
+  imports: [RouterLink, LocationsTimesLocationMapComponent],
   templateUrl: './locations-times-location.component.html',
   styleUrl: './locations-times-location.component.scss',
 })
@@ -15,7 +16,6 @@ export class LocationsTimesLocationComponent implements OnInit {
   id: string | null = null;
   info: CityInfo | undefined;
   categories!: { title: string; trainingSchedule: TrainingSchedule[]; conditions: string[] }[];
-
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -79,6 +79,7 @@ export class LocationsTimesLocationComponent implements OnInit {
         return `${this.getStarCountByConditionIndex(index)} ${found.text}`;
       }),
     }));
+    console.log(this.info)
   }
 
   getStarCountByConditionIndex(index: number): string {

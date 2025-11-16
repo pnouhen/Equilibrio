@@ -3,11 +3,12 @@ import { TrainingCategory } from './TrainingCategory.model';
 export class CityInfo {
   constructor(
     public id: string,
-    public title: string,
+    public city: string,
     public nameRoom: string,
     public comment: string,
     public coord: [number, number],
     public adress: string,
+    public postalCode: number,
     public numberPhone: string,
     public TrainingCategory: TrainingCategory[] = [],
   ) {}

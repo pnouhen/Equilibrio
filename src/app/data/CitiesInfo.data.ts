@@ -10,7 +10,8 @@ export const CITIES: CityInfo[] = [
     'Capoeira Equilibrio LIMOGES',
     '',
     [45.840058, 1.255751],
-    '13, rue du Crucifix - 87100 LIMOGES',
+    '13, rue du Crucifix',
+    87100,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [
@@ -50,7 +51,8 @@ export const CITIES: CityInfo[] = [
     'Complexe sportif de Couzeix',
     'Salle n°3 du Complexe Sportif',
     [45.879148836844685, 1.2422976398078234],
-    'allée Maurice Genevoix, 87270 COUZEIX',
+    'allée Maurice Genevoix',
+    87270,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Lundi', '17h30', '18h30')]),
@@ -73,7 +75,8 @@ export const CITIES: CityInfo[] = [
     'Stade de Morpienas',
     'Salle René DADAT, sous les gradins',
     [45.82635199975483, 1.3089892171840223],
-    'rue Jean Macé, 87350 Panazol',
+    'rue Jean Macé',
+    87350,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
@@ -89,7 +92,8 @@ export const CITIES: CityInfo[] = [
     'Cité de la danse',
     'Salle Dominique',
     [45.89230728149414, 0.9043357372283936],
-    '31 rue Zamenhof, Saint-Junien, France',
+    '31 rue Zamenhof',
+    87200,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Mercredi', '14h30', '15h30')]),
@@ -103,11 +107,12 @@ export const CITIES: CityInfo[] = [
   // Brive
   new CityInfo(
     'brive',
-    'Brive',
+    'Brive-la-Gaillarde',
     'Gymnase Louis Pons',
     '',
     [45.1529148, 1.5355056],
-    '24 Bd Brune, 19100 Brive-la-Gaillarde',
+    '24 Bd Brune',
+    19100,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [
@@ -134,7 +139,8 @@ export const CITIES: CityInfo[] = [
     'Dojo municipal Roger Lager',
     '',
     [45.251515856736226, 1.7636473610962877],
-    '5 Rue de la Montane, 19000 Tulle',
+    '5 Rue de la Montane',
+    19000,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '10h', '11h')]),
@@ -152,7 +158,8 @@ export const CITIES: CityInfo[] = [
     'Batiment Saint Joseph',
     'Salle de danse, en face de la Mairie',
     [46.238779, 1.482978],
-    "1 Rue de l'Hermitage, 23300 La Souterraine",
+    "1 Rue de l'Hermitage",
+    23300,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
@@ -168,7 +175,8 @@ export const CITIES: CityInfo[] = [
     'Batiment Saint Joseph',
     'Salle de Tennis de Table',
     [46.18625649197039, 1.874588905353769],
-    '2 Rue Jean Bussière, 23000 Guéret',
+    '2 Rue Jean Bussière',
+    23000,
     '06.20.04.61.20',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Mardi', '17h30', '18h30')]),
@@ -188,7 +196,8 @@ export const CITIES: CityInfo[] = [
     'Salle polyvalente',
     '',
     [45.723080040043534, 1.6135583524273933],
-    '8 Rue de la République, 87130 Neuvic-Entier',
+    '8 Rue de la République',
+    87130,
     '06.69.44.23.55',
     [
       new TrainingCategory('À partir de 6 ans (enfants, ados et adultes)', [
@@ -204,7 +213,8 @@ export const CITIES: CityInfo[] = [
     'Salle polyvalente',
     '',
     [45.71436400367958, 1.6019259092543154],
-    '25 Av. Michel Sinibaldi, 87130 Châteauneuf-la-Forêt',
+    '25 Av. Michel Sinibaldi',
+    87130,
     '06.69.44.23.55',
     [
       new TrainingCategory('À partir de 6 ans (enfants, ados et adultes)', [

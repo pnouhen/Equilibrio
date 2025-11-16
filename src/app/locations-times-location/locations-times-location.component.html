@@ -1,9 +1,9 @@
 <a routerLink="/lieux-et-horaires"
-  ><img src="/assets/icon/arrow-left.svg" alt="Flèche pour retouner à la page Lieux et Horaires"
+  ><img src="/assets/icon/arrow-left.svg" alt="Flèche de retour"
 /></a>
 
 <section>
-  <h2>{{ info?.title }}</h2>
+  <h2>{{ info?.city }}</h2>
 
   <ul class="{{ changeClassCategories(info?.TrainingCategory?.length || 0) }}">
     @for (category of categories; track category.title) {
@@ -31,11 +31,38 @@
       @if(category.conditions.length > 0) {
       <ul class="conditions">
         @for(condition of category.conditions; track condition) {
-        <li>{{ condition}}</li>
+        <li>{{ condition }}</li>
         }
       </ul>
       }
     </li>
     }
   </ul>
+
+  <div class="mapAdress">
+    <div class="map">
+      <h2>Localisation :</h2>
+
+      <app-locations-times-location-map [info]="info" />
+    </div>
+
+    <div class="address">
+      <h2>Adresse :</h2>
+
+      <ul>
+        <li class="name">
+          {{ info?.nameRoom }}
+          @if(info?.comment) { * }
+        </li>
+
+        <li>{{ info?.adress }}</li>
+
+        <li>{{ info?.postalCode }} {{ info?.city }}</li>
+
+        @if(info?.comment) {
+        <li class="comment">* {{ info?.comment }}</li>
+        }
+      </ul>
+    </div>
+  </div>
 </section>
