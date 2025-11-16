@@ -160,11 +160,18 @@ section {
 
     .address {
       grid-column: 8/12;
-      margin-top: 14.062rem;
 
       @media (max-width: 768px) {
         grid-column: 2/12;
         margin-top: $marginArticle;
+      }
+
+      .title {
+        margin-top: 53%;
+
+        @media (max-width: 768px) {
+          margin-top: 0;
+        }
       }
 
       ul {
