@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './authPage.component.scss',
 })
 export class AuthPageComponent {
-
+// TODO L'inscription se fait avec ngModel et la connexion avec NgForm
 }

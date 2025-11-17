@@ -1,1 +1,117 @@
-<p>prestations works!</p>
+<section class="training">
+  <div class="title">
+    <h2>Cours de Capoeira, Samba & Percussions brésiliennes :</h2>
+
+    <p class="subtitle">Initiation, perfectionnement et animations</p>
+  </div>
+
+  <div class="text">
+    <p>
+      Le Grupo EQUILIBRIO propose des activités autour de la culture brésilienne, accessibles à tous
+      les publics :
+    </p>
+
+    <ul>
+      <li>
+        Cours de Capoeira :
+        <p>
+          Pour enfants dès 3 ans, adolescents et adultes, avec une progression adaptée au niveau et
+          au rythme de chacun.
+        </p>
+      </li>
+
+      <li>
+        Cours de Samba et danses afro-brésiliennes :
+        <p>Enseignés par Vanessa, professeure expérimentée et dynamique.</p>
+      </li>
+
+      <li>
+        Stages thématiques :
+        <p>
+          Initiation ou perfectionnement en Capoeira, Samba et Percussions brésiliennes, avec une
+          pédagogie adaptée aux participants.
+        </p>
+      </li>
+    </ul>
+
+    <p>
+      Forts d’une expérience acquise au Brésil et en France, les intervenants proposent un
+      enseignement structuré et adapté à différentes cultures.
+    </p>
+  </div>
+</section>
+
+<section class="animations">
+  <div class="title">
+    <h2>Animations & Spectacles :</h2>
+
+    <p class="subtitle">Capoeira, Samba et percussions pour tous vos événements</p>
+  </div>
+
+  <div class="text">
+    <p>
+      Le Grupo EQUILIBRIO propose des
+      <strong> animations, spectacles et démonstrations</strong> réunissant
+      <strong>Capoeira, Samba et Percussions brésiliennes</strong>. Ces prestations complètes et
+      harmonieuses s’adaptent à tous les publics.
+    </p>
+
+    <p>
+      Une façon originale d’animer des <strong>après-midis, soirées ou festivals</strong>, grâce au
+      professionnalisme du groupe et à l’ambiance festive qu’il déploie :
+      <strong>chants, danses et musiques rythment chaque moment.</strong>
+    </p>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Contactez-nous :</h2>
+  <form [formGroup]="contactForm">
+    <div class="labelInput name">
+      <label for="name">Nom</label>
+
+      <input type="text" id="name" formControlName="name" />
+    </div>
+
+    <div class="labelInput firstName">
+      <label for="firstName">Prénom</label>
+
+      <input type="text" id="firstName" formControlName="firstName" />
+    </div>
+
+    <div class="labelInput email">
+      <label for="email">E-mail</label>
+
+      <input type="email" id="email" formControlName="email" />
+    </div>
+
+    <div class="labelInput phone">
+      <label for="phone">Téléphone</label>
+      <input
+        type="tel"
+        id="phone"
+        formControlName="phone"
+        phoneFormat
+        (keypress)="allowOnlyNumbers($event)"
+      />
+    </div>
+
+    <div class="labelInput subject">
+      <label for="subject">Object</label>
+
+      <input type="text" id="subject" formControlName="subject" />
+    </div>
+
+    <div class="labelInput message">
+      <label for="message">Message</label>
+
+      <textarea name="message" id="message" formControlName="message"></textarea>
+    </div>
+
+    <button (click)="onSubmitForm()">Envoyer</button>
+  </form>
+
+  @if(messageAlert !== ""){
+  <p class="alertMessage">{{messageAlert}}</p>
+  }
+</section>
