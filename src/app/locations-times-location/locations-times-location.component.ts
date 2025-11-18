@@ -79,7 +79,6 @@ export class LocationsTimesLocationComponent implements OnInit {
         return `${this.getStarCountByConditionIndex(index)} ${found.text}`;
       }),
     }));
-    console.log(this.info)
   }
 
   getStarCountByConditionIndex(index: number): string {
