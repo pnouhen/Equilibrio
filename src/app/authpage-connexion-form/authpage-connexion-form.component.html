@@ -1,0 +1,17 @@
+<div class="connexion_container">
+    <form #connexion="ngForm" (ngSubmit)="onSubmit(connexion)">
+        <div class="labelInput email">
+            <label for="emailConnexion">E-mail</label>
+            <input type="email" id="emailConnexion" name="email" ngModel/>
+        </div>
+
+        <div class="labelInput email">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" ngModel [(ngModel)]="passwordValue"/>
+        </div>
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <app-message-form [isSubmitted]="isSubmitted" [isFormValid]="isFormValid" [array]="formMessage"/>
+</div>

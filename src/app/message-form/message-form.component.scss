@@ -1,0 +1,14 @@
+@use '../../variables.scss' as *;
+
+.messageForm {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.messageFormTrue {
+  color: $green;
+}
+
+.messageFormFalse {
+  color: black;
+}

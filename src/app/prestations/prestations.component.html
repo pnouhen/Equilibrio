@@ -70,19 +70,34 @@
     <div class="labelInput name">
       <label for="name">Nom</label>
 
-      <input type="text" id="name" formControlName="name" />
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        [class.fieldError]="isFieldInvalid('name')"
+      />
     </div>
 
     <div class="labelInput firstName">
       <label for="firstName">Prénom</label>
 
-      <input type="text" id="firstName" formControlName="firstName" />
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        [class.fieldError]="isFieldInvalid('firstName')"
+      />
     </div>
 
     <div class="labelInput email">
       <label for="email">E-mail</label>
 
-      <input type="email" id="email" formControlName="email" />
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        [class.fieldError]="isFieldInvalid('email')"
+      />
     </div>
 
     <div class="labelInput phone">
@@ -93,25 +108,39 @@
         formControlName="phone"
         phoneFormat
         (keypress)="allowOnlyNumbers($event)"
+        [class.fieldError]="isFieldInvalid('phone')"
       />
     </div>
 
     <div class="labelInput subject">
       <label for="subject">Object</label>
 
-      <input type="text" id="subject" formControlName="subject" />
+      <input
+        type="text"
+        id="subject"
+        formControlName="subject"
+        [class.fieldError]="isFieldInvalid('subject')"
+      />
     </div>
 
     <div class="labelInput message">
       <label for="message">Message</label>
 
-      <textarea name="message" id="message" formControlName="message"></textarea>
+      <textarea
+        name="message"
+        id="message"
+        formControlName="message"
+        [class.fieldError]="isFieldInvalid('message')"
+      ></textarea>
     </div>
 
     <button (click)="onSubmitForm()">Envoyer</button>
   </form>
 
-  @if(messageAlert !== ""){
-  <p class="alertMessage">{{messageAlert}}</p>
-  }
+  <div class="messageFormSubmit">
+    <app-message-form [isSubmitted]="isSubmitted"
+     [isFormValid]="isFormValid" 
+     [array]="formMessages"
+     />
+  </div>
 </section>

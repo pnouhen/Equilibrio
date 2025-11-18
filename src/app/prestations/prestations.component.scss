@@ -11,6 +11,7 @@ section {
 }
 
 .subtitle {
+  margin-bottom: 2rem;
   font-size: 1.5rem;
   color: $black;
   font-weight: 500;
@@ -56,11 +57,6 @@ section {
     strong {
       color: $red;
     }
-
-    .contact {
-      font-size: 1.75rem;
-      font-weight: bold;
-    }
   }
 }
 
@@ -69,7 +65,7 @@ section {
     grid-column: 2/12;
   }
 
-  form, .alertMessage {
+  form, .messageFormSubmit {
     grid-column: 4/10;
   }
 
@@ -112,5 +108,4 @@ section {
       height: 16rem;
     }
   }
-  
 }

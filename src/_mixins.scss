@@ -17,6 +17,27 @@
 }
 
 @mixin sectionGray {
- background: $gray;
+  background: $gray;
   box-shadow: 0 0 1rem 0rem rgba(0, 0, 0, 0.6);
+}
+
+@mixin widthFormAuthPage {
+  width: 21.562rem;
+
+      @media (min-width: 1441px) {
+        width: 28rem;
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        grid-column: 2/12;
+      }
+}
+
+@mixin formAuthPage {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @include widthFormAuthPage;
 }

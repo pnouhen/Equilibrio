@@ -1,0 +1,9 @@
+@use '../../mixins' as *;
+
+.connexion_container {
+  @include widthFormAuthPage;
+
+  form {
+    @include formAuthPage;
+  }
+}
