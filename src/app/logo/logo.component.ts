@@ -9,9 +9,9 @@ import { DisplayNavService } from '../services/displayNav.service';
   styleUrl: './logo.component.scss',
 })
 export class LogoComponent {
-    constructor(public displayNavService: DisplayNavService) {} // inject service
+    constructor(public displayNavService: DisplayNavService) {}
 
-removeNav(): void {
-    this.displayNavService.removeNav();
+removeMenuBurger(): void {
+    this.displayNavService.removeMenuBurger();
   }
 }

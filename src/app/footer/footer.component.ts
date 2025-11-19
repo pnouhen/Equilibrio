@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 export class FooterComponent {
   constructor(public displayNavService: DisplayNavService) {} // inject service
 
-  removeNav(): void {
-    this.displayNavService.removeNav();
+  removeMenuBurger(): void {
+    this.displayNavService.removeMenuBurger();
   }
 }

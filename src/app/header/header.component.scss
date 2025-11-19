@@ -40,10 +40,10 @@ header {
       grid-column: 1/12;
       padding: 0 1rem;
       max-height: 0;
-      overflow: hidden;
       transform: scaleY(0);
       transform-origin: top;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
+      overflow: hidden;
     }
 
     ul {
@@ -138,7 +138,7 @@ header {
     }
   }
 
-  .display {
+  .open {
     max-height: 500px;
     transform: scaleY(1);
   }

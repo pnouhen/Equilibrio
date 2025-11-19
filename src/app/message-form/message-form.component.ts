@@ -1,5 +1,5 @@
-import { MessageForm } from '../models/messageForm';
-import { Component, Input } from '@angular/core';
+import { MessageForm } from '../models/MessageForm.model';
+import { Component, input, Input } from '@angular/core';
 
 @Component({
   selector: 'app-message-form',
@@ -8,21 +8,24 @@ import { Component, Input } from '@angular/core';
   styleUrl: `./message-form.component.scss`,
 })
 export class MessageFormComponent {
-  @Input() isSubmitted!: boolean;
-  @Input() isFormValid!: boolean;
+  isSubmitted = input.required<boolean>(); // Here for message-form.component.html
+  isFormValid = input.required<boolean>();
+  canSubmit = input.required<MessageForm>();
+  cannotSubmit = input.required<MessageForm>();
+
   @Input() array!: MessageForm[];
 
   isFormValidText(): string {
-    if (this.isFormValid) {
-      return this.array[0].text;
+    if (this.isFormValid()) {
+      return this.canSubmit().text;
     }
-    return this.array[1].text;
+    return this.cannotSubmit().text;
   }
 
   isFormValidClass(): string {
-    if (this.isFormValid) {
-      return this.array[0].className;
+    if (this.isFormValid()) {
+      return this.canSubmit().className;
     }
-    return this.array[1].className;
+    return this.cannotSubmit().className;
   }
 }

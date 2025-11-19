@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input } from '@angular/core';
+import { Component, AfterViewInit, Input, input } from '@angular/core';
 import * as L from 'leaflet';
 import { CityInfo } from '../models/CityInfo.model';
 
@@ -8,16 +8,15 @@ import { CityInfo } from '../models/CityInfo.model';
   styleUrls: ['./locations-times-location-map.component.scss'],
 })
 export class LocationsTimesLocationMapComponent implements AfterViewInit {
-  @Input() info!: CityInfo | undefined;
+  lat = input.required<number>()
+  lng = input.required<number>()
 
   private map: any;
 
   ngAfterViewInit(): void {
-    if (!this.info) return;
+    if (!this.lat() && this.lng()) return;
 
-    const lat = this.info.coord[0];
-    const lng = this.info.coord[1];
-    this.map = L.map('map').setView([lat, lng], 14);
+    this.map = L.map('map').setView([this.lat(),this.lng()], 14);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
 
@@ -35,6 +34,6 @@ export class LocationsTimesLocationMapComponent implements AfterViewInit {
     });
     L.Marker.prototype.options.icon = defaultIcon;
 
-    L.marker([lat, lng]).addTo(this.map);
+    L.marker([this.lat(), this.lng()]).addTo(this.map);
   }
 }

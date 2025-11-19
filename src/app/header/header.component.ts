@@ -1,9 +1,9 @@
 import { LogoComponent } from './../logo/logo.component';
 import { Component, OnInit } from '@angular/core';
 import { NavItem } from '../models/NavItem.model';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { DisplayNavService } from '../services/displayNav.service';
-import { filter } from 'rxjs';
+import { IconMenuBurger } from '../models/IconMenuBurger';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +17,9 @@ export class HeaderComponent implements OnInit {
   menuBurger!: boolean;
 
   constructor(public displayNavService: DisplayNavService, private router: Router) {}
+
   ngOnInit(): void {
+        
     this.headerLinks = [
       new NavItem('assets/icon/home.svg', 'Acceuil', 'home', ''),
       new NavItem('assets/icon/berimbau.svg', 'La capoeira', 'capoeira', 'la-capoeira'),
@@ -36,28 +38,25 @@ export class HeaderComponent implements OnInit {
       ),
     ];
 
-    // Display the menu burger
-    this.updateMenuBurger();
-    window.addEventListener('resize', () => this.updateMenuBurger());
+    // Display menuBurger for tablet and mobile
+     this.menuBurger = window.innerWidth <= 1024;
 
-    // Detects route changes to close the navigation menu
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.removeNav();
-      });
   }
 
-  updateMenuBurger(): void {
-    this.menuBurger = window.innerWidth <= 1024;
+  get navigationIcon() {
+    return this.displayNavService.navigationIcon;
   }
 
-  addNav(): void {
-    this.displayNavService.addNav();
+  get isNavOpen() {
+    return this.displayNavService.isNavOpen
   }
 
-  removeNav(): void {
-    this.displayNavService.removeNav();
+  toggleMenuBurger(): void {
+    this.displayNavService.toggleMenuBurger()
+  }
+
+    removeMenuBurger(): void {
+    this.displayNavService.removeMenuBurger();
   }
 
   // Active routerLinkActive for paths : lieux-et-horaires/:city

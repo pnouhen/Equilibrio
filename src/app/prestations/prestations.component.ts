@@ -1,5 +1,5 @@
 import { checkEmail } from '../services/checkEmail';
-import { MessageForm } from '../models/messageForm';
+import { MessageForm } from '../models/MessageForm.model';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MessageFormComponent } from "../message-form/message-form.component";

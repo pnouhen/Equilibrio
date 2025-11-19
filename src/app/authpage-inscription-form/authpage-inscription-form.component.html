@@ -1,22 +1,25 @@
 <div class="inscription_container">
   <form (ngSubmit)="onSubmit()">
-        <div class="labelInput email">
-          <label for="emailInscription">E-mail</label>
+    <div class="labelInput email">
+      <label for="emailInscription">E-mail</label>
 
-          <input
-            type="email"
-            id="emailInscription"
-            [(ngModel)]="userEmail"
-            name="userEmailInscription"
-          />
+      <input
+        type="email"
+        id="emailInscription"
+        [(ngModel)]="userEmail"
+        name="userEmailInscription"
+      />
     </div>
 
     <button>Envoyer</button>
   </form>
 
   <div class="messageFormSubmit">
-    <app-message-form [isSubmitted]="isSubmitted"
-     [isFormValid]="isFormValid" 
-     [array]="formMessages"
-     />
+    <app-message-form
+      [isSubmitted]="isSubmitted"
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
+  </div>
 </div>

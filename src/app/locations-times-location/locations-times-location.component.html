@@ -43,7 +43,10 @@
     <div class="map">
       <h2>Localisation :</h2>
 
-      <app-locations-times-location-map [info]="info" />
+      <app-locations-times-location-map
+        [lat]="info?.coord?.[0] ?? 0"
+        [lng]="info?.coord?.[1] ?? 0"
+      />
     </div>
 
     <div class="address">

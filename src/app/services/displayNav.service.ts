@@ -1,23 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { IconMenuBurger } from '../models/IconMenuBurger';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DisplayNavService {
-  displayNav = false;
+  isNavOpen: boolean = false;
 
-  addNav(): void {
-    this.displayNav = !this.displayNav;
-    const nav = document.getElementById('nav');
-    if (!nav) return;
+  iconGrid: IconMenuBurger[] = [
+    new IconMenuBurger('bars-solid', 'ouvrir'),
+    new IconMenuBurger('xmark-solid', 'fermer'),
+  ];
 
-    nav.classList.add('display');
+  navigationIcon = signal<IconMenuBurger>(this.iconGrid[0]);
+
+  toggleMenuBurger(): void {
+    this.isNavOpen = !this.isNavOpen;
+
+    if (this.isNavOpen) {
+      this.navigationIcon.set(this.iconGrid[1]);
+    } else {
+      this.navigationIcon.set(this.iconGrid[0]);
+    }
   }
 
-  removeNav(): void {
-    this.displayNav = false;
-    const nav = document.getElementById('nav');
-    if (!nav) return;
-    nav.classList.remove('display');
+  removeMenuBurger(): void {
+    this.isNavOpen = false;
+    this.navigationIcon.set(this.iconGrid[0]);
   }
 }

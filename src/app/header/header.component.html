@@ -1,28 +1,19 @@
 <header>
   <app-logo class="alignDev" />
 
-  @if(menuBurger) {
-  <div class="menuBurger">
-    @if(!displayNavService.displayNav){
+  @if(menuBurger) { @let name = navigationIcon().name; @let alt = navigationIcon().alt;
+
+  <div class="menuBurger" (click)="toggleMenuBurger()">
     <img
-      src="assets/icon/bars-solid.svg"
-      alt="Icone menu"
-      class="bars-solid"
-      (click)="addNav()"
-      loading="lazy"
-    />} @else {
-    <img
-      src="assets/icon/xmark-solid.svg"
-      alt="Icone fermeture menu"
-      class="xmark-solid"
-      (click)="removeNav()"
+      [src]="'assets/icon/' + name + '.svg'"
+      [alt]="'Icon pour ' + alt + 'menu'"
+      [class]="name"
       loading="lazy"
     />
-    }
   </div>
   }
 
-  <nav id="nav">
+  <nav [class.open]="isNavOpen">
     <ul>
       @for (headerLink of headerLinks; track headerLink.title) {
       <li class="{{ headerLink.navItem }}">
@@ -30,7 +21,7 @@
           routerLink="{{ headerLink.path }}"
           [routerLinkActiveOptions]="{ exact: shouldUseExactMatch(headerLink.path) }"
           routerLinkActive="active"
-          (click)="removeNav()"
+          (click)="removeMenuBurger()"
         >
           <div>
             <img [src]="headerLink.src" alt="Icone {{ headerLink.title }}" loading="lazy" />

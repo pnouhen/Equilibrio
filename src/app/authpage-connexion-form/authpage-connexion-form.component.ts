@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { checkEmail } from '../services/checkEmail';
-import { MessageForm } from '../models/messageForm';
+import { MessageForm } from '../models/MessageForm.model';
 import { MessageFormComponent } from '../message-form/message-form.component';
 
 @Component({
@@ -15,7 +15,7 @@ export class AuthpageConnexionFormComponent {
 
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessage: MessageForm[] = [
+  formMessages: MessageForm[] = [
     new MessageForm('Tous est bon', 'messageFormTrue'),
     new MessageForm('Au moins un des champs est incorrect', 'messageFormFalse'),
   ];

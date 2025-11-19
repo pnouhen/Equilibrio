@@ -1,4 +1,4 @@
-import { MessageForm } from './../models/messageForm';
+import { MessageForm } from '../models/MessageForm.model';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { checkEmail } from '../services/checkEmail';
