@@ -1,0 +1,19 @@
+@use '../../../../../../mixins' as *;
+
+.connexion_container {
+  grid-column: 2/12;
+
+  @include widthFormAuthPage;
+
+  @media (max-width: 768px) {
+    @include layout;
+  }
+
+  form {
+    @include formAuthPage;
+
+    @media (max-width: 768px) {
+      grid-column: 2/12;
+    }
+  }
+}
