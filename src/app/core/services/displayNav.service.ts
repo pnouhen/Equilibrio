@@ -1,4 +1,4 @@
-import { Image } from '../models/Image.model';
+import { Image } from "../models/Image.model";
 import { Injectable, signal } from '@angular/core';
 
 @Injectable({

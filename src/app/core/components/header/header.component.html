@@ -18,7 +18,7 @@
       @for (headerLink of headerLinks; track headerLink.title) {
       <li class="{{ headerLink.navItem }}">
         <a
-          routerLink="{{ headerLink.path }}"
+          [routerLink]="['/', headerLink.path]"
           [routerLinkActiveOptions]="{ exact: shouldUseExactMatch(headerLink.path) }"
           routerLinkActive="active"
           (click)="removeMenuBurger()"

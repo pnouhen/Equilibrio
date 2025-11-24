@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Image } from '../../../../models/Image.model';
+import { Image } from '../../../../../core/models/Image.model';
 
 @Component({
   selector: 'app-home-slides-show',
