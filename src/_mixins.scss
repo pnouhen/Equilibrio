@@ -32,11 +32,3 @@
         width: 100%;
       }
 }
-
-@mixin formAuthPage {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-
-  @include widthFormAuthPage;
-}

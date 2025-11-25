@@ -1,8 +1,8 @@
 import { checkEmail } from '../../../../services/checkEmail';
-import { MessageForm } from '../../../../models/MessageForm.model';
+import { MessageForm } from '../../../../../core/models/MessageForm.model';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MessageFormComponent } from '../../../../components/message-form/message-form.component';
+import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
 
 @Component({
   selector: 'app-prestations',

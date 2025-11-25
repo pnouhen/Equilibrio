@@ -1,8 +1,8 @@
-import { MessageForm } from '../../../../models/MessageForm.model';
+import { MessageForm } from '../../../../../core/models/MessageForm.model';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { checkEmail } from '../../../../services/checkEmail';
-import { MessageFormComponent } from '../../../../components/message-form/message-form.component';
+import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
 
 @Component({
   selector: 'app-authpage-inscription-form',

@@ -10,8 +10,6 @@
   }
 
   form {
-    @include formAuthPage;
-
     @media (max-width: 768px) {
       grid-column: 2/12;
     }

@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'espace-adherant/:id',
+    path: ':id',
     loadChildren: () => import('./dashboard/dashboard-module').then((m) => m.DashboardModule),
   },
 

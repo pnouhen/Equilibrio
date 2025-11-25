@@ -66,6 +66,14 @@ section {
   @include layout;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @include widthFormAuthPage;
+}
+
 .labelInput {
   display: flex;
   flex-direction: column;

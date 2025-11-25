@@ -8,6 +8,7 @@
     <div class="labelInput">
       <label for="password">Mot de passe</label>
       <input type="password" id="password" name="password" [(ngModel)]="passwordValue" />
+      <a [routerLink]="pathForgotPassword">Mot de passe oublié</a>
     </div>
 
     <button type="submit">Envoyer</button>

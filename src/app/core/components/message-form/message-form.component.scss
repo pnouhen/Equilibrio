@@ -1,8 +1,11 @@
 @use '../../../../variables' as *;
+@use '../../../../mixins' as *;
 
 .messageForm {
   margin-top: 2rem;
   font-weight: bold;
+
+  @include widthFormAuthPage;
 }
 
 .messageFormTrue {

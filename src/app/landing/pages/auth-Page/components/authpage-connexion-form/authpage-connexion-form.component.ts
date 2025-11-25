@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { checkEmail } from '../../../../services/checkEmail';
-import { MessageForm } from '../../../../models/MessageForm.model';
-import { MessageFormComponent } from '../../../../components/message-form/message-form.component';
+import { MessageForm } from '../../../../../core/models/MessageForm.model';
+import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
 import { UsersData } from '../../../../../datas-Back-end/data/Users.data';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-authpage-connexion-form',
-  imports: [FormsModule, MessageFormComponent],
+  imports: [FormsModule, MessageFormComponent, RouterLink],
   templateUrl: './authpage-connexion-form.component.html',
   styleUrl: './authpage-connexion-form.component.scss',
 })
 export class AuthpageConnexionFormComponent {
   passwordValue: string = '123456789Pn!';
+  pathForgotPassword: string = "mot-de-passe-oublie";
 
   constructor(private router: Router) {}
 
@@ -30,7 +30,7 @@ export class AuthpageConnexionFormComponent {
     const emailUser = this.isAuthenticationValid(form.value.email, form.value.password);
 
     if (emailUser !== '') {
-      this.router.navigate([`/espace-adherant/${emailUser}`]);
+      this.router.navigate([`${emailUser}`]);
       this.isFormValid = true;
       form.resetForm();
     } else {
@@ -44,6 +44,6 @@ export class AuthpageConnexionFormComponent {
       return email;
     }
 
-    return 'undefined';
+    return '';
   }
 }
