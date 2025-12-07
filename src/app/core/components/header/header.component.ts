@@ -19,16 +19,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.headerLinks = [
-      new NavItem('assets/icon/home.svg', 'Acceuil', 'home', ''),
-      new NavItem('assets/icon/berimbau.svg', 'La capoeira', 'capoeira', 'la-capoeira'),
-      new NavItem('assets/icon/map.svg', 'Lieux & Horaires', 'timePlace', 'lieux-et-horaires'),
+      new NavItem('assets/icons/home.svg', 'Acceuil', 'home', ''),
+      new NavItem('assets/icons/berimbau.svg', 'La capoeira', 'capoeira', 'la-capoeira'),
+      new NavItem('assets/icons/map.svg', 'Lieux & Horaires', 'timePlace', 'lieux-et-horaires'),
       new NavItem(
-        'assets/icon/capoeira-fight.svg',
+        'assets/icons/capoeira-fight.svg',
         'Prestations et Animations',
         'prestations',
         'prestations-et-animations'
       ),
-      new NavItem('assets/icon/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
+      new NavItem('assets/icons/auth-page.svg', 'Espace adhérents', 'authPage', 'espace-adherents'),
     ];
 
     // Display menuBurger for tablet and mobile

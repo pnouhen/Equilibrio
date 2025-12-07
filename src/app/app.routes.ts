@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
 
   {
-    path: ':id',
+    path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard-module').then((m) => m.DashboardModule),
   },
 

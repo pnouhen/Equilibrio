@@ -1,15 +1,25 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-
+import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 
 const route: Routes = [
-    {path: "", component: DashboardPageComponent}
-]
+  {
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: 'espace-membres/:id',
+        loadChildren: () =>
+          import('./pages/dashboard-user-members/dashboard-user-members-module').then(
+            (m) => m.DashboardUserMembersModule
+          ),
+      },
+    ],
+  },
+];
 
 @NgModule({
-    imports: [RouterModule.forChild(route)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(route)],
+  exports: [RouterModule],
 })
-
 export class DashboardRoutingModule {}

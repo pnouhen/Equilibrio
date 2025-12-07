@@ -9,4 +9,6 @@ import { FooterComponent } from '../../core/components/footer/footer.component';
   styleUrl: './layout.component.scss',
 })
 
-export class LandingLayoutComponent {}
+export class LandingLayoutComponent {
+  
+}

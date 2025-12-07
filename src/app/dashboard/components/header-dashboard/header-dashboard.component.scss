@@ -1,0 +1,14 @@
+@use '../../../../mixins' as *;
+
+header {
+  align-items: end;
+
+  .alignDev {
+    grid-column: 2/5;
+  }
+
+  a {
+    grid-column: 10/12;
+    @include headerNavItem;
+  }
+}

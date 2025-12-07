@@ -1,3 +1,4 @@
+import { UsersModel } from './../../../../../datas-Back-end/models/Users.model';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MessageForm } from '../../../../../core/models/MessageForm.model';
@@ -13,7 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class AuthpageConnexionFormComponent {
   passwordValue: string = '123456789Pn!';
-  pathForgotPassword: string = "mot-de-passe-oublie";
+  pathForgotPassword: string = 'mot-de-passe-oublie';
 
   constructor(private router: Router) {}
 
@@ -27,10 +28,14 @@ export class AuthpageConnexionFormComponent {
   onSubmit(form: NgForm) {
     this.isSubmitted = true;
 
-    const emailUser = this.isAuthenticationValid(form.value.email, form.value.password);
+    const userFind = this.isAuthenticationValid(form.value.email, form.value.password);
+    console.log(userFind);
 
-    if (emailUser !== '') {
-      this.router.navigate([`${emailUser}`]);
+    if (userFind) {
+      sessionStorage.setItem('user', JSON.stringify(userFind));
+
+      this.router.navigate(['/dashboard/']);
+
       this.isFormValid = true;
       form.resetForm();
     } else {
@@ -38,12 +43,12 @@ export class AuthpageConnexionFormComponent {
     }
   }
 
-  isAuthenticationValid(email: string, password: string): string {
+  isAuthenticationValid(email: string, password: string): UsersModel | null {
     const userFind = UsersData.find((user) => user.email === email);
     if (userFind?.password === password) {
-      return email;
+      return userFind;
     }
 
-    return '';
+    return null;
   }
 }

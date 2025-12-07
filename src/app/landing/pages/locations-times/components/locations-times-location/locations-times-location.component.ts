@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { CONDITIONSTRAINING } from '../../datas/ConditionsTraining.data';
 import { CITIES } from '../../datas/CitiesInfo.data';
@@ -19,7 +19,7 @@ export class LocationsTimesLocationComponent implements OnInit {
   id: string | null = null;
   info: CityInfo | undefined;
   categories!: { title: string; trainingSchedule: TrainingSchedule[]; conditions: string[] }[];
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     // Retrieve ID
@@ -28,8 +28,9 @@ export class LocationsTimesLocationComponent implements OnInit {
     // Retrieve city info
     this.info = this.id ? CITIES.find((city) => city.id === this.id) : undefined;
 
+    console.log(this.info)
     if (!this.info) {
-      this.categories = [];
+      this.router.navigate(['page-introuvable']);
       return;
     }
 

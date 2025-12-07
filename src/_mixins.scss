@@ -6,6 +6,29 @@
   gap: 1.25rem;
 }
 
+@mixin headerNavItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 300;
+
+  img {
+    width: 1.69rem;
+    height: 1.69rem;
+  }
+}
+
+@mixin footer {
+  padding: 1rem 0;
+  background: $green;
+  background: linear-gradient(0deg, rgba(35, 108, 3, 1) 0%, rgba(35, 108, 3, 0.6) 100%);
+  box-shadow: 0.25rem 0 1rem 0 rgba(0, 0, 0, 0.6);
+  @include layout;
+}
+
 @mixin redBold {
   font-weight: bold;
   color: $red;
@@ -24,11 +47,11 @@
 @mixin widthFormAuthPage {
   width: 21.562rem;
 
-      @media (min-width: 1441px) {
-        width: 28rem;
-      }
+  @media (min-width: 1441px) {
+    width: 28rem;
+  }
 
-      @media (max-width: 768px) {
-        width: 100%;
-      }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }

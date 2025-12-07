@@ -23,9 +23,9 @@ export class LocationsTimesLocationMapComponent implements AfterViewInit {
 
      // Force icon URLs
     const defaultIcon = L.icon({
-      iconUrl: '/assets/icon/marker-icon.png',
-      iconRetinaUrl: '/assets/icon/marker-icon-2x.png',
-      shadowUrl: '/assets/icon/marker-shadow.png',
+      iconUrl: '/assets/icons/marker-icon.png',
+      iconRetinaUrl: '/assets/icons/marker-icon-2x.png',
+      shadowUrl: '/assets/icons/marker-shadow.png',
       iconSize: [30, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
