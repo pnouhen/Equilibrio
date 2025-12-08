@@ -8,6 +8,12 @@ const route: Routes = [
     component: DashboardLayoutComponent,
     children: [
       {
+        path: ':id',
+        loadChildren: () =>
+          import('./pages/dashboard-user/dashboard-user-module').then((m) => m.DashboardUserModule),
+      },
+
+      {
         path: 'espace-membres/:id',
         loadChildren: () =>
           import('./pages/dashboard-user-members/dashboard-user-members-module').then(

@@ -28,7 +28,6 @@ export class LocationsTimesLocationComponent implements OnInit {
     // Retrieve city info
     this.info = this.id ? CITIES.find((city) => city.id === this.id) : undefined;
 
-    console.log(this.info)
     if (!this.info) {
       this.router.navigate(['page-introuvable']);
       return;

@@ -5,10 +5,20 @@ header {
 
   .alignDev {
     grid-column: 2/5;
+
+    @media (max-width: 768px) {
+      grid-column: 2/12;
+      margin: auto;
+    }
   }
 
   a {
     grid-column: 10/12;
     @include headerNavItem;
+
+    @media (max-width: 768px) {
+      grid-column: 2/12;
+      margin: auto;
+    }
   }
 }

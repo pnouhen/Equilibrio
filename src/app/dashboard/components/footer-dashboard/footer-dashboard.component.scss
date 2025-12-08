@@ -1,5 +1,10 @@
 footer {
-    .alignDev {
-        grid-column: 2/5;
+  .alignDev {
+    grid-column: 2/5;
+
+    @media (max-width: 768px) {
+      grid-column: 2/12;
+      margin: auto;
     }
+  }
 }

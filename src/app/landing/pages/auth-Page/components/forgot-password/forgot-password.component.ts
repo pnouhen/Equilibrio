@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
-  imports: [FormsModule,MessageFormComponent],
+  imports: [FormsModule, MessageFormComponent],
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss',
 })
@@ -24,14 +24,14 @@ export class ForgotPasswordComponent {
   ];
 
   onSubmit(): void {
-            this.isSubmitted = true
-            console.log(this.userEmail)
-      if (checkEmail.test(this.userEmail)) {
-        this.isFormValid = true
-  
-        this.userEmail = ""
-      } else {
-        this.isFormValid = false
-      }
+    this.isSubmitted = true;
+
+    if (checkEmail.test(this.userEmail)) {
+      this.isFormValid = true;
+
+      this.userEmail = '';
+    } else {
+      this.isFormValid = false;
     }
+  }
 }

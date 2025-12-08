@@ -29,7 +29,6 @@ export class AuthpageConnexionFormComponent {
     this.isSubmitted = true;
 
     const userFind = this.isAuthenticationValid(form.value.email, form.value.password);
-    console.log(userFind);
 
     if (userFind) {
       sessionStorage.setItem('user', JSON.stringify(userFind));

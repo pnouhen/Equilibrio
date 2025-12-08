@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
 })
 export class FooterComponent {
-  constructor(public displayNavService: DisplayNavService) {} // inject service
+  constructor(public displayNavService: DisplayNavService) {} 
 
   removeMenuBurger(): void {
     this.displayNavService.removeMenuBurger();
