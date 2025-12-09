@@ -12,13 +12,13 @@ export const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard-module').then((m) => m.DashboardModule),
   },
 
-  // Error404
   {
     path: 'reset-password',
     loadChildren: () =>
       import('./core/reset-password/reset-password-module').then((m) => m.ResetPasswordModule),
   },
 
+  // Error404
   {
     path: '**',
     loadChildren: () => import('./core/error404/error404-module').then((m) => m.Error404Module),

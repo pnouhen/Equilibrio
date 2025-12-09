@@ -1,3 +1,5 @@
+import { ToggleMember } from './../../../dashboard/services/toggleMember.service';
+import { RedirectionPage } from './../../services/redirectionPage.service';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DisplayNavService } from '../../services/displayNav.service';
@@ -9,9 +11,16 @@ import { DisplayNavService } from '../../services/displayNav.service';
   styleUrl: './logo.component.scss',
 })
 export class LogoComponent {
-    constructor(public displayNavService: DisplayNavService) {}
+  constructor(
+    public displayNavService: DisplayNavService,
+    private redirectionPage: RedirectionPage
+  ) {}
 
-removeMenuBurger(): void {
+  removeMenuBurger(): void {
     this.displayNavService.removeMenuBurger();
+  }
+
+  routerLink(): string {
+    return this.redirectionPage.routerLink();
   }
 }

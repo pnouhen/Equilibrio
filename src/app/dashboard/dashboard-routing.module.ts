@@ -20,6 +20,12 @@ const route: Routes = [
             (m) => m.DashboardUserMembersModule
           ),
       },
+
+      {
+        path: '**',
+        loadChildren: () =>
+          import('../core/error404/error404-module').then((m) => m.Error404Module),
+      },
     ],
   },
 ];

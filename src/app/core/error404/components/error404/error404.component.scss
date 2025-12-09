@@ -25,16 +25,11 @@ main {
       grid-column: 2/12;
     }
 
-    p {
-      grid-column: 3/12;
-
-      @media (max-width: 768px) {
-        grid-column: 2/12;
-      }
+    p, a {
+      grid-column: 2/12;
     }
 
     a {
-      grid-column: 2/12;
       margin-bottom: 1.125rem;
       text-align: center;
       color: $black;

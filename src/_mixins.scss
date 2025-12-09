@@ -6,6 +6,16 @@
   gap: 1.25rem;
 }
 
+@mixin heightPageFull {
+  :host {
+    min-height: 100vh;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
 @mixin headerNavItem {
   display: flex;
   align-items: center;

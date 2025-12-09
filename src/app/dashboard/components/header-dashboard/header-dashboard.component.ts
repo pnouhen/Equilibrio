@@ -14,7 +14,7 @@ export class HeaderDashboardComponent {
   memberSelect: UsersMembers | null = null;
 
   constructor(public toggleMember: ToggleMember) {
-    // Effet déclenché à chaque changement du signal
+    // Effect triggered with each change in signal
     effect(() => {
       if (this.toggleMember.memberSelectedActive()) {
         this.memberSelect = this.toggleMember.memberSelected;
@@ -23,5 +23,13 @@ export class HeaderDashboardComponent {
         this.memberSelect = null;
       }
     });
+  }
+
+  deconnexionMember() {
+    const user = sessionStorage.getItem("user")
+
+    if(user) {
+      sessionStorage.removeItem("user")
+    }
   }
 }

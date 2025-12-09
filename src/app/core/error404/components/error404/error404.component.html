@@ -1,15 +1,24 @@
-<app-header/>
+@if(!isUser) {
+<app-header />
+} @else {
+<app-header-dashboard />
+}
 
 <main>
   <section>
     <h2>Page introuvable</h2>
     <p>
-      Désolé, la page que vous recherchez n’existe pas ou a été déplacée. <br>
+      Désolé, la page que vous recherchez n’existe pas ou a été déplacée. <br />
       Vérifiez l’adresse ou retournez à l’accueil :
     </p>
-    <a routerLink="">Accéder à la page d'accueil</a>
+    <a [routerLink]="routerLink()"
+      >Accéder à la page @if(!isUser) {d'accueil} @else {principale de votre compte}</a
+    >
   </section>
 </main>
 
-<app-footer/>
-
+@if(!isUser) {
+<app-footer />
+} @else {
+<app-footer-dashboard />
+}

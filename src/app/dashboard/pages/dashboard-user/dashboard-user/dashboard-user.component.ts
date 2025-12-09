@@ -24,6 +24,7 @@ export class DashboardUserComponent implements OnInit {
     this.data = JSON.parse(sessionStorage.getItem('user')!);
     const id = this.route.snapshot.paramMap.get('id');
 
+    // URL is bad
     this.userMember = this.data?.member.find((member) => member.memberName === id) || null;
     if (!this.userMember) {
       this.router.navigate(['page-introuvable']);

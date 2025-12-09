@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../../components/header/header.component';
-import { FooterComponent } from '../../../components/footer/footer.component';
+import { HeaderComponent } from '../../../../landing/components/header/header.component';
+import { FooterComponent } from '../../../../landing/components/footer/footer.component';
 import { MessageFormComponent } from '../../../components/message-form/message-form.component';
 import { MessageForm } from '../../../models/MessageForm.model';
 import { FormsModule, NgForm } from '@angular/forms';

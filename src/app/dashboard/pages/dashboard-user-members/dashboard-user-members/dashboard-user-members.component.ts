@@ -23,8 +23,8 @@ export class DashboardUserMembersComponent implements OnInit {
     this.toggleMember.resetMember();
     this.user = JSON.parse(sessionStorage.getItem('user')!);
     
+    // URL is bad
     const id = this.route.snapshot.paramMap.get('id');
-
     if (id !== this.user.email) {
       this.router.navigate(['page-introuvable']);
       return;
