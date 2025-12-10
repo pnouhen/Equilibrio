@@ -17,11 +17,22 @@ header {
     grid-column: 4/10;
     position: relative;
 
+    @media (max-width: 1024px) {
+      margin-left: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+     grid-column: 2/6;
+    }
+
     .user {
       display: flex;
       div {
-        cursor: pointer;
         @include headerNavItem;
+
+        &.link {
+          cursor: pointer;
+        }
 
         p {
           font-weight: 600;
@@ -46,7 +57,7 @@ header {
       opacity: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 1rem;
       list-style: none;
       background-color: rgba(35, 108, 3, 0.6);
       transition: all 0.4s ease;
@@ -57,18 +68,22 @@ header {
       }
 
       a {
-        color: black;
+        @include headerNavItem;
       }
     }
   }
 
-  a {
+  .deconnexion {
     grid-column: 10/12;
-    @include headerNavItem;
+    display: flex;
+    justify-content: end;
+    a {
+      @include headerNavItem;
 
-    @media (max-width: 768px) {
-      grid-column: 2/12;
-      margin: auto;
+      @media (max-width: 768px) {
+        grid-column: 2/12;
+        margin: auto;
+      }
     }
   }
 }

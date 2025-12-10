@@ -4,19 +4,27 @@
   @if(userService.user() && !displayUserMembers.isUserMembers()) {
   <div class="member-select">
     <div class="user">
-      <div tabindex="0" (click)="displayOtherMembers()" (keydown)="onKeyDownNav($event)">
+      <div
+      [class.link]="userService.otherMembers()"
+        [attr.tabindex]="userService.otherMembers() && 0"
+        (click)="displayOtherMembers()"
+        (keydown)="onKeyDownNav($event)"
+      >
         <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
 
         <p>{{ userService.user() }}</p>
 
+        @if(userService.otherMembers()){
         <img
           class="chevron"
           [class.active]="isOtherMembers"
           src="/assets/icons/chevron-down.svg"
           alt="Fleche pour d'autres utilisateur"
-        />
+        />}
       </div>
     </div>
+
+    @if(userService.otherMembers()){
 
     <ul [class.active]="isOtherMembers">
       @for(member of userService.otherMembers(); track $index) {
@@ -31,12 +39,15 @@
       </li>
       }
     </ul>
+    }
   </div>
   }
 
-  <a href="/espace-adherents" (click)="deconnexionMember()">
-    <img src="/assets/icons/checkout.svg" alt="Logo" />
+  <div class="deconnexion">
+    <a href="/espace-adherents" (click)="deconnexionMember()">
+      <img src="/assets/icons/checkout.svg" alt="Logo" />
 
-    <p>Déconnexion</p>
-  </a>
+      <p>Déconnexion</p>
+    </a>
+  </div>
 </header>

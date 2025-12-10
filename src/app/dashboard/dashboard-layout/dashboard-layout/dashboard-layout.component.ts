@@ -3,6 +3,7 @@ import { HeaderDashboardComponent } from '../../components/header-dashboard/head
 import { FooterDashboardComponent } from '../../components/footer-dashboard/footer-dashboard.component';
 import { UsersModel } from '../../../datas-Back-end/models/Users.model';
 import { Router, RouterOutlet } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -13,12 +14,12 @@ import { Router, RouterOutlet } from '@angular/router';
 export class DashboardLayoutComponent implements OnInit {
   user!: UsersModel;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public userService: UserService,) {}
 
   ngOnInit(): void {
     // Security if url is bad
     this.user = JSON.parse(sessionStorage.getItem('user')!);
-    if (this.user.member.length > 1) {
+    if (this.user.member.length > 1 && this.userService.user() === "") {
       this.router.navigate([`dashboard/espace-membres/${this.user.email}`]);
     } else if (this.user.member.length === 1) {
       this.router.navigate([`dashboard/${this.user.member[0].memberName}`]);

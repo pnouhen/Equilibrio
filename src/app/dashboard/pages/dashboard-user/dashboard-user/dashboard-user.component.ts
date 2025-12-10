@@ -32,12 +32,15 @@ export class DashboardUserComponent implements OnInit {
     if (!this.userMember) {
       this.router.navigate(['page-introuvable']);
       return;
-    } else if(this.data?.member && this.data?.member.length > 1) {
+    } else if (this.data?.member) {
       // Send the member name and other member name in header
       this.userService.setUser(this.member);
-      this.userService.setOtherUser();
 
-      this.displayUserMembers.toggleUserMember(false);
+      if (this.data?.member.length > 1) {
+        this.userService.setOtherUser();
+
+        this.displayUserMembers.toggleUserMember(false);
+      }
     }
   }
 }

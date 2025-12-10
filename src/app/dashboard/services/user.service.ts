@@ -17,7 +17,6 @@ export class UserService {
     const otherMembers: UsersMembers[] | null =
       data?.member.filter((m: UsersMembers) => m.memberName !== this.user()) || null;
 
-    console.log(otherMembers);
     this.otherMembers.set(otherMembers)
   }
 }
