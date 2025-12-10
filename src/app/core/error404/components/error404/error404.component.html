@@ -11,9 +11,12 @@
       Désolé, la page que vous recherchez n’existe pas ou a été déplacée. <br />
       Vérifiez l’adresse ou retournez à l’accueil :
     </p>
-    <a [routerLink]="routerLink()"
-      >Accéder à la page @if(!isUser) {d'accueil} @else {principale de votre compte}</a
-    >
+
+    <div class="link">
+      <a [routerLink]="routerLink()"
+        >Accéder à la page @if(!isUser) {d'accueil} @else {principale de votre compte}</a
+      >
+    </div>
   </section>
 </main>
 

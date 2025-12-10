@@ -1,14 +1,64 @@
 @use '../../../../mixins' as *;
+@use '../../../../variables' as *;
 
 header {
   align-items: end;
 
   .alignDev {
-    grid-column: 2/5;
+    grid-column: 2/4;
 
     @media (max-width: 768px) {
       grid-column: 2/12;
       margin: auto;
+    }
+  }
+
+  .member-select {
+    grid-column: 4/10;
+    position: relative;
+
+    .user {
+      display: flex;
+      div {
+        cursor: pointer;
+        @include headerNavItem;
+
+        p {
+          font-weight: 600;
+        }
+
+        .chevron {
+          margin-left: 0.5rem;
+          transform: rotate(0);
+          transition: all 0.4s ease;
+
+          &.active {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    ul {
+      position: absolute;
+      top: 2rem;
+      padding: 0.5rem 0.75rem 1rem 0;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      list-style: none;
+      background-color: rgba(35, 108, 3, 0.6);
+      transition: all 0.4s ease;
+
+      &.active {
+        top: 2.625rem;
+        opacity: 1;
+      }
+
+      a {
+        color: black;
+      }
     }
   }
 

@@ -1,4 +1,3 @@
-import { ToggleMember } from './../../../dashboard/services/toggleMember.service';
 import { RedirectionPage } from './../../services/redirectionPage.service';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';

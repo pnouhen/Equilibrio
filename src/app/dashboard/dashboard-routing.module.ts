@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
+import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout/dashboard-layout.component';
 
 const route: Routes = [
   {
@@ -19,12 +19,6 @@ const route: Routes = [
           import('./pages/dashboard-user-members/dashboard-user-members-module').then(
             (m) => m.DashboardUserMembersModule
           ),
-      },
-
-      {
-        path: '**',
-        loadChildren: () =>
-          import('../core/error404/error404-module').then((m) => m.Error404Module),
       },
     ],
   },

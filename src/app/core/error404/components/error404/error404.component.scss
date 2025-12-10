@@ -25,15 +25,20 @@ main {
       grid-column: 2/12;
     }
 
-    p, a {
+    p,
+    .link {
       grid-column: 2/12;
     }
 
-    a {
-      margin-bottom: 1.125rem;
-      text-align: center;
-      color: $black;
-      font-weight: 600;
+    .link {
+      display: flex;
+      justify-content: center;
+      
+      a {
+        margin-bottom: 1.125rem;
+        color: $black;
+        font-weight: 600;
+      }
     }
   }
 }

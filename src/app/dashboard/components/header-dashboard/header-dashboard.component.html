@@ -1,9 +1,42 @@
 <header>
-    <app-logo class="alignDev"/>
+  <app-logo class="alignDev" />
 
-    <a href="/espace-adherents" (click)="deconnexionMember()">
-        <img src="/assets/icons/checkout.svg" alt="Logo">
+  @if(userService.user() && !displayUserMembers.isUserMembers()) {
+  <div class="member-select">
+    <div class="user">
+      <div tabindex="0" (click)="displayOtherMembers()" (keydown)="onKeyDownNav($event)">
+        <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
 
-        <p>Déconnexion</p>
-    </a>
+        <p>{{ userService.user() }}</p>
+
+        <img
+          class="chevron"
+          [class.active]="isOtherMembers"
+          src="/assets/icons/chevron-down.svg"
+          alt="Fleche pour d'autres utilisateur"
+        />
+      </div>
+    </div>
+
+    <ul [class.active]="isOtherMembers">
+      @for(member of userService.otherMembers(); track $index) {
+      <li>
+        <a
+          [attr.tabindex]="isOtherMembers ? 0 : null"
+          (keydown)="onKeyDownNavItem($event, $index, member.memberName)"
+          (click)="navigateUser(member.memberName)"
+          ><img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
+          <p>{{ member.memberName }}</p>
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+  }
+
+  <a href="/espace-adherents" (click)="deconnexionMember()">
+    <img src="/assets/icons/checkout.svg" alt="Logo" />
+
+    <p>Déconnexion</p>
+  </a>
 </header>

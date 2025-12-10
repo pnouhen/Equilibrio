@@ -1,8 +1,9 @@
+import { UserService } from './../../../services/user.service';
 import { UsersModel } from './../../../../datas-Back-end/models/Users.model';
-import { ToggleMember } from './../../../services/toggleMember.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersMembers } from '../../../../datas-Back-end/models/Users-members';
+import { DisplayUserMembers } from '../../../services/displayUserMembers';
 
 @Component({
   selector: 'app-dashboard-user',
@@ -14,21 +15,29 @@ export class DashboardUserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public toggleMember: ToggleMember
+    public userService: UserService,
+    private displayUserMembers: DisplayUserMembers
   ) {}
 
   data!: UsersModel | null;
+  member: string = '';
   userMember!: UsersMembers | null;
 
   ngOnInit(): void {
     this.data = JSON.parse(sessionStorage.getItem('user')!);
-    const id = this.route.snapshot.paramMap.get('id');
+    this.member = this.route.snapshot.paramMap.get('id') || '';
 
     // URL is bad
-    this.userMember = this.data?.member.find((member) => member.memberName === id) || null;
+    this.userMember = this.data?.member.find((member) => member.memberName === this.member) || null;
     if (!this.userMember) {
       this.router.navigate(['page-introuvable']);
       return;
+    } else if(this.data?.member && this.data?.member.length > 1) {
+      // Send the member name and other member name in header
+      this.userService.setUser(this.member);
+      this.userService.setOtherUser();
+
+      this.displayUserMembers.toggleUserMember(false);
     }
   }
 }

@@ -5,7 +5,6 @@
     @for(member of user.member; track $index) {
     <li>
       <a [routerLink]="['/dashboard', member.memberName]"
-      (click)="selectedMember(member)"
       >
         <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
 
