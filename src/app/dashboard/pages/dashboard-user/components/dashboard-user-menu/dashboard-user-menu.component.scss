@@ -1,0 +1,89 @@
+@use '../../../../../../mixins' as *;
+@use '../../../../../../variables' as *;
+
+@mixin grid3Colums {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.container {
+  @include grid3Colums;
+
+  .title {
+    grid-column: 2;
+    display: flex;
+    
+    h2 {
+      @media (max-width: 768px) {
+        text-align: center;
+      }
+    }
+
+    .chevron {
+      margin: auto 0 auto 0.5rem;
+      height: 2rem;
+      width: 2rem;
+      transform: rotate(0);
+      transition: all 0.4s ease;
+
+      &.active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  nav {
+    grid-column: 2/4;
+  position: relative;
+
+    @media (max-width: 768px) {
+      grid-column: 1/4;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+      opacity: 0;
+      transition: z-index 0.4s ease;
+
+      &.active {
+        position: relative;
+        z-index: 1;
+        opacity: 1;
+      }
+    }
+
+    ul {
+      padding: 0 0.5rem 0 0;
+      height: calc($heightDashboardContainer - 6.25rem);
+      list-style: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      @media (max-width: 768px) {
+        height: auto;
+      }
+
+      li {
+        grid-column: 2/4;
+
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+        }
+        button {
+          margin-bottom: 1.875rem;
+          padding: 0;
+          background-color: transparent;
+          border: 0;
+          font-size: 1.25rem;
+          text-align: left;
+          cursor: pointer;
+
+          &.active {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

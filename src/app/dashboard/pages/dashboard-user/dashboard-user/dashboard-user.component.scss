@@ -1,0 +1,30 @@
+@use '../../../../../mixins' as *;
+@use '../../../../../variables' as *;
+
+.container {
+  height: $heightDashboardContainer;
+  background-color: rgba(218, 218, 218, 0.6);
+  @include layout;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
+
+  .menu {
+    grid-column: 1/4;
+    background-color: rgba(218, 218, 218, 1);
+    border-right: 4px solid black;
+
+    @media (max-width: 768px) {
+      grid-column: 1/13;
+    }
+  }
+
+  .content {
+    grid-column: 4/13;
+
+    @media (max-width: 768px) {
+      grid-column: 1/13;
+    }
+  }
+}

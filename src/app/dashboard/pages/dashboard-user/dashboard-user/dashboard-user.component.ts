@@ -4,10 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersMembers } from '../../../../datas-Back-end/models/Users-members';
 import { DisplayUserMembers } from '../../../services/displayUserMembers';
+import { DashboardUserMenuComponent } from '../components/dashboard-user-menu/dashboard-user-menu.component';
+import { DashboardUserContentComponent } from "../components/dashboard-user-content/dashboard-user-content.component";
 
 @Component({
   selector: 'app-dashboard-user',
-  imports: [],
+  imports: [DashboardUserMenuComponent, DashboardUserContentComponent],
   templateUrl: './dashboard-user.component.html',
   styleUrl: './dashboard-user.component.scss',
 })
