@@ -21,7 +21,7 @@ export class RedirectionPage {
 
   if (isUser && user) {
     if (user.member?.length === 1) {
-      return `/dashboard/${user.member[0].memberName}`;
+      return `/dashboard/${user.member[0].memberName}/presentation`;
     } else if (user.member?.length > 1) {
       return `/dashboard/espace-membres/${user.email}`;
     }

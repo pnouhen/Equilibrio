@@ -4,7 +4,7 @@
   <ul>
     @for(member of user.member; track $index) {
     <li>
-      <a [routerLink]="['/dashboard', member.memberName]"
+      <a [routerLink]="['/dashboard', member.memberName, 'presentation']"
       >
         <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
 

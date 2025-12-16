@@ -14,10 +14,10 @@
 
   <nav [class.active]="isMenu">
     <ul>
-      @for(button of allButtons; track $index) {
+      @for(button of allButtons; track button.id) {
       <li>
-        <button [class.active]="toggleContentUser.content() === button" (click)="toggleContentUser.toggleContent(button)">
-          {{ button}}
+        <button [class.active]="toggleContentUser.contentId() === button.id" (click)="displayContentUser(button.id)">
+          {{ button.title}}
         </button>
       </li>
       }

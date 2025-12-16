@@ -13,7 +13,8 @@
   .title {
     grid-column: 2;
     display: flex;
-    
+    justify-content: center;
+
     h2 {
       @media (max-width: 768px) {
         text-align: center;
@@ -35,7 +36,7 @@
 
   nav {
     grid-column: 2/4;
-  position: relative;
+    position: relative;
 
     @media (max-width: 768px) {
       grid-column: 1/4;
@@ -54,7 +55,7 @@
 
     ul {
       padding: 0 0.5rem 0 0;
-      height: calc($heightDashboardContainer - 6.25rem);
+      height: $heightDashboardContainerOverflow;
       list-style: none;
       overflow-y: auto;
       overflow-x: hidden;

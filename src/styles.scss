@@ -83,6 +83,11 @@ section {
   @include layout;
 }
 
+.youtube-player-placeholder {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 form {
   display: flex;
   flex-direction: column;

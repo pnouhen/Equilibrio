@@ -1,0 +1,36 @@
+@use '../../../../../../mixins' as *;
+@use '../../../../../../variables' as *;
+
+.slideShow {
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 2rem 1fr 2rem;
+  align-items: center;
+  gap: 1.25rem;
+  gap: 1.25rem;
+
+  button {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    .chevron-left,
+    .chevron-right {
+      height: 2rem;
+    }
+
+    &.inactive {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .slideShow_container {
+    @include dashboardUserContainer;
+
+    .slides {
+      height: 100%;
+    }
+  }
+}

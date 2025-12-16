@@ -1,3 +1,19 @@
+@let array = dashboardUserData;
+
 <div class="container">
-    <h2>{{toggleContentUser.content()}}</h2>
+  <h2>{{ array?.title }}</h2>
+
+  <div class="content">
+    @for(content of array?.content; track $index) { 
+    <div class="content_container">
+      <h3>{{ content.subTitle }}</h3>
+
+      <app-dashboard-user-slide-show
+        [dashboardUserData]="dashboardUserData"
+        [contentData]="content"
+        [indexContent]="$index"
+      />
+    </div>
+    }
+  </div>
 </div>

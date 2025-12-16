@@ -8,3 +8,5 @@ $marginSection: 4.25rem;
 $marginArticle: calc($marginSection - 1.25rem); 
 
 $heightDashboardContainer: calc(100vh - 13.7rem);
+$heightDashboardContainerOverflow: calc($heightDashboardContainer - 6.25rem);
+

@@ -1,0 +1,18 @@
+<div
+  class="container"
+  [class.presentation]="dashboardUserData?.id === 'presentation'"
+  [class.no-slideShow]="links.length <= 2 || innerWidth <= 768"
+  [id]="indexContent"
+>
+  @for (link of links; track $index) {
+
+  @if (link.type === 'video' && 'url' in link) {
+    <app-dashboard-user-slides-videos [url]="link.url" />
+  }
+
+   @if (isPdf(link)) {
+    <app-dashboard-user-slides-pdf [link]="link" />
+  }
+
+}
+</div>

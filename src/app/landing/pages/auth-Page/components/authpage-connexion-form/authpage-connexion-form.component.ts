@@ -36,7 +36,7 @@ export class AuthpageConnexionFormComponent {
       if (userFind.member.length > 1) {
         this.router.navigate([`dashboard/espace-membres/${userFind.email}`]);
       } else if (userFind.member.length === 1) {
-        this.router.navigate([`dashboard/${userFind.member[0].memberName}`]);
+        this.router.navigate([`dashboard/${userFind.member[0].memberName}/presentation`]);
       }
 
       this.isFormValid = true;

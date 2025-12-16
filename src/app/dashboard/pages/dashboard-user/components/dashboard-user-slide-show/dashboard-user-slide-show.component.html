@@ -1,0 +1,33 @@
+<div class="slideShow">
+  @if(contentData.links.length > 2 && innerWidth >= 768) {
+  <button
+    [class.inactive]="carouselButtonStates.get(contentData)?.prev"
+    (click)="scrollPrev(contentData, indexContent)"
+  >
+    <img class="chevron-left" src="/assets/icons/chevron-left.svg" alt="Flèche gauche" />
+  </button>
+  }
+
+  <div
+    class="slideShow_container"
+    [class.no-slideShow]="contentData.links.length <= 2 || innerWidth <= 768"
+  >
+    <div class="slides">
+      <app-dashboard-user-slides
+        [innerWidth]="innerWidth"
+        [indexContent]="indexContent"
+        [links]="contentData.links"
+        [dashboardUserData]="dashboardUserData"
+      />
+    </div>
+  </div>
+
+  @if(contentData.links.length > 2 && innerWidth >= 768) {
+  <button
+    [class.inactive]="carouselButtonStates.get(contentData)?.next"
+    (click)="scrollNext(contentData, indexContent)"
+  >
+    <img class="chevron-right" src="/assets/icons/chevron-right.svg" alt="Flèche droite" />
+  </button>
+  }
+</div>

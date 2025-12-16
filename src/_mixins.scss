@@ -54,6 +54,14 @@
   box-shadow: 0 0 1rem 0rem rgba(0, 0, 0, 0.6);
 }
 
+@mixin videoPlay {
+  ::ng-deep youtube-player div,
+  ::ng-deep youtube-player iframe {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
 @mixin widthFormAuthPage {
   width: 21.562rem;
 
@@ -65,3 +73,31 @@
     width: 100%;
   }
 }
+
+@mixin dashboardUserContentContainer {
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+
+  h3 {
+    grid-column: 1/4;
+    margin: 0 2rem 0.5rem;
+    width: 100%;
+  }
+}
+
+@mixin dashboardUserContainer {
+  position: relative;
+  width: 100%;
+  height: 14rem;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    height: 10rem;
+  }
+
+  &.no-slideShow {
+    grid-column: 1/3;
+    margin: 0 3.25rem;
+  }
+}
+

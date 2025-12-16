@@ -72,6 +72,7 @@ header {
       a {
         @include headerNavItem;
         color: black;
+        cursor: pointer;
       }
     }
   }

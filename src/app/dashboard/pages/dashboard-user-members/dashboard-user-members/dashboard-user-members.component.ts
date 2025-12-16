@@ -1,3 +1,4 @@
+import { ToggleContentUser } from './../../dashboard-user/services/ToggleContentUser.service';
 import { DisplayUserMembers } from './../../../services/displayUserMembers';
 import { Component, OnInit } from '@angular/core';
 import { UsersModel } from '../../../../datas-Back-end/models/Users.model';
@@ -13,7 +14,8 @@ export class DashboardUserMembersComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private displayUserMembers: DisplayUserMembers
+    private displayUserMembers: DisplayUserMembers,
+    private toggleContentUser: ToggleContentUser
   ) {}
 
   user!: UsersModel;
@@ -28,6 +30,7 @@ export class DashboardUserMembersComponent implements OnInit {
       return;
     } else {
       this.displayUserMembers.toggleUserMember(true);
+      this.toggleContentUser.toggleContent('presentation')
     }
   }
 }

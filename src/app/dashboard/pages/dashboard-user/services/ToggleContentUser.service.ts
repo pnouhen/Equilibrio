@@ -1,12 +1,21 @@
+import { dashboardUserData } from './../../../../datas-Back-end/data/DashboardUser.data';
 import { Injectable, signal } from '@angular/core';
+import { UsersDataModel } from '../../../../datas-Back-end/models/UserData.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ToggleContentUser {
-  content = signal<string>('Présentation');
+  contentId = signal<string>('mouvements');
+  contentArray = signal<UsersDataModel | undefined>(dashboardUserData[3]);
 
-  toggleContent(newContent: string) {
-    this.content.set(newContent);
+  toggleContent(newContentId: string) {
+    this.contentId.set(newContentId);
+
+    const newContent = dashboardUserData.find(
+      (content) => content.id === newContentId
+    );
+
+    this.contentArray.set(newContent);
   }
 }
+
+

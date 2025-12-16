@@ -3,13 +3,13 @@ import { UsersModel } from '../models/Users.model';
 
 export const UsersData: UsersModel[] = [
   new UsersModel('pierre.nouhen@orange.fr', '123456789Pn!', 'Pierre', [
-    new UsersMembers('Baby', 'baby', 'blue'),
-    new UsersMembers('Enfants', 'children', 'blue'),
-    new UsersMembers('Ados', 'teen', 'blue'),
-    new UsersMembers('Adulte', 'adult', 'blue'),
+    new UsersMembers('Baby', "student", 'baby', 'cinza-ponta-verde'),
+    new UsersMembers('Enfants',"student", 'child', 'azul-cinza'),
+    new UsersMembers('Ados',"student", 'teen', 'verde'),
+    new UsersMembers('Adulte',"student", 'adult', 'verde-amarelo'),
   ]),
 
   new UsersModel('pierre.nouhen@orange.f', '123456789Pn!', 'Pierre', [
-    new UsersMembers('Adulte', 'adult', 'blue'),
+    new UsersMembers('Adulte', "student", 'adult', 'azul'),
   ]),
 ];

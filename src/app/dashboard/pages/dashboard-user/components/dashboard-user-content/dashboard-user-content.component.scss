@@ -1,0 +1,14 @@
+@use '../../../../../../mixins' as *;
+@use '../../../../../../variables' as *;
+
+.container {
+  .content {
+    height: calc($heightDashboardContainerOverflow + 1.25rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .content_container {
+      @include dashboardUserContentContainer;
+    }
+  }
+}

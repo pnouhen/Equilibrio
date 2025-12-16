@@ -1,0 +1,9 @@
+@use '../../../../../../mixins' as *;
+
+  .video {
+    display: block;
+    height: 100%;
+    aspect-ratio: 1.77;
+  }
+
+  @include videoPlay;

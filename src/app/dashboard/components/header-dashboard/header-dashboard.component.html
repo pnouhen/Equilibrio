@@ -31,8 +31,8 @@
       <li>
         <a
           [attr.tabindex]="isOtherMembers ? 0 : null"
-          (keydown)="onKeyDownNavItem($event, $index, member.memberName)"
-          (click)="navigateUser(member.memberName)"
+          (keydown)="onKeyDownNavItem($event, $index, member)"
+          (click)="navigateUser(member)"
           ><img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
           <p>{{ member.memberName }}</p>
         </a>

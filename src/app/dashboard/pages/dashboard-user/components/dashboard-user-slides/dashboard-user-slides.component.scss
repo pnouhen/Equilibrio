@@ -1,0 +1,19 @@
+.container {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.25rem;
+
+  &.no-slideShow {
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    overflow-x: auto;
+  }
+
+  &.presentation {
+    justify-content: center;
+  }
+}

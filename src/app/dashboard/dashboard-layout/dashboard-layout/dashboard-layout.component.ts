@@ -22,7 +22,7 @@ export class DashboardLayoutComponent implements OnInit {
     if (this.user.member.length > 1 && this.userService.user() === "") {
       this.router.navigate([`dashboard/espace-membres/${this.user.email}`]);
     } else if (this.user.member.length === 1) {
-      this.router.navigate([`dashboard/${this.user.member[0].memberName}`]);
+      this.router.navigate([`dashboard/${this.user.member[0].memberName}/presentation`]);
     }
   }
 }
