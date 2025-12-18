@@ -5,6 +5,10 @@
   justify-content: flex-start;
   gap: 1.25rem;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
   &.no-slideShow {
     position: relative;
   }

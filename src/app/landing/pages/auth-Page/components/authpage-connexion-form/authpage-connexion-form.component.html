@@ -14,10 +14,13 @@
     <button class="buttonSubmit" type="submit">Envoyer</button>
   </form>
 
-  <app-message-form
+  <div class="messageFormSubmit">
+    <app-message-form
     [isSubmitted]="isSubmitted"
     [isFormValid]="isFormValid"
     [canSubmit]="formMessages[0]"
     [cannotSubmit]="formMessages[1]"
   />
+  </div>
+  
 </div>

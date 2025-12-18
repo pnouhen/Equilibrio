@@ -10,12 +10,15 @@
   }
 
   form {
-    @media (max-width: 768px) {
-      grid-column: 2/12;
-    }
-
     input {
       @include inputSubmit;
+    }
+  }
+
+  form,
+  .messageFormSubmit {
+    @media (max-width: 768px) {
+      grid-column: 2/12;
     }
   }
 }

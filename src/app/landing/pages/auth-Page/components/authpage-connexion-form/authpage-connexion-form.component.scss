@@ -11,10 +11,6 @@
   }
 
   form {
-    @media (max-width: 768px) {
-      grid-column: 2/12;
-    }
-
     input {
       @include inputSubmit;
     }
@@ -24,6 +20,13 @@
       font-weight: 500;
       text-decoration: underline;
       cursor: pointer;
+    }
+  }
+
+  form,
+  .messageFormSubmit {
+    @media (max-width: 768px) {
+      grid-column: 2/12;
     }
   }
 }

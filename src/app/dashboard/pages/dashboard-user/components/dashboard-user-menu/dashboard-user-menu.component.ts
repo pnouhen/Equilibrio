@@ -28,15 +28,17 @@ export class DashboardUserMenuComponent {
     });
   }
 
-  displayMenu() {
-    this.isMenu = !this.isMenu;
-  }
-
   displayContentUser(id: string) {
     this.toggleContentUser.toggleContent(id);
 
     this.memberName = this.route.snapshot.paramMap.get('id') || null;
     this.router.navigate(['/dashboard', this.memberName, id]);
+
+    this.displayMenu()
+  }
+
+  displayMenu() {
+    this.isMenu = !this.isMenu;
   }
 
   filterLinkUserMenuData(): LinkUserMenuModel[] {

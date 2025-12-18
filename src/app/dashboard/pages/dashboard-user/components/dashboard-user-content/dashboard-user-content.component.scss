@@ -31,12 +31,16 @@
       margin-bottom: 1.25rem;
 
       @media (max-width: 768px) {
-      grid-column: 1/11;
-    }
+        grid-column: 1/11;
+      }
 
       h3,
       .description {
         margin: 0 7.5rem 0.5rem 2rem;
+
+        @media (max-width: 768px) {
+           margin: 0 0 0.5rem 0;
+        }
       }
     }
   }

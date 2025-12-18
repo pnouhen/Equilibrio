@@ -68,6 +68,10 @@ section {
   form,
   .messageFormSubmit {
     grid-column: 4/10;
+
+    @media (max-width: 768px) {
+      grid-column: 2/12;
+    }
   }
 
   form {
@@ -76,7 +80,6 @@ section {
     gap: 2.25rem;
 
     @media (max-width: 768px) {
-      grid-column: 2/12;
       display: flex;
       flex-direction: column;
     }
