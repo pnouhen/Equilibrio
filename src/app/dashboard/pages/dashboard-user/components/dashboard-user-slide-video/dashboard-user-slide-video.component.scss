@@ -1,9 +1,19 @@
 @use '../../../../../../mixins' as *;
 
+.slide {
+  height: 100%;
+  aspect-ratio: 1.77;
   .video {
+    margin-bottom: 0.25rem;
     display: block;
-    height: 100%;
-    aspect-ratio: 1.77;
+    height: 89%;
   }
 
   @include videoPlay;
+
+  span {
+    display: block;
+    text-align: center;
+    font-style: italic;
+  }
+}

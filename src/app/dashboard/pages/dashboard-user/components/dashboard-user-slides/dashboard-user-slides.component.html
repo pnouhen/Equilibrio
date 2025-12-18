@@ -6,12 +6,16 @@
 >
   @for (link of links; track $index) {
 
-  @if (link.type === 'video' && 'url' in link) {
-    <app-dashboard-user-slides-videos [url]="link.url" />
+  @if (isVideo(link)) {
+    <app-dashboard-user-slides-videos [link]="link" />
   }
 
    @if (isPdf(link)) {
     <app-dashboard-user-slides-pdf [link]="link" />
+  }
+
+  @if (isSong(link)) {
+    <app-dashboard-user-slide-song [link]="link" [index]="$index + 1" />
   }
 
 }

@@ -1,0 +1,47 @@
+@use '../.../../../../../../../mixins' as *;
+
+$spread: 0.75rem;
+$padding: 0.5rem;
+
+.slide {
+  margin: $spread;
+  padding: $padding;
+  height: calc(100% - $spread * 2 - $padding * 2);
+  aspect-ratio: 1.77;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0rem 0rem $spread 0 black;
+  overflow: auto;
+
+  &.bg-1 {
+    background-color: #e9e8e8;
+  }
+
+  &.bg-2 {
+    background-color: #e2e2e2;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .title,
+  .interpreter {
+    margin-bottom: 1rem;
+  }
+
+  .author {
+    margin-bottom: 0.5rem;
+  }
+
+  button {
+    margin: 0 auto;
+    padding: 0.5rem;
+    @include buttonSubmit;
+  }
+}

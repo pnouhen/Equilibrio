@@ -65,7 +65,8 @@ section {
     grid-column: 2/12;
   }
 
-  form, .messageFormSubmit {
+  form,
+  .messageFormSubmit {
     grid-column: 4/10;
   }
 
@@ -78,6 +79,11 @@ section {
       grid-column: 2/12;
       display: flex;
       flex-direction: column;
+    }
+
+    input,
+    textarea {
+      @include inputSubmit;
     }
 
     .name,

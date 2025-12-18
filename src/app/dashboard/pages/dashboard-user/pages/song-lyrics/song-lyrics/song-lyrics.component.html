@@ -1,0 +1,15 @@
+<div class="song">  
+  <div class="container">
+      <a [routerLink]="returnDashboard()">← Retour aux chants</a>
+
+    <h2>{{ song?.title }}</h2>
+
+    <p class="author"><strong>Auteur : </strong>{{ song?.author }}</p>
+
+    <p class="interpreter"><strong> Interprète : </strong>{{ song?.interpreter }}</p>
+
+    <app-music-player [audioPath]="song?.link" />
+
+    <p [innerHTML]="song?.lyrics" class="lyrics"></p>
+  </div>
+</div>

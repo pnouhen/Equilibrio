@@ -1,4 +1,6 @@
-  <youtube-player
-    class="video slide"
-    [videoId]="videoYoutube.getVideoId(url)"
-  />
+<div class="slide">
+<youtube-player class="video" [videoId]="videoYoutube.getVideoId(link.url)" />
+
+<span>{{ link.title }}</span>
+</div>
+

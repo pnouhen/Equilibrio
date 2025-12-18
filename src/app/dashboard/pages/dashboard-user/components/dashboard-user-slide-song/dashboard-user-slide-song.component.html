@@ -1,0 +1,9 @@
+<div class="slide" [class.bg-1]="index % 2 !== 0" [class.bg-2]="index % 2 === 0" >
+  <p class="title">{{ link.title }}</p>
+
+  <p class="author"><strong>Auteur : </strong>{{ link.author }}</p>
+
+  <p class="interpreter"><strong> Interprète : </strong>{{ link.interpreter }}</p>
+
+  <button (click)="displayLyrics(link.id)">Voir les paroles & Écouter </button>
+</div>

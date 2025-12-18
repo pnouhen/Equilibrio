@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { VideoYoutube } from '../../../../../core/services/videoYoutube.service';
 import { YouTubePlayer } from '@angular/youtube-player';
+import { UsersDataLinkModel } from '../../../../../datas-Back-end/models/UserData-link.model';
 
 @Component({
   selector: 'app-dashboard-user-slides-videos',
@@ -9,6 +10,6 @@ import { YouTubePlayer } from '@angular/youtube-player';
   styleUrl: './dashboard-user-slide-video.component.scss',
 })
 export class DashboardUserSlideVideoComponent {
-  @Input() url!: string
+  @Input() link!: UsersDataLinkModel
   constructor(public videoYoutube: VideoYoutube) {}
 }

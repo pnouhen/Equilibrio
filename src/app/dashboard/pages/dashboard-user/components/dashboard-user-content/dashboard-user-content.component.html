@@ -1,12 +1,16 @@
 @let array = dashboardUserData;
 
-<div class="container">
+<div  class="container">
   <h2>{{ array?.title }}</h2>
 
-  <div class="content">
+  <div #content class="content">
     @for(content of array?.content; track $index) { 
     <div class="content_container">
       <h3>{{ content.subTitle }}</h3>
+
+      @if(content.description.length > 0) {
+        <p class="description">{{content.description}}</p>
+      }
 
       <app-dashboard-user-slide-show
         [dashboardUserData]="dashboardUserData"

@@ -1,0 +1,21 @@
+<div class="music-player">
+  <button (click)="togglePlayPause()"><img src="{{ imgSrc }}" alt="{{ imgAlt }}" /></button>
+
+  <input
+    type="range"
+    min="0"
+    [max]="duration"
+    [value]="currentTime"
+    (input)="seek($event)"
+    class="progress-bar"
+  />
+
+  <p class="time">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</p>
+
+  <audio
+    #audioPlayer
+    [src]="audioPath"
+    (timeupdate)="updateTime()"
+    (loadedmetadata)="setDuration()"
+  ></audio>
+</div>

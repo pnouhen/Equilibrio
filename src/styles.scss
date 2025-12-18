@@ -108,29 +108,12 @@ label {
   color: $red;
 }
 
-input,
-textarea {
-  padding: 0.625rem;
-  height: 2.5rem;
-  background: #fdfcfc;
-  border: 1px solid black;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.6);
-}
-
 .fieldError {
   background: rgba(155, 12, 23, 0.2);
 }
 
 .buttonSubmit {
   height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $red;
   font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  border: 0;
-  box-shadow: 0 0 0.75rem 0rem rgba(0, 0, 0, 0.4);
-  cursor: pointer;
+  @include buttonSubmit;
 }

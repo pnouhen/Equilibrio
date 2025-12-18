@@ -1,0 +1,33 @@
+@use '../../../../../../../../mixins' as *;
+
+.music-player {
+  margin-bottom: 2.5rem;
+  width: 19.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  @include inputSubmit;
+
+  button {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .time {
+    width: 9rem;
+    text-align: end;
+    font-size: 0.875rem;
+  }
+
+  img {
+    width: 2rem;
+    aspect-ratio: 1;
+  }
+}

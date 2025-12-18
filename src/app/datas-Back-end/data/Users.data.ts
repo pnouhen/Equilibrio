@@ -5,7 +5,7 @@ export const UsersData: UsersModel[] = [
   new UsersModel('pierre.nouhen@orange.fr', '123456789Pn!', 'Pierre', [
     new UsersMembers('Baby', "student", 'baby', 'cinza-ponta-verde'),
     new UsersMembers('Enfants',"student", 'child', 'azul-cinza'),
-    new UsersMembers('Ados',"student", 'teen', 'verde'),
+    new UsersMembers('Gus Ados',"student", 'teen', 'verde-cinza'),
     new UsersMembers('Adulte',"student", 'adult', 'verde-amarelo'),
   ]),
 
