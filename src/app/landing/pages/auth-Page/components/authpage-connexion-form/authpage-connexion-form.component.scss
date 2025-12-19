@@ -13,6 +13,38 @@
   form {
     input {
       @include inputSubmit;
+
+      &.active {
+        padding-right: 3rem;
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 1rem;
+      bottom: 0.75rem;
+      height: 2rem;
+      aspect-ratio: 1;
+      transition: all 0.4s ease;
+
+      &.active {
+        transform: rotate(180deg);
+      }
+    }
+
+    .selected {
+      position: absolute;
+      top: 6rem;
+      z-index: -10;
+      width: 100%;
+      opacity: 0;
+      transition: all 0.4s ease;
+
+      &.active {
+        top: 6.3125rem;
+        z-index: 10;
+        opacity: 1;
+      }
     }
 
     a {

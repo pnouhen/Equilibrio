@@ -1,0 +1,11 @@
+<ul>
+  @for(email of dataSelected; track $index) {
+  <li
+    (click)="onEmailSelected(email)"
+    [tabindex]="selected.isSelectedDisplay ? 0 : -1"
+    (keydown)="onKeydownSelected($event, email)"
+  >
+    {{ email }}
+  </li>
+  }
+</ul>

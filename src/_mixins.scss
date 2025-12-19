@@ -66,12 +66,16 @@
   }
 }
 
-@mixin inputSubmit {
+@mixin input {
   padding: 0.625rem;
-  height: 2.5rem;
   background: #fdfcfc;
   border: 1px solid black;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.6);
+}
+
+@mixin inputSubmit {
+  height: 2.5rem;
+  @include input;
 }
 
 @mixin buttonSubmit {

@@ -2,7 +2,29 @@
   <form #connexion="ngForm" (ngSubmit)="onSubmit(connexion)">
     <div class="labelInput">
       <label for="emailConnexion">E-mail</label>
-      <input type="email" id="emailConnexion" name="email" ngModel />
+      <input
+        type="email"
+        id="emailConnexion"
+        name="email"
+        [(ngModel)]="emailValue"
+        class="active"
+      />
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Accèder aux Suggestions"
+        (click)="selected.toggleSelected()"
+        (keydown)="toggleSelected($event)"
+        [class.active]="selected.isSelectedDisplay"
+        tabindex="0"
+      />
+
+      <div class="selected" [class.active]="selected.isSelectedDisplay">
+        <app-input-selected
+          [dataSelected]="emailMembers"
+          (inputValueChange)="emailValue = $event"
+        />
+      </div>
     </div>
 
     <div class="labelInput">
@@ -16,11 +38,10 @@
 
   <div class="messageFormSubmit">
     <app-message-form
-    [isSubmitted]="isSubmitted"
-    [isFormValid]="isFormValid"
-    [canSubmit]="formMessages[0]"
-    [cannotSubmit]="formMessages[1]"
-  />
+      [isSubmitted]="isSubmitted"
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
   </div>
-  
 </div>

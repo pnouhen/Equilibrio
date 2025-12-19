@@ -6,14 +6,12 @@ import { UsersMembers } from '../../datas-Back-end/models/Users-members';
 })
 export class UserService {
   user = signal<string | undefined>(undefined);
-  type = signal<string | undefined>(undefined);
   category = signal<string | undefined>(undefined);
   grade = signal<string | undefined>(undefined);
   otherMembers = signal<UsersMembers[] | null>(null);
 
   setUser(member: UsersMembers | null) {
     this.user.set(member?.memberName);
-    this.type.set(member?.type)
     this.category.set(member?.category)
     this.grade.set(member?.grade)
   }
