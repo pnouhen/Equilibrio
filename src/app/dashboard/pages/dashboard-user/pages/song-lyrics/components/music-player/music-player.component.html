@@ -1,4 +1,5 @@
 <div class="music-player">
+  @if(isDurationValid){
   <button (click)="togglePlayPause()"><img src="{{ imgSrc }}" alt="{{ imgAlt }}" /></button>
 
   <input
@@ -11,7 +12,7 @@
   />
 
   <p class="time">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</p>
-
+  }
   <audio
     #audioPlayer
     [src]="audioPath"

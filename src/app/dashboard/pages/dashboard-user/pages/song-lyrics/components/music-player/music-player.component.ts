@@ -15,20 +15,21 @@ export class MusicPlayerComponent {
   imgSrc: string = '/assets/icons/play.svg';
   imgAlt: string = 'Lecture';
 
-  currentTime:number = 0
-  duration!:number
+  currentTime: number = 0;
+  duration: number = 0;
+  isDurationValid: boolean = false;
 
   togglePlayPause() {
     if (!this.isLecture) {
       this.imgSrc = '/assets/icons/pause.svg';
       this.imgAlt = 'Pause';
       this.audioPlayer.nativeElement.play();
-      this.isLecture = true
+      this.isLecture = true;
     } else {
       this.imgSrc = '/assets/icons/play.svg';
       this.imgAlt = 'Lecture';
       this.audioPlayer.nativeElement.pause();
-      this.isLecture = false
+      this.isLecture = false;
     }
   }
 
@@ -38,6 +39,7 @@ export class MusicPlayerComponent {
 
   setDuration() {
     this.duration = this.audioPlayer.nativeElement.duration;
+    this.isDurationValid = true;
   }
 
   seek(event: any) {

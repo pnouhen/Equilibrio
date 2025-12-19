@@ -560,7 +560,7 @@ export const dashboardUserData: UsersDataModel[] = [
           'Domaine public',
           'Mestre Eduardo STORTI',
           `Abre meu caminho<br><strong>Areia</strong><br><br>Que eu quero passar<br><strong>Areia</strong><br><br>Sou pequenininho<br><strong>Areia</strong><br><br>Filho de Iemanjá<br><strong>Areia</strong><br><br>Areia do rio<br><strong>Areia</strong><br><br>Areia do mar<br><strong>Areia</strong><br><br>Mas o areia….o areia…<br><strong>o areia….o areia…</strong>`,
-          '/assets/data-Back-end/songs/'
+          '/assets/data-Back-end/songs/areia.mp3'
         ),
         new UsersDataSongModel(
           'song',
