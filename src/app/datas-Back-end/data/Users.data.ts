@@ -31,7 +31,15 @@ export const UsersData: UsersModel[] = [
   ]),
 
   // Teacher
-  new UsersModel('pierre.nouhen@orange.fr', '123456789Pn!', 'teacher', [
+  new UsersModel('teacher@teacher.fr', '123456789Pn!', 'teacher', [
+    new UsersMembers('Baby', 'baby', 'novato', new UserDataTrainingModel([''], [''], [''])),
+    new UsersMembers('Enfants', 'child', 'novato', new UserDataTrainingModel([''], [''], [''])),
+    new UsersMembers('Gus Ados', 'teen', 'novato', new UserDataTrainingModel([''], [''], [''])),
+    new UsersMembers('Adulte', 'adult', 'novato', new UserDataTrainingModel([''], [''], [''])),
+  ]),
+
+  // Admin
+  new UsersModel('pierre.nouhen@orange.fr', '123456789Pn!', 'admin', [
     new UsersMembers('Baby', 'baby', 'novato', new UserDataTrainingModel([''], [''], [''])),
     new UsersMembers('Enfants', 'child', 'novato', new UserDataTrainingModel([''], [''], [''])),
     new UsersMembers('Gus Ados', 'teen', 'novato', new UserDataTrainingModel([''], [''], [''])),

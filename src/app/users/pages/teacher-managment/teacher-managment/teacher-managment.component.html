@@ -1,0 +1,17 @@
+<section>
+  <h2>Espace professeur</h2>
+
+  <div class="container">
+    <a [routerLink]="UsersRouting.navigatePlanning(user.email)">
+      <img src="/assets/icons/calendar.svg" alt="Photo de l'adhérent" />
+
+      <p>Planning</p>
+    </a>
+
+    <a [routerLink]="UsersRouting.navigateEspaceMember(user.email)">
+      <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
+
+      <p>Espace adhérents</p>
+    </a>
+  </div>
+</section>

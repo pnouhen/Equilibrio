@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SelectedConnexion } from '../../../landing/pages/auth-Page/services/SelectedConnexion.service';
-import { SelectedCity } from '../../../dashboard/services/SelectedCity.service';
-
+import { SelectedCity } from '../../../users/services/SelectedCity.service';
 @Component({
   selector: 'app-input-selected',
   imports: [],

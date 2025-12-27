@@ -22,12 +22,14 @@ export class RedirectionPage {
     if (isUser && user) {
       if (user.type === 'student') {
         if (user.member?.length === 1) {
-          return `/dashboard/${user.member[0].memberName}/presentation`;
+          return `/espace-utilisateur/${user.member[0].memberName}/presentation`;
         } else if (user.member?.length > 1) {
-          return `/dashboard/espace-membres/${user.email}`;
+          return `/espace-utilisateur/espace-membres/${user.email}`;
         }
       } else if (user.type === 'teacher') {
-        return `/dashboard/espace-professeur/${user.email}`;
+        return `/espace-utilisateur/espace-professeur/${user.email}`;
+      } else if (user.type === 'admin') {
+        return '/espace-utilisateur/admin';
       }
     }
     return '/';

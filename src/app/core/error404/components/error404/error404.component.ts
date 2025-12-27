@@ -3,17 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../../../landing/components/header/header.component';
 import { FooterComponent } from '../../../../landing/components/footer/footer.component';
-import { HeaderDashboardComponent } from '../../../../dashboard/components/header-dashboard/header-dashboard.component';
-import { FooterDashboardComponent } from '../../../../dashboard/components/footer-dashboard/footer-dashboard.component';
+import { HeaderUsersComponent } from '../../../../users/components/header-users/header-users.component';
+import { FooterUsersComponent } from '../../../../users/components/footer-users/footer-users.component';
 
 @Component({
   selector: 'app-error404',
   imports: [
     RouterLink,
     HeaderComponent,
-    HeaderDashboardComponent,
+    HeaderUsersComponent,
     FooterComponent,
-    FooterDashboardComponent,
+    FooterUsersComponent,
   ],
   templateUrl: './error404.component.html',
   styleUrl: './error404.component.scss',
@@ -23,7 +23,7 @@ export class Error404Component implements OnInit {
   isUser!: boolean;
 
   ngOnInit(): void {
-    this.isUser = this.redirectionPage.chekcedUser()
+    this.isUser = this.redirectionPage.chekcedUser();
   }
 
   routerLink(): string {

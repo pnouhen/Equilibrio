@@ -90,12 +90,12 @@
   cursor: pointer;
 }
 
-@mixin dashboardEspace {
+@mixin usersEspace {
   margin: $marginSection 0;
   background-color: $gray;
 }
 
-@mixin dashboardCard {
+@mixin managmentCard {
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -158,6 +158,27 @@
     &.active {
       z-index: 10;
       opacity: 1;
+    }
+  }
+}
+
+@mixin teacherAdminLayout {
+  @include usersEspace;
+
+  h2,
+  .container {
+    grid-column: 2/12;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    gap: 4rem;
+
+    a {
+      width: 12rem;
+      height: 12rem;
+      @include managmentCard;
     }
   }
 }

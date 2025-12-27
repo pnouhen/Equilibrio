@@ -8,8 +8,9 @@ export const routes: Routes = [
   },
 
   {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard-module').then((m) => m.DashboardModule),
+    path: 'espace-utilisateur',
+    loadChildren: () =>
+      import('./users/users-module').then((m) => m.UsersModule),
   },
 
   {
@@ -19,8 +20,8 @@ export const routes: Routes = [
   },
 
   // Error404
-  {
-    path: '**',
-    loadChildren: () => import('./core/error404/error404-module').then((m) => m.Error404Module),
-  },
+  // {
+  //   path: '**',
+  //   loadChildren: () => import('./core/error404/error404-module').then((m) => m.Error404Module),
+  // },
 ];
