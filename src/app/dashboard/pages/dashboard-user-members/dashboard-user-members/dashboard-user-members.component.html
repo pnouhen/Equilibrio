@@ -2,7 +2,7 @@
   <h2>Choisissez l’utilisateur :</h2>
 
   <ul>
-    @for(member of user.member; track $index) {
+    @for(member of user.members; track $index) {
     <li>
       <a [routerLink]="['/dashboard', member.memberName, 'presentation']"
       >

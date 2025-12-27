@@ -1,0 +1,11 @@
+<ul>
+  @for(value of dataSelected; track $index) {
+  <li
+    (click)="onSelected(value)"
+    [tabindex]="selected.isSelectedDisplay ? 0 : -1"
+    (keydown)="onKeydownSelected($event, value)"
+  >
+    {{ value }}
+  </li>
+  }
+</ul>

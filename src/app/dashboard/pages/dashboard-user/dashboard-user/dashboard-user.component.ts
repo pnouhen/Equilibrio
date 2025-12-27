@@ -4,7 +4,7 @@ import { UsersModel } from '../../../../datas-Back-end/models/Users.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersMembers } from '../../../../datas-Back-end/models/Users-members';
-import { DisplayUserMembers } from '../../../services/displayUserMembers';
+import { DisplayUserMembers } from '../../../services/displayUserMembers.service';
 import { DashboardUserMenuComponent } from '../components/dashboard-user-menu/dashboard-user-menu.component';
 import { DashboardUserContentComponent } from '../components/dashboard-user-content/dashboard-user-content.component';
 import { LinkUserMenuData } from '../../../datas/linkUserMenu.data';
@@ -37,7 +37,7 @@ export class DashboardUserComponent implements OnInit {
     // URL is bad
     // For the member
     this.userMember =
-      this.data?.member.find((member) => member.memberName === this.member) || undefined;
+      this.data?.members.find((member) => member.memberName === this.member) || undefined;
 
     // For the category in the menu
     const urlCategory = this.route.snapshot.paramMap.get('category') || null;
@@ -66,14 +66,14 @@ export class DashboardUserComponent implements OnInit {
       this.toggleContentUser.toggleContent(this.category);
     }
 
-    if (this.data?.member) {
+    if (this.data?.members) {
       // Send the member name and other member name in header
       this.userService.setUser(this.userMember);
 
-      if (this.data?.member.length > 1) {
+      if (this.data?.members.length > 1) {
         this.userService.setOtherUser();
 
-        this.displayUserMembers.toggleUserMember(false);
+        this.displayUserMembers.isUserMembers.set(false);
       }
     }
   }

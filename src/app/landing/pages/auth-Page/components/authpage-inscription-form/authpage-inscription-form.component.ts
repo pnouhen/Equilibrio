@@ -16,17 +16,17 @@ export class AuthpageInscriptionFormComponent {
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
   formMessages: MessageForm[] = [
-    new MessageForm("Email envoyé", 'messageFormTrue'),
-    new MessageForm("Email non valide", 'messageFormFalse'),
+    new MessageForm('Email envoyé', 'messageFormTrue'),
+    new MessageForm('Email non valide', 'messageFormFalse'),
   ];
   onSubmit(): void {
-          this.isSubmitted = true
+    this.isSubmitted = true;
     if (checkEmail.test(this.userEmail)) {
-      this.isFormValid = true
+      this.isFormValid = true;
 
-      this.userEmail = ""
+      this.userEmail = '';
     } else {
-      this.isFormValid = false
+      this.isFormValid = false;
     }
   }
 }

@@ -2,9 +2,7 @@
 @use '../../../../../variables' as *;
 
 section {
-  margin: $marginSection 0;
-  background-color: $gray;
-  @include layout;
+  @include dashboardEspace;
 
   h2,
   ul {
@@ -27,26 +25,8 @@ section {
     }
 
     li {
-      padding: 2rem;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 0.25rem 1rem 0.25rem rgba(0, 0, 0, 0.5);
-
       a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.25rem;
-        text-decoration: none;
-        color: black;
-
-        img {
-          width: 9.375rem;
-          aspect-ratio: 1;
-        }
-
-        p {
-          font-weight: bold;
-        }
+        @include dashboardCard;
       }
     }
   }

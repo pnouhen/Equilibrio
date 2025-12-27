@@ -5,6 +5,8 @@ import { UsersMembers } from '../../datas-Back-end/models/Users-members';
   providedIn: 'root',
 })
 export class UserService {
+  type = signal<string | undefined>(undefined);
+
   user = signal<string | undefined>(undefined);
   category = signal<string | undefined>(undefined);
   grade = signal<string | undefined>(undefined);
@@ -12,8 +14,8 @@ export class UserService {
 
   setUser(member: UsersMembers | null) {
     this.user.set(member?.memberName);
-    this.category.set(member?.category)
-    this.grade.set(member?.grade)
+    this.category.set(member?.category);
+    this.grade.set(member?.grade);
   }
 
   setOtherUser() {
@@ -21,6 +23,6 @@ export class UserService {
     const otherMembers: UsersMembers[] | null =
       data?.member.filter((m: UsersMembers) => m.memberName !== this.user()) || null;
 
-    this.otherMembers.set(otherMembers)
+    this.otherMembers.set(otherMembers);
   }
 }

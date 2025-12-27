@@ -1,5 +1,5 @@
 import { ToggleContentUser } from './../../dashboard-user/services/ToggleContentUser.service';
-import { DisplayUserMembers } from './../../../services/displayUserMembers';
+import { DisplayUserMembers } from '../../../services/displayUserMembers.service';
 import { Component, OnInit } from '@angular/core';
 import { UsersModel } from '../../../../datas-Back-end/models/Users.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -29,7 +29,7 @@ export class DashboardUserMembersComponent implements OnInit {
       this.router.navigate(['page-introuvable']);
       return;
     } else {
-      this.displayUserMembers.toggleUserMember(true);
+      this.displayUserMembers.isUserMembers.set(true);
       this.toggleContentUser.toggleContent('presentation')
     }
   }

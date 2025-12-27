@@ -8,6 +8,22 @@ const route: Routes = [
     component: DashboardLayoutComponent,
     children: [
       {
+        path: 'espace-professeur/:id',
+        loadChildren: () =>
+          import('./pages/dashboard-teacher/dashboard-teacher-module').then(
+            (m) => m.DashboardTeacherModule
+          ),
+      },
+
+      {
+        path: 'espace-professeur/:id/planning',
+        loadChildren: () =>
+          import('./pages/dashboard-planning/dashboard-planning-module').then(
+            (m) => m.DashboardPlanningModule
+          ),
+      },
+
+      {
         path: 'espace-membres/:id',
         loadChildren: () =>
           import('./pages/dashboard-user-members/dashboard-user-members-module').then(
@@ -18,7 +34,9 @@ const route: Routes = [
       {
         path: ':id/chants/:song',
         loadChildren: () =>
-          import('./pages/dashboard-user/pages/song-lyrics/song-lyrics-module').then((m) => m.SongLyricsModule),
+          import('./pages/dashboard-user/pages/song-lyrics/song-lyrics-module').then(
+            (m) => m.SongLyricsModule
+          ),
       },
 
       {

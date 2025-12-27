@@ -74,7 +74,7 @@
 }
 
 @mixin inputSubmit {
-  height: 2.5rem;
+  min-height: 2.5rem;
   @include input;
 }
 
@@ -88,6 +88,34 @@
   border: 0;
   box-shadow: 0 0 0.75rem 0rem rgba(0, 0, 0, 0.4);
   cursor: pointer;
+}
+
+@mixin dashboardEspace {
+  margin: $marginSection 0;
+  background-color: $gray;
+}
+
+@mixin dashboardCard {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 1rem 0.25rem rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+
+  img {
+    width: 9.375rem;
+    aspect-ratio: 1;
+  }
+
+  p {
+    text-align: center;
+    font-weight: bold;
+  }
 }
 
 @mixin dashBoardContainer {
@@ -105,5 +133,31 @@
   ::ng-deep youtube-player iframe {
     width: 100% !important;
     height: 100% !important;
+  }
+}
+
+@mixin selected {
+  img {
+    height: 2rem;
+    aspect-ratio: 1;
+    transition: all 0.4s ease;
+    cursor: pointer;
+
+    &.active {
+      transform: rotate(180deg);
+    }
+  }
+
+  .selected {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s ease;
+
+    &.active {
+      z-index: 10;
+      opacity: 1;
+    }
   }
 }

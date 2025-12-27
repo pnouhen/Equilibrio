@@ -1,6 +1,6 @@
 import { ToggleContentUser } from './../../pages/dashboard-user/services/ToggleContentUser.service';
 import { Router } from '@angular/router';
-import { DisplayUserMembers } from './../../services/displayUserMembers';
+import { DisplayUserMembers } from '../../services/displayUserMembers.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { LogoComponent } from '../../../core/components/logo/logo.component';
@@ -20,7 +20,7 @@ export class HeaderDashboardComponent implements OnInit {
     public userService: UserService,
     public displayUserMembers: DisplayUserMembers,
     public router: Router,
-    public toggleContentUser: ToggleContentUser,
+    public toggleContentUser: ToggleContentUser
   ) {}
 
   ngOnInit(): void {}
@@ -45,7 +45,7 @@ export class HeaderDashboardComponent implements OnInit {
   navigateUser(member: UsersMembers) {
     this.isOtherMembers = false;
     this.router.navigate(['/dashboard', member.memberName, 'presentation']);
-    this.toggleContentUser.toggleContent("presentation")
+    this.toggleContentUser.toggleContent('presentation');
     this.userService.setUser(member);
     this.userService.setOtherUser();
   }

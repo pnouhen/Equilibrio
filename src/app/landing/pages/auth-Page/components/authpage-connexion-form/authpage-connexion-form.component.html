@@ -13,16 +13,17 @@
       <img
         src="/assets/icons/chevron-down.svg"
         alt="Accèder aux Suggestions"
-        (click)="selected.toggleSelected()"
-        (keydown)="toggleSelected($event)"
-        [class.active]="selected.isSelectedDisplay"
+        (click)="selectedConnexion.toggleSelected()"
+        (keydown)="toggleSelectedKeydown($event)"
+        [class.active]="selectedConnexion.isSelectedDisplay"
         tabindex="0"
       />
 
-      <div class="selected" [class.active]="selected.isSelectedDisplay">
+      <div class="selected" [class.active]="selectedConnexion.isSelectedDisplay">
         <app-input-selected
           [dataSelected]="emailMembers"
           (inputValueChange)="emailValue = $event"
+          [selected]="selectedConnexion"
         />
       </div>
     </div>

@@ -14,15 +14,18 @@ import { UserService } from '../../services/user.service';
 export class DashboardLayoutComponent implements OnInit {
   user!: UsersModel;
 
-  constructor(private router: Router, public userService: UserService,) {}
+  constructor(private router: Router, public userService: UserService) {}
 
   ngOnInit(): void {
     // Security if url is bad
     this.user = JSON.parse(sessionStorage.getItem('user')!);
-    if (this.user.member.length > 1 && this.userService.user() === "") {
+
+    this.userService.type.set(this.user.type);
+
+    if (this.user.members.length > 1 && this.userService.user() === '') {
       this.router.navigate([`dashboard/espace-membres/${this.user.email}`]);
-    } else if (this.user.member.length === 1) {
-      this.router.navigate([`dashboard/${this.user.member[0].memberName}/presentation`]);
+    } else if (this.user.members.length === 1) {
+      this.router.navigate([`dashboard/${this.user.members[0].memberName}/presentation`]);
     }
   }
 }

@@ -1,0 +1,46 @@
+<h3>Cliquez sur les élèves présents :</h3>
+
+<p class="today">{{ date }}</p>
+
+<form (ngSubmit)="onSubmit()">
+  <table>
+    <thead>
+      <tr>
+        <th class="name-column">Nom de l'adhérent</th>
+        <th class="checkbox-column">Présence</th>
+        <th>Nb cours / sem.</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(user of planningService.users(); track $index) {
+      <tr>
+        <td>
+          <label for="checkbox-{{ $index }}">{{ user.memberName }}</label>
+        </td>
+        <td>
+          <div class="td-checkbox">
+            <input
+              type="checkbox"
+              id="checkbox-{{ $index }}"
+              [(ngModel)]="user.present"
+              name="attendance-{{ $index }}"
+            />
+          </div>
+        </td>
+        <td>
+          <p class="regularity">{{ user.numberTrainningSessions }}</p>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <button class="buttonSubmit" type="submit">Enregistrer</button>
+</form>
+
+<app-message-form
+  [isSubmitted]="isSubmitted"
+  [isFormValid]="isFormValid"
+  [canSubmit]="formMessages[0]"
+  [cannotSubmit]="formMessages[1]"
+/>
