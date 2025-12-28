@@ -1,4 +1,4 @@
-import { ToggleContentUser } from '../../user-dashboard/services/ToggleContentUser.service';
+import { ToggleContentUser } from '../../student-dashboard/services/ToggleContentUser.service';
 import { DisplayUserMembers } from '../../../services/displayUserMembers.service';
 import { Component, OnInit } from '@angular/core';
 import { UsersModel } from '../../../../datas-Back-end/models/Users.model';

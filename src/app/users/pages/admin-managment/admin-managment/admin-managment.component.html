@@ -2,19 +2,19 @@
   <h2>Administrateur</h2>
 
   <div class="container">
-    <a [routerLink]="UsersRouting.navigatePlanning(user.email)">
+    <a [routerLink]="UsersRouting.navigateAdmin()">
       <img src="/assets/icons/admin.svg" alt="Photo de l'adhérent" />
 
       <p>Admin</p>
     </a>
 
     <a [routerLink]="UsersRouting.navigatePlanning(user.email)">
-      <img src="/assets/icons/calendar.svg" alt="Photo de l'adhérent" />
+      <img src="/assets/icons/calendar.svg" alt="Icon d'un calendrier" />
 
       <p>Planning</p>
     </a>
 
-    <a [routerLink]="">
+    <a [routerLink]="UsersRouting.navigateEspaceMember(user.email)">
       <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
 
       <p>Espace adhérents</p>

@@ -1,4 +1,4 @@
-import { ToggleContentUser } from '../../pages/user-dashboard/services/ToggleContentUser.service';
+import { ToggleContentUser } from '../../pages/student-dashboard/services/ToggleContentUser.service';
 import { Router } from '@angular/router';
 import { DisplayUserMembers } from '../../services/displayUserMembers.service';
 import { UserService } from '../../services/user.service';

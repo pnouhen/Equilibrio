@@ -4,7 +4,7 @@ import { UserDataContentModel } from '../models/UserData-content.model';
 import { UsersDataPdfModel } from '../models/UserData-pdf.model';
 import { UsersDataSongModel } from '../models/UsersData-song.model';
 
-export const UserDashboardData: UsersDataModel[] = [
+export const StudentDashboardData: UsersDataModel[] = [
   // Presentation
   new UsersDataModel('presentation', 'Présentation', [
     new UserDataContentModel('Retour sur 20 ans de parcours d’Équilibrio en France', '', 'all', [

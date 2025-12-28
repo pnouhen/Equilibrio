@@ -1,0 +1,23 @@
+@let array = StudentDashboardData;
+
+<div  class="container">
+  <h2>{{ array?.title }}</h2>
+
+  <div #content class="content">
+    @for(content of array?.content; track $index) { 
+    <div class="content_container">
+      <h3>{{ content.subTitle }}</h3>
+
+      @if(content.description.length > 0) {
+        <p class="description">{{content.description}}</p>
+      }
+
+      <app-student-dashboard-slide-show
+        [StudentDashboardData]="StudentDashboardData"
+        [contentData]="content"
+        [indexContent]="$index"
+      />
+    </div>
+    }
+  </div>
+</div>

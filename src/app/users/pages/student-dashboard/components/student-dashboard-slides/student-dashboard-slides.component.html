@@ -1,0 +1,22 @@
+<div
+  class="container"
+  [class.presentation]="StudentDashboardData?.id === 'presentation'"
+  [class.no-slideShow]="links.length <= 2 || innerWidth <= 768"
+  [id]="indexContent"
+>
+  @for (link of links; track $index) {
+
+  @if (isVideo(link)) {
+    <app-student-dashboard-slides-videos [link]="link" />
+  }
+
+   @if (isPdf(link)) {
+    <app-student-dashboard-slides-pdf [link]="link" />
+  }
+
+  @if (isSong(link)) {
+    <app-student-dashboard-slide-song [link]="link" [index]="$index + 1" />
+  }
+
+}
+</div>

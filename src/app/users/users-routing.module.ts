@@ -16,6 +16,14 @@ const route: Routes = [
       },
 
       {
+        path: 'admin/tableau-de-bord',
+        loadChildren: () =>
+          import('./pages/admin-dashboard/admin-dashboard-module').then(
+            (m) => m.AdminDashboardModule
+          ),
+      },
+
+      {
         path: 'espace-professeur/:id',
         loadChildren: () =>
           import('./pages/teacher-managment/teacher-managment-module').then(
@@ -24,11 +32,9 @@ const route: Routes = [
       },
 
       {
-         path: 'espace-professeur/:id/planning',
+        path: 'espace-professeur/:id/planning',
         loadChildren: () =>
-          import('./pages/planning/planning-module').then(
-            (m) => m.PlanningModule
-          ),
+          import('./pages/planning/planning-module').then((m) => m.PlanningModule),
       },
 
       {
@@ -42,7 +48,7 @@ const route: Routes = [
       {
         path: ':id/chants/:song',
         loadChildren: () =>
-          import('./pages/user-dashboard/pages/song-lyrics/song-lyrics-module').then(
+          import('./pages/student-dashboard/components/song-lyrics/song-lyrics-module').then(
             (m) => m.SongLyricsModule
           ),
       },
@@ -50,7 +56,7 @@ const route: Routes = [
       {
         path: ':id/:category',
         loadChildren: () =>
-          import('./pages/user-dashboard/user-dashboard.module').then((m) => m.UserDashboardModule),
+          import('./pages/student-dashboard/student-dashboard.module').then((m) => m.StudentDashboardModule),
       },
     ],
   },

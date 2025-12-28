@@ -118,16 +118,6 @@
   }
 }
 
-@mixin dashBoardContainer {
-  height: $heightDashboardContainer;
-  background-color: rgba(218, 218, 218, 0.6);
-  @include layout;
-
-  @media (max-width: 768px) {
-    height: auto;
-  }
-}
-
 @mixin videoPlay {
   ::ng-deep youtube-player div,
   ::ng-deep youtube-player iframe {
