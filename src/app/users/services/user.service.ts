@@ -21,7 +21,7 @@ export class UserService {
   setOtherUser() {
     const data = JSON.parse(sessionStorage.getItem('user')!);
     const otherMembers: UsersMembers[] | null =
-      data?.member.filter((m: UsersMembers) => m.memberName !== this.user()) || null;
+      data?.members.filter((m: UsersMembers) => m.memberName !== this.user()) || null;
 
     this.otherMembers.set(otherMembers);
   }

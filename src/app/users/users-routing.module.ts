@@ -24,7 +24,7 @@ const route: Routes = [
       },
 
       {
-         path: 'espace-professeur/:id',
+         path: 'espace-professeur/:id/planning',
         loadChildren: () =>
           import('./pages/planning/planning-module').then(
             (m) => m.PlanningModule

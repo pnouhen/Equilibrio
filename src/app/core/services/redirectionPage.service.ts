@@ -21,9 +21,9 @@ export class RedirectionPage {
 
     if (isUser && user) {
       if (user.type === 'student') {
-        if (user.member?.length === 1) {
-          return `/espace-utilisateur/${user.member[0].memberName}/presentation`;
-        } else if (user.member?.length > 1) {
+        if (user.members?.length === 1) {
+          return `/espace-utilisateur/${user.members[0].memberName}/presentation`;
+        } else if (user.members?.length > 1) {
           return `/espace-utilisateur/espace-membres/${user.email}`;
         }
       } else if (user.type === 'teacher') {

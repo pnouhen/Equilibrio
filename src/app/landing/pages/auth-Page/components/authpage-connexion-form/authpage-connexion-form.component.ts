@@ -42,8 +42,6 @@ export class AuthpageConnexionFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.isSubmitted = true;
-
     const userFind = this.isAuthenticationValid(form.value.email, form.value.password);
 
     if (userFind) {
@@ -53,18 +51,19 @@ export class AuthpageConnexionFormComponent implements OnInit {
         if (userFind.members.length > 1) {
           this.router.navigate([`espace-utilisateur/espace-membres/${userFind.email}`]);
         } else if (userFind.members.length === 1) {
-          console.log("ok")
-          this.router.navigate([`espace-utilisateur/${userFind.members[0].memberName}/presentation`]);
+          this.router.navigate([
+            `espace-utilisateur/${userFind.members[0].memberName}/presentation`,
+          ]);
         }
       } else if (userFind.type === 'teacher') {
         this.router.navigate([`espace-utilisateur/espace-professeur/${userFind.email}`]);
-      } else if (userFind.type === "admin") {
-        this.router.navigate(["espace-utilisateur/admin"])
+      } else if (userFind.type === 'admin') {
+        this.router.navigate(['espace-utilisateur/admin']);
       }
 
-      this.isFormValid = true;
       form.resetForm();
     } else {
+      this.isSubmitted = true;
       this.isFormValid = false;
     }
   }
