@@ -1,11 +1,10 @@
-import { LinkMenuModel } from "../models/LinkMenuModel.model";
+import { LinkMenuModel } from '../models/LinkMenuModel.model';
 
 export const LinkUserMenuData: LinkMenuModel[] = [
-      new LinkMenuModel('presentation', 'Présentation'),
-      new LinkMenuModel('entrainement', 'Entraînement'),
-      new LinkMenuModel('fiches-examen', 'Fiches d’examen'),
-      new LinkMenuModel('mouvements', 'Mouvements'),
-      new LinkMenuModel('instruments', 'Instruments'),
-      new LinkMenuModel('chants', 'Chants'),
-    
-]
+  new LinkMenuModel('presentation', 'presentation', 'Présentation'),
+  new LinkMenuModel('training', 'entrainement', 'Entraînement'),
+  new LinkMenuModel('exam-sheets', 'fiches-examen', 'Fiches d’examen'),
+  new LinkMenuModel('movements', 'mouvements', 'Mouvements'),
+  new LinkMenuModel('instruments', 'instruments', 'Instruments'),
+  new LinkMenuModel('song', 'chants', 'Chants'),
+];

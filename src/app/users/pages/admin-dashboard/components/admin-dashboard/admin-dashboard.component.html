@@ -1,1 +1,15 @@
+<section>
+  <h2>Tableau de bord</h2>
 
+  <ul>
+    @for(button of allButtons; track button.id) {
+    <li>
+      <a routerLink="{{button.route}}">
+        <img src="/assets/icons/{{ button.id }}.svg" alt="Icon pour {{ button.title }}" />
+
+        <p>{{ button.title }}</p>
+      </a>
+    </li>
+    }
+  </ul>
+</section>

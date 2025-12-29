@@ -24,6 +24,46 @@ const route: Routes = [
       },
 
       {
+        path: 'admin/tableau-de-bord/modification-photos-carousel',
+        loadChildren: () =>
+          import('./pages/admin-dashboard/pages/update-slides-shows-pictures/update-slides-shows-pictures-module').then(
+            (m) => m.UpdateSlidesShowsPicturesModule
+          ),
+      },
+
+       {
+        path: 'admin/tableau-de-bord/modification-dates-reprises-entrainement',
+        loadChildren: () =>
+          import('./pages/admin-dashboard/pages/update-training-resumes/update-training-resumes-module').then(
+            (m) => m.UpdateTrainingResumesModule
+          ),
+      },
+
+       {
+        path: 'admin/tableau-de-bord/gestion-lieux-horaires',
+        loadChildren: () =>
+          import('./pages/admin-dashboard/pages/manage-places-times/manage-places-times-module').then(
+            (m) => m.ManagePlacesTimesModule
+          ),
+      },
+
+       {
+        path: 'admin/tableau-de-bord/gestion-adherants',
+        loadChildren: () =>
+          import('./pages/admin-dashboard/pages/manage-users/manage-users-module').then(
+            (m) => m.ManageUsersModule
+          ),
+      },
+
+       {
+        path: 'admin/tableau-de-bord/gestions-ressources',
+        loadChildren: () =>
+          import('./pages/admin-dashboard/pages/manage-resources/manage-resources-module').then(
+            (m) => m.ManageResourcesModule
+          ),
+      },
+
+      {
         path: 'espace-professeur/:id',
         loadChildren: () =>
           import('./pages/teacher-managment/teacher-managment-module').then(

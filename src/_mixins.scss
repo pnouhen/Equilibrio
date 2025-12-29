@@ -95,26 +95,52 @@
   background-color: $gray;
 }
 
-@mixin managmentCard {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0.25rem 1rem 0.25rem rgba(0, 0, 0, 0.5);
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
+@mixin card-layout {
+  @include usersEspace;
 
-  img {
-    width: 9.375rem;
-    aspect-ratio: 1;
+  h2,
+  ul {
+    grid-column: 2/12;
   }
 
-  p {
-    text-align: center;
-    font-weight: bold;
+  ul {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    list-style: none;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    li {
+      a {
+        padding: 2rem;
+        width: 11.5rem;
+        min-height: 12.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0.25rem 1rem 0.25rem rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+
+        img {
+          width: 9.375rem;
+          aspect-ratio: 1;
+        }
+
+        p {
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
   }
 }
 
@@ -148,27 +174,6 @@
     &.active {
       z-index: 10;
       opacity: 1;
-    }
-  }
-}
-
-@mixin teacherAdminLayout {
-  @include usersEspace;
-
-  h2,
-  .container {
-    grid-column: 2/12;
-  }
-
-  .container {
-    display: flex;
-    justify-content: space-around;
-    gap: 4rem;
-
-    a {
-      width: 12rem;
-      height: 12rem;
-      @include managmentCard;
     }
   }
 }

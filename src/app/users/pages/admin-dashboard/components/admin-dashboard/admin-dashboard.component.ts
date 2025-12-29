@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersModel } from '../../../../../datas-Back-end/models/Users.model';
 import { UserService } from '../../../../services/user.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LinkMenuModel } from '../../../student-dashboard/models/LinkMenuModel.model';
+import {LinkAdminMenuData} from "../../datas/LinkAdminMenu.datas"
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss',
 })
 export class AdminDashboardComponent implements OnInit {
+  allButtons: LinkMenuModel[] = LinkAdminMenuData
   user!: UsersModel;
 
   constructor(public userService: UserService, public router: Router) {}
@@ -21,4 +24,5 @@ export class AdminDashboardComponent implements OnInit {
       this.router.navigate(['page-introuvable']);
     }
   }
+  
 }

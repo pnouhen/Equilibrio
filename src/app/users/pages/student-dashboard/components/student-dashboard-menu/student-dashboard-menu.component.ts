@@ -28,11 +28,11 @@ export class StudentDashboardMenuComponent {
     });
   }
 
-  displayContentUser(id: string) {
-    this.toggleContentUser.toggleContent(id);
+  displayContentUser(route: string) {
+    this.toggleContentUser.toggleContent(route);
 
     this.memberName = this.route.snapshot.paramMap.get('id') || null;
-    this.router.navigate(['/espace-utilisateur', this.memberName, id]);
+    this.router.navigate(['/espace-utilisateur', this.memberName, route]);
 
     this.displayMenu()
   }
@@ -43,9 +43,9 @@ export class StudentDashboardMenuComponent {
 
   filterLinkUserMenuData(): LinkMenuModel[] {
     if (this.userService.category() !== undefined && this.userService.category() === 'baby') {
-      return LinkUserMenuData.filter((link) => link.id === 'presentation' || link.id === 'entrainement');
+      return LinkUserMenuData.filter((link) => link.id === 'presentation' || link.id === 'training');
     } else if(this.userService.category() !== undefined && this.userService.category() === 'child') {
-      return LinkUserMenuData.filter((link) => link.id !== 'instruments' && link.id !== 'chants');
+      return LinkUserMenuData.filter((link) => link.id !== 'instruments' && link.id !== 'song');
     }
     return LinkUserMenuData;
   }

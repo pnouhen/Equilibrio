@@ -43,8 +43,8 @@ export class StudentDashboardComponent implements OnInit {
     const urlCategory = this.route.snapshot.paramMap.get('category') || null;
 
     if (urlCategory) {
-      const found = LinkUserMenuData.find((link) => link.id === urlCategory);
-      this.category = found ? found.id : null;
+      const found = LinkUserMenuData.find((link) => link.route === urlCategory);
+      this.category = found ? found.route : null;
     }
 
     // Display content by category

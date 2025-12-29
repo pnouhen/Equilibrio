@@ -5,14 +5,14 @@ import { StudentDashboardData } from '../../../../datas-Back-end/data/UserDashbo
 
 @Injectable({ providedIn: 'root' })
 export class ToggleContentUser {
-  contentId = signal<string>('presentation');
+  contentRoute = signal<string>('presentation');
   contentArray = signal<UsersDataModel | undefined>(StudentDashboardData[0]);
 
-  toggleContent(newContentId: string) {
-    this.contentId.set(newContentId);
+  toggleContent(newcontentRoute: string) {
+    this.contentRoute.set(newcontentRoute);
 
     const newContent = StudentDashboardData.find(
-      (content) => content.id === newContentId
+      (content) => content.id === newcontentRoute
     );
 
     this.contentArray.set(newContent);

@@ -1,5 +1,9 @@
 @use '../../../../../mixins' as *;
 
 section {
-  @include teacherAdminLayout;
+  @include card-layout;
+
+  a {
+    height: 13.5625rem;
+  }
 }

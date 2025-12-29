@@ -2,32 +2,5 @@
 @use '../../../../../variables' as *;
 
 section {
-  @include usersEspace;
-
-  h2,
-  ul {
-    grid-column: 2/12;
-  }
-
-  ul {
-    margin: auto;
-    padding: 0;
-    display: flex;
-    gap: 4rem;
-    list-style: none;
-
-    @media (max-width: 1024px) {
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      justify-content: center;
-    }
-
-    li {
-      a {
-        @include managmentCard;
-      }
-    }
-  }
+  @include card-layout;
 }
