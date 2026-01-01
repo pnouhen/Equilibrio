@@ -5,19 +5,19 @@
       class="slidesShow transition"
       [style.transform]="'translateX(' + translateX + 'px)'"
     >
-      @for(image of imageSlidesShow; track image.alt; let isLast = $last) {
-      <img [src]="image.src" [alt]="image.alt"/>
+      @for(image of imageSlidesShow; track image.img.alt; let isLast = $last) {
+      <img [src]="image.img.src" [alt]="image.img.alt" />
       }
-      <img [src]="imageSlidesShow[0].src" [alt]="imageSlidesShow[0].alt" class="clone"/>
+      <img [src]="imageSlidesShow[0].img.src" [alt]="imageSlidesShow[0].img.alt" class="clone" />
     </div>
 
     <div class="allImages">
-      @for(image of imageSlidesShow; track image.alt; let isLast = $last) {
+      @for(image of imageSlidesShow; track image.img.alt; let isLast = $last) {
       <div [class]="!isLast ? 'borderRight' : ''">
         <img
-          [src]="image.src"
-          [alt]="image.alt"
-          (click)="selectSlide({ alt: image.alt })"
+          [src]="image.img.src"
+          [alt]="image.img.alt"
+          (click)="selectSlide({ alt: image.img.alt })"
           [class.active]="indexMainImage === imageSlidesShow.indexOf(image)"
           loading="eager"
         />

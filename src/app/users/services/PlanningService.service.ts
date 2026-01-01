@@ -1,4 +1,4 @@
-import { UsersDataService } from './../../core/services/UsersData.service';
+import { UsersDataService } from '../../core/services/UsersData.service';
 import { StudentRegularity } from './StudentRegularityService.service';
 import { Injectable, signal } from '@angular/core';
 

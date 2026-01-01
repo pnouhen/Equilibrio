@@ -1,4 +1,4 @@
-import { RedirectionPage } from './../../../services/redirectionPage.service';
+import { RedirectionPage } from '../../../services/redirectionPage.service';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../../../landing/components/header/header.component';

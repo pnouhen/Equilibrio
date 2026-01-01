@@ -79,6 +79,7 @@ section {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 2.25rem;
+    @include widthFormAuthPage;
 
     @media (max-width: 768px) {
       display: flex;

@@ -1,4 +1,4 @@
-import { VideoYoutube } from './../../../../../core/services/videoYoutube.service';
+import { VideoYoutube } from '../../../../../core/services/videoYoutube.service';
 import { Component } from '@angular/core';
 import { YouTubePlayer } from '@angular/youtube-player';
 
