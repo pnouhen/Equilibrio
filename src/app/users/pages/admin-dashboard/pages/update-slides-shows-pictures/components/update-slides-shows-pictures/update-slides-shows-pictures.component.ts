@@ -1,3 +1,4 @@
+import { MessageFormService } from './../../../../../../../core/services/messageForm.service';
 import { Component, OnInit } from '@angular/core';
 import { HomeSlides } from '../../../../../../../core/services/homeSlides.service';
 import { ReturnAdminDashboardComponent } from '../../../../components/return-admin-dashboard/return-admin-dashboard.component';
@@ -24,7 +25,7 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
     new MessageForm('Au moins un des champs est incorrect', 'messageFormFalse'),
   ];
 
-  constructor(public homeSlides: HomeSlides) {}
+  constructor(public homeSlides: HomeSlides, public messageFormService: MessageFormService) {}
 
   ngOnInit(): void {
     const isPicturesSessionStorage = this.homeSlides.allPicturesLink.filter((link) =>
@@ -41,8 +42,8 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
     this.selectedFiles = new Array(this.imageSlidesShow.length).fill(null);
 
     // Initialize boolean MessageForm
-    this.isSubmittedArray = new Array(this.imageSlidesShow.length).fill(false);
-    this.isFormValidArray = new Array(this.imageSlidesShow.length).fill(false);
+    this.isSubmittedArray = this.messageFormService.createArrayBoolean(this.imageSlidesShow.length);
+    this.isFormValidArray = this.messageFormService.createArrayBoolean(this.imageSlidesShow.length);
   }
 
   onDownloadImg(event: Event, index: number) {
@@ -73,15 +74,12 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
     const description = form.value.description;
 
     this.isSubmittedArray[index] = true;
-    console.log(this.isSubmittedArray);
     if (file && description) {
       this.homeSlides.convertAndSaveImage(file, description, title);
 
       this.isFormValidArray[index] = true;
-      console.log(this.isFormValidArray);
     } else {
       this.isFormValidArray[index] = false;
-      console.log(this.isFormValidArray);
     }
   }
 }

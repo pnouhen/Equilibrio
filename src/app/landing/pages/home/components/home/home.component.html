@@ -7,9 +7,9 @@
     <ul>
       @for(training of trainingResumes; track training.place) {
       <li>
-        <p class="place">{{ training.place }} :</p>
-
-        <p class="day">{{ training.day }}</p>
+        <p class="place">
+          {{ training.place }} : <span class="day">{{ training.day }}</span>
+        </p>
       </li>
       }
     </ul>

@@ -1,6 +1,6 @@
-import { CityInfo } from '../models/CityInfo.model';
-import { TrainingCategory } from '../models/TrainingCategory.model';
-import { TrainingSchedule } from '../models/TrainingSchedule.model';
+import { CityInfo } from '../../landing/pages/locations-times/models/CityInfo.model';
+import { TrainingCategory } from '../../landing/pages/locations-times/models/TrainingCategory.model';
+import { TrainingSchedule } from '../../landing/pages/locations-times/models/TrainingSchedule.model';
 
 export const CITIES: CityInfo[] = [
   // LIMOGES
@@ -13,6 +13,7 @@ export const CITIES: CityInfo[] = [
     '13, rue du Crucifix',
     87100,
     '06.20.04.61.20',
+    '2025-08-25',
     [
       new TrainingCategory('Baby 3/6 ans', [
         new TrainingSchedule('Mercredi', '11h', '12h'),
@@ -41,7 +42,7 @@ export const CITIES: CityInfo[] = [
         new TrainingSchedule('Vendredi', '19h30', '21h'),
         new TrainingSchedule('Samedi', '11h', '12h30', 'mixedTraining'),
       ]),
-    ],
+    ]
   ),
 
   // Couzeix
@@ -54,6 +55,7 @@ export const CITIES: CityInfo[] = [
     'allée Maurice Genevoix',
     87270,
     '06.20.04.61.20',
+    '2025-09-01',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Lundi', '17h30', '18h30')]),
 
@@ -78,6 +80,7 @@ export const CITIES: CityInfo[] = [
     'rue Jean Macé',
     87350,
     '06.20.04.61.20',
+    '2025-09-13',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
 
@@ -95,6 +98,7 @@ export const CITIES: CityInfo[] = [
     '31 rue Zamenhof',
     87200,
     '06.20.04.61.20',
+    '2025-09-03',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Mercredi', '14h30', '15h30')]),
 
@@ -114,6 +118,7 @@ export const CITIES: CityInfo[] = [
     '24 Bd Brune',
     19100,
     '06.20.04.61.20',
+    '2025-09-01',
     [
       new TrainingCategory('Baby 3/6 ans', [
         new TrainingSchedule('Lundi', '18h', '19h', 'twoTeachers'),
@@ -129,7 +134,7 @@ export const CITIES: CityInfo[] = [
         new TrainingSchedule('Lundi', '19h30', '21h'),
         new TrainingSchedule('Samedi', '11h', '12h30', 'twoTeachers'),
       ]),
-    ],
+    ]
   ),
 
   // Tulle
@@ -142,13 +147,14 @@ export const CITIES: CityInfo[] = [
     '5 Rue de la Montane',
     19000,
     '06.20.04.61.20',
+    '2025-08-30',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '10h', '11h')]),
 
       new TrainingCategory('Enfants Ados Adulte', [
         new TrainingSchedule('Samedi', '11h', '12h30', 'twoTeachers'),
       ]),
-    ],
+    ]
   ),
 
   // La Souterraine
@@ -161,6 +167,7 @@ export const CITIES: CityInfo[] = [
     "1 Rue de l'Hermitage",
     23300,
     '06.20.04.61.20',
+    '2025-09-06',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
 
@@ -178,6 +185,7 @@ export const CITIES: CityInfo[] = [
     '2 Rue Jean Bussière',
     23000,
     '06.20.04.61.20',
+    '2025-09-02',
     [
       new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Mardi', '17h30', '18h30')]),
 
@@ -199,6 +207,7 @@ export const CITIES: CityInfo[] = [
     '8 Rue de la République',
     87130,
     '06.69.44.23.55',
+    '2025-09-09',
     [
       new TrainingCategory('À partir de 6 ans (enfants, ados et adultes)', [
         new TrainingSchedule('Mardi', '18h30', '20h'),
@@ -216,6 +225,7 @@ export const CITIES: CityInfo[] = [
     '25 Av. Michel Sinibaldi',
     87130,
     '06.69.44.23.55',
+    '2025-09-11',
     [
       new TrainingCategory('À partir de 6 ans (enfants, ados et adultes)', [
         new TrainingSchedule('Jeudi', '18h30', '20h'),

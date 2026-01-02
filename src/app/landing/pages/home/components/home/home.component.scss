@@ -21,8 +21,8 @@ $heightImg: 26.125rem;
     }
 
     ul {
-      padding: 0 1.5rem;
-      height: $heightImg;
+      padding:1rem 1.5rem;
+      min-height: $heightImg;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -49,6 +49,8 @@ $heightImg: 26.125rem;
         }
 
         .day {
+           color: $black;
+           font-size: 1.25rem;
           font-weight: 600;
         }
       }

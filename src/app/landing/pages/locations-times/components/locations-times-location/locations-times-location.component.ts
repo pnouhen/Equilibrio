@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { CONDITIONSTRAINING } from '../../datas/ConditionsTraining.data';
-import { CITIES } from '../../datas/CitiesInfo.data';
+import { CITIES } from '../../../../../datas-Back-end/data/CitiesInfo.data';
 
 import { CityInfo } from '../../models/CityInfo.model';
 import { TrainingSchedule } from '../../models/TrainingSchedule.model';

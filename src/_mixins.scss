@@ -95,6 +95,12 @@
   background-color: $gray;
 }
 
+@mixin card {
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 1rem 0.25rem rgba(0, 0, 0, 0.5);
+}
+
 @mixin card-layout {
   @include usersEspace;
 
@@ -117,18 +123,16 @@
 
     li {
       a {
-        padding: 2rem;
         width: 11.5rem;
         min-height: 12.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1.25rem;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        box-shadow: 0 0.25rem 1rem 0.25rem rgba(0, 0, 0, 0.5);
         text-decoration: none;
         color: black;
         cursor: pointer;
+        @include card;
 
         img {
           width: 9.375rem;

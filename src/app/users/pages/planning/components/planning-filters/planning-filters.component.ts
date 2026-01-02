@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../../../services/user.service';
 import { SelectedCity } from '../../../../services/SelectedCity.service';
 import { SelectedSchedules } from '../../../../services/SelectedSchedules.service';
-import { CITIES } from '../../../../../landing/pages/locations-times/datas/CitiesInfo.data';
+import { CITIES } from '../../../../../datas-Back-end/data/CitiesInfo.data';
 import { InputSelectedComponent } from '../../../../../core/components/input-selected/input-selected.component';
 
 @Component({

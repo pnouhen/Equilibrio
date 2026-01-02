@@ -1,6 +1,7 @@
-import { TrainingResume } from '../../models/TrainingResume.model';
+import { CitiesService } from './../../../../../core/services/cities.service';
 import { Component, OnInit } from '@angular/core';
 import { HomeSlidesShowComponent } from '../home-slides-show/home-slides-show.component';
+import { TrainingResume } from '../../models/TrainingResume.model';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +12,27 @@ import { HomeSlidesShowComponent } from '../home-slides-show/home-slides-show.co
 export class HomeComponent implements OnInit {
   trainingResumes!: TrainingResume[];
 
+  constructor(public citiesService: CitiesService) {}
+
   ngOnInit(): void {
-    this.trainingResumes = [
-      new TrainingResume('Limoges', 'lundi 25 août 2025'),
-      new TrainingResume('Tulle', 'samedi 30 août 2025'),
-      new TrainingResume('Couzeix', 'lundi 01 sept. 2025'),
-      new TrainingResume('Brive', 'lundi 01 sept. 2025'),
-      new TrainingResume('Gueret', 'mardi 02 sept. 2025'),
-      new TrainingResume('Saint-Junien', 'mercredi 03 sept. 2025'),
-      new TrainingResume('La Souterraine', 'samedi 06 sept.2025'),
-      new TrainingResume('Panazol', 'samedi 13 sept.2025'),
-    ];
+    this.trainingResumes = this.citiesService.TrainingResumes().map((city)=> ({
+      place: city.place,
+      day: this.formattedDate(city.day)
+    }))
+  }
+
+  formattedDate(value: string): string {
+    const [year, month, day] = value.split('-');
+
+    const date = new Date(Number(year), Number(month) - 1, Number(day));
+
+    const formatted = new Intl.DateTimeFormat('fr-FR', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(date);
+
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1);
   }
 }

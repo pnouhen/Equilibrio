@@ -1,0 +1,59 @@
+@use '../../../../../../../../mixins' as *;
+
+section {
+  .return,
+  h2,
+  ul {
+    grid-column: 2/12;
+  }
+
+  ul {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    list-style: none;
+
+    @media (max-width:1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width:768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    li {
+      @include card;
+
+       @media (max-width:768px) {
+      width: 19.75rem;
+    }
+
+
+      h3 {
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      form {
+        div {
+          align-items: center;
+          input {
+            width: 9.25rem;
+            @include input;
+
+            &::-webkit-calendar-picker-indicator {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .messageFormSubmit {
+        text-align: center;
+      }
+    }
+  }
+}
