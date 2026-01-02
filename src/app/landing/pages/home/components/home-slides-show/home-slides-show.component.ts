@@ -22,10 +22,14 @@ export class HomeSlidesShowComponent implements OnInit, AfterViewInit, OnDestroy
   constructor(public homeSlides: HomeSlides) {}
 
   ngOnInit(): void {
-    const isPicturesSessionStorage = this.homeSlides.allPicturesLink.filter((link) => sessionStorage.getItem(link));
+    const isPicturesSessionStorage = this.homeSlides.allPicturesLink.filter((link) =>
+      sessionStorage.getItem(link)
+    );
 
     if (isPicturesSessionStorage.length !== 4) {
       this.homeSlides.initializePictures();
+      this.imageSlidesShow = this.homeSlides.imageSlideShow();
+      console.log(this.imageSlidesShow);
     }
 
     this.imageSlidesShow = this.homeSlides.imageSlideShow();

@@ -11,22 +11,22 @@ export class HomeSlides {
   imageSlideShow = signal<PicturesInitialModel[]>([
     new PicturesInitialModel(
       this.displayPicture('firstPicture').title,
-      new Image(this.displayPicture('firstPicture').src, this.displayPicture('firstPicture').alt),
+      new Image(this.displayPicture('firstPicture').src, this.displayPicture('firstPicture').alt)
     ),
 
     new PicturesInitialModel(
       this.displayPicture('secondPicture').title,
-      new Image(this.displayPicture('secondPicture').src, this.displayPicture('secondPicture').alt),
+      new Image(this.displayPicture('secondPicture').src, this.displayPicture('secondPicture').alt)
     ),
 
     new PicturesInitialModel(
       this.displayPicture('thirdPicture').title,
-      new Image(this.displayPicture('thirdPicture').src, this.displayPicture('thirdPicture').alt),
+      new Image(this.displayPicture('thirdPicture').src, this.displayPicture('thirdPicture').alt)
     ),
 
     new PicturesInitialModel(
       this.displayPicture('fourthPicture').title,
-      new Image(this.displayPicture('fourthPicture').src, this.displayPicture('fourthPicture').alt),
+      new Image(this.displayPicture('fourthPicture').src, this.displayPicture('fourthPicture').alt)
     ),
   ]);
 
@@ -53,7 +53,12 @@ export class HomeSlides {
       this.updatePicture(picture.img.src, picture.img.alt, picture.title);
     });
 
-   
+    this.imageSlideShow.set(
+      PicturesInitialData.map((picture) => ({
+        title: picture.title,
+        img: { src: picture.img.src, alt: picture.img.src },
+      }))
+    );
   }
 
   updatePicture(src: string, alt: string, title: string) {
