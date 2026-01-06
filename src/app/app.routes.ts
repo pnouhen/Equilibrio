@@ -20,8 +20,8 @@ export const routes: Routes = [
   },
 
   // Error404
-  // {
-  //   path: '**',
-  //   loadChildren: () => import('./core/error404/error404-module').then((m) => m.Error404Module),
-  // },
+  {
+    path: '**',
+    loadChildren: () => import('./core/error404/error404-module').then((m) => m.Error404Module),
+  },
 ];

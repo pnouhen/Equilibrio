@@ -3,6 +3,7 @@ import { MessageForm } from '../../../../../core/models/MessageForm.model';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
+import { UpdatePhoneNumbers } from '../../../../../core/services/allowOnlyNumbers.service';
 
 @Component({
   selector: 'app-prestations',
@@ -11,22 +12,23 @@ import { MessageFormComponent } from '../../../../../core/components/message-for
   styleUrl: './prestations.component.scss',
 })
 export class PrestationsComponent {
+  phoneNumber: string = "";
+  
   private formBuilder: FormBuilder = inject(FormBuilder);
+
+  constructor(public updatePhoneNumbers: UpdatePhoneNumbers) {}
 
   contactForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
     firstName: ['', [Validators.required]],
-    email: [
-      '',
-      [Validators.required, Validators.pattern(checkEmail)],
-    ],
+    email: ['', [Validators.required, Validators.pattern(checkEmail)]],
     phone: ['', [Validators.required]],
     subject: ['', [Validators.required]],
     message: ['', [Validators.required]],
   });
 
   isSubmitted: boolean = false;
-  isFormValid: boolean = false
+  isFormValid: boolean = false;
   formMessages: MessageForm[] = [
     new MessageForm('La demande a bien été envoyée', 'messageFormTrue'),
     new MessageForm("Au moins l'un des champs n'est pas rempli correctement", 'messageFormFalse'),
@@ -36,10 +38,10 @@ export class PrestationsComponent {
     this.isSubmitted = true;
 
     if (this.contactForm.valid) {
-      this.isFormValid = true
+      this.isFormValid = true;
       this.contactForm.reset();
     } else {
-      this.isFormValid = false
+      this.isFormValid = false;
     }
   }
 
@@ -48,10 +50,7 @@ export class PrestationsComponent {
     return !!(field && field.invalid && this.isSubmitted && !this.isFormValid);
   }
 
-  allowOnlyNumbers(event: KeyboardEvent) {
-    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', ' '];
-    if (!allowedKeys.includes(event.key)) {
-      event.preventDefault();
-    }
+  formatPhoneNumber(event: Event) {
+    this.phoneNumber = this.updatePhoneNumbers.formatPhoneNumber((event.target as HTMLInputElement).value);
   }
 }

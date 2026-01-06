@@ -1,4 +1,4 @@
-<a routerLink="/lieux-et-horaires"
+<a class="link" [routerLink]="routerLink()"
   ><img src="/assets/icons/arrow-left.svg" alt="Flèche de retour"
 /></a>
 
@@ -62,6 +62,9 @@
 
         <li>{{ info?.postalCode }} {{ info?.city }}</li>
 
+        <li>
+          <a [href]="'tel:' + numberPhoneLink(info?.numberPhone)">{{ info?.numberPhone }}</a>
+        </li>
         @if(info?.comment) {
         <li class="comment">* {{ info?.comment }}</li>
         }

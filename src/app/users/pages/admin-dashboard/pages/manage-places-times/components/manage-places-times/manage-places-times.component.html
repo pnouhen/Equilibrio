@@ -1,1 +1,33 @@
-<p>manage-places-times works!</p>
+<section>
+  <div class="return">
+    <app-return-admin-dashboard />
+  </div>
+
+  <h2>Gérer les lieux et horaires d'entraînement</h2>
+
+  <article class="locationCards">
+    <h3>Lieux et horaires existants</h3>
+
+    <ul>
+      @for(card of locationCards; track card.id){
+      <li>
+        <a routerLink="{{ card.id }}">
+          <img src="{{ card.src }}" alt="{{ card.alt }}" />
+        </a>
+
+        <button class="button-pencil">
+          <img src="/assets/icons/pencil.svg" alt="Icon pour modifier" />
+        </button>
+
+        <button class="button-trash" (click)="deleteLocationCard(card.id)">
+          <img src="/assets/icons/trash.svg" alt="Icon pour supprimer" />
+        </button>
+      </li>
+      }
+    </ul>
+  </article>
+
+  <article>
+    <app-manage-places-times-form />
+  </article>
+</section>

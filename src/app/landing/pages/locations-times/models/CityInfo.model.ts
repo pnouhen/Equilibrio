@@ -10,6 +10,7 @@ export class CityInfo {
     public adress: string,
     public postalCode: number,
     public numberPhone: string,
+    public img: string,
     public resume: string,
     public TrainingCategory: TrainingCategory[] = [],
   ) {}

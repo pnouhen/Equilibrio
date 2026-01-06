@@ -1,13 +1,14 @@
+import { CitiesService } from '../../services/cities.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
-import { CONDITIONSTRAINING } from '../../datas/ConditionsTraining.data';
-import { CITIES } from '../../../../../datas-Back-end/data/CitiesInfo.data';
+import { CONDITIONSTRAINING } from '../../../landing/pages/locations-times/datas/ConditionsTraining.data';
 
-import { CityInfo } from '../../models/CityInfo.model';
-import { TrainingSchedule } from '../../models/TrainingSchedule.model';
+import { CityInfo } from '../../../landing/pages/locations-times/models/CityInfo.model';
+import { TrainingSchedule } from '../../../landing/pages/locations-times/models/TrainingSchedule.model';
 
 import { LocationsTimesLocationMapComponent } from '../locations-times-location-map/locations-times-location-map.component';
+import { UsersModel } from '../../../datas-Back-end/models/Users.model';
 
 @Component({
   selector: 'app-locations-times-location',
@@ -19,14 +20,21 @@ export class LocationsTimesLocationComponent implements OnInit {
   id: string | null = null;
   info: CityInfo | undefined;
   categories!: { title: string; trainingSchedule: TrainingSchedule[]; conditions: string[] }[];
-  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  constructor(
+    private route: ActivatedRoute,
+    public citiesService: CitiesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // Retrieve ID
     this.id = this.route.snapshot.paramMap.get('city');
 
     // Retrieve city info
-    this.info = this.id ? CITIES.find((city) => city.id === this.id) : undefined;
+    this.info = this.id
+      ? this.citiesService.Cities().find((city) => city.id === this.id)
+      : undefined;
 
     if (!this.info) {
       this.router.navigate(['page-introuvable']);
@@ -76,12 +84,23 @@ export class LocationsTimesLocationComponent implements OnInit {
       ...category,
       conditions: category.conditions.map((conditionCategory, index) => {
         const found = CONDITIONSTRAINING.find(
-          (conditionTraining) => conditionTraining.condition === conditionCategory
+          (conditionTraining) => conditionTraining.id === conditionCategory
         );
         if (!found) return conditionCategory;
         return `${this.getStarCountByConditionIndex(index)} ${found.text}`;
       }),
     }));
+  }
+
+  // Admin view Cards after create or Update
+  routerLink(): string {
+    const rawUser = sessionStorage.getItem('user');
+    const user: UsersModel | null = rawUser ? JSON.parse(rawUser) : null;
+    if (rawUser && user?.type === 'admin') {
+      return '/espace-utilisateur/admin/tableau-de-bord/gestion-lieux-horaires';
+    } else {
+      return '/lieux-et-horaires';
+    }
   }
 
   getStarCountByConditionIndex(index: number): string {
@@ -95,5 +114,10 @@ export class LocationsTimesLocationComponent implements OnInit {
     if (categoriesLength === 4) return 'categories thridCategories';
 
     return 'categories';
+  }
+
+  numberPhoneLink(phone: string | undefined): string {
+    if (!phone) return '';
+    return phone.replace(/\D/g, '').replace(/^0/, '');
   }
 }

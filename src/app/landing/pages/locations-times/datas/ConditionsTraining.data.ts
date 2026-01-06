@@ -2,14 +2,14 @@ import { Condition } from "../models/Condition.model";
 
 export const CONDITIONSTRAINING: Condition[] = [
     new Condition(
-        'mixedTraining','Cours mixte, idéal pour une activité en famille !'
+        '0','Cours mixte, idéal pour une activité en famille !'
     ),
 
     new Condition(
-        'lightTraining','Capoeira light'
+        '1','Capoeira light'
     ),
 
     new Condition(
-        'twoTeachers','Cours séparés par âge, encadrés par deux enseignants'
+        '2','Cours séparés par âge, encadrés par deux enseignants'
     ),
 ]

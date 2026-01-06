@@ -10,6 +10,7 @@ section {
 }
 
 .description {
+  margin-top: 5.5rem;
   background: $gray;
 
   .video {
@@ -29,6 +30,7 @@ section {
 
 .grades {
   margin-top: $marginSection;
+  margin-bottom: 5.5rem;
 
   img {
     grid-column: 2/12;

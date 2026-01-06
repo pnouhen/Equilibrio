@@ -21,7 +21,7 @@
 
       <div class="selected" [class.active]="selectedConnexion.isSelectedDisplay">
         <app-input-selected
-          [dataSelected]="emailMembers"
+          [dataSelectedString]="emailMembers"
           (inputValueChange)="emailValue = $event"
           [selected]="selectedConnexion"
         />

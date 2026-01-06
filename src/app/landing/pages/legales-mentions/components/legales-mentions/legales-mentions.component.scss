@@ -2,6 +2,7 @@
 @use '../../../../../../variables' as *;
 
 section {
+  margin: 5.5rem 0;
  @include sectionGray;
 
   h2 {
@@ -10,10 +11,10 @@ section {
 
   article {
     grid-column: 3/12;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 
     @media (max-width: 768px) {
         grid-column: 2/12;

@@ -3,6 +3,11 @@
 
 $heightImg: 26.125rem;
 
+:host{
+  margin: 5.5rem 0;
+  display: block;
+}
+
 .container {
   margin-top: $marginSection;
   @include layout;

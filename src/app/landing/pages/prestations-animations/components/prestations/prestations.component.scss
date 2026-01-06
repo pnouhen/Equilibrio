@@ -24,6 +24,8 @@ section {
 }
 
 .training {
+  margin-top: 5.5rem;
+
   ul {
     margin: 1.125rem 0;
 
@@ -61,6 +63,8 @@ section {
 }
 
 .contact {
+  margin-bottom: 5.5rem;
+
   h2 {
     grid-column: 2/12;
   }
@@ -79,7 +83,6 @@ section {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 2.25rem;
-    @include widthFormAuthPage;
 
     @media (max-width: 768px) {
       display: flex;

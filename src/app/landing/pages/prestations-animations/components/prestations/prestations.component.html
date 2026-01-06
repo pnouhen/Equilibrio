@@ -103,12 +103,12 @@
     <div class="labelInput phone">
       <label for="phone">Téléphone</label>
       <input
-        type="tel"
+        type="text"
         id="phone"
         formControlName="phone"
-        phoneFormat
-        (keypress)="allowOnlyNumbers($event)"
-        [class.fieldError]="isFieldInvalid('phone')"
+        [value]="phoneNumber"
+        (keypress)="updatePhoneNumbers.allowOnlyNumbers($event)"
+        (input)="formatPhoneNumber($event)"
       />
     </div>
 
@@ -139,10 +139,10 @@
 
   <div class="messageFormSubmit">
     <app-message-form
-    [isSubmitted]="isSubmitted"
-    [isFormValid]="isFormValid"
-    [canSubmit]="formMessages[0]"
-    [cannotSubmit]="formMessages[1]"
-  />
+      [isSubmitted]="isSubmitted"
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
   </div>
 </section>
