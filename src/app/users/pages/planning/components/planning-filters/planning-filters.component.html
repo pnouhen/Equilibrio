@@ -22,7 +22,7 @@
         [class.active]="selectedCity.isSelectedDisplay"
       >
         <app-input-selected
-          [dataSelectedString]="cities"
+          [dataSelected]="cities"
           (inputValueChange)="inputCityChange($event)"
           [selected]="selectedCity"
           [onAction]="handleScheduleFilter"
@@ -52,7 +52,7 @@
         [class.active]="selectedSchedules.isSelectedDisplay"
       >
         <app-input-selected
-          [dataSelectedString]="schedules"
+          [dataSelected]="schedules"
           (inputValueChange)="inputScheduleChange($event)"
           [selected]="selectedSchedules"
         />

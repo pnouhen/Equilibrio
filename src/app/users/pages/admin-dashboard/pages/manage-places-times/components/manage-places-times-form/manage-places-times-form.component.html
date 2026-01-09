@@ -1,42 +1,42 @@
 <h3>Ajouter ou modifier un lieu et ses horaires</h3>
 
-<form>
-  <div class="general">
-    <h4>Informations générales</h4>
+<form [formGroup]="cityForm">
+  <fieldset class="general">
+    <legend>Informations générales</legend>
 
     <div class="nameRoom labelInput">
       <label for="nameRoom">Nom de la salle</label>
-      <input type="text" id="nameRoom" />
+      <input type="text" id="nameRoom" formControlName="nameRoom" />
     </div>
 
     <div class="comment labelInput">
       <label for="comment">Commentaire</label>
-      <input type="text" id="comment" />
+      <input type="text" id="comment" formControlName="comment" />
     </div>
 
     <div class="adress labelInput">
       <label for="adress">Adresse</label>
-      <input type="text" id="adress" />
+      <input type="text" id="adress" formControlName="adress" />
     </div>
 
     <div class="postalCode labelInput">
       <label for="postalCode">Code postal</label>
-      <input type="text" id="postalCode" />
+      <input type="text" id="postalCode" formControlName="postalCode" />
     </div>
 
     <div class="city labelInput">
       <label for="city">Ville</label>
-      <input type="text" id="city" />
+      <input type="text" id="city" formControlName="city" />
     </div>
 
     <div class="lat labelInput">
       <label for="lat">Latitude</label>
-      <input type="number" id="lat" />
+      <input type="number" id="lat" formControlName="lat" />
     </div>
 
     <div class="lng labelInput">
       <label for="lng">Longitude</label>
-      <input type="number" id="lng" />
+      <input type="number" id="lng" formControlName="lng" />
     </div>
 
     <div class="numberPhone labelInput">
@@ -47,169 +47,39 @@
         [value]="phoneNumber"
         (keypress)="updatePhoneNumbers.allowOnlyNumbers($event)"
         (input)="formatPhoneNumber($event)"
+        formControlName="numberPhone"
       />
     </div>
 
     <div class="img labelInput">
       <label for="img">Télécharge l'image</label>
 
-      <input type="file" id="img" />
+      <input
+        type="file"
+        id="img"
+        formControlName="img"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+        [class.active]="imgUpdate !== '' && !selectedFile"
+      />
+      @if(imgUpdate !== "" && !selectedFile){
+      <span [class.active]="imgUpdate !== ''">Image chargée</span>}
     </div>
-  </div>
+  </fieldset>
 
-  <div class="categories">
-    <h4>Categories</h4>
+  <app-manage-places-times-form-category
+    [(categories)]="categories"
+    [(categoriesDisplay)]="categoriesDisplay"
+  />
 
-    <div class="titleSchedule labelInput">
-      <label for="titleSchedule">Entraînement pour :</label>
-      <input class="titleSchedule" type="text" id="titleSchedule" />
-    </div>
-
-    <div class="training">
-      <p class="subTitle">Définir un horaire :</p>
-
-      <div class="schedule-form">
-        <div class="day labelInput">
-          <p class="label">Jour</p>
-
-          <button (click)="selectedDay.toggleSelected($event)">
-            <p>{{ day }}</p>
-            <img
-              src="/assets/icons/chevron-down.svg"
-              alt="Accèder aux Suggestions"
-              [class.active]="selectedDay.isSelectedDisplay"
-            />
-          </button>
-
-          <div class="selected" [class.active]="selectedDay.isSelectedDisplay">
-            <app-input-selected
-              [dataSelectedString]="days"
-              (inputValueChange)="day = $event"
-              [selected]="selectedDay"
-            />
-          </div>
-        </div>
-
-        <div class="startTime labelInput">
-          <label for="startTime">Début</label>
-          <input type="text" id="startTime" />
-        </div>
-
-        <div class="endTime labelInput">
-          <label for="endTime">Fin</label>
-          <input type="text" id="endTime" />
-        </div>
-
-        <div class="condition labelInput">
-          <label for="condition">Condition</label>
-
-          <input type="text" id="condition" [(ngModel)]="conditionSelect" name="condition" />
-
-          <button
-            (click)="selectedCondtion.toggleSelected($event)"
-            [class.active]="selectedCondtion.isSelectedDisplay"
-          >
-            <img
-              src="/assets/icons/chevron-down.svg"
-              alt="Accèder aux Suggestions"
-              [class.active]="selectedCondtion.isSelectedDisplay"
-            />
-          </button>
-          <div class="selected" [class.active]="selectedCondtion.isSelectedDisplay">
-            <app-input-selected
-              [dataSelectedConditions]="conditions"
-              (inputValueChange)="conditionSelect = $event"
-              [selected]="selectedCondtion"
-            />
-          </div>
-        </div>
-
-        <button class="buttonSubmit" type="submit">Enregister l'horaire</button>
-      </div>
-
-      <div class="training-create">
-        <div class="schedules-container">
-          <p class="info">Horaire créé(s) :</p>
-
-          <ul>
-            @for(trainingSchedule of trainingCategory[3].trainingSchedule; track $index) {
-            <li>
-              <div class="schedules">
-                <p class="day">{{ trainingSchedule.day }} :</p>
-
-                <p class="times">
-                  {{ trainingSchedule.startTime }} -
-                  {{ trainingSchedule.endTime }} @if(trainingSchedule.condition)
-                  {{{trainingSchedule.condition}}}
-                </p>
-
-                <button>
-                  <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
-                </button>
-              </div>
-            </li>
-            }
-          </ul>
-        </div>
-
-        <div class="conditions">
-          <p class="info">Condition(s) :</p>
-
-          <ul>
-            @for(trainingSchedule of trainingCategory[3].trainingSchedule; track $index) {
-            <li>
-              {{ trainingSchedule.day }}
-
-              <button>
-                <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
-              </button>
-            </li>
-            }
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <button class="submitTraining buttonSubmit" type="submit">Enregister l'entraînement</button>
-  </div>
-
-  <div class="categories-create">
-    <p class="text">Catégorie(s) créée(s) :</p>
-
-    <ul class="categories-create_container">
-      @for(category of trainingCategory; track $index) {
-      <li class="category">
-        <div class="container">
-          <button class="update">
-            <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" />
-          </button>
-
-          <button class="delete">
-            <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
-          </button>
-
-          <p class="title">{{ category.title }}</p>
-
-          <ul class="trainingSchedules">
-            @for(trainingSchedule of category?.trainingSchedule; track $index) {
-            <li>
-              <div class="schedules">
-                <p class="day">{{ trainingSchedule.day }} :</p>
-
-                <p class="times">
-                  {{ trainingSchedule.startTime }} -
-                  {{ trainingSchedule.endTime }} @if(trainingSchedule.condition)
-                  {{{trainingSchedule.condition}}}
-                </p>
-              </div>
-            </li>
-            }
-          </ul>
-        </div>
-      </li>
-      }
-    </ul>
-  </div>
-
-  <button class="submitForm buttonSubmit" type="submit">Enregister le lieux et ses horaires</button>
+  <button class="submitForm buttonSubmit" type="submit" (click)="onSubmitForm()">
+    Enregister le lieux et ses horaires
+  </button>
 </form>
+
+<app-message-form
+  [isSubmitted]="isSubmitted"
+  [isFormValid]="isFormValid"
+  [canSubmit]="formMessages[0]"
+  [cannotSubmit]="formMessages[1]"
+/>

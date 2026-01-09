@@ -1,10 +1,8 @@
-import { Condition } from './../../landing/pages/locations-times/models/Condition.model';
-import { LocationsCard } from './../../landing/pages/locations-times/models/LocationsCard.model';
+import { LocationsCard } from '../models/LocationsCard.model';
 import { TrainingResume } from './../../landing/pages/home/models/TrainingResume.model';
 import { Injectable, signal } from '@angular/core';
-import { CityInfo } from '../../landing/pages/locations-times/models/CityInfo.model';
+import { CityInfo } from '../models/CityInfo.model';
 import { CITIES } from '../../datas-Back-end/data/CitiesInfo.data';
-import { CONDITIONSTRAINING } from '../../landing/pages/locations-times/datas/ConditionsTraining.data';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +10,8 @@ import { CONDITIONSTRAINING } from '../../landing/pages/locations-times/datas/Co
 export class CitiesService {
   Cities = signal<CityInfo[]>(this.downloadCities());
   TrainingResumes = signal<TrainingResume[]>(this.displayTrainingResumes());
-  LocationsCards = signal<LocationsCard[]>(this.displayLocationCards())
-  Condition = signal<Condition[]>(this.downloadConditions())
+  LocationsCards = signal<LocationsCard[]>(this.displayLocationCards());
+  Condition = signal<string[]>(this.downloadConditions());
 
   downloadCities(): CityInfo[] {
     const citiesStorage = sessionStorage.getItem('cities');
@@ -41,14 +39,18 @@ export class CitiesService {
     }));
   }
 
-  downloadConditions(): Condition[] {
-    const citiesStorage = sessionStorage.getItem('cities_conditions');
-
-    if (citiesStorage) {
-      return JSON.parse(citiesStorage);
-    } else {
-      sessionStorage.setItem('cities_conditions', JSON.stringify(CONDITIONSTRAINING));
-      return CONDITIONSTRAINING;
-    }
+  downloadConditions(): string[] {
+    const conditions = [
+      ...new Set(
+        this.Cities()
+          .flatMap((city) =>
+            city.TrainingCategory.flatMap((cat) =>
+              cat.trainingSchedule.flatMap((sch) => sch.condition)
+            )
+          )
+          .filter((cond) => cond !== undefined)
+      ),
+    ];
+    return conditions;
   }
 }

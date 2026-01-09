@@ -1,0 +1,76 @@
+<fieldset>
+  <legend>Categories</legend>
+
+  <div class="labelInput">
+    <label for="titleCategory">Entraînement pour :</label>
+    <input
+      type="text"
+      id="titleCategory"
+      [(ngModel)]="titleCategory"
+      name="titleCategory"
+    />
+  </div>
+
+  <app-manage-places-times-form-schedule [(schedules)]="schedules" />
+
+  <button class="buttonSubmit" type="submit" (click)="createCategories()">
+    Enregister l'entraînement
+  </button>
+
+  @if(isSubmitted) {
+  <app-message-form
+    [isSubmitted]="isSubmitted"
+    [isFormValid]="isFormValid"
+    [canSubmit]="formMessage[0]"
+    [cannotSubmit]="formMessage[1]"
+  />
+  }
+</fieldset>
+
+<div class="categories-create">
+  <p class="title-create">Catégorie(s) créée(s) :</p>
+
+  @if(categoriesDisplay.length > 0){
+  <ul class="categories-create_container">
+    @for(category of categoriesDisplay; track $index) {
+    <li class="category">
+      <div class="container">
+        <button class="update" (click)="updateCategories(category)">
+          <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" />
+        </button>
+
+        <button class="delete" (click)="deleteCategories(category.id)">
+          <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
+        </button>
+
+        <p class="title">{{ category.title }}</p>
+
+        <ul class="trainingSchedules">
+          @for(trainingSchedule of category?.trainingSchedule; track $index) {
+          <li>
+            <div class="schedules">
+              <p class="day">{{ trainingSchedule.day }} :</p>
+
+              <p class="times">
+                {{ trainingSchedule.startTime }} -
+                {{ trainingSchedule.endTime }} @if(trainingSchedule.condition)
+                {{{trainingSchedule.condition}}}
+              </p>
+            </div>
+          </li>
+          }
+        </ul>
+      </div>
+
+      @if(category.conditions.length > 0) {
+      <ul class="conditions">
+        @for(condition of category.conditions; track condition) {
+        <li>{{ condition }}</li>
+        }
+      </ul>
+      }
+    </li>
+    }
+  </ul>
+  }
+</div>

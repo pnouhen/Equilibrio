@@ -1,6 +1,6 @@
-import { CityInfo } from '../../landing/pages/locations-times/models/CityInfo.model';
-import { TrainingCategory } from '../../landing/pages/locations-times/models/TrainingCategory.model';
-import { TrainingSchedule } from '../../landing/pages/locations-times/models/TrainingSchedule.model';
+import { CityInfo } from '../../core/models/CityInfo.model';
+import { TrainingCategory } from '../../core/models/TrainingCategory.model';
+import { TrainingSchedule } from '../../core/models/TrainingSchedule.model';
 
 export const CITIES: CityInfo[] = [
   // LIMOGES
@@ -13,35 +13,50 @@ export const CITIES: CityInfo[] = [
     '13, rue du Crucifix',
     87100,
     '06.20.04.61.20',
-    "/assets/data-Back-end/places/limoges.webp",
+    '/assets/data-Back-end/places/limoges.webp',
     '2025-08-25',
     [
-      new TrainingCategory('Baby 3/6 ans', [
+      new TrainingCategory('0', 'Baby 3/6 ans', [
         new TrainingSchedule('Mercredi', '11h', '12h'),
         new TrainingSchedule('Mercredi', '15h', '16h'),
         new TrainingSchedule('Samedi', '10h', '11h'),
         new TrainingSchedule('Samedi', '15h', '16h'),
       ]),
 
-      new TrainingCategory('Enfants 7/10 ans', [
+      new TrainingCategory('1', 'Enfants 7/10 ans', [
         new TrainingSchedule('Mardi', '18h', '19h15'),
         new TrainingSchedule('Mercredi', '16h', '17h15'),
-        new TrainingSchedule('Samedi', '11h', '12h30', '0'),
+        new TrainingSchedule(
+          'Samedi',
+          '11h',
+          '12h30',
+          'Cours mixte, idéal pour une activité en famille !'
+        ),
         new TrainingSchedule('Samedi', '16h', '17h15'),
       ]),
 
-      new TrainingCategory('Ados 11/14 ans', [
+      new TrainingCategory('2', 'Ados 11/14 ans', [
         new TrainingSchedule('Mercredi', '17h30', '19h'),
         new TrainingSchedule('Vendredi', '18h', '19h30'),
-        new TrainingSchedule('Samedi', '11h', '12h30', '0'),
+        new TrainingSchedule(
+          'Samedi',
+          '11h',
+          '12h30',
+          'Cours mixte, idéal pour une activité en famille !'
+        ),
       ]),
 
-      new TrainingCategory('À partir de 15 ans (ados et adultes)', [
+      new TrainingCategory('3', 'À partir de 15 ans (ados et adultes)', [
         new TrainingSchedule('Lundi', '19h30', '21h'),
         new TrainingSchedule('Mercredi', '19h30', '21h'),
-        new TrainingSchedule('Jeudi', '20h15', '21h30', '1'),
+        new TrainingSchedule('Jeudi', '20h15', '21h30', 'Capoeira light'),
         new TrainingSchedule('Vendredi', '19h30', '21h'),
-        new TrainingSchedule('Samedi', '11h', '12h30', '0'),
+        new TrainingSchedule(
+          'Samedi',
+          '11h',
+          '12h30',
+          'Cours mixte, idéal pour une activité en famille !'
+        ),
       ]),
     ]
   ),
@@ -56,19 +71,19 @@ export const CITIES: CityInfo[] = [
     'allée Maurice Genevoix',
     87270,
     '06.20.04.61.20',
-        '/assets/data-Back-end/places/couzeix.webp',
+    '/assets/data-Back-end/places/couzeix.webp',
     '2025-09-01',
     [
-      new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Lundi', '17h30', '18h30')]),
+      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Lundi', '17h30', '18h30')]),
 
-      new TrainingCategory('Enfants 7/10 ans', [
+      new TrainingCategory('1', 'Enfants 7/10 ans', [
         new TrainingSchedule('Lundi', '18h30', '19h30'),
         new TrainingSchedule('Jeudi', '17h30', '18h30'),
       ]),
 
-      new TrainingCategory('Ados', [new TrainingSchedule('Jeudi', '18h30', '19h45')]),
+      new TrainingCategory('2', 'Ados', [new TrainingSchedule('Jeudi', '18h30', '19h45')]),
 
-      new TrainingCategory('Adulte', [new TrainingSchedule('Lundi', '19h30', '20h45')]),
+      new TrainingCategory('3', 'Adulte', [new TrainingSchedule('Lundi', '19h30', '20h45')]),
     ]
   ),
 
@@ -82,12 +97,14 @@ export const CITIES: CityInfo[] = [
     'rue Jean Macé',
     87350,
     '06.20.04.61.20',
-            '/assets/data-Back-end/places/panazol.webp',
+    '/assets/data-Back-end/places/panazol.webp',
     '2025-09-13',
     [
-      new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
+      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
 
-      new TrainingCategory('Enfants Ados Adulte', [new TrainingSchedule('Samedi', '16h', '17h30')]),
+      new TrainingCategory('1', 'Enfants Ados Adulte', [
+        new TrainingSchedule('Samedi', '16h', '17h30'),
+      ]),
     ]
   ),
 
@@ -101,15 +118,19 @@ export const CITIES: CityInfo[] = [
     '31 rue Zamenhof',
     87200,
     '06.20.04.61.20',
-        '/assets/data-Back-end/places/st-junien.webp',
+    '/assets/data-Back-end/places/st-junien.webp',
 
     '2025-09-03',
     [
-      new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Mercredi', '14h30', '15h30')]),
+      new TrainingCategory('0', 'Baby 3/6 ans', [
+        new TrainingSchedule('Mercredi', '14h30', '15h30'),
+      ]),
 
-      new TrainingCategory('Enfants 7/10 ans', [new TrainingSchedule('Mercredi', '15h30', '17h')]),
+      new TrainingCategory('1', 'Enfants 7/10 ans', [
+        new TrainingSchedule('Mercredi', '15h30', '17h'),
+      ]),
 
-      new TrainingCategory('Ados Adulte', [new TrainingSchedule('Jeudi', '18h', '19h15')]),
+      new TrainingCategory('2', 'Ados Adulte', [new TrainingSchedule('Jeudi', '18h', '19h15')]),
     ]
   ),
 
@@ -123,23 +144,38 @@ export const CITIES: CityInfo[] = [
     '24 Bd Brune',
     19100,
     '06.20.04.61.20',
-        '/assets/data-Back-end/places/brive.webp',
+    '/assets/data-Back-end/places/brive.webp',
 
     '2025-09-01',
     [
-      new TrainingCategory('Baby 3/6 ans', [
-        new TrainingSchedule('Lundi', '18h', '19h', '2'),
+      new TrainingCategory('0', 'Baby 3/6 ans', [
+        new TrainingSchedule(
+          'Lundi',
+          '18h',
+          '19h',
+          'Cours séparés par âge, encadrés par deux enseignants'
+        ),
         new TrainingSchedule('Samedi', '10h', '11h'),
       ]),
 
-      new TrainingCategory('Enfants 7/10 ans', [
-        new TrainingSchedule('Lundi', '18h', '19h', '2'),
+      new TrainingCategory('1', 'Enfants 7/10 ans', [
+        new TrainingSchedule(
+          'Lundi',
+          '18h',
+          '19h',
+          'Cours séparés par âge, encadrés par deux enseignants'
+        ),
         new TrainingSchedule('Samedi', '11h', '12h30'),
       ]),
 
-      new TrainingCategory('Ados Adulte', [
+      new TrainingCategory('2', 'Ados Adulte', [
         new TrainingSchedule('Lundi', '19h30', '21h'),
-        new TrainingSchedule('Samedi', '11h', '12h30', '2'),
+        new TrainingSchedule(
+          'Samedi',
+          '11h',
+          '12h30',
+          'Cours séparés par âge, encadrés par deux enseignants'
+        ),
       ]),
     ]
   ),
@@ -153,15 +189,21 @@ export const CITIES: CityInfo[] = [
     [45.251515856736226, 1.7636473610962877],
     '5 Rue de la Montane',
     19000,
-    '06.20.04.61.20',        '/assets/data-Back-end/places/tulle.webp',
+    '06.20.04.61.20',
+    '/assets/data-Back-end/places/tulle.webp',
 
     '2025-08-30',
 
     [
-      new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '10h', '11h')]),
+      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Samedi', '10h', '11h')]),
 
-      new TrainingCategory('Enfants Ados Adulte', [
-        new TrainingSchedule('Samedi', '11h', '12h30', '2'),
+      new TrainingCategory('1', 'Enfants Ados Adulte', [
+        new TrainingSchedule(
+          'Samedi',
+          '11h',
+          '12h30',
+          'Cours séparés par âge, encadrés par deux enseignants'
+        ),
       ]),
     ]
   ),
@@ -175,14 +217,17 @@ export const CITIES: CityInfo[] = [
     [46.238779, 1.482978],
     "1 Rue de l'Hermitage",
     23300,
-    '06.20.04.61.20',        '/assets/data-Back-end/places/la-souterraine.webp',
+    '06.20.04.61.20',
+    '/assets/data-Back-end/places/la-souterraine.webp',
 
     '2025-09-06',
 
     [
-      new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
+      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
 
-      new TrainingCategory('Enfants Ados Adulte', [new TrainingSchedule('Samedi', '16h', '17h30')]),
+      new TrainingCategory('1', 'Enfants Ados Adulte', [
+        new TrainingSchedule('Samedi', '16h', '17h30'),
+      ]),
     ]
   ),
 
@@ -196,15 +241,17 @@ export const CITIES: CityInfo[] = [
     '2 Rue Jean Bussière',
     23000,
     '06.20.04.61.20',
-        '/assets/data-Back-end/places/gueret.webp',
+    '/assets/data-Back-end/places/gueret.webp',
 
     '2025-09-02',
     [
-      new TrainingCategory('Baby 3/6 ans', [new TrainingSchedule('Mardi', '17h30', '18h30')]),
+      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Mardi', '17h30', '18h30')]),
 
-      new TrainingCategory('Enfants 7/11 ans', [new TrainingSchedule('Mardi', '18h30', '19h30')]),
+      new TrainingCategory('1', 'Enfants 7/11 ans', [
+        new TrainingSchedule('Mardi', '18h30', '19h30'),
+      ]),
 
-      new TrainingCategory('À partir de 15 ans (ados et adultes)', [
+      new TrainingCategory('2', 'À partir de 15 ans (ados et adultes)', [
         new TrainingSchedule('Mardi', '19h30', '21h'),
       ]),
     ]
@@ -219,11 +266,12 @@ export const CITIES: CityInfo[] = [
     [45.723080040043534, 1.6135583524273933],
     '8 Rue de la République',
     87130,
-    '06.69.44.23.55',    '/assets/data-Back-end/places/neuvic-entier.webp',
+    '06.69.44.23.55',
+    '/assets/data-Back-end/places/neuvic-entier.webp',
 
     '2025-09-09',
     [
-      new TrainingCategory('À partir de 6 ans (enfants, ados et adultes)', [
+      new TrainingCategory('0', 'À partir de 6 ans (enfants, ados et adultes)', [
         new TrainingSchedule('Mardi', '18h30', '20h'),
       ]),
     ]
@@ -239,10 +287,10 @@ export const CITIES: CityInfo[] = [
     '25 Av. Michel Sinibaldi',
     87130,
     '06.69.44.23.55',
-        '/assets/data-Back-end/places/chateauneuf-la-foret.webp',
+    '/assets/data-Back-end/places/chateauneuf-la-foret.webp',
     '2025-09-11',
     [
-      new TrainingCategory('À partir de 6 ans (enfants, ados et adultes)', [
+      new TrainingCategory('0', 'À partir de 6 ans (enfants, ados et adultes)', [
         new TrainingSchedule('Jeudi', '18h30', '20h'),
       ]),
     ]

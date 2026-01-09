@@ -14,24 +14,21 @@
         <div class="labelInput">
           <label for="{{ training.place }}">Reprise le : </label>
 
-          <input
-            type="date"
-            id="{{ training.place }}"
-            name="date"
-            [(ngModel)]="training.day"
-          />
+          <input type="date" id="{{ training.place }}" name="date" [(ngModel)]="training.day" />
         </div>
         <button class="buttonSubmit" type="submit">Mettre à jour</button>
       </form>
 
+      @if(isSubmittedArray[$index]){
       <div class="messageFormSubmit">
-      <app-message-form
-        [isSubmitted]="isSubmittedArray[$index]"
-        [isFormValid]="isFormValidArray[$index]"
-        [canSubmit]="formMessages[0]"
-        [cannotSubmit]="formMessages[1]"
-      />
-    </div>
+        <app-message-form
+          [isSubmitted]="isSubmittedArray[$index]"
+          [isFormValid]="isFormValidArray[$index]"
+          [canSubmit]="formMessages[0]"
+          [cannotSubmit]="formMessages[1]"
+        />
+      </div>
+      }
     </li>
     }
   </ul>

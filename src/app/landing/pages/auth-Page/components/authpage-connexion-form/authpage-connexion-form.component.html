@@ -21,7 +21,7 @@
 
       <div class="selected" [class.active]="selectedConnexion.isSelectedDisplay">
         <app-input-selected
-          [dataSelectedString]="emailMembers"
+          [dataSelected]="emailMembers"
           (inputValueChange)="emailValue = $event"
           [selected]="selectedConnexion"
         />
@@ -37,6 +37,7 @@
     <button class="buttonSubmit" type="submit">Envoyer</button>
   </form>
 
+  @if(isSubmitted){
   <div class="messageFormSubmit">
     <app-message-form
       [isSubmitted]="isSubmitted"
@@ -45,4 +46,5 @@
       [cannotSubmit]="formMessages[1]"
     />
   </div>
+  }
 </div>

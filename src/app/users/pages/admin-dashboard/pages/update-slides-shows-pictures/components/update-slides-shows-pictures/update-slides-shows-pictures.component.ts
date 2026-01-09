@@ -1,3 +1,4 @@
+import { ImagesService } from './../../../../../../../core/services/Images.service';
 import { MessageFormService } from './../../../../../../../core/services/messageForm.service';
 import { Component, OnInit } from '@angular/core';
 import { HomeSlides } from '../../../../../../../core/services/homeSlides.service';
@@ -25,7 +26,11 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
     new MessageForm('Au moins un des champs est incorrect', 'messageFormFalse'),
   ];
 
-  constructor(public homeSlides: HomeSlides, public messageFormService: MessageFormService) {}
+  constructor(
+    public homeSlides: HomeSlides,
+    public imagesService: ImagesService,
+    public messageFormService: MessageFormService
+  ) {}
 
   ngOnInit(): void {
     const isPicturesSessionStorage = this.homeSlides.allPicturesLink.filter((link) =>
@@ -69,14 +74,21 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  onSubmit(form: NgForm, index: number, title: string) {
+  onSubmit(form: NgForm, index: number) {
     const file = this.selectedFiles[index]; // Retrieve the stored file
     const description = form.value.description;
 
     this.isSubmittedArray[index] = true;
     if (file && description) {
-      this.homeSlides.convertAndSaveImage(file, description, title);
+      this.imagesService.convertAndSaveImage(file).then((img) => {
+        const image = {
+          title: this.imageSlidesShow[index].title,
+          src: img,
+          alt: description,
+        };
 
+        sessionStorage.setItem(image.title, JSON.stringify(image));
+      });
       this.isFormValidArray[index] = true;
     } else {
       this.isFormValidArray[index] = false;

@@ -1,5 +1,5 @@
 <ul>
-  @if(dataSelectedString){ @for(value of dataSelectedString; track $index) {
+  @for(value of dataSelected; track $index) {
   <li
     (click)="onSelected(value)"
     [tabindex]="selected.isSelectedDisplay ? 0 : -1"
@@ -7,20 +7,5 @@
   >
     {{ value }}
   </li>
-  }} @if(dataSelectedConditions){ @for(value of dataSelectedConditions; track value.id) {
-  <li>
-    <p
-      (click)="onSelected(value.text)"
-      [tabindex]="selected.isSelectedDisplay ? 0 : -1"
-      (keydown)="onKeydownSelected($event, value.text)"
-    >
-      {{ value.text }}
-    </p>
-
-    <button class="button-trash">
-      <img src="/assets/icons/trash.svg" alt="Icon pour supprimer" />
-    </button>
-  </li>
-
-  }}
+  }
 </ul>

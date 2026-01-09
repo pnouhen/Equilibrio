@@ -1,3 +1,4 @@
+import { ImagesService } from './Images.service';
 import { PicturesInitialData } from './../../landing/pages/home/data/PicturesInitial.data';
 import { Injectable, signal } from '@angular/core';
 import { Image } from '../models/Image.model';
@@ -30,6 +31,8 @@ export class HomeSlides {
     ),
   ]);
 
+  constructor(public imagesService: ImagesService) {}
+
   displayPicture(title: string) {
     const storedPicture = sessionStorage.getItem(title);
     if (storedPicture) {
@@ -50,7 +53,15 @@ export class HomeSlides {
 
   initializePictures() {
     PicturesInitialData.forEach((picture) => {
-      this.updatePicture(picture.img.src, picture.img.alt, picture.title);
+      this.imagesService.updatePicture(picture.img.src).then((value) => {
+        const image = {
+          title: picture.title,
+          src: value,
+          alt: picture.img.alt,
+        };
+
+        sessionStorage.setItem(image.title, JSON.stringify(image));
+      });
     });
 
     this.imageSlideShow.set(
@@ -59,44 +70,5 @@ export class HomeSlides {
         img: { src: picture.img.src, alt: picture.img.src },
       }))
     );
-  }
-
-  updatePicture(src: string, alt: string, title: string) {
-    fetch(src)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Erreur de chargement de l’image');
-        }
-        return response.blob();
-      })
-      .then((blob) => {
-        this.convertAndSaveImage(blob, alt, title);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  convertAndSaveImage(data: File | Blob, alt: string, title: string) {
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const result = reader.result;
-      const picture = {
-        title: title,
-        src: result,
-        alt: alt,
-      };
-
-      if (typeof picture.src === 'string') {
-        sessionStorage.setItem(title, JSON.stringify(picture));
-      }
-    };
-
-    reader.onerror = (error) => {
-      console.error('Erreur de lecture du fichier:', error);
-    };
-
-    reader.readAsDataURL(data);
   }
 }

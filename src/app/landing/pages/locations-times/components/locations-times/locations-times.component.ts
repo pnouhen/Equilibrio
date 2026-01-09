@@ -1,6 +1,6 @@
 import { CitiesService } from './../../../../../core/services/cities.service';
 import { RouterLink } from '@angular/router';
-import { LocationsCard } from '../../models/LocationsCard.model';
+import { LocationsCard } from '../../../../../core/models/LocationsCard.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

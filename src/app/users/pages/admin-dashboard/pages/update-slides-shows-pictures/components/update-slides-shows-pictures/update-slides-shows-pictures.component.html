@@ -9,7 +9,7 @@
   <article [class.odd]="($index + 1)! % 2" [class.even]="$index % 2">
     <h3>Photo {{ $index + 1 }} {{ image.title }}</h3>
 
-    <form #submit="ngForm" (ngSubmit)="onSubmit(submit, $index, image.title)">
+    <form #submit="ngForm" (ngSubmit)="onSubmit(submit, $index)">
       <div class="picture">
         <img id="img-{{ $index }}" src="{{ image.img.src }}" alt="{{ image.img.alt }}" />
 
@@ -33,6 +33,7 @@
       <button class="buttonSubmit" type="submit">Mettre à jour</button>
     </form>
 
+    @if(isSubmittedArray[$index]){
     <div class="messageFormSubmit">
       <app-message-form
         [isSubmitted]="isSubmittedArray[$index]"
@@ -41,6 +42,7 @@
         [cannotSubmit]="formMessages[1]"
       />
     </div>
+    }
   </article>
 
   }

@@ -15,7 +15,7 @@
           <img src="{{ card.src }}" alt="{{ card.alt }}" />
         </a>
 
-        <button class="button-pencil">
+        <button class="button-pencil" (click)="updateLocationCard(card.id)">
           <img src="/assets/icons/pencil.svg" alt="Icon pour modifier" />
         </button>
 
@@ -28,6 +28,10 @@
   </article>
 
   <article>
-    <app-manage-places-times-form />
+    <app-manage-places-times-form
+      [(locationCards)]="locationCards"
+      [(cityUpdate)]="cityUpdate"
+      [(selectedFile)]="selectedFile"
+    ></app-manage-places-times-form>
   </article>
 </section>

@@ -137,6 +137,7 @@
     <button class="buttonSubmit" (click)="onSubmitForm()">Envoyer</button>
   </form>
 
+  @if(isSubmitted){
   <div class="messageFormSubmit">
     <app-message-form
       [isSubmitted]="isSubmitted"
@@ -145,4 +146,5 @@
       [cannotSubmit]="formMessages[1]"
     />
   </div>
+  }
 </section>

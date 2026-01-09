@@ -120,14 +120,12 @@
 
 @mixin locationsCategories {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.25rem;
 
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-  }
   .category {
     padding: 1.5rem;
-    width: 17.76rem;
+    width: 18rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -300,4 +298,19 @@
       opacity: 1;
     }
   }
+}
+
+@mixin managePlaceTimesFormInput {
+  input {
+    margin-bottom: 1.25rem;
+    height: 1.75rem;
+    @include input;
+  }
+}
+
+@mixin managePlaceTimesFormTitleCreate {
+  margin-left: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  text-decoration: underline;
 }
