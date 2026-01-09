@@ -15,38 +15,78 @@ form {
     h4,
     .nameRoom {
       grid-column: 1/6;
+
+      @media (max-width: 768px) {
+        grid-column: 1/12;
+      }
     }
 
     .comment {
       grid-column: 6/12;
+
+      @media (max-width: 768px) {
+        grid-column: 1/12;
+      }
     }
 
     .adress {
       grid-column: 1/5;
+
+      @media (max-width: 768px) {
+        grid-column: 1/12;
+      }
     }
 
     .postalCode {
       grid-column: 5/7;
+
+      @media (max-width: 768px) {
+        grid-column: 1/6;
+      }
     }
 
     .city {
       grid-column: 7/12;
+
+      @media (max-width: 768px) {
+        grid-column: 1/12;
+      }
     }
 
     .lat {
       grid-column: 1/3;
+
+      @media (max-width: 768px) {
+        grid-column: 1/6;
+      }
     }
     .lng {
       grid-column: 3/5;
+
+      @media (max-width: 768px) {
+        grid-column: 6/12;
+      }
     }
 
     .numberPhone {
       grid-column: 5/8;
+
+      @media (max-width: 1024px) {
+        grid-column: 5/9;
+      }
+
+      @media (max-width: 768px) {
+        grid-column: 1/12;
+      }
     }
 
     .img {
       grid-column: 8/12;
       position: relative;
+
+      @media (max-width: 1024px) {
+        grid-column: 1/12;
+      }
 
       #img {
         &.active {
@@ -62,4 +102,9 @@ form {
       }
     }
   }
+}
+
+.resetForm {
+  margin-top: 1.25rem;
+  width: 100%;
 }

@@ -170,6 +170,10 @@
       @include schedules;
     }
   }
+
+  .conditions {
+    grid-column: 1/12;
+  }
 }
 
 @mixin schedules {

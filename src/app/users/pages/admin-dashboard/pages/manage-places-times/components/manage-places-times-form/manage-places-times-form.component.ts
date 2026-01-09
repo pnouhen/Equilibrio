@@ -191,6 +191,10 @@ export class ManagePlacesTimesFormComponent implements OnChanges {
     sessionStorage.setItem('cities', JSON.stringify(newCities));
 
     // Reset all items
+    this.resetForm();
+  }
+
+  resetForm() {
     this.cityForm.reset();
     this.categories = [];
     this.categoriesDisplay = [];

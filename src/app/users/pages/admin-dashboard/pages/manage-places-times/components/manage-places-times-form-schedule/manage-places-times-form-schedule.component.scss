@@ -26,6 +26,14 @@ fieldset {
     .day {
       grid-column: 1/4;
 
+      @media (max-width: 1024px) {
+        grid-column: 1/6;
+      }
+
+      @media (max-width: 768px) {
+        grid-column: 1/11;
+      }      
+
       button {
         height: 3.07rem;
         display: flex;
@@ -52,16 +60,39 @@ fieldset {
     .startTime {
       grid-column: 4/5;
       width: 5.71rem;
+
+      @media (max-width: 1024px) {
+        grid-column: 6/7;
+      }
+
+      @media (max-width: 768px) {
+        grid-column: 1/6;
+        width: 100%;
+      }
     }
 
     .endTime {
       grid-column: 5/6;
       width: 5.71rem;
+
+      @media (max-width: 1024px) {
+        grid-column: 7/8;
+      }
+
+      @media (max-width: 768px) {
+        grid-column: 6/11;
+        width: 100%;
+      }
+    }
     }
 
     .condition {
       grid-column: 6/11;
       @include selected;
+
+      @media (max-width: 1024px) {
+        grid-column: 1/11;
+      }
 
       input {
         padding-right: 3rem;
@@ -87,7 +118,6 @@ fieldset {
       grid-column: 1/11;
     }
   }
-}
 
 .training-create {
   margin: 1.25rem 0 2.5rem 0;
