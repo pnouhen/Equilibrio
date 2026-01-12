@@ -1,17 +1,21 @@
 <section>
   <h2>Espace professeur</h2>
 
-  <div class="container">
-    <a [routerLink]="UsersRouting.navigatePlanning(user.email)">
-      <img src="/assets/icons/calendar.svg" alt="Icon d'un calendrier" />
+  <ul class="container">
+    <li>
+      <a [routerLink]="UsersRouting.navigatePlanning(user.email)">
+        <img src="/assets/icons/calendar.svg" alt="Icon d'un calendrier" />
 
-      <p>Planning</p>
-    </a>
+        <p>Planning</p>
+      </a>
+    </li>
 
-    <a [routerLink]="UsersRouting.navigateEspaceMember(user.email)">
-      <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
+    <li>
+      <a [routerLink]="UsersRouting.navigateEspaceMember(user.email)">
+        <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
 
-      <p>Espace adhérents</p>
-    </a>
-  </div>
+        <p>Espace adhérents</p>
+      </a>
+    </li>
+  </ul>
 </section>

@@ -1,0 +1,85 @@
+@use '../../../../../../../../mixins' as *;
+
+fieldset {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  .cities {
+    grid-column: 1/2;
+
+    button {
+      @include input;
+
+      @include buttonInactive;
+    }
+    @include selected;
+
+    button {
+      @include buttonSelected;
+      @include input;
+    }
+
+    .selected {
+      top: 5.25rem;
+      left: 0;
+      &.active {
+        top: 5.8125rem;
+      }
+    }
+  }
+
+  .messageActiveButtonCity {
+    grid-column: 2/4;
+    margin-left: 1.25rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: end;
+    color: black;
+    font-weight: bold;
+  }
+
+  .multipleChoice {
+    grid-column: 1/4;
+    margin-top: 1.25rem;
+
+    ul {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      list-style: none;
+
+      li {
+        label {
+          @include multipleChoice;
+        }
+      }
+    }
+  }
+
+  .buttonSubmit {
+    grid-column: 1/4;
+    margin-top: 2.5rem;
+  }
+
+  .messageForm {
+    grid-column: 1/4;
+  }
+}
+
+.trainingSchedule-create {
+    margin: 1.25rem 0;
+
+    .title-create {
+      @include managePlaceTimesFormTitleCreate;
+    }
+
+    .cards-create {
+      margin-left: 1.25rem;
+
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }

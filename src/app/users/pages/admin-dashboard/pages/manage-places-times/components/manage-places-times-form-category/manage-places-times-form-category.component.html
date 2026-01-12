@@ -3,12 +3,23 @@
 
   <div class="labelInput">
     <label for="titleCategory">Entraînement pour :</label>
-    <input
-      type="text"
-      id="titleCategory"
-      [(ngModel)]="titleCategory"
-      name="titleCategory"
-    />
+    <input type="text" id="titleCategory" [(ngModel)]="titleCategory" name="titleCategory" />
+  </div>
+
+  <div class="categories-schedule">
+    <p class="label">Cliquer sur le ou les concerné(s) :</p>
+
+    <ul>
+      @for (category of categoriesSchedule; track $index) {
+      <li>
+        <label [class.active]="category.add">
+          <input type="checkbox" [(ngModel)]="category.add" id="{{ category.id }}" />
+          {{ category.value }}
+        </label>
+      </li>
+
+      }
+    </ul>
   </div>
 
   <app-manage-places-times-form-schedule [(schedules)]="schedules" />
@@ -30,47 +41,17 @@
 <div class="categories-create">
   <p class="title-create">Catégorie(s) créée(s) :</p>
 
-  @if(categoriesDisplay.length > 0){
-  <ul class="categories-create_container">
-    @for(category of categoriesDisplay; track $index) {
-    <li class="category">
-      <div class="container">
-        <button class="update" (click)="updateCategories(category)">
-          <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" />
-        </button>
+  @if(categoriesDisplay.length > 0) {
+  <div class="cards-create">
+    <app-training-card
+      [cards]="categoriesDisplay"
+      [isUpdate]="true"
+      [onUpdateCategory]="updateCategories"
+      [isDelete]="true"
+      [onDeleteCategory]="deleteCategories"
+      [isCategories]="true"
+    />
+  </div>
 
-        <button class="delete" (click)="deleteCategories(category.id)">
-          <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
-        </button>
-
-        <p class="title">{{ category.title }}</p>
-
-        <ul class="trainingSchedules">
-          @for(trainingSchedule of category?.trainingSchedule; track $index) {
-          <li>
-            <div class="schedules">
-              <p class="day">{{ trainingSchedule.day }} :</p>
-
-              <p class="times">
-                {{ trainingSchedule.startTime }} -
-                {{ trainingSchedule.endTime }} @if(trainingSchedule.condition)
-                {{{trainingSchedule.condition}}}
-              </p>
-            </div>
-          </li>
-          }
-        </ul>
-      </div>
-
-      @if(category.conditions.length > 0) {
-      <ul class="conditions">
-        @for(condition of category.conditions; track condition) {
-        <li>{{ condition }}</li>
-        }
-      </ul>
-      }
-    </li>
-    }
-  </ul>
   }
 </div>

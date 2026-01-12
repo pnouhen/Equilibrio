@@ -1,0 +1,127 @@
+@use '../manage-users-users/manage-users-users.component.scss' as *;
+@use "../../../../../../../../mixins" as *;
+@use "../../../../../../../../variables" as *;
+
+.slideShow {
+  .container {
+    display: flex;
+    gap: 1px;
+    overflow-x: hidden;
+
+    table {
+      margin-top: 2.5rem;
+      width: 100%;
+      flex-shrink: 0;
+
+      &.active {
+        display: none;
+      }
+
+      thead {
+        tr {
+          .email {
+            width: $widthEmail;
+          }
+
+          .type {
+            width: 3.25rem;
+          }
+
+          .members {
+            width: 27.6875rem;
+          }
+
+          .update {
+            width: 5rem;
+          }
+
+          .delete {
+            width: 4.625rem;
+          }
+        }
+      }
+
+      tbody {
+        td {
+          ul {
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+          }
+
+          button {
+            margin: auto;
+            padding: 0;
+            display: flex;
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+
+            img {
+              height: 1.25rem;
+            }
+
+            .update {
+              aspect-ratio: 1;
+            }
+
+            .delete {
+              aspect-ratio: 0.888;
+            }
+          }
+        }
+
+        .type {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.25rem;
+
+    button {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+
+      @include buttonInactiveSlidesShow;
+
+      img {
+        width: 0.78125rem;
+        height: 1.25rem;
+      }
+    }
+
+    ul {
+      padding: 0;
+      width: 65%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      list-style: none;
+
+      li{
+        height: 0.625rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 0.125rem solid $black;
+
+        &.active {
+          background-color: $black;
+        }
+      }
+    }
+  }
+}

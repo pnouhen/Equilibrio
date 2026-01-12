@@ -17,7 +17,7 @@ export class PlanningService {
   ) {}
 
   updateUsersCity(newCity: string) {
-    const data = this.usersDataService.usersData();
+    const data = this.usersDataService.UsersData();
 
     const newUsersFilters = data.flatMap((user) =>
       user.members.filter((member) => member.training.cities.includes(newCity))

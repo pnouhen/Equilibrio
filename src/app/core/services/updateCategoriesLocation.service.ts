@@ -20,6 +20,7 @@ export class UpdateCategoriesLocationService {
       return {
         id: category.id,
         title: category.title,
+        categories: category.categories,
         trainingSchedule: category.trainingSchedule.map((s) => ({ ...s })),
         conditions: [...conditions],
       };

@@ -5,12 +5,28 @@ fieldset {
   flex-direction: column;
   @include managePlaceTimesFormInput;
 
-  .subTitle {
-    grid-column: 1/11;
-    margin-bottom: 1.25rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-decoration: underline;
+  .categories-schedule {
+    margin: 1.25rem 0;
+    display: flex;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+
+    ul {
+      padding: 0;
+      width: 19rem;
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+
+      li {
+        label {
+          @include multipleChoice;
+        }
+      }
+    }
   }
 }
 
@@ -21,41 +37,12 @@ fieldset {
     @include managePlaceTimesFormTitleCreate;
   }
 
-  ul {
-    padding: 0 1.25rem;
-    list-style: none;
-  }
+  .cards-create {
+    margin-left: 1.25rem;
 
-  .categories-create_container {
-    @include locationsCategories;
-
-    li {
-      position: relative;
-      .container {
-        button {
-          position: absolute;
-          top: 0.5rem;
-          padding: 0;
-          background-color: transparent;
-          border: 0;
-          height: 1.25rem;
-          aspect-ratio: 0.888;
-          cursor: pointer;
-
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-
-        .update {
-          left: 0.5rem;
-        }
-
-        .delete {
-          right: 0.5rem;
-        }
-      }
+    @media (max-width: 768px) {
+      display: flex;
+      justify-content: center;
     }
   }
 }

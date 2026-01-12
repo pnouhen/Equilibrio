@@ -5,39 +5,12 @@
 <section>
   <h2>{{ info?.city }}</h2>
 
-  <ul class="{{ changeClassCategories(info?.TrainingCategory?.length || 0) }}">
-    @for (category of categories; track category.title) {
-    <li class="category">
-      <div class="container">
-        <p class="title">{{ category.title }}</p>
-
-        <ul class="trainingSchedules">
-          @for(trainingSchedule of category?.trainingSchedule; track $index) {
-          <li>
-            <div class="schedules">
-              <p class="day">{{ trainingSchedule.day }} :</p>
-
-              <p class="times">
-                {{ trainingSchedule.startTime }} -
-                {{ trainingSchedule.endTime }} @if(trainingSchedule.condition)
-                {{{trainingSchedule.condition}}}
-              </p>
-            </div>
-          </li>
-          }
-        </ul>
-      </div>
-
-      @if(category.conditions.length > 0) {
-      <ul class="conditions">
-        @for(condition of category.conditions; track condition) {
-        <li>{{ condition }}</li>
-        }
-      </ul>
-      }
-    </li>
-    }
-  </ul>
+  <div class="categories">
+    <app-training-card
+      [cards]="categories"
+    />
+  </div>
+  
 
   <div class="mapAdress">
     <div class="map">

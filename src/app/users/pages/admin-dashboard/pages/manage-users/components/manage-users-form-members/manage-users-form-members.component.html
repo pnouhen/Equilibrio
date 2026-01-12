@@ -1,0 +1,90 @@
+<fieldset>
+  <legend>Membres</legend>
+
+  <div class="labelInput">
+    <label for="membreName">Prénom et Nom</label>
+
+    <input type="text" id="membreName" [(ngModel)]="memberName" />
+  </div>
+
+  <div class="type labelInput">
+    <p class="label">Category</p>
+
+    <button (click)="activeCategory($event)">
+      <p>{{ categoryText }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon afficher suggestions"
+        [class.active]="selectedCategory.isSelectedDisplay"
+      />
+    </button>
+
+    <div class="selected" [class.active]="selectedCategory.isSelectedDisplay">
+      <app-input-selected
+        (inputValueChange)="toggleSelectionAndUpdateGradeData($event)"
+        [dataSelected]="categoryData"
+        [selected]="selectedCategory"
+      />
+    </div>
+  </div>
+
+  <div class="labelInput">
+    <p class="label">Grade</p>
+
+    <button
+      class="input grade"
+      (click)="toggleGrade($event)"
+      [class.inactive]="gradeData.length === 0"
+      [tabindex]="gradeData.length > 0 ? 0 : -1"
+    >
+      <p>{{ gradeText }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon afficher suggestions"
+        [class.active]="selectedGrade.isSelectedDisplay"
+      />
+    </button>
+
+    @if(gradeData.length > 0){
+    <div class="selected" [class.active]="selectedGrade.isSelectedDisplay">
+      <app-input-selected
+        (inputValueChange)="gradeText = $event"
+        [dataSelected]="gradeData"
+        [selected]="selectedGrade"
+      />
+    </div>
+    }
+  </div>
+
+  <div class="training">
+    <app-manage-users-form-members-training
+      [categoryText]="categoryText"
+      [(trainingSchedulesDisplay)]="trainingsDisplay"
+    />
+  </div>
+
+  <button type="button" class="buttonSubmit" (click)="onSubmitMember()">
+    Enregister le membre
+  </button>
+
+  @if(isSubmitted){
+  <div class="messageForm">
+    <app-message-form
+      [isSubmitted]="isSubmitted"
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessage[0]"
+      [cannotSubmit]="formMessage[1]"
+    />
+  </div>
+  }
+</fieldset>
+
+<div class="members-create">
+  <p class="title-create">Membre(s) créé(s) :</p>
+
+  <!-- Ajouter les membersDisplay -->
+</div>
+
+

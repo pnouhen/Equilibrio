@@ -1,0 +1,10 @@
+<h2>Liste des adhérants</h2>
+
+<form class="search">
+  <div class="labelInput">
+    <label for="searchUser">Rechercher un adhérent : </label>
+    <input type="text" id="searchUser" (input)="searchEmail($event)" />
+  </div>
+</form>
+
+<app-manage-users-users-slide-show [(slidesShow)]="slidesShow" [(users)]="users" />

@@ -19,7 +19,7 @@ export class ManagePlacesTimesFormScheduleComponent implements OnInit {
   @Input() schedules: TrainingSchedule[] = [];
 
   days!: string[];
-  day: string = 'Sélectionner un jour';
+  day: string = 'Sélectionner';
   startTime: string = '';
   endTime: string = '';
   conditions!: string[];

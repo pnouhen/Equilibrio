@@ -1,0 +1,11 @@
+@use '../../../../../../../../mixins' as *;
+@use '../../../../../../../..//variables' as *;
+
+$widthEmail: 22.375rem;
+
+.search {
+  input {
+    width: $widthEmail;
+    @include input;
+  }
+}

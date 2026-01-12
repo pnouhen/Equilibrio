@@ -1,0 +1,85 @@
+<fieldset>
+  <legend>Entraînement</legend>
+
+  <div class="cities labelInput" [class.active]="selectedCityUsers.isSelectedDisplay">
+    <p class="label">Sélectionner la ville :</p>
+
+    <button
+      [class.inactive]="!blockCityChoice()"
+      (click)="toggleCityUsers($event)"
+      [tabindex]="blockCityChoice() ? 0 : -1"
+    >
+      <p>{{ citySelected }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon pour suggestions"
+        [class.active]="selectedCityUsers.isSelectedDisplay"
+      />
+    </button>
+
+    <div class="selected" [class.active]="selectedCityUsers.isSelectedDisplay">
+      <app-input-selected
+        [dataSelected]="citiesName"
+        [selected]="selectedCityUsers"
+        (inputValueChange)="citySelected = $event"
+        [onAction]="generateSchedules"
+      />
+    </div>
+  </div>
+
+  @if(!blockCityChoice()){
+  <p class="messageActiveButtonCity" [class.active]="blockCityChoice()">
+    Il faut sélectionner une catégorie pour choisir la ville
+  </p>
+  }
+
+  <div class="multipleChoice">
+    <p class="label">Sélectionner le ou les horaire(s) :</p>
+
+    @if(schedulesSelected.length > 0){
+    <ul>
+      @for(schedule of schedulesSelected; track $index) {
+      <li>
+        <label [class.active]="schedule.add">
+          <input type="checkbox" id="schedule-{{ $index }}" [(ngModel)]="schedule.add" />
+
+          {{ schedule.trainingSchedule.day }} : {{ schedule.trainingSchedule.startTime }} -
+          {{ schedule.trainingSchedule.endTime }}
+        </label>
+      </li>
+
+      }
+    </ul>
+    }
+  </div>
+
+  <button class="buttonSubmit" (click)="onSubmitSchedule($event)">Enregister l'entraînement</button>
+
+  @if(isSubmitted) {
+  <div class="messageForm">
+    <app-message-form
+      [isSubmitted]="isSubmitted"
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessage[0]"
+      [cannotSubmit]="formMessage[1]"
+    />
+  </div>
+  }
+</fieldset>
+
+<div class="trainingSchedule-create">
+  <p class="title-create">Ville et entraînement(s) associés :</p>
+
+  @if(trainingSchedulesDisplay.length > 0){
+  <div class="cards-create">
+    <app-training-card
+      [cards]="trainingSchedulesDisplay"
+      [isDelete]="true"
+      [onDeleteCity]="deleteTrainingSchedule"
+      [isCategories]="false"
+    />
+  </div>
+  }
+</div>
+@if(trainingSchedulesDisplay.length > 0) { }

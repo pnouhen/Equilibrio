@@ -14,21 +14,13 @@
 
   form {
     width: 100%;
-    @include widthFormAuthPage;
-
-    table,
-    th,
-    td {
-      border: 1px solid black;
-      padding: 0.25rem;
-    }
 
     table {
       border-collapse: collapse;
 
       thead {
         .name-column {
-          width: 57.3%;
+          width: 55.6%;
         }
 
         .checkbox-column {
@@ -43,14 +35,6 @@
       .td-checkbox {
         display: flex;
         justify-content: center;
-
-        input {
-          position: relative;
-          width: 1.25rem;
-          aspect-ratio: 1;
-          accent-color: $gray;
-          cursor: pointer;
-        }
       }
 
       .regularity {

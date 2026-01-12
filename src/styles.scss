@@ -47,7 +47,8 @@ h3 {
   @include redBold;
 }
 
-h4, legend {
+h4,
+legend {
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -58,8 +59,28 @@ a,
 li,
 label,
 input,
-textarea {
+textarea,
+th,
+td {
   font-size: 1.25rem;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  padding: 0.25rem;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input[type='checkbox'] {
+  width: 1.25rem;
+  aspect-ratio: 1;
+  accent-color: $gray;
+  cursor: pointer;
 }
 
 fieldset {
@@ -109,11 +130,13 @@ form {
   flex-direction: column;
   gap: 1rem;
 
-  label,
-  .label {
-    color: $red;
-    font-weight: bold;
-  }
+  label {
+  @include label;
+}
+}
+
+.label {
+  @include label;
 }
 
 .fieldError {

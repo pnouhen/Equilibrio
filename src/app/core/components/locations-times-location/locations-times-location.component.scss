@@ -44,35 +44,6 @@ section {
     list-style: none;
   }
 
-  .categories {
-    @include locationsCategories;
-  }
-
-  .oneCategory {
-    justify-content: center;
-  }
-
-  .twoCategories {
-    justify-content: space-around;
-  }
-
-  .threeCategories {
-    justify-content: space-between;
-  }
-
-  .thridCategories {
-    @media (min-width: 769px) and (max-width: 1024px) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .category {
-      @media (min-width: 769px) and (max-width: 1024px) {
-        width: calc(100% - 3.25rem);
-      }
-    }
-  }
-
   .mapAdress {
     grid-column: 1/13;
     margin-top: $marginArticle;

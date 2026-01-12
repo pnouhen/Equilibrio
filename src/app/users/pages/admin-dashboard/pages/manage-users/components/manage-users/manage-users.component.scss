@@ -1,0 +1,9 @@
+@use '../../../../../../../../variables' as *;
+
+section {
+  .return,
+  article {
+    grid-column: 2/12;
+    margin-bottom: $marginArticle;
+  }
+}

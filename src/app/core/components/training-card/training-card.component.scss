@@ -1,0 +1,83 @@
+@use '../../../../mixins' as *;
+@use '../../../../variables' as *;
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+
+  .card {
+    position: relative;
+    background: $gray;
+    box-shadow: inset 0 0 2.5rem 0 rgb(147, 147, 147);
+
+    .category {
+      padding: 1.5rem;
+      width: 19rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .container {
+        button {
+          position: absolute;
+          top: 0.5rem;
+          padding: 0;
+          background-color: transparent;
+          border: 0;
+          height: 1.25rem;
+          aspect-ratio: 0.888;
+          cursor: pointer;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .update {
+          left: 0.5rem;
+        }
+
+        .delete {
+          right: 0.5rem;
+        }
+
+        .title {
+          margin-bottom: 1.75rem;
+          height: 3rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-weight: bold;
+          color: $black;
+        }
+
+        .day {
+          @include redBold;
+        }
+
+        @include schedules;
+      }
+    }
+  }
+
+  .conditions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-style: italic;
+  }
+
+  .categories {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1.25rem;
+  }
+}

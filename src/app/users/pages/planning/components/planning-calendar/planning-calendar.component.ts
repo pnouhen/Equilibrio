@@ -15,7 +15,7 @@ import { MessageFormComponent } from '../../../../../core/components/message-for
 export class PlanningCalendarComponent implements OnInit {
   date!: string;
   attendanceStates: boolean[] = [];
-
+// TODO: Pouvoir changer la date
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
   formMessages: MessageForm[] = [
@@ -58,7 +58,7 @@ export class PlanningCalendarComponent implements OnInit {
     }
 
     // Update TrainingSessions for each members
-    const updatedUsersData = this.usersDataService.usersData().map((user) => ({
+    const updatedUsersData = this.usersDataService.UsersData().map((user) => ({
       ...user,
       members: user.members.map((member) => {
         // Sort by city and times
@@ -91,7 +91,7 @@ export class PlanningCalendarComponent implements OnInit {
     }));
 
     // Update UsersData
-    this.usersDataService.usersData.set(updatedUsersData);
+    this.usersDataService.UsersData.set(updatedUsersData);
     sessionStorage.setItem('UsersData', JSON.stringify(updatedUsersData));
   }
 }

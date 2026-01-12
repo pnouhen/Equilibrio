@@ -1,0 +1,74 @@
+<ul class="cards">
+  @for(card of cards; track $index) {
+  <li class="card">
+    <div class="category">
+      <div class="container">
+        @if(isUpdate){ 
+          @if("title" in card){
+        <button class="update" type="button" (click)="onUpdateCategory?.(card)">
+          <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" /></button
+        >} 
+        
+        @if("city" in card){
+        <button class="update" type="button" (click)="onUpdateCity?.(card)">
+          <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" /></button
+        >} } 
+        
+        @if(isDelete){ 
+          @if('id' in card){
+        <button class="delete" type="button" (click)="onDeleteCategory?.(card.id)">
+          <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" /></button
+        >} 
+        
+        @if("city" in card) {
+        <button class="delete" type="button" (click)="onDeleteCity?.(card.city)">
+          <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
+        </button>
+        } 
+      } 
+        
+        @if ('title' in card) {
+        <p class="title">{{ card.title }}</p>
+        } 
+        
+        @if ('city' in card) {
+        <p class="title">{{ card.city }}</p>
+        }
+
+        <ul class="trainingSchedules">
+          @for(trainingSchedule of card?.trainingSchedule; track $index) {
+          <li>
+            <div class="schedules">
+              <p class="day">{{ trainingSchedule.day }} :</p>
+
+              <p class="times">
+                {{ trainingSchedule.startTime }} -
+                {{ trainingSchedule.endTime }} @if(trainingSchedule.condition)
+                {{{trainingSchedule.condition}}}
+              </p>
+            </div>
+          </li>
+          }
+        </ul>
+      </div>
+
+      @if("conditions" in card) {
+      <ul class="conditions">
+        @for(condition of card.conditions; track condition) {
+        <li>{{ condition }}</li>
+        }
+      </ul>
+      }
+    </div>
+
+    @if(isCategories && "categories" in card) {
+    <ul class="categories">
+      @for(category of card?.categories; track $index) {
+      <li>{{ category }}</li>
+      }
+    </ul>
+    }
+  </li>
+
+  }
+</ul>

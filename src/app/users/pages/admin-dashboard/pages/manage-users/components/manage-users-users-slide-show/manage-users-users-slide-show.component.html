@@ -1,0 +1,78 @@
+<div class="slideShow">
+  <div #container class="container">
+    @for(slide of slidesShow; track $index) {
+    <table [class.active]="$index < indexSlideShow">
+      <thead>
+        <tr>
+          <th class="email">E-mail :</th>
+
+          <th class="type">Statut</th>
+
+          <th class="members">Adhérent(s)</th>
+
+          <th class="update">Modifier</th>
+
+          <th class="delete">Supprimer</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for(user of slide; track $index) {
+        <tr>
+          <td class="email">
+            {{ user.email }}
+          </td>
+
+          <td class="type">
+            {{ transformStatutUser(user.type) }}
+          </td>
+
+          <td>
+            <ul>
+              @for(member of user.members; track $index) {
+              <li>
+                {{ member.memberName }}
+                @if($index < user.members.length - 1) { , }
+              </li>
+              }
+            </ul>
+          </td>
+
+          <td>
+            <button class="update">
+              <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" />
+            </button>
+          </td>
+
+          <td>
+            <button class="delete" (click)="deleteUser(user.email)">
+              <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousSlide()" [class.inactive]="indexSlideShow === 0">
+      <img src="/assets/icons/chevron-left.svg" alt="Icon Flèche gauche" />
+
+      <p>Page précendante</p>
+    </button>
+
+    <ul class="dots">
+      @for(dot of slidesShow; track $index) {
+        <li [class.active]="indexSlideShow === $index"></li>
+      }
+    </ul>
+
+    <button (click)="nextSlide()" [class.inactive]="indexSlideShow > slidesShow.length - 1">
+      <p>Page suivante</p>
+
+      <img src="/assets/icons/chevron-right.svg" alt="Icon Flèche droite" />
+    </button>
+  </div>
+</div>

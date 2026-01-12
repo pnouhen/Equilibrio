@@ -1,0 +1,59 @@
+@use '../../../../../../../../mixins' as *;
+@use '../../../../../../../../variables' as *;
+@use '../manage-users-form/manage-users-form.component.scss' as *;
+
+fieldset {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  input {
+    height: $inputHeight;
+    @include input;
+  }
+
+  .labelInput {
+    margin-bottom: 1.25rem;
+    @include selected;
+
+    button {
+      @include buttonSelected;
+      @include input;
+    }
+
+    .selected {
+      top: 5rem;
+      left: 0;
+      &.active {
+        top: 5.75rem;
+      }
+    }
+
+    .grade {
+      background-color: transparent;
+
+      @include buttonInactive;
+    }
+  }
+
+  .training {
+    grid-column: 1/4;
+  }
+
+  .buttonSubmit {
+    grid-column: 1/4;
+    width: 100%;
+  }
+
+  .messageForm {
+    grid-column: 1/4;
+  }
+}
+
+.members-create {
+  margin-top: 1.25rem;
+  
+  .title-create {
+    @include managePlaceTimesFormTitleCreate;
+  }
+}

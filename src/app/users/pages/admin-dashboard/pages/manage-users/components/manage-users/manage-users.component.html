@@ -1,1 +1,17 @@
-<p>manage-users works!</p>
+<section>
+  <div class="return">
+    <app-return-admin-dashboard />
+  </div>
+
+  <article>
+    <app-manage-users-users
+      [(users)]="users"
+      [(slidesShow)]="slidesShow"
+      [chunkArray]="chunkArray"
+    />
+  </article>
+
+  <article>
+    <app-manage-users-form/>
+  </article>
+</section>

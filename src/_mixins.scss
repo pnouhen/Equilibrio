@@ -118,64 +118,6 @@
   }
 }
 
-@mixin locationsCategories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-
-  .category {
-    padding: 1.5rem;
-    width: 18rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: $gray;
-    box-shadow: inset 0 0 2.5rem 0 rgb(147, 147, 147);
-
-    @media (max-width: 768px) {
-      width: 100%;
-      gap: 0 !important;
-      @include layout;
-    }
-
-    .container {
-      @media (max-width: 768px) {
-        grid-column: 1/13;
-        @include layout;
-      }
-      .title {
-        margin-bottom: 1.75rem;
-        width: 100%;
-        height: 3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-weight: bold;
-        color: $black;
-
-        @media (max-width: 768px) {
-          grid-column: 3/12;
-          height: auto;
-          margin-bottom: 0;
-        }
-      }
-
-      .trainingSchedules {
-        @media (max-width: 768px) {
-          grid-column: 3/12;
-        }
-      }
-
-      @include schedules;
-    }
-  }
-
-  .conditions {
-    grid-column: 1/12;
-  }
-}
-
 @mixin schedules {
   .schedules {
     margin-bottom: 1rem;
@@ -186,6 +128,11 @@
       color: $red;
     }
   }
+}
+
+@mixin label {
+  color: $red;
+  font-weight: bold;
 }
 
 @mixin input {
@@ -212,6 +159,20 @@
   cursor: pointer;
 }
 
+@mixin buttonInactive {
+  &.inactive {
+    background-color: $gray;
+    cursor: not-allowed;
+  }
+}
+
+@mixin buttonInactiveSlidesShow {
+  &.inactive {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
 @mixin usersEspace {
   margin: $marginSection 0;
   background-color: $gray;
@@ -234,6 +195,7 @@
   ul {
     padding: 0;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
@@ -244,9 +206,9 @@
     }
 
     li {
+      @include card;
       a {
         width: 11.5rem;
-        min-height: 12.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -254,7 +216,6 @@
         text-decoration: none;
         color: black;
         cursor: pointer;
-        @include card;
 
         img {
           width: 9.375rem;
@@ -276,6 +237,14 @@
     width: 100% !important;
     height: 100% !important;
   }
+}
+
+@mixin buttonSelected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 
 @mixin selected {
@@ -317,4 +286,20 @@
   margin-bottom: 1.25rem;
   font-weight: 600;
   text-decoration: underline;
+}
+
+@mixin multipleChoice {
+  position: relative;
+
+  &.active {
+    font-weight: 600;
+  }
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
 }

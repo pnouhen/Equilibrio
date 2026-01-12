@@ -16,14 +16,14 @@ export const CITIES: CityInfo[] = [
     '/assets/data-Back-end/places/limoges.webp',
     '2025-08-25',
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
         new TrainingSchedule('Mercredi', '11h', '12h'),
         new TrainingSchedule('Mercredi', '15h', '16h'),
         new TrainingSchedule('Samedi', '10h', '11h'),
         new TrainingSchedule('Samedi', '15h', '16h'),
       ]),
 
-      new TrainingCategory('1', 'Enfants 7/10 ans', [
+      new TrainingCategory('1', ['child'], 'Enfants 7/10 ans', [
         new TrainingSchedule('Mardi', '18h', '19h15'),
         new TrainingSchedule('Mercredi', '16h', '17h15'),
         new TrainingSchedule(
@@ -35,7 +35,7 @@ export const CITIES: CityInfo[] = [
         new TrainingSchedule('Samedi', '16h', '17h15'),
       ]),
 
-      new TrainingCategory('2', 'Ados 11/14 ans', [
+      new TrainingCategory('2', ['teen'], 'Ados 11/14 ans', [
         new TrainingSchedule('Mercredi', '17h30', '19h'),
         new TrainingSchedule('Vendredi', '18h', '19h30'),
         new TrainingSchedule(
@@ -46,7 +46,7 @@ export const CITIES: CityInfo[] = [
         ),
       ]),
 
-      new TrainingCategory('3', 'À partir de 15 ans (ados et adultes)', [
+      new TrainingCategory('3', ['adult'], 'À partir de 15 ans (ados et adultes)', [
         new TrainingSchedule('Lundi', '19h30', '21h'),
         new TrainingSchedule('Mercredi', '19h30', '21h'),
         new TrainingSchedule('Jeudi', '20h15', '21h30', 'Capoeira light'),
@@ -74,16 +74,22 @@ export const CITIES: CityInfo[] = [
     '/assets/data-Back-end/places/couzeix.webp',
     '2025-09-01',
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Lundi', '17h30', '18h30')]),
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
+        new TrainingSchedule('Lundi', '17h30', '18h30'),
+      ]),
 
-      new TrainingCategory('1', 'Enfants 7/10 ans', [
+      new TrainingCategory('1', ['child'], 'Enfants 7/10 ans', [
         new TrainingSchedule('Lundi', '18h30', '19h30'),
         new TrainingSchedule('Jeudi', '17h30', '18h30'),
       ]),
 
-      new TrainingCategory('2', 'Ados', [new TrainingSchedule('Jeudi', '18h30', '19h45')]),
+      new TrainingCategory('2', ['teen'], 'Ados', [
+        new TrainingSchedule('Jeudi', '18h30', '19h45'),
+      ]),
 
-      new TrainingCategory('3', 'Adulte', [new TrainingSchedule('Lundi', '19h30', '20h45')]),
+      new TrainingCategory('3', ['adult'], 'Adulte', [
+        new TrainingSchedule('Lundi', '19h30', '20h45'),
+      ]),
     ]
   ),
 
@@ -100,9 +106,11 @@ export const CITIES: CityInfo[] = [
     '/assets/data-Back-end/places/panazol.webp',
     '2025-09-13',
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
+        new TrainingSchedule('Samedi', '15h', '16h'),
+      ]),
 
-      new TrainingCategory('1', 'Enfants Ados Adulte', [
+      new TrainingCategory('1', ['child', 'teen', 'adult'], 'Enfants Ados Adulte', [
         new TrainingSchedule('Samedi', '16h', '17h30'),
       ]),
     ]
@@ -122,15 +130,17 @@ export const CITIES: CityInfo[] = [
 
     '2025-09-03',
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
         new TrainingSchedule('Mercredi', '14h30', '15h30'),
       ]),
 
-      new TrainingCategory('1', 'Enfants 7/10 ans', [
+      new TrainingCategory('1', ['child'], 'Enfants 7/10 ans', [
         new TrainingSchedule('Mercredi', '15h30', '17h'),
       ]),
 
-      new TrainingCategory('2', 'Ados Adulte', [new TrainingSchedule('Jeudi', '18h', '19h15')]),
+      new TrainingCategory('2', ['teen', 'adult'], 'Ados Adulte', [
+        new TrainingSchedule('Jeudi', '18h', '19h15'),
+      ]),
     ]
   ),
 
@@ -148,7 +158,7 @@ export const CITIES: CityInfo[] = [
 
     '2025-09-01',
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
         new TrainingSchedule(
           'Lundi',
           '18h',
@@ -158,7 +168,7 @@ export const CITIES: CityInfo[] = [
         new TrainingSchedule('Samedi', '10h', '11h'),
       ]),
 
-      new TrainingCategory('1', 'Enfants 7/10 ans', [
+      new TrainingCategory('1', ['child'], 'Enfants 7/10 ans', [
         new TrainingSchedule(
           'Lundi',
           '18h',
@@ -168,7 +178,7 @@ export const CITIES: CityInfo[] = [
         new TrainingSchedule('Samedi', '11h', '12h30'),
       ]),
 
-      new TrainingCategory('2', 'Ados Adulte', [
+      new TrainingCategory('2', ['teen', 'adult'], 'Ados Adulte', [
         new TrainingSchedule('Lundi', '19h30', '21h'),
         new TrainingSchedule(
           'Samedi',
@@ -195,9 +205,11 @@ export const CITIES: CityInfo[] = [
     '2025-08-30',
 
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Samedi', '10h', '11h')]),
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
+        new TrainingSchedule('Samedi', '10h', '11h'),
+      ]),
 
-      new TrainingCategory('1', 'Enfants Ados Adulte', [
+      new TrainingCategory('1', ['child', 'teen', 'adult'], 'Enfants Ados Adulte', [
         new TrainingSchedule(
           'Samedi',
           '11h',
@@ -223,9 +235,11 @@ export const CITIES: CityInfo[] = [
     '2025-09-06',
 
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Samedi', '15h', '16h')]),
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
+        new TrainingSchedule('Samedi', '15h', '16h'),
+      ]),
 
-      new TrainingCategory('1', 'Enfants Ados Adulte', [
+      new TrainingCategory('1', ['child', 'teen', 'adult'], 'Enfants Ados Adulte', [
         new TrainingSchedule('Samedi', '16h', '17h30'),
       ]),
     ]
@@ -245,13 +259,15 @@ export const CITIES: CityInfo[] = [
 
     '2025-09-02',
     [
-      new TrainingCategory('0', 'Baby 3/6 ans', [new TrainingSchedule('Mardi', '17h30', '18h30')]),
+      new TrainingCategory('0', ['baby'], 'Baby 3/6 ans', [
+        new TrainingSchedule('Mardi', '17h30', '18h30'),
+      ]),
 
-      new TrainingCategory('1', 'Enfants 7/11 ans', [
+      new TrainingCategory('1', ['child'], 'Enfants 7/11 ans', [
         new TrainingSchedule('Mardi', '18h30', '19h30'),
       ]),
 
-      new TrainingCategory('2', 'À partir de 15 ans (ados et adultes)', [
+      new TrainingCategory('2', ['teen', 'adult'], 'À partir de 12 ans (ados et adultes)', [
         new TrainingSchedule('Mardi', '19h30', '21h'),
       ]),
     ]
@@ -271,9 +287,12 @@ export const CITIES: CityInfo[] = [
 
     '2025-09-09',
     [
-      new TrainingCategory('0', 'À partir de 6 ans (enfants, ados et adultes)', [
-        new TrainingSchedule('Mardi', '18h30', '20h'),
-      ]),
+      new TrainingCategory(
+        '0',
+        ['child', 'teen', 'adult'],
+        'À partir de 6 ans (enfants, ados et adultes)',
+        [new TrainingSchedule('Mardi', '18h30', '20h')]
+      ),
     ]
   ),
 
@@ -290,9 +309,12 @@ export const CITIES: CityInfo[] = [
     '/assets/data-Back-end/places/chateauneuf-la-foret.webp',
     '2025-09-11',
     [
-      new TrainingCategory('0', 'À partir de 6 ans (enfants, ados et adultes)', [
-        new TrainingSchedule('Jeudi', '18h30', '20h'),
-      ]),
+      new TrainingCategory(
+        '0',
+        ['child', 'teen', 'adult'],
+        'À partir de 6 ans (enfants, ados et adultes)',
+        [new TrainingSchedule('Jeudi', '18h30', '20h')]
+      ),
     ]
   ),
 ];

@@ -9,10 +9,11 @@ import { TrainingSchedule } from '../../models/TrainingSchedule.model';
 import { LocationsTimesLocationMapComponent } from '../locations-times-location-map/locations-times-location-map.component';
 import { UsersModel } from '../../../datas-Back-end/models/Users.model';
 import { TrainingCategoryDisplayModel } from '../../models/TrainingCategory-display.model';
+import { TrainingCardComponent } from "../training-card/training-card.component";
 
 @Component({
   selector: 'app-locations-times-location',
-  imports: [RouterLink, LocationsTimesLocationMapComponent],
+  imports: [RouterLink, LocationsTimesLocationMapComponent, TrainingCardComponent],
   templateUrl: './locations-times-location.component.html',
   styleUrl: './locations-times-location.component.scss',
 })

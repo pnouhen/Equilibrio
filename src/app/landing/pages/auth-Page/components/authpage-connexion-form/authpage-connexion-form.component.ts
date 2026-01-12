@@ -1,3 +1,4 @@
+import { UserService } from './../../../../../users/services/user.service';
 import { SelectedConnexion } from '../../services/SelectedConnexion.service';
 import { UsersModel } from './../../../../../datas-Back-end/models/Users.model';
 import { Component, OnInit } from '@angular/core';
@@ -7,6 +8,7 @@ import { MessageFormComponent } from '../../../../../core/components/message-for
 import { UsersData } from '../../../../../datas-Back-end/data/Users.data';
 import { Router, RouterLink } from '@angular/router';
 import { InputSelectedComponent } from '../../../../../core/components/input-selected/input-selected.component';
+import { UsersDataService } from '../../../../../core/services/UsersData.service';
 
 @Component({
   selector: 'app-authpage-connexion-form',
@@ -20,7 +22,11 @@ export class AuthpageConnexionFormComponent implements OnInit {
   passwordValue: string = '123456789Pn!';
   pathForgotPassword: string = 'mot-de-passe-oublie';
 
-  constructor(public selectedConnexion: SelectedConnexion, private router: Router) {}
+  constructor(
+    public selectedConnexion: SelectedConnexion,
+    private router: Router,
+    public usersDataService: UsersDataService
+  ) {}
 
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
@@ -69,7 +75,8 @@ export class AuthpageConnexionFormComponent implements OnInit {
   }
 
   isAuthenticationValid(email: string, password: string): UsersModel | null {
-    const userFind = UsersData.find((user) => user.email === email);
+    const userFind = this.usersDataService.UsersData().find((user) => user.email === email);
+
     if (userFind?.password === password) {
       return userFind;
     }

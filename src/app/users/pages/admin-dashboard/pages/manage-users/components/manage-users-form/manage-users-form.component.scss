@@ -1,0 +1,37 @@
+@use '../../../../../../../../mixins' as *;
+
+$inputHeight: 2rem;
+
+form {
+  input {
+    height: $inputHeight;
+    @include input;
+  }
+
+  fieldset {
+    @include layout;
+
+    .email {
+      grid-column: 1/10;
+    }
+
+    .type {
+      grid-column: 10/13;
+      position: relative;
+      @include selected;
+
+      button {
+        @include buttonSelected;
+        @include input;
+      }
+
+      .selected {
+        top: 5rem;
+        left: 0;
+        &.active {
+          top: 5.3125rem;
+        }
+      }
+    }
+  }
+}
