@@ -56,35 +56,35 @@ export class PlanningCalendarComponent implements OnInit {
     } else {
       this.isFormValid = false;
     }
-
+// TODO Refaire
     // Update TrainingSessions for each members
     const updatedUsersData = this.usersDataService.UsersData().map((user) => ({
       ...user,
       members: user.members.map((member) => {
         // Sort by city and times
-        const matchesCityAndSchedule =
-          member.training.cities.includes(this.planningService.citySelected()) &&
-          member.training.schedules.includes(this.planningService.scheduleSelected());
+        // const matchesCityAndSchedule =
+        //   member.training.cities.includes(this.planningService.citySelected()) &&
+        //   member.training.schedules.includes(this.planningService.scheduleSelected());
 
         // Select the members where the checkbox is true
         const matchingAttendance = attendanceData.find(
           (att) => att.name === member.memberName && att.present === true
         );
 
-        if (matchesCityAndSchedule && matchingAttendance) {
-          // Check if the training date has already been recorded.
-          const isTrainingSessionToday = this.planningService.findTodayTrainingSessionDate(
-            member.training.trainingSessions
-          );
-          if (!isTrainingSessionToday)
-            return {
-              ...member,
-              training: {
-                ...member.training,
-                trainingSessions: [...member.training.trainingSessions, `${new Date()}`],
-              },
-            };
-        }
+        // if (matchesCityAndSchedule && matchingAttendance) {
+        //   // Check if the training date has already been recorded.
+        //   const isTrainingSessionToday = this.planningService.findTodayTrainingSessionDate(
+        //     member.training.trainingSessions
+        //   );
+        //   if (!isTrainingSessionToday)
+        //     return {
+        //       ...member,
+        //       training: {
+        //         ...member.training,
+        //         trainingSessions: [...member.training.trainingSessions, `${new Date()}`],
+        //       },
+        //     };
+        // }
 
         return member;
       }),

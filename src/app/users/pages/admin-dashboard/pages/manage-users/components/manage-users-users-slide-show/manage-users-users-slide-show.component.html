@@ -1,6 +1,6 @@
 <div class="slideShow">
   <div #container class="container">
-    @for(slide of slidesShow; track $index) {
+    @for(slide of manageUsersService.slidesShow; track $index) {
     <table [class.active]="$index < indexSlideShow">
       <thead>
         <tr>
@@ -39,13 +39,13 @@
           </td>
 
           <td>
-            <button class="update">
+            <button type="button" class="update" (click)="updateUser(user)">
               <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" />
             </button>
           </td>
 
           <td>
-            <button class="delete" (click)="deleteUser(user.email)">
+            <button type="button" class="delete" (click)="deleteUser(user.email)">
               <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
             </button>
           </td>
@@ -64,12 +64,12 @@
     </button>
 
     <ul class="dots">
-      @for(dot of slidesShow; track $index) {
+      @for(dot of manageUsersService.slidesShow; track $index) {
         <li [class.active]="indexSlideShow === $index"></li>
       }
     </ul>
 
-    <button (click)="nextSlide()" [class.inactive]="indexSlideShow > slidesShow.length - 1">
+    <button (click)="nextSlide()" >
       <p>Page suivante</p>
 
       <img src="/assets/icons/chevron-right.svg" alt="Icon Flèche droite" />

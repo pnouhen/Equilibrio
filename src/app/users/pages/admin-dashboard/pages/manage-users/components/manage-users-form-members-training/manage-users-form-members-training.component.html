@@ -54,7 +54,9 @@
     }
   </div>
 
-  <button class="buttonSubmit" (click)="onSubmitSchedule($event)">Enregister l'entraînement</button>
+  <button type="button" class="buttonSubmit" (click)="onSubmitSchedule()">
+    Enregister l'entraînement
+  </button>
 
   @if(isSubmitted) {
   <div class="messageForm">
@@ -77,6 +79,7 @@
       [cards]="trainingSchedulesDisplay"
       [isDelete]="true"
       [onDeleteCity]="deleteTrainingSchedule"
+      [isCondition]="false"
       [isCategories]="false"
     />
   </div>

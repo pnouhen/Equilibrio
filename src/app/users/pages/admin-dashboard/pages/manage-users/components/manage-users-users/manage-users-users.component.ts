@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UsersModel } from '../../../../../../../datas-Back-end/models/Users.model';
 import { ManageUsersUsersSlideShowComponent } from '../manage-users-users-slide-show/manage-users-users-slide-show.component';
 import { UsersDataService } from '../../../../../../../core/services/UsersData.service';
+import { ManageUsersService } from '../../services/ManageUsers.service';
 
 @Component({
   selector: 'app-manage-users-users',
@@ -10,28 +11,20 @@ import { UsersDataService } from '../../../../../../../core/services/UsersData.s
   styleUrl: './manage-users-users.component.scss',
 })
 export class ManageUsersUsersComponent {
-  @Input() users!: UsersModel[];
-  @Output() usersChange = new EventEmitter<UsersModel[]>();
-
-  @Input() slidesShow!: UsersModel[][];
-  @Output() slidesShowChange = new EventEmitter<UsersModel[][]>();
-
-  @Input() chunkArray?: (users: UsersModel[]) => UsersModel[][];
+  constructor(public manageUsersService: ManageUsersService) {}
 
   searchEmail(event: Event) {
+    // Retrieve the value
     const value = (event.target as HTMLInputElement).value;
 
+    // 2 characters to activate the search
     let newUsers = [];
     if (value.length > 2) {
-      newUsers = this.users.filter((user) => user.email.includes(value));
+      newUsers = this.manageUsersService.users().filter((user) => user.email.includes(value));
     } else {
-      newUsers = this.users;
+      newUsers = this.manageUsersService.users();
     }
 
-    const newSlidesShow = this.chunkArray?.(newUsers);
-    if (newSlidesShow) {
-      this.slidesShow = newSlidesShow;
-      this.slidesShowChange.emit(newSlidesShow);
-    }
+    this.manageUsersService.chunkArray(newUsers);
   }
 }

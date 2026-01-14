@@ -1,61 +1,46 @@
+import { UserDataCityScheduleModel } from '../models/UserData-city-schedule.model';
 import { UserDataTrainingModel } from '../models/UserData-training.model';
 import { UsersMembers } from '../models/Users-members';
 import { UsersModel } from '../models/Users.model';
 
 export const UsersData: UsersModel[] = [
   // Students
-  new UsersModel('single-membre@student.fr', '123456789Pn!', 'student', [
-    new UsersMembers('Adulte', 'adult', 'azul', new UserDataTrainingModel([''], [''], [])),
+  new UsersModel('0', 'single-membre@student.fr', '123456789Pn!', 'student', [
+    new UsersMembers('Adulte', 'adult', 'azul', new UserDataTrainingModel([], [])),
   ]),
 
-  new UsersModel('multi-membre@student.fr', '123456789Pn!', 'student', [
-    new UsersMembers(
-      'Baby',
-      'baby',
-      'cinza-ponta-verde',
-      new UserDataTrainingModel([''], [''], [])
-    ),
-    new UsersMembers(
-      'Enfants',
-      'child',
-      'azul-cinza',
-      new UserDataTrainingModel([''], ['', ''], [''])
-    ),
-    new UsersMembers('Ados', 'teen', 'verde-cinza', new UserDataTrainingModel([''], [''], [''])),
-    new UsersMembers(
-      'Adulte',
-      'adult',
-      'verde-amarelo',
-      new UserDataTrainingModel([''], ['Samedi : 11h - 12h30', 'Lundi : 19h30 - 21h'], [''])
-    ),
+  new UsersModel('1', 'multi-membre@student.fr', '123456789Pn!', 'student', [
+    new UsersMembers('Baby', 'baby', 'cinza-ponta-verde', new UserDataTrainingModel([], [])),
+    new UsersMembers('Enfants', 'child', 'azul-cinza', new UserDataTrainingModel([], [])),
+    new UsersMembers('Ados', 'teen', 'verde-cinza', new UserDataTrainingModel([], [])),
+    new UsersMembers('Adulte', 'adult', 'verde-amarelo', new UserDataTrainingModel([], [])),
   ]),
 
   // Teacher
-  new UsersModel('teacher@teacher.fr', '123456789Pn!', 'teacher', [
-    new UsersMembers('Baby', 'baby', 'novato', new UserDataTrainingModel([''], [''], [''])),
-    new UsersMembers('Enfants', 'child', 'novato', new UserDataTrainingModel([''], [''], [''])),
-    new UsersMembers('Gus Ados', 'teen', 'novato', new UserDataTrainingModel([''], [''], [''])),
-    new UsersMembers('Adulte', 'adult', 'novato', new UserDataTrainingModel([''], [''], [''])),
+  new UsersModel('2', 'teacher@teacher.fr', '123456789Pn!', 'teacher', [
+    new UsersMembers('Baby', 'baby', 'novato', new UserDataTrainingModel([], [])),
+    new UsersMembers('Enfants', 'child', 'novato', new UserDataTrainingModel([], [])),
+    new UsersMembers('Gus Ados', 'teen', 'novato', new UserDataTrainingModel([], [])),
+    new UsersMembers('Adulte', 'adult', 'novato', new UserDataTrainingModel([], [])),
   ]),
 
   // Admin
-  new UsersModel('pierre.nouhen@orange.fr', '123456789Pn!', 'admin', [
-    new UsersMembers('Baby', 'baby', 'novato', new UserDataTrainingModel([''], [''], [''])),
-    new UsersMembers('Enfants', 'child', 'novato', new UserDataTrainingModel([''], [''], [''])),
-    new UsersMembers('Gus Ados', 'teen', 'novato', new UserDataTrainingModel([''], [''], [''])),
-    new UsersMembers('Adulte', 'adult', 'novato', new UserDataTrainingModel([''], [''], [''])),
+  new UsersModel('3', 'pierre.nouhen@orange.fr', '123456789Pn!', 'admin', [
+    new UsersMembers('Baby', 'baby', 'novato', new UserDataTrainingModel([], [])),
+    new UsersMembers('Enfants', 'child', 'novato', new UserDataTrainingModel([], [])),
+    new UsersMembers('Gus Ados', 'teen', 'novato', new UserDataTrainingModel([], [])),
+    new UsersMembers('Adulte', 'adult', 'novato', new UserDataTrainingModel([], [])),
   ]),
 
   // Exemples:
-  new UsersModel('student1@brive.fr', 'Password123!', 'student', [
+  new UsersModel('4', 'student1@brive.fr', 'Password123!', 'student', [
     // Baby
     new UsersMembers(
       'Alice Dupont',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Lundi : 18h - 19h'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 18h - 19h')],
         [
           'Mon Oct 06 2025 18:00:00 GMT+0100 (CET)',
           'Mon Oct 20 2025 18:00:00 GMT+0100 (CET)',
@@ -72,8 +57,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100 (CET)',
           'Sat Oct 18 2025 11:00:00 GMT+0100 (CET)',
@@ -90,8 +75,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Lundi : 19h30 - 21h', 'Samedi : 11h - 12h30'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -114,8 +101,10 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Lundi : 19h30 - 21h', 'Samedi : 11h - 12h30'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -137,15 +126,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@brive.fr', 'Password123!', 'student', [
+  new UsersModel('5', 'student2@brive.fr', 'Password123!', 'student', [
     // Baby
     new UsersMembers(
       'Emma Petit',
       'baby',
       'cinza-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 10h - 11h'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 10h - 11h')],
         [
           'Sat Oct 04 2025 10:00:00 GMT+0100 (CET)',
           'Sat Oct 18 2025 10:00:00 GMT+0100 (CET)',
@@ -160,8 +148,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'amarelo-azul-cinza',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Lundi : 18h - 19h'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 18h - 19h')],
         [
           'Mon Oct 06 2025 18:00:00 GMT+0100 (CET)',
           'Mon Oct 20 2025 18:00:00 GMT+0100 (CET)',
@@ -175,8 +162,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 11h - 12h30', 'Lundi : 19h30 - 21h'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -197,8 +186,10 @@ export const UsersData: UsersModel[] = [
       'adult',
       'amarelo',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 11h - 12h30', 'Lundi : 19h30 - 21h'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -219,15 +210,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student3@brive.fr', 'Password123!', 'student', [
+  new UsersModel('6', 'student3@brive.fr', 'Password123!', 'student', [
     // Baby
     new UsersMembers(
       'Louis Richard',
       'baby',
       'cinza',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Lundi : 18h - 19h'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 18h - 19h')],
         [
           'Mon Oct 06 2025 18:00:00 GMT+0100 (CET)',
           'Mon Nov 03 2025 18:00:00 GMT+0100 (CET)',
@@ -241,8 +231,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100 (CET)',
           'Sat Nov 01 2025 11:00:00 GMT+0100 (CET)',
@@ -256,8 +246,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'azul',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Lundi : 19h30 - 21h', 'Samedi : 11h - 12h30'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -275,8 +267,10 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-azul',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 11h - 12h30', 'Lundi : 19h30 - 21h'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -297,15 +291,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student4@brive.fr', 'Password123!', 'student', [
+  new UsersModel('7', 'student4@brive.fr', 'Password123!', 'student', [
     // Baby
     new UsersMembers(
       'Jean Dupont',
       'baby',
       'cinza-ponta-azul',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 10h - 11h'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 10h - 11h')],
         [
           'Sat Oct 04 2025 10:00:00 GMT+0100 (CET)',
           'Sat Nov 01 2025 10:00:00 GMT+0100 (CET)',
@@ -319,8 +312,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-amarelo-cinza',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Lundi : 18h - 19h'],
+        [new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 18h - 19h')],
         [
           'Mon Oct 06 2025 18:00:00 GMT+0100 (CET)',
           'Mon Oct 20 2025 18:00:00 GMT+0100 (CET)',
@@ -335,8 +327,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'amarelo-ponta-azul',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 11h - 12h30', 'Lundi : 19h30 - 21h'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -359,8 +353,10 @@ export const UsersData: UsersModel[] = [
       'adult',
       'amarelo-azul',
       new UserDataTrainingModel(
-        ['Brive-la-Gaillarde'],
-        ['Samedi : 11h - 12h30', 'Lundi : 19h30 - 21h'],
+        [
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Brive-la-Gaillarde', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100 (CET)',
           'Sat Oct 11 2025 11:00:00 GMT+0100 (CET)',
@@ -381,14 +377,16 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@chateauneuf.fr', 'Password123!', 'student', [
+  new UsersModel('8', 'student1@chateauneuf.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Paul Martin',
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Châteauneuf-la-Forêt'],
-        ['Jeudi : 18h30 - 20h'],
+        [
+          new UserDataCityScheduleModel('Châteauneuf-la-Forêt', 'Jeudi : 18h30 - 20h'),
+          new UserDataCityScheduleModel('Neuvic', 'Mardi : 18h30 - 20h'),
+        ],
         ['Thu Oct 09 2025 18:30:00 GMT+0100', 'Thu Nov 13 2025 18:30:00 GMT+0100']
       )
     ),
@@ -397,8 +395,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Châteauneuf-la-Forêt'],
-        ['Jeudi : 18h30 - 20h'],
+        [
+          new UserDataCityScheduleModel('Châteauneuf-la-Forêt', 'Jeudi : 18h30 - 20h'),
+          new UserDataCityScheduleModel('Neuvic', 'Mardi : 18h30 - 20h'),
+        ],
         [
           'Thu Oct 09 2025 18:30:00 GMT+0100',
           'Thu Oct 16 2025 18:30:00 GMT+0100',
@@ -413,8 +413,7 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Châteauneuf-la-Forêt'],
-        ['Jeudi : 18h30 - 20h'],
+        [new UserDataCityScheduleModel('Châteauneuf-la-Forêt', 'Jeudi : 18h30 - 20h')],
         [
           'Thu Oct 16 2025 18:30:00 GMT+0100',
           'Thu Nov 06 2025 18:30:00 GMT+0100',
@@ -428,14 +427,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@couzeix.fr', 'Password123!', 'student', [
+  new UsersModel('9', 'student1@couzeix.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Emma Dupont',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 17h30 - 18h30')],
+
         ['Mon Oct 13 2025 17:30:00 GMT+0100']
       )
     ),
@@ -444,8 +443,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 18h30 - 19h30'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 18h30 - 19h30')],
+
         ['Mon Nov 10 2025 18:30:00 GMT+0100']
       )
     ),
@@ -454,8 +453,7 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Jeudi : 18h30 - 19h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Jeudi : 18h30 - 19h45')],
         [
           'Thu Oct 09 2025 18:30:00 GMT+0100',
           'Thu Nov 13 2025 18:30:00 GMT+0100',
@@ -468,8 +466,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 19h30 - 20h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 19h30 - 20h45')],
+
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100',
           'Mon Nov 03 2025 19:30:00 GMT+0100',
@@ -481,14 +479,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@couzeix.fr', 'Password123!', 'student', [
+  new UsersModel('10', 'student2@couzeix.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Léa Moreau',
       'baby',
       'cinza-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 17h30 - 18h30')],
+
         [
           'Mon Oct 20 2025 17:30:00 GMT+0100',
           'Mon Nov 24 2025 17:30:00 GMT+0100',
@@ -502,8 +500,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'amarelo-cinza',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Jeudi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Couzeix', 'Jeudi : 17h30 - 18h30')],
+
         [
           'Thu Oct 16 2025 17:30:00 GMT+0100',
           'Thu Nov 20 2025 17:30:00 GMT+0100',
@@ -517,8 +515,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'amarelo',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Jeudi : 18h30 - 19h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Jeudi : 18h30 - 19h45')],
+
         [
           'Thu Oct 02 2025 18:30:00 GMT+0100',
           'Thu Oct 23 2025 18:30:00 GMT+0100',
@@ -534,8 +532,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 19h30 - 20h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 19h30 - 20h45')],
+
         [
           'Mon Oct 13 2025 19:30:00 GMT+0100',
           'Mon Oct 27 2025 19:30:00 GMT+0100',
@@ -549,20 +547,29 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student3@couzeix.fr', 'Password123!', 'student', [
+  new UsersModel('11', 'student3@couzeix.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Noah Fabre',
       'baby',
       'cinza',
-      new UserDataTrainingModel(['Couzeix'], ['Lundi : 17h30 - 18h30'], [])
+      new UserDataTrainingModel(
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 17h30 - 18h30')],
+
+        [
+          'Mon Oct 06 2025 17:30:00 GMT+0100',
+          'Mon Nov 17 2025 17:30:00 GMT+0100',
+          'Mon Dec 08 2025 17:30:00 GMT+0100',
+          'Mon Dec 15 2025 17:30:00 GMT+0100',
+        ]
+      )
     ),
     new UsersMembers(
       'Jules Morel',
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 18h30 - 19h30'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 18h30 - 19h30')],
+
         ['Mon Nov 17 2025 18:30:00 GMT+0100', 'Mon Dec 15 2025 18:30:00 GMT+0100']
       )
     ),
@@ -571,8 +578,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Jeudi : 18h30 - 19h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Jeudi : 18h30 - 19h45')],
+
         [
           'Thu Nov 06 2025 18:30:00 GMT+0100',
           'Thu Dec 04 2025 18:30:00 GMT+0100',
@@ -585,8 +592,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'amarelo',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 19h30 - 20h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 19h30 - 20h45')],
+
         [
           'Mon Nov 03 2025 19:30:00 GMT+0100',
           'Mon Dec 01 2025 19:30:00 GMT+0100',
@@ -597,14 +604,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student4@couzeix.fr', 'Password123!', 'student', [
+  new UsersModel('12', 'student4@couzeix.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Anna Simon',
       'baby',
       'cinza-ponta-azul',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 17h30 - 18h30')],
+
         [
           'Mon Oct 06 2025 17:30:00 GMT+0100',
           'Mon Oct 27 2025 17:30:00 GMT+0100',
@@ -622,8 +629,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Jeudi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Couzeix', 'Jeudi : 17h30 - 18h30')],
+
         [
           'Thu Oct 09 2025 17:30:00 GMT+0100',
           'Thu Oct 30 2025 17:30:00 GMT+0100',
@@ -640,8 +647,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'azul',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Jeudi : 18h30 - 19h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Jeudi : 18h30 - 19h45')],
+
         [
           'Thu Oct 02 2025 18:30:00 GMT+0100',
           'Thu Oct 16 2025 18:30:00 GMT+0100',
@@ -661,8 +668,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-azul',
       new UserDataTrainingModel(
-        ['Couzeix'],
-        ['Lundi : 19h30 - 20h45'],
+        [new UserDataCityScheduleModel('Couzeix', 'Lundi : 19h30 - 20h45')],
+
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100',
           'Mon Oct 13 2025 19:30:00 GMT+0100',
@@ -679,14 +686,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@gueret.fr', 'Password123!', 'student', [
+  new UsersModel('13', 'student1@gueret.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Alice Dubois',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 17h30 - 18h30')],
+
         ['Tue Oct 07 2025 17:30:00 GMT+0100', 'Tue Nov 04 2025 17:30:00 GMT+0100']
       )
     ),
@@ -695,8 +702,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 18h30 - 19h30'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 18h30 - 19h30')],
+
         [
           'Tue Oct 14 2025 18:30:00 GMT+0100',
           'Tue Oct 28 2025 18:30:00 GMT+0100',
@@ -710,8 +717,7 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 19h30 - 21h')],
         [
           'Tue Oct 07 2025 19:30:00 GMT+0100',
           'Tue Oct 21 2025 19:30:00 GMT+0100',
@@ -726,8 +732,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 19h30 - 21h')],
+
         [
           'Tue Oct 07 2025 19:30:00 GMT+0100',
           'Tue Oct 14 2025 19:30:00 GMT+0100',
@@ -740,14 +746,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@gueret.fr', 'Password123!', 'student', [
+  new UsersModel('14', 'student2@gueret.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Émilie Roux',
       'baby',
       'cinza-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 17h30 - 18h30')],
+
         [
           'Tue Oct 21 2025 17:30:00 GMT+0100',
           'Tue Nov 18 2025 17:30:00 GMT+0100',
@@ -760,8 +766,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'amarelo-cinza',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 18h30 - 19h30'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 18h30 - 19h30')],
+
         [
           'Tue Oct 07 2025 18:30:00 GMT+0100',
           'Tue Oct 28 2025 18:30:00 GMT+0100',
@@ -774,8 +780,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'amarelo',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 19h30 - 21h')],
+
         [
           'Tue Oct 14 2025 19:30:00 GMT+0100',
           'Tue Oct 28 2025 19:30:00 GMT+0100',
@@ -789,8 +795,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 19h30 - 21h')],
+
         [
           'Tue Oct 07 2025 19:30:00 GMT+0100',
           'Tue Oct 14 2025 19:30:00 GMT+0100',
@@ -805,14 +811,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student3@gueret.fr', 'Password123!', 'student', [
+  new UsersModel('15', 'student3@gueret.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Lucas Dubois',
       'baby',
       'cinza-ponta-azul',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 17h30 - 18h30'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 17h30 - 18h30')],
+
         [
           'Tue Oct 14 2025 17:30:00 GMT+0100',
           'Tue Oct 28 2025 17:30:00 GMT+0100',
@@ -827,8 +833,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 18h30 - 19h30'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 18h30 - 19h30')],
+
         [
           'Tue Oct 07 2025 18:30:00 GMT+0100',
           'Tue Oct 21 2025 18:30:00 GMT+0100',
@@ -844,8 +850,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'azul',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 19h30 - 21h')],
+
         [
           'Tue Oct 07 2025 19:30:00 GMT+0100',
           'Tue Oct 21 2025 19:30:00 GMT+0100',
@@ -861,8 +867,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'amarelo',
       new UserDataTrainingModel(
-        ['Guéret'],
-        ['Mardi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Guéret', 'Mardi : 19h30 - 21h')],
+
         [
           'Tue Oct 14 2025 19:30:00 GMT+0100',
           'Tue Oct 28 2025 19:30:00 GMT+0100',
@@ -875,14 +881,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@lasouterraine.fr', 'Password123!', 'student', [
+  new UsersModel('17', 'student1@lasouterraine.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Emma Dubois',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 15h - 16h'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 15h - 16h')],
+
         [
           'Sat Oct 04 2025 15:00:00 GMT+0100',
           'Sat Oct 18 2025 15:00:00 GMT+0100',
@@ -898,8 +904,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 18 2025 16:00:00 GMT+0100',
@@ -916,8 +922,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -934,8 +940,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -952,14 +958,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@lasouterraine.fr', 'Password123!', 'student', [
+  new UsersModel('18', 'student2@lasouterraine.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Clara Martin',
       'baby',
       'cinza-ponta-amarelo',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 15h - 16h'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 15h - 16h')],
+
         [
           'Sat Oct 11 2025 15:00:00 GMT+0100',
           'Sat Oct 25 2025 15:00:00 GMT+0100',
@@ -975,8 +981,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 11 2025 16:00:00 GMT+0100',
           'Sat Oct 25 2025 16:00:00 GMT+0100',
@@ -992,8 +998,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'azul',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 18 2025 16:00:00 GMT+0100',
@@ -1008,8 +1014,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde',
       new UserDataTrainingModel(
-        ['La Souterraine'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('La Souterraine', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -1024,14 +1030,13 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@limoges.fr', 'Password123!', 'student', [
+  new UsersModel('19', 'student1@limoges.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Emma Dubois',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 11h - 12h'],
+        [new UserDataCityScheduleModel('Limoges', 'Mercredi : 11h - 12h')],
         [
           'Wed Oct 07 2025 11:00:00 GMT+0100',
           'Wed Oct 21 2025 11:00:00 GMT+0100',
@@ -1046,8 +1051,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mardi : 18h - 19h15'],
+        [new UserDataCityScheduleModel('Limoges', 'Mardi : 18h - 19h15')],
         [
           'Tue Oct 06 2025 18:00:00 GMT+0100',
           'Tue Oct 20 2025 18:00:00 GMT+0100',
@@ -1063,8 +1067,7 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 17h30 - 19h'],
+        [new UserDataCityScheduleModel('Limoges', 'Mercredi : 17h30 - 19h')],
         [
           'Wed Oct 07 2025 17:30:00 GMT+0100',
           'Wed Oct 14 2025 17:30:00 GMT+0100',
@@ -1086,8 +1089,7 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Lundi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Limoges', 'Lundi : 19h30 - 21h')],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100',
           'Mon Oct 13 2025 19:30:00 GMT+0100',
@@ -1107,14 +1109,13 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@limoges.fr', 'Password123!', 'student', [
+  new UsersModel('20', 'student2@limoges.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Clara Martin',
       'baby',
       'cinza-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 15h - 16h'],
+        [new UserDataCityScheduleModel('Limoges', 'Mercredi : 15h - 16h')],
         [
           'Wed Oct 07 2025 15:00:00 GMT+0100',
           'Wed Oct 21 2025 15:00:00 GMT+0100',
@@ -1129,8 +1130,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'amarelo-cinza',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 16h - 17h15'],
+        [new UserDataCityScheduleModel('Limoges', 'Mercredi : 16h - 17h15')],
         [
           'Wed Oct 07 2025 16:00:00 GMT+0100',
           'Wed Oct 21 2025 16:00:00 GMT+0100',
@@ -1146,8 +1146,7 @@ export const UsersData: UsersModel[] = [
       'teen',
       'amarelo',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Vendredi : 18h - 19h30'],
+        [new UserDataCityScheduleModel('Limoges', 'Vendredi : 18h - 19h30')],
         [
           'Fri Oct 03 2025 18:00:00 GMT+0100',
           'Fri Oct 10 2025 18:00:00 GMT+0100',
@@ -1169,8 +1168,7 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 19h30 - 21h'],
+        [new UserDataCityScheduleModel('Limoges', 'Mercredi : 19h30 - 21h')],
         [
           'Wed Oct 07 2025 19:30:00 GMT+0100',
           'Wed Oct 14 2025 19:30:00 GMT+0100',
@@ -1189,14 +1187,14 @@ export const UsersData: UsersModel[] = [
       )
     ),
   ]),
-  new UsersModel('student3@limoges.fr', 'Password123!', 'student', [
+
+  new UsersModel('21', 'student3@limoges.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Alice Bernard',
       'baby',
       'cinza-ponta-azul',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 10h - 11h'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 10h - 11h')],
         [
           'Sat Oct 04 2025 10:00:00 GMT+0100',
           'Sat Oct 18 2025 10:00:00 GMT+0100',
@@ -1212,8 +1210,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 16h - 17h15'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 16h - 17h15')],
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 18 2025 16:00:00 GMT+0100',
@@ -1229,8 +1226,7 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 11h - 12h30')],
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Sat Oct 11 2025 11:00:00 GMT+0100',
@@ -1252,8 +1248,7 @@ export const UsersData: UsersModel[] = [
       'adult',
       'amarelo-azul',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 11h - 12h30')],
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Sat Oct 11 2025 11:00:00 GMT+0100',
@@ -1273,14 +1268,13 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student4@limoges.fr', 'Password123!', 'student', [
+  new UsersModel('22', 'student4@limoges.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Chloe Dubois',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 15h - 16h'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 15h - 16h')],
         [
           'Sat Oct 04 2025 15:00:00 GMT+0100',
           'Sat Oct 18 2025 15:00:00 GMT+0100',
@@ -1295,8 +1289,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-amarelo-cinza',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 11h - 12h30')],
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Sat Oct 18 2025 11:00:00 GMT+0100',
@@ -1311,8 +1304,7 @@ export const UsersData: UsersModel[] = [
       'teen',
       'amarelo-ponta-azul',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 17h30 - 19h'],
+        [new UserDataCityScheduleModel('Limoges', 'Mercredi : 17h30 - 19h')],
         [
           'Wed Oct 07 2025 17:30:00 GMT+0100',
           'Wed Oct 14 2025 17:30:00 GMT+0100',
@@ -1334,8 +1326,10 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-azul',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Vendredi : 19h30 - 21h', 'Jeudi : 20h15 - 21h30'],
+        [
+          new UserDataCityScheduleModel('Limoges', 'Vendredi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Limoges', 'Jeudi : 20h15 - 21h30'),
+        ],
         [
           'Fri Oct 03 2025 19:30:00 GMT+0100',
           'Thu Oct 09 2025 20:15:00 GMT+0100',
@@ -1356,14 +1350,13 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student7@limoges.fr', 'Password123!', 'student', [
+  new UsersModel('23', 'student7@limoges.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Nicolas Girard',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 15h - 16h'],
+        [new UserDataCityScheduleModel('Limoges', 'Mercredi : 15h - 16h')],
         [
           'Wed Oct 07 2025 15:00:00 GMT+0100',
           'Wed Oct 21 2025 15:00:00 GMT+0100',
@@ -1378,8 +1371,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-azul-cinza',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 10h - 11h'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 10h - 11h')],
         [
           'Sat Oct 04 2025 10:00:00 GMT+0100',
           'Sat Oct 18 2025 10:00:00 GMT+0100',
@@ -1395,8 +1387,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'azul',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Vendredi : 18h - 19h30', 'Samedi : 11h - 12h30'],
+        [
+          new UserDataCityScheduleModel('Limoges', 'Vendredi : 18h - 19h30'),
+          new UserDataCityScheduleModel('Limoges', 'Samedi : 11h - 12h30'),
+        ],
         [
           'Fri Oct 03 2025 18:00:00 GMT+0100',
           'Sat Oct 04 2025 11:00:00 GMT+0100',
@@ -1420,8 +1414,11 @@ export const UsersData: UsersModel[] = [
       'adult',
       'amarelo',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Lundi : 19h30 - 21h', 'Mercredi : 19h30 - 21h', 'Jeudi : 20h15 - 21h30'],
+        [
+          new UserDataCityScheduleModel('Limoges', 'Lundi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Limoges', 'Mercredi : 19h30 - 21h'),
+          new UserDataCityScheduleModel('Limoges', 'Jeudi : 20h15 - 21h30'),
+        ],
         [
           'Mon Oct 06 2025 19:30:00 GMT+0100',
           'Wed Oct 07 2025 19:30:00 GMT+0100',
@@ -1443,14 +1440,13 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student8@limoges.fr', 'Password123!', 'student', [
+  new UsersModel('24', 'student8@limoges.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Léa Simon',
       'baby',
       'cinza-ponta-azul',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 15h - 16h'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 15h - 16h')],
         [
           'Sat Oct 04 2025 15:00:00 GMT+0100',
           'Sat Oct 18 2025 15:00:00 GMT+0100',
@@ -1465,8 +1461,7 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-azul-cinza',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 16h - 17h15'],
+        [new UserDataCityScheduleModel('Limoges', 'Samedi : 16h - 17h15')],
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 18 2025 16:00:00 GMT+0100',
@@ -1482,8 +1477,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde-azul',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Mercredi : 17h30 - 19h', 'Vendredi : 18h - 19h30'],
+        [
+          new UserDataCityScheduleModel('Limoges', 'Mercredi : 17h30 - 19h'),
+          new UserDataCityScheduleModel('Limoges', 'Vendredi : 18h - 19h30'),
+        ],
         [
           'Wed Oct 07 2025 17:30:00 GMT+0100',
           'Fri Oct 10 2025 18:00:00 GMT+0100',
@@ -1505,8 +1502,10 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Limoges'],
-        ['Samedi : 11h - 12h30', 'Jeudi : 20h15 - 21h30'],
+        [
+          new UserDataCityScheduleModel('Limoges', 'Samedi : 11h - 12h30'),
+          new UserDataCityScheduleModel('Limoges', 'Jeudi : 20h15 - 21h30'),
+        ],
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Thu Oct 09 2025 20:15:00 GMT+0100',
@@ -1527,14 +1526,16 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@neuvic.fr', 'Password123!', 'student', [
+  new UsersModel('25', 'student1@neuvic.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Lucas Dubois',
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Neuvic-Entier'],
-        ['Mardi : 18h30 - 20h'],
+        [
+          new UserDataCityScheduleModel('Châteauneuf-la-Forêt', 'Jeudi : 18h30 - 20h'),
+          new UserDataCityScheduleModel('Neuvic', 'Mardi : 18h30 - 20h'),
+        ],
         [
           'Tue Oct 06 2025 18:30:00 GMT+0100',
           'Tue Oct 20 2025 18:30:00 GMT+0100',
@@ -1550,8 +1551,10 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Neuvic-Entier'],
-        ['Mardi : 18h30 - 20h'],
+        [
+          new UserDataCityScheduleModel('Châteauneuf-la-Forêt', 'Jeudi : 18h30 - 20h'),
+          new UserDataCityScheduleModel('Neuvic', 'Mardi : 18h30 - 20h'),
+        ],
         [
           'Tue Oct 06 2025 18:30:00 GMT+0100',
           'Tue Oct 13 2025 18:30:00 GMT+0100',
@@ -1573,8 +1576,7 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Neuvic-Entier'],
-        ['Mardi : 18h30 - 20h'],
+        [new UserDataCityScheduleModel('Neuvic', 'Mardi : 18h30 - 20h')],
         [
           'Tue Oct 06 2025 18:30:00 GMT+0100',
           'Tue Oct 13 2025 18:30:00 GMT+0100',
@@ -1593,14 +1595,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@panazol.fr', 'Password123!', 'student', [
+  new UsersModel('26', 'student1@panazol.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Emma Dubois',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 15h - 16h'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 15h - 16h')],
+
         [
           'Sat Oct 04 2025 15:00:00 GMT+0100',
           'Sat Oct 18 2025 15:00:00 GMT+0100',
@@ -1616,8 +1618,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 18 2025 16:00:00 GMT+0100',
@@ -1633,8 +1635,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -1656,8 +1658,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -1676,14 +1678,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@panazol.fr', 'Password123!', 'student', [
+  new UsersModel('27', 'student2@panazol.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Clara Martin',
       'baby',
       'cinza-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 15h - 16h'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 15h - 16h')],
+
         [
           'Sat Oct 04 2025 15:00:00 GMT+0100',
           'Sat Oct 11 2025 15:00:00 GMT+0100',
@@ -1705,8 +1707,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'amarelo-cinza',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -1728,8 +1730,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -1751,8 +1753,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Panazol'],
-        ['Samedi : 16h - 17h30'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 16h - 17h30')],
+
         [
           'Sat Oct 04 2025 16:00:00 GMT+0100',
           'Sat Oct 11 2025 16:00:00 GMT+0100',
@@ -1771,14 +1773,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@Saint-Junien.fr', 'Password123!', 'student', [
+  new UsersModel('28', 'student1@Saint-Junien.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Lucas Dubois',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Mercredi : 14h30 - 15h30'],
+        [new UserDataCityScheduleModel('Saint-Junien', 'Mercredi : 14h30 - 15h30')],
+
         ['Wed Oct 07 2025 14:30:00 GMT+0100', 'Wed Nov 04 2025 14:30:00 GMT+0100']
       )
     ),
@@ -1787,8 +1789,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Mercredi : 15h30 - 17h'],
+        [new UserDataCityScheduleModel('Saint-Junien', 'Mercredi : 15h30 - 17h')],
+
         [
           'Wed Oct 14 2025 15:30:00 GMT+0100',
           'Wed Oct 28 2025 15:30:00 GMT+0100',
@@ -1803,8 +1805,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Jeudi : 18h - 19h15'],
+        [new UserDataCityScheduleModel('Saint-Junien', 'Jeudi : 18h - 19h15')],
+
         [
           'Thu Oct 09 2025 18:00:00 GMT+0100',
           'Thu Oct 23 2025 18:00:00 GMT+0100',
@@ -1818,8 +1820,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Jeudi : 18h - 19h15'],
+        [new UserDataCityScheduleModel('Saint-Junien', 'Jeudi : 18h - 19h15')],
+
         [
           'Thu Oct 02 2025 18:00:00 GMT+0100',
           'Thu Oct 16 2025 18:00:00 GMT+0100',
@@ -1832,14 +1834,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@Saint-Junien.fr', 'Password123!', 'student', [
+  new UsersModel('29', 'student2@Saint-Junien.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Alice Bernard',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Mercredi : 14h30 - 15h30'],
+        [new UserDataCityScheduleModel('Panazol', 'Samedi : 16h - 17h30')],
+
         ['Wed Oct 21 2025 14:30:00 GMT+0100']
       )
     ),
@@ -1848,8 +1850,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Mercredi : 15h30 - 17h'],
+        [new UserDataCityScheduleModel('Saint-Junien', 'Mercredi : 15h30 - 17h')],
+
         [
           'Wed Oct 07 2025 15:30:00 GMT+0100',
           'Wed Oct 21 2025 15:30:00 GMT+0100',
@@ -1862,8 +1864,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Jeudi : 18h - 19h15'],
+        [new UserDataCityScheduleModel('Saint-Junien', 'Jeudi : 18h - 19h15')],
+
         [
           'Thu Oct 16 2025 18:00:00 GMT+0100',
           'Thu Oct 30 2025 18:00:00 GMT+0100',
@@ -1878,8 +1880,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-azul',
       new UserDataTrainingModel(
-        ['Saint-Junien'],
-        ['Jeudi : 18h - 19h15'],
+        [new UserDataCityScheduleModel('Saint-Junien', 'Jeudi : 18h - 19h15')],
+
         [
           'Thu Oct 02 2025 18:00:00 GMT+0100',
           'Thu Oct 16 2025 18:00:00 GMT+0100',
@@ -1893,14 +1895,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student1@tulle.fr', 'Password123!', 'student', [
+  new UsersModel('30', 'student1@tulle.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Lucas Dubois',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 10h - 11h'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 10h - 11h')],
+
         [
           'Sat Oct 04 2025 10:00:00 GMT+0100',
           'Sat Nov 01 2025 10:00:00 GMT+0100',
@@ -1913,8 +1915,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'verde-cinza',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 11 2025 11:00:00 GMT+0100',
           'Sat Oct 25 2025 11:00:00 GMT+0100',
@@ -1928,8 +1930,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Sat Oct 18 2025 11:00:00 GMT+0100',
@@ -1944,8 +1946,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-amarelo',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Sat Oct 11 2025 11:00:00 GMT+0100',
@@ -1962,14 +1964,14 @@ export const UsersData: UsersModel[] = [
     ),
   ]),
 
-  new UsersModel('student2@tulle.fr', 'Password123!', 'student', [
+  new UsersModel('31', 'student2@tulle.fr', 'Password123!', 'student', [
     new UsersMembers(
       'Alice Bernard',
       'baby',
       'cinza-ponta-verde',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 10h - 11h'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 10h - 11h')],
+
         ['Sat Oct 11 2025 10:00:00 GMT+0100', 'Sat Nov 15 2025 10:00:00 GMT+0100']
       )
     ),
@@ -1978,8 +1980,8 @@ export const UsersData: UsersModel[] = [
       'child',
       'azul-cinza',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Sat Oct 18 2025 11:00:00 GMT+0100',
@@ -1994,8 +1996,8 @@ export const UsersData: UsersModel[] = [
       'teen',
       'verde-ponta-amarelo',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 11 2025 11:00:00 GMT+0100',
           'Sat Oct 25 2025 11:00:00 GMT+0100',
@@ -2010,8 +2012,8 @@ export const UsersData: UsersModel[] = [
       'adult',
       'verde-azul',
       new UserDataTrainingModel(
-        ['Tulle'],
-        ['Samedi : 11h - 12h30'],
+        [new UserDataCityScheduleModel('Tulle', 'Samedi : 11h - 12h30')],
+
         [
           'Sat Oct 04 2025 11:00:00 GMT+0100',
           'Sat Oct 11 2025 11:00:00 GMT+0100',

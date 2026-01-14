@@ -25,7 +25,9 @@ export class ManagePlacesTimesFormScheduleComponent implements OnInit {
   conditions!: string[];
   conditionSelect: string = '';
 
-  isSubmitted: boolean = false;
+  // Message Form
+  @Input() isSubmitted: boolean = false;
+  @Output() isSubmittedChange = new EventEmitter<boolean>()
   isFormValid: boolean = false;
   formMessages: MessageForm[] = [
     new MessageForm("L'horaire a bien été ajouté.", 'messageFormTrue'),
@@ -53,6 +55,7 @@ export class ManagePlacesTimesFormScheduleComponent implements OnInit {
 
   createSchedule() {
     this.isSubmitted = true;
+    this.isSubmittedChange.emit(true)
 
     if (this.days.includes(this.day) && this.startTime !== '' && this.endTime !== '') {
       this.isFormValid = true;

@@ -26,10 +26,13 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
 
   titleCategory: string = '';
   categoriesSchedule!: CateogriesScheduleModel[] ;
-  idUpdate!: string;
+  idUpdate: string = "";
   schedules: TrainingSchedule[] = [];
+  isSubmittedSchedule: boolean = false
 
-  isSubmitted: boolean = false;
+  // Form Message
+  @Input() isSubmitted: boolean = false;
+  @Output() isSubmittedChange = new EventEmitter<boolean>()
   isFormValid: boolean = false;
   formMessage: MessageForm[] = [
     new MessageForm('Entraînement créé', 'messageFormTrue'),
@@ -47,18 +50,21 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
 
   createCategories() {
     this.isSubmitted = true;
+    this.isSubmittedChange.emit(true)
+    
     const isSelectedCategorySchedule = this.categoriesSchedule.find(
       (category) => category.add === true
     );
 
     if (this.schedules.length > 0 && this.titleCategory !== '' && isSelectedCategorySchedule) {
       this.isFormValid = true;
+      this.isSubmittedSchedule = false
 
       // Creation of categoriesSheduleText
       const categoriesSchedulePresent = this.categoriesSchedule.filter((category) => category.add);
       const categoriesSheduleText = categoriesSchedulePresent.flatMap((category) => category.value);
 
-      if (this.idUpdate) {
+      if (this.idUpdate !== "") {
         const categoryUpdate = this.categories.find((category) => category.id === this.idUpdate);
 
         if (categoryUpdate) {
@@ -109,7 +115,7 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
 
    updateCategories = (categoryUpdate: TrainingCategoryDisplayModel) => {
     const category = this.categories.find((category) => category.id === categoryUpdate.id);
-    console.log(category);
+
     if (category) {
       this.titleCategory = category.title;
       this.categoriesSchedule = this.categoriesSchedule.map((itemCategorySchedule) => ({

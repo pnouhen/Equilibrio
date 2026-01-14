@@ -27,5 +27,7 @@ export class TrainingCardComponent {
   @Input()
   onDeleteCity?: (city: string) => void;
 
+  @Input() isCondition: boolean = true
+
   @Input() isCategories: boolean = false;
 }

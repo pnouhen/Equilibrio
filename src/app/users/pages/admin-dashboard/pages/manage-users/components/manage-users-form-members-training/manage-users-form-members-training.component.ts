@@ -19,16 +19,17 @@ import { TrainingCardComponent } from '../../../../../../../core/components/trai
 })
 export class ManageUsersFormMembersTrainingComponent implements OnInit {
   @Input() categoryText!: string;
+  @Input() citiesName!: string[];
 
   @Input() trainingSchedulesDisplay: TrainingScheduleCityModel[] = [];
   @Output() trainingSchedulesDisplayChange = new EventEmitter<TrainingScheduleCityModel[]>();
 
   citySelected: string = 'Sélectionner';
-  citiesSelected!: CityInfo[];
-  citiesName!: string[];
   schedulesSelected: TrainingScheduleAddModel[] = [];
 
-  isSubmitted: boolean = false;
+  // Message Form
+  @Input() isSubmitted: boolean = false;
+  @Output() isSubmittedChange = new EventEmitter<boolean>();
   isFormValid: boolean = false;
   formMessage: MessageForm[] = [
     new MessageForm('Entraînement(s) ajouté(s)', 'messageFormTrue'),
@@ -36,8 +37,8 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
   ];
 
   constructor(public citiesService: CitiesService, public selectedCityUsers: SelectedCityUsers) {}
+
   ngOnInit(): void {
-    this.citiesName = this.citiesService.Cities().map((city) => city.city);
     this.blockCityChoice();
   }
 
@@ -58,15 +59,18 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
   }
 
   generateSchedules = (newCity: string): void => {
+    // Search city
     const city = this.citiesService.Cities().find((city) => city.city === newCity);
-    const categorSchedule = CategoriesScheduleData.find(
+
+    // Search category of schedules
+    const categorySchedule = CategoriesScheduleData.find(
       (category) => category.value === this.categoryText
     );
 
+    // Udpate schedulesSelected
     const newSchedulesSelected = city?.TrainingCategory.find((card) =>
-      card.categories.find((category) => category === categorSchedule?.id)
+      card.categories.find((category) => category === categorySchedule?.id)
     );
-
     if (newSchedulesSelected) {
       this.schedulesSelected = newSchedulesSelected.trainingSchedule.map((schedule) => {
         return {
@@ -77,10 +81,10 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
     }
   };
 
-  onSubmitSchedule(event: Event) {
-    event.preventDefault();
+  onSubmitSchedule() {
     this.isSubmitted = true;
 
+    // Filter schedule to add
     const addSchedules = this.schedulesSelected
       .filter((schedule) => schedule.add === true)
       .map((schedule) => schedule.trainingSchedule);
@@ -93,17 +97,21 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
 
       if (!isCitySelectedCities) {
         this.isFormValid = true;
+        this.isSubmittedChange.emit(true);
 
         // Update trainingSchedulesDisplay
         const trainingSchedulesCityCard: TrainingScheduleCityModel = {
           trainingSchedule: addSchedules,
           city: this.citySelected,
         };
-        this.trainingSchedulesDisplay = [
+        this.trainingSchedulesDisplayChange.emit([
           ...this.trainingSchedulesDisplay,
           trainingSchedulesCityCard,
-        ];
-        this.trainingSchedulesDisplayChange.emit(this.trainingSchedulesDisplay);
+        ]);
+
+        // Reset all elements
+        this.schedulesSelected = [];
+        this.citySelected = 'Sélectionner';
       } else {
         this.isFormValid = false;
         this.formMessage[1].text = 'La ville est déjà enregistrée';
@@ -112,9 +120,6 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
       this.isFormValid = false;
       this.formMessage[1].text = 'Au moins un des champs est manquant';
     }
-
-    this.schedulesSelected = [];
-    this.citySelected = 'Sélectionner';
   }
 
   deleteTrainingSchedule = (city: string) => {

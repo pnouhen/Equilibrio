@@ -43,7 +43,7 @@
 
               <p class="times">
                 {{ trainingSchedule.startTime }} -
-                {{ trainingSchedule.endTime }} @if(trainingSchedule.condition)
+                {{ trainingSchedule.endTime }} @if(isCondition && trainingSchedule.condition)
                 {{{trainingSchedule.condition}}}
               </p>
             </div>

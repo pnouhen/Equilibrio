@@ -13,11 +13,11 @@ export class UsersDataService {
 
     if (!storedData) {
       const defaultData: UsersModel[] = UsersData; 
-      
+
       sessionStorage.setItem('users', JSON.stringify(defaultData));
       return defaultData;
-    } else {
-      return JSON.parse(storedData);
     }
+
+    return JSON.parse(storedData) as UsersModel[];
   }
 }

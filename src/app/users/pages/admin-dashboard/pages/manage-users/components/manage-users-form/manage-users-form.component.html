@@ -7,14 +7,14 @@
     <div class="email labelInput">
       <label for="email">Email</label>
 
-      <input type="email" id="email" />
+      <input type="email" id="email" name="email" [(ngModel)]="manageUsersService.emailForm" />
     </div>
 
     <div class="type labelInput">
       <p class="label">Statut</p>
 
       <button (click)="selectedStatut.toggleSelected($event)">
-        <p>{{ statutText }}</p>
+        <p>{{ manageUsersService.statutTextForm }}</p>
 
         <img
           src="/assets/icons/chevron-down.svg"
@@ -26,15 +26,28 @@
       <div class="selected" [class.active]="selectedStatut.isSelectedDisplay">
         <app-input-selected
           [dataSelected]="statutData"
-          (inputValueChange)="statutText = $event"
+          (inputValueChange)="manageUsersService.statutTextForm = $event"
           [selected]="selectedStatut"
         />
       </div>
     </div>
   </fieldset>
 
-  <app-manage-users-form-members />
+  <app-manage-users-form-members [(isSubmitted)]="isSubmittedMembers" />
 
-  <button class="buttonSubmit">Enregistrer l'adhérent</button>
-  <button class="buttonSubmit">Annuler</button>
+  <button type="submit" class="buttonSubmit" (click)="onSubmitForm()">
+    Enregistrer l'adhérent
+  </button>
+  <button type="reset" class="buttonSubmit" (click)="cancelForm()">Annuler</button>
 </form>
+
+@if(isSubmitted){
+<div class="messageForm">
+  <app-message-form
+    [isSubmitted]="isSubmitted"
+    [isFormValid]="isFormValid"
+    [canSubmit]="messageForm[0]"
+    [cannotSubmit]="messageForm[1]"
+  />
+</div>
+}

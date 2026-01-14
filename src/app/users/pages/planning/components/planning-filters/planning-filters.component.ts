@@ -47,9 +47,10 @@ export class PlanningFiltersComponent implements OnInit {
     }
   }
 
+  // TODO Refaire
   inputCityChange(newValue: string) {
     this.planningService.citySelected.set(newValue);
-    this.planningService.updateUsersCity(newValue);
+    // this.planningService.updateUsersCity(newValue);
     this.planningService.users.set([]);
   }
 

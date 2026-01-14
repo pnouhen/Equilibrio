@@ -15,16 +15,16 @@ export class PlanningService {
     public studentRegularity: StudentRegularity,
     public usersDataService: UsersDataService
   ) {}
+// TODO Refaire
+  // updateUsersCity(newCity: string) {
+  //   const data = this.usersDataService.UsersData();
 
-  updateUsersCity(newCity: string) {
-    const data = this.usersDataService.UsersData();
+  //   const newUsersFilters = data.flatMap((user) =>
+  //     user.members.filter((member) => member.training.cities.includes(newCity))
+  //   );
 
-    const newUsersFilters = data.flatMap((user) =>
-      user.members.filter((member) => member.training.cities.includes(newCity))
-    );
-
-    this.usersCity.set(newUsersFilters);
-  }
+  //   this.usersCity.set(newUsersFilters);
+  // }
 
   async updateUsersSchedule(newSchedule: string) {
     const newUsersFilters = this.usersCity()

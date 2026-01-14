@@ -22,7 +22,7 @@
     </ul>
   </div>
 
-  <app-manage-places-times-form-schedule [(schedules)]="schedules" />
+  <app-manage-places-times-form-schedule [(schedules)]="schedules" [(isSubmitted)]="isSubmittedSchedule"/>
 
   <button class="buttonSubmit" type="submit" (click)="createCategories()">
     Enregister l'entraînement

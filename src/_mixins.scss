@@ -118,6 +118,23 @@
   }
 }
 
+@mixin trainingCardBackground {
+  position: relative;
+  background: $gray;
+  box-shadow: inset 0 0 2.5rem 0 rgb(147, 147, 147);
+}
+
+@mixin trainingCardTitle {
+  margin-bottom: 1.75rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  color: $black;
+}
+
 @mixin schedules {
   .schedules {
     margin-bottom: 1rem;
@@ -301,5 +318,31 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+  }
+}
+
+@mixin updateDeleteButton {
+  button {
+    position: absolute;
+    top: 0.5rem;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    height: 1.25rem;
+    aspect-ratio: 0.888;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .update {
+    left: 0.5rem;
+  }
+
+  .delete {
+    right: 0.5rem;
   }
 }

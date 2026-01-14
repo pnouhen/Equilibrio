@@ -1,17 +1,18 @@
+import { ManageUsersService } from './../../services/ManageUsers.service';
+import { SelectedCityUsers } from './../../services/SelectedCityUsers.service';
+import { CitiesService } from './../../../../../../../core/services/cities.service';
 import { FormsModule } from '@angular/forms';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { InputSelectedComponent } from '../../../../../../../core/components/input-selected/input-selected.component';
 import { GradesData } from '../../datas/Grade.data';
 import { SelectedCategory } from '../../services/SelectedCategory.service';
 import { SelectedGrade } from '../../services/SelectedGrade.service';
 import { ManageUsersFormMembersTrainingComponent } from '../manage-users-form-members-training/manage-users-form-members-training.component';
-import { TrainingSchedule } from '../../../../../../../core/models/TrainingSchedule.model';
 import { TrainingScheduleCityModel } from '../../models/TrainingScheduleCity.model';
-import { UsersMembers } from '../../../../../../../datas-Back-end/models/Users-members';
-import { CategoriesScheduleData } from '../../../../datas/CategoriesSchedule.data';
 import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
 import { MemberDisplayModel } from '../../models/MemberDisplay.model';
+import { CategoriesScheduleData } from '../../../../datas/CategoriesSchedule.data';
 
 @Component({
   selector: 'app-manage-users-form-members',
@@ -25,79 +26,73 @@ import { MemberDisplayModel } from '../../models/MemberDisplay.model';
   styleUrl: './manage-users-form-members.component.scss',
 })
 export class ManageUsersFormMembersComponent implements OnInit {
-  @Input() members: UsersMembers[] = [];
-  @Input() membersDisplay: MemberDisplayModel[] = [
-    {
-      memberName: 'Pierre Nnouhen',
-      category: 'Adult',
-      grade: 'novato',
-      trainings: [
-        {
-          city: 'Limoges',
-          trainingSchedule: [
-            new TrainingSchedule('Mercredi', '11h', '12h'),
-            new TrainingSchedule('Mercredi', '15h', '16h'),
-            new TrainingSchedule('Samedi', '10h', '11h'),
-            new TrainingSchedule('Samedi', '15h', '16h'),
-          ],
-        },
-
-        {
-          city: 'Couzeix',
-          trainingSchedule: [
-            new TrainingSchedule('Mercredi', '11h', '12h'),
-            new TrainingSchedule('Mercredi', '15h', '16h'),
-            new TrainingSchedule('Samedi', '10h', '11h'),
-            new TrainingSchedule('Samedi', '15h', '16h'),
-          ],
-        },
-      ],
-    },
-  ];
-
   memberName!: string;
   categoryText: string = 'Sélectionner';
   categoryData!: string[];
 
+  // Sort by category
+  citiesName!: string[];
   gradeText: string = 'Sélectionner';
   gradeData: string[] = [];
-
   trainingsDisplay: TrainingScheduleCityModel[] = [];
 
+  idUdpate: string = '';
+
+  // Disappears when category is valid
+  isSubmittedTraining: boolean = false;
+
   // Message when the form is submitted
-  isSubmitted: boolean = false;
+  @Input() isSubmitted: boolean = false;
+  @Output() isSubmittedChange = new EventEmitter<boolean>();
   isFormValid: boolean = false;
   formMessage: MessageForm[] = [
     new MessageForm('Le membre a bien été ajouté', 'messageFormTrue'),
     new MessageForm('Au moins un des élements est manquant', 'messageFormFalse'),
   ];
 
-  constructor(public selectedCategory: SelectedCategory, public selectedGrade: SelectedGrade) {}
+  constructor(
+    public selectedCategory: SelectedCategory,
+    public selectedGrade: SelectedGrade,
+    public manageUsersService: ManageUsersService,
+    public citiesService: CitiesService,
+    public selectedCityUsers: SelectedCityUsers
+  ) {}
 
   ngOnInit(): void {
     this.categoryData = ['Baby', 'Enfant', 'Ados', 'Adulte'];
   }
 
   activeCategory(event: Event) {
-    this.selectedGrade.closeSelected();
-
     this.selectedCategory.toggleSelected(event);
+
+    this.selectedGrade.closeSelected();
+    this.selectedCityUsers.closeSelected();
   }
 
-  toggleSelectionAndUpdateGradeData(category: string) {
+  changeCategory(category: string) {
     this.categoryText = category;
 
+    // For grades
     const gradeCategory = GradesData.filter((grade) => grade.category.includes(category));
-
     let newGrades: string[] = ['novato'];
     if (gradeCategory.length > 1) {
       newGrades = [...newGrades, ...gradeCategory.flatMap((grade) => grade.grades)];
     } else if (gradeCategory.length === 1) {
       newGrades = [...newGrades, ...gradeCategory[0].grades];
     }
-
     this.gradeData = newGrades;
-    this.gradeText = 'Sélectionner';
+
+    // For Cities
+    const categoryId = CategoriesScheduleData.find((cate) => cate.value === category)?.id;
+
+    const citiesSelected = this.citiesService
+      .Cities()
+      .filter((city) =>
+        city.TrainingCategory.some((trainingCategory) =>
+          trainingCategory.categories.some((item) => item === categoryId)
+        )
+      );
+    this.citiesName = citiesSelected.map((city) => city.city);
   }
 
   toggleGrade(event: Event) {
@@ -116,51 +111,67 @@ export class ManageUsersFormMembersComponent implements OnInit {
       this.trainingsDisplay.length > 0;
 
     if (isSubmitValid) {
-      const category = CategoriesScheduleData.find((item) => item.value === this.categoryText);
-      const cities = this.trainingsDisplay.flatMap((training) => training.city);
-      const schedules = this.trainingsDisplay.flatMap((training) =>
-        training.trainingSchedule.flatMap((schedule) => {
-          return schedule.day + ' : ' + schedule.startTime + ' - ' + schedule.endTime;
-        })
-      );
+      this.isFormValid = true;
+      this.isSubmittedTraining = false;
+      this.isSubmittedChange.emit(true);
 
-      if (category) {
-        this.isFormValid = true;
+      if (this.idUdpate !== '') {
+        const memberUpdate = this.manageUsersService.membersDisplayForm.find(
+          (member) => member.id === this.idUdpate
+        );
 
-        // Update member
-        const newMember: UsersMembers = {
-          memberName: this.memberName,
-          category: category?.value,
-          grade: this.gradeText,
-          training: {
-            cities: cities,
-            schedules: schedules,
-            trainingSessions: [],
-          },
-        };
-        this.members = [...this.members, newMember];
+        // Udpate / Create member
+        if (memberUpdate) {
+          memberUpdate.id = this.idUdpate;
+          memberUpdate.memberName = this.memberName;
+          memberUpdate.category = this.categoryText;
+          memberUpdate.grade = this.gradeText;
+          memberUpdate.trainings = this.trainingsDisplay;
 
-        // UpdateMemberDisplay
+          // Message Form
+          this.formMessage[0].text = 'La mise à jour a fonctionné';
+        }
+      } else {
         const newMemberDisplay: MemberDisplayModel = {
+          id: `${Date()}`,
           memberName: this.memberName,
           category: this.categoryText,
           grade: this.gradeText,
           trainings: this.trainingsDisplay,
         };
-        this.membersDisplay = [...this.membersDisplay, newMemberDisplay];
+        this.manageUsersService.membersDisplayForm = [
+          ...this.manageUsersService.membersDisplayForm,
+          newMemberDisplay,
+        ];
 
-        // Reset all
-        this.memberName = '';
-        this.categoryText = 'Sélectionner';
-        this.gradeText = 'Sélectionner';
-        this.gradeData = [];
-        this.trainingsDisplay = [];
-        this.selectedGrade.closeSelected();
-      } else {
-        this.isFormValid = false;
+        // Message Form
+        this.formMessage[0].text = 'Le membre a bien été ajouté';
       }
+      // Reset all
+      this.memberName = '';
+      this.categoryText = 'Sélectionner';
+      this.gradeText = 'Sélectionner';
+      this.gradeData = [];
+      this.trainingsDisplay = [];
+      this.selectedGrade.closeSelected();
+      this.idUdpate = '';
     } else {
       this.isFormValid = false;
     }
+  }
+
+  updateMember(memberUpdate: MemberDisplayModel) {
+    this.idUdpate = memberUpdate.id;
+    this.memberName = memberUpdate.memberName;
+    this.categoryText = memberUpdate.category;
+    this.gradeText = memberUpdate.grade;
+    this.changeCategory(memberUpdate.category);
+    this.trainingsDisplay = memberUpdate.trainings;
+  }
+
+  deleteMember(memberDelete: MemberDisplayModel) {
+    this.manageUsersService.membersDisplayForm = this.manageUsersService.membersDisplayForm.filter(
+      (member) => member !== memberDelete
+    );
   }
 }

@@ -1,11 +1,11 @@
-import { UsersMembers } from './Users-members';
+import { MemberDisplayModel } from './MemberDisplay.model';
 
-export class UsersModel {
+export class UsersDisplay {
   constructor(
     public id: string,
     public email: string,
     public password: string | undefined,
     public type: string,
-    public members: UsersMembers[]
+    public members: MemberDisplayModel[]
   ) {}
 }

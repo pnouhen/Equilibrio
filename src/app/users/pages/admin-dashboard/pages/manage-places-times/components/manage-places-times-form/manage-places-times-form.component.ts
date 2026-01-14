@@ -52,6 +52,8 @@ export class ManagePlacesTimesFormComponent implements OnChanges {
   categoriesDisplay: TrainingCategoryDisplayModel[] = [];
   imgUpdate: string = '';
 
+  isSubmittedCategory: boolean = false
+
   private formBuilder: FormBuilder = inject(FormBuilder);
   cityForm: FormGroup = this.formBuilder.group({
     nameRoom: ['', [Validators.required]],
@@ -127,6 +129,7 @@ export class ManagePlacesTimesFormComponent implements OnChanges {
 
     if (this.cityForm.valid && this.categories.length > 0) {
       this.isFormValid = true;
+      this.isSubmittedCategory = false
 
       // Download File
       if (this.selectedFile) {
