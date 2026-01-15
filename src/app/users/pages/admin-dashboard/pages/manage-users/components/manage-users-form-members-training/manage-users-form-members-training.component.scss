@@ -4,6 +4,11 @@ fieldset {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   .cities {
     grid-column: 1/2;
 
@@ -36,6 +41,15 @@ fieldset {
     align-items: end;
     color: black;
     font-weight: bold;
+
+    @media (max-width: 992px) {
+      padding-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+    margin-left: 0;
+    margin-top: 1.25rem;
+  }
   }
 
   .multipleChoice {
@@ -48,6 +62,16 @@ fieldset {
       flex-wrap: wrap;
       gap: 2.5rem;
       list-style: none;
+
+      @media (max-width: 1024px) {
+        gap: 1.25rem;
+      }
+
+      @media (max-width: 768px) {
+        padding: 0;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
 
       li {
         label {

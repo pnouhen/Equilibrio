@@ -13,12 +13,20 @@ form {
 
     .email {
       grid-column: 1/10;
+
+      @media (max-width: 768px) {
+        grid-column: 1/13;
+      }
     }
 
     .type {
       grid-column: 10/13;
       position: relative;
       @include selected;
+
+      @media (max-width: 768px) {
+        grid-column: 1/13;
+      }
 
       button {
         @include buttonSelected;

@@ -12,13 +12,22 @@ ul {
   gap: 1.25rem;
 
   .card {
+    @include trainingCardBackground;
+
+    @media (max-width: 768px) {
+        width: 100%;
+      }
+
     .category {
       padding: 1.5rem;
       width: 19rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      @include trainingCardBackground;
+
+      @media (max-width: 768px) {
+        width: auto;
+      }
 
       .container {
         @include updateDeleteButton;

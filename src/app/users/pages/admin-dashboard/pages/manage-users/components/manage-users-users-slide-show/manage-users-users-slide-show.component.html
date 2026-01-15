@@ -56,6 +56,7 @@
     }
   </div>
 
+  @if(innerWidth > 768) {
   <div class="pagination">
     <button (click)="previousSlide()" [class.inactive]="indexSlideShow === 0">
       <img src="/assets/icons/chevron-left.svg" alt="Icon Flèche gauche" />
@@ -75,4 +76,5 @@
       <img src="/assets/icons/chevron-right.svg" alt="Icon Flèche droite" />
     </button>
   </div>
+}
 </div>

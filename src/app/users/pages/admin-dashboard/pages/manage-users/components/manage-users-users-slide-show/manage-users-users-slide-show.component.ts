@@ -25,6 +25,8 @@ import { TrainingSchedule } from '../../../../../../../core/models/TrainingSched
 export class ManageUsersUsersSlideShowComponent implements OnInit, AfterViewInit {
   @Output() userUpdate = new EventEmitter<{}>();
 
+  innerWidth!: number
+
   indexSlideShow: number = 0;
 
   @ViewChild('container') container!: ElementRef<HTMLDivElement>;
@@ -36,6 +38,7 @@ export class ManageUsersUsersSlideShowComponent implements OnInit, AfterViewInit
 
   ngOnInit(): void {
     this.manageUsersService.chunkArray(this.manageUsersService.users());
+    this.innerWidth = window.innerWidth
   }
 
   ngAfterViewInit(): void {

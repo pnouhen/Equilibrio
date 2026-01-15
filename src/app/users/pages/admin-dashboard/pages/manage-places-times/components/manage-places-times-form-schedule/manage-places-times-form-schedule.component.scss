@@ -112,6 +112,12 @@ fieldset {
     @include managePlaceTimesFormTitleCreate;
   }
 
+  .schedules {
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+  }
+
   button {
     padding: 0;
     background-color: transparent;

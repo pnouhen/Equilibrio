@@ -8,6 +8,11 @@
     gap: 1px;
     overflow-x: hidden;
 
+    @media (max-width: 768px) {
+      gap: 2.5rem;
+      overflow: auto;
+    }
+
     table {
       margin-top: 2.5rem;
       width: 100%;

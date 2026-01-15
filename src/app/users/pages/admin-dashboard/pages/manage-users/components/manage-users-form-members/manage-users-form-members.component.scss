@@ -7,6 +7,11 @@ fieldset {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   input {
     height: $inputHeight;
     @include input;
@@ -67,6 +72,12 @@ fieldset {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
 
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .member {
       padding: 1.25rem;
 
@@ -100,6 +111,11 @@ fieldset {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 1.25rem;
+
+          @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+          }
 
           .training {
             width: max-content;
