@@ -1,6 +1,16 @@
 <h3>Cliquez sur les élèves présents :</h3>
 
-<p class="today">{{ date }}</p>
+<div class="choice-date">
+  <button type="button" (click)="previousDate()">
+    <img src="/assets/icons/chevron-left.svg" alt="Icon pour afficher la date précédante" />
+  </button>
+
+  <p class="date">{{ dateDisplay }}</p>
+
+  <button type="button" (click)="nextDate()">
+    <img src="/assets/icons/chevron-right.svg" alt="Icon pour afficher la date suivante" />
+  </button>
+</div>
 
 <form (ngSubmit)="onSubmit()">
   <table>

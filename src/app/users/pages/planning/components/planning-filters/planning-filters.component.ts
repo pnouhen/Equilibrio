@@ -4,7 +4,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../../../services/user.service';
 import { SelectedCityPlanning } from '../../../../services/SelectedCityPlanning.service';
 import { SelectedSchedules } from '../../../../services/SelectedSchedules.service';
-import { CITIES } from '../../../../../datas-Back-end/data/CitiesInfo.data';
 import { InputSelectedComponent } from '../../../../../core/components/input-selected/input-selected.component';
 
 @Component({
@@ -30,7 +29,10 @@ export class PlanningFiltersComponent implements OnInit {
 
   ngOnInit(): void {
     // Filter city
-    this.cities = this.citiesService.Cities().map((city) => city.city).sort();
+    this.cities = this.citiesService
+      .Cities()
+      .map((city) => city.city)
+      .sort();
   }
 
   // Functions for city
@@ -47,10 +49,9 @@ export class PlanningFiltersComponent implements OnInit {
     }
   }
 
-  // TODO Refaire
   inputCityChange(newValue: string) {
     this.planningService.citySelected.set(newValue);
-    // this.planningService.updateUsersCity(newValue);
+    this.planningService.updateUsersCity(newValue);
     this.planningService.users.set([]);
   }
 
@@ -59,21 +60,28 @@ export class PlanningFiltersComponent implements OnInit {
     // Returns the schedules related to the city in question
     const newSchedules = [
       ...new Set(
-        this.citiesService.Cities().find((city) => city.city === newCity)?.TrainingCategory.flatMap((category) =>
-          category.trainingSchedule.map(
-            (schedule) => `${schedule.day} : ${schedule.startTime} - ${schedule.endTime}`
+        this.citiesService
+          .Cities()
+          .find((city) => city.city === newCity)
+          ?.TrainingCategory.flatMap((category) =>
+            category.trainingSchedule.map(
+              (schedule) => `${schedule.day} : ${schedule.startTime} - ${schedule.endTime}`
+            )
           )
-        )
       ),
     ].sort((a, b) => a.localeCompare(b));
 
     this.schedules = newSchedules ? newSchedules : [];
 
-    this.planningService.scheduleSelected.set('Selectionnez');
+    this.planningService.scheduleSelected = 'Selectionnez';
   };
 
   toggleSelectedSchedules() {
-    if (this.schedules && this.schedules.length > 0 && !this.selectedCityPlanning.isSelectedDisplay) {
+    if (
+      this.schedules &&
+      this.schedules.length > 0 &&
+      !this.selectedCityPlanning.isSelectedDisplay
+    ) {
       this.selectedSchedules.toggleSelected();
 
       // Transition CSS
@@ -86,7 +94,7 @@ export class PlanningFiltersComponent implements OnInit {
   }
 
   inputScheduleChange(newValue: string) {
-    this.planningService.scheduleSelected.set(newValue);
+    this.planningService.scheduleSelected = newValue;
     this.planningService.updateUsersSchedule(newValue);
   }
 }

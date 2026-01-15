@@ -1,4 +1,5 @@
 import { UsersDataService } from '../../core/services/UsersData.service';
+import { UsersMembers } from '../../datas-Back-end/models/Users-members';
 import { StudentRegularity } from './StudentRegularityService.service';
 import { Injectable, signal } from '@angular/core';
 
@@ -6,29 +7,33 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class PlanningService {
+  date: Date = new Date();
   citySelected = signal<string>('Sélectionner');
-  scheduleSelected = signal<string>('Sélectionner');
-  usersCity = signal<any[]>([]);
+  scheduleSelected: string = 'Sélectionner';
+  usersCity = signal<UsersMembers[]>([]);
   users = signal<any[]>([]);
 
   constructor(
     public studentRegularity: StudentRegularity,
     public usersDataService: UsersDataService
   ) {}
-// TODO Refaire
-  // updateUsersCity(newCity: string) {
-  //   const data = this.usersDataService.UsersData();
+  updateUsersCity(newCity: string) {
+    const data = this.usersDataService.UsersData();
 
-  //   const newUsersFilters = data.flatMap((user) =>
-  //     user.members.filter((member) => member.training.cities.includes(newCity))
-  //   );
+    const newUsersFilters = data.flatMap((user) =>
+      user.members.filter((member) =>
+        member.training.citySchedules.find((item) => item.city === newCity)
+      )
+    );
 
-  //   this.usersCity.set(newUsersFilters);
-  // }
+    this.usersCity.set(newUsersFilters);
+  }
 
   async updateUsersSchedule(newSchedule: string) {
-    const newUsersFilters = this.usersCity()
-      .filter((member) => member.training.schedules.includes(newSchedule))
+    const newUsersFilters: any[] = this.usersCity()
+      .filter((member) =>
+        member.training.citySchedules.find((item) => item.schedule === newSchedule)
+      )
       .sort((a, b) => a.memberName.localeCompare(b.memberName));
 
     // To calculate the regularity, the function will be placed in the server and activated every day.
@@ -48,7 +53,7 @@ export class PlanningService {
   findTodayTrainingSessionDate(trainingSessions: string[]) {
     // Find today's date in training sessions
     return trainingSessions.some(
-      (session) => this.startOfDay(session) === this.startOfDay(`${new Date()}`)
+      (session) => this.startOfDay(session) === this.startOfDay(`${this.date}`)
     );
   }
 
