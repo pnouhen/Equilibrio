@@ -7,32 +7,37 @@ import { TrainingCategory } from '../../../../../../../core/models/TrainingCateg
 import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
 import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { TrainingCategoryDisplayModel } from '../../../../../../../core/models/TrainingCategory-display.model';
-import { CateogriesScheduleModel } from '../../models/CategoriesSchedule.model';
-import { CategoriesScheduleData } from '../../../../datas/CategoriesSchedule.data';
+import { CateogriesModel } from '../../../../models/Categories.model';
+import { CategoriesData } from '../../../../datas/Categories.data';
 import { TrainingCardComponent } from '../../../../../../../core/components/training-card/training-card.component';
 
 @Component({
   selector: 'app-manage-places-times-form-category',
-  imports: [FormsModule, ManagePlacesTimesFormScheduleComponent, MessageFormComponent, TrainingCardComponent],
+  imports: [
+    FormsModule,
+    ManagePlacesTimesFormScheduleComponent,
+    MessageFormComponent,
+    TrainingCardComponent,
+  ],
   templateUrl: './manage-places-times-form-category.component.html',
   styleUrl: './manage-places-times-form-category.component.scss',
 })
 export class ManagePlacesTimesFormCategoryComponent implements OnInit {
-  @Output() categoriesChange = new EventEmitter<TrainingCategory[]>();
   @Input() categories: TrainingCategory[] = [];
+  @Output() categoriesChange = new EventEmitter<TrainingCategory[]>();
 
-  @Output() categoriesDisplayChange = new EventEmitter<TrainingCategoryDisplayModel[]>();
   @Input() categoriesDisplay: TrainingCategoryDisplayModel[] = [];
+  @Output() categoriesDisplayChange = new EventEmitter<TrainingCategoryDisplayModel[]>();
 
   titleCategory: string = '';
-  categoriesSchedule!: CateogriesScheduleModel[] ;
-  idUpdate: string = "";
+  categoriesData!: CateogriesModel[];
+  idUpdate: string = '';
   schedules: TrainingSchedule[] = [];
-  isSubmittedSchedule: boolean = false
+  isSubmittedSchedule: boolean = false;
 
   // Form Message
   @Input() isSubmitted: boolean = false;
-  @Output() isSubmittedChange = new EventEmitter<boolean>()
+  @Output() isSubmittedChange = new EventEmitter<boolean>();
   isFormValid: boolean = false;
   formMessage: MessageForm[] = [
     new MessageForm('Entraînement créé', 'messageFormTrue'),
@@ -42,29 +47,29 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
   constructor(public updateCategoriesLocationService: UpdateCategoriesLocationService) {}
 
   ngOnInit(): void {
-    this.categoriesSchedule = CategoriesScheduleData.map(category => ({
+    this.categoriesData = CategoriesData.map((category) => ({
       ...category,
-      add: false
-    }))
+      add: false,
+    }));
   }
 
   createCategories() {
     this.isSubmitted = true;
-    this.isSubmittedChange.emit(true)
-    
-    const isSelectedCategorySchedule = this.categoriesSchedule.find(
-      (category) => category.add === true
+    this.isSubmittedChange.emit(true);
+
+    const isSelectedCategorySchedule = this.categoriesData.find(
+      (category) => category.add === true,
     );
 
     if (this.schedules.length > 0 && this.titleCategory !== '' && isSelectedCategorySchedule) {
       this.isFormValid = true;
-      this.isSubmittedSchedule = false
+      this.isSubmittedSchedule = false;
 
       // Creation of categoriesSheduleText
-      const categoriesSchedulePresent = this.categoriesSchedule.filter((category) => category.add);
-      const categoriesSheduleText = categoriesSchedulePresent.flatMap((category) => category.value);
+      const CategoriesPresent = this.categoriesData.filter((category) => category.add);
+      const categoriesSheduleText = CategoriesPresent.flatMap((category) => category.value);
 
-      if (this.idUpdate !== "") {
+      if (this.idUpdate !== '') {
         const categoryUpdate = this.categories.find((category) => category.id === this.idUpdate);
 
         if (categoryUpdate) {
@@ -74,7 +79,7 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
 
           this.categoriesDisplay = this.updateCategoriesLocationService.update(this.categories);
           this.categoriesDisplayChange.emit(
-            this.updateCategoriesLocationService.update(this.categories)
+            this.updateCategoriesLocationService.update(this.categories),
           );
         }
 
@@ -93,13 +98,13 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
 
         this.categoriesDisplay = this.updateCategoriesLocationService.update(newCategories);
         this.categoriesDisplayChange.emit(
-          this.updateCategoriesLocationService.update(newCategories)
+          this.updateCategoriesLocationService.update(newCategories),
         );
       }
       // Reset all items
       this.titleCategory = '';
       this.schedules = [];
-      this.categoriesSchedule = this.categoriesSchedule.map((category) => ({
+      this.categoriesData = this.categoriesData.map((category) => ({
         ...category,
         add: false,
       }));
@@ -111,22 +116,22 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
   deleteCategories = (id: string) => {
     this.categoriesDisplay = this.categoriesDisplay.filter((category) => category.id !== id);
     this.categories = this.categories.filter((category) => category.id !== id);
-  }
+  };
 
-   updateCategories = (categoryUpdate: TrainingCategoryDisplayModel) => {
+  updateCategories = (categoryUpdate: TrainingCategoryDisplayModel) => {
     const category = this.categories.find((category) => category.id === categoryUpdate.id);
 
     if (category) {
       this.titleCategory = category.title;
-      this.categoriesSchedule = this.categoriesSchedule.map((itemCategorySchedule) => ({
+      this.categoriesData = this.categoriesData.map((itemCategorySchedule) => ({
         ...itemCategorySchedule,
         add: category.categories.some((itemCategory) =>
-          itemCategorySchedule.value.includes(itemCategory)
+          itemCategorySchedule.value.includes(itemCategory),
         ),
       }));
 
       this.schedules = category.trainingSchedule;
       this.idUpdate = category.id;
     }
-  }
+  };
 }

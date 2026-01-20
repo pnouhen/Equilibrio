@@ -1,0 +1,43 @@
+<fieldset>
+  <legend>Ajouter un fichier pdf</legend>
+
+  <div class="labelInput grade">
+    <p class="label">Recommandé pour le grade *</p>
+
+    <button class="input" (click)="selectedLinkGrade.toggleSelected()">
+      <p>{{ gradeText }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon de suggestion"
+        [class.active]="selectedLinkGrade.isSelectedDisplay"
+      />
+    </button>
+
+    <div class="selected" [class.active]="selectedLinkGrade.isSelectedDisplay">
+      <app-input-selected
+        [dataSelected]="gradeData"
+        [selected]="selectedLinkGrade"
+        (inputValueChange)="gradeText = $event"
+      />
+    </div>
+  </div>
+
+  <div class="labelInput">
+    <label for="filePdf"> Insérer le fichier *</label>
+    <input #fileInput type="file" id="filePdf" accept="application/pdf" (change)="onFileSelected($event)">
+  </div>
+
+  <button type="button" class="buttonSubmit" (click)="onSubmit(fileInput)">Enregister la ressource</button>
+
+  @if(manageResourcesFormService.isSubmittedLink) {
+  <div class="messageForm">
+    <app-message-form
+      [isSubmitted]="manageResourcesFormService.isSubmittedLink"
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessage[0]"
+      [cannotSubmit]="formMessage[1]"
+    />
+  </div>
+  }
+</fieldset>

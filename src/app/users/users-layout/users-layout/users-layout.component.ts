@@ -25,7 +25,7 @@ export class UsersLayoutComponent implements OnInit {
     if (this.user.members.length > 1 && this.userService.user() === '') {
       this.router.navigate([`espace-utilisateur/espace-membres/${this.user.email}`]);
     } else if (this.user.members.length === 1) {
-      this.router.navigate([`espace-utilisateur/${this.user.members[0].memberName}/presentation`]);
+      this.router.navigate([`espace-utilisateur/${this.user.members[0].memberName}/Présentation`]);
     }
   }
 }

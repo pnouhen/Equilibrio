@@ -2,6 +2,7 @@ import { RedirectionPage } from '../../services/redirectionPage.service';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DisplayNavService } from '../../services/displayNav.service';
+import { DisplayUserMembers } from '../../../users/services/displayUserMembers.service';
 
 @Component({
   selector: 'app-logo',
@@ -12,11 +13,15 @@ import { DisplayNavService } from '../../services/displayNav.service';
 export class LogoComponent {
   constructor(
     public displayNavService: DisplayNavService,
-    private redirectionPage: RedirectionPage
+    private redirectionPage: RedirectionPage,
+    public displayUserMembers: DisplayUserMembers
   ) {}
 
   removeMenuBurger(): void {
     this.displayNavService.removeMenuBurger();
+
+    // For user :
+    this.displayUserMembers.isUserMembers.set(null);
   }
 
   routerLink(): string {

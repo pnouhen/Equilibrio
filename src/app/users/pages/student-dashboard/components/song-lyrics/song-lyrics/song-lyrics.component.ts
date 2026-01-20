@@ -1,8 +1,8 @@
+import { UsersDashboardData } from './../../../../../../core/services/UsersDashboard.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { StudentDashboardData } from '../../../../../../datas-Back-end/data/UserDashboard.data';
 import { UsersDataSongModel } from '../../../../../../datas-Back-end/models/UsersData-song.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { MusicPlayerComponent } from "../components/music-player/music-player.component";
+import { MusicPlayerComponent } from '../components/music-player/music-player.component';
 
 @Component({
   selector: 'app-song-lyrics',
@@ -15,12 +15,17 @@ export class SongLyricsComponent implements OnInit {
 
   song!: UsersDataSongModel | undefined;
 
-  constructor(public routes: ActivatedRoute, public router: Router) {}
+  constructor(
+    public routes: ActivatedRoute,
+    public router: Router,
+    public usersDashboardData: UsersDashboardData
+  ) {}
   ngOnInit(): void {
     const songId = this.routes.snapshot.paramMap.get('song') || null;
 
     this.song =
-      StudentDashboardData
+      this.usersDashboardData
+        .UsersDashboardData()
         .find((category) => category.id === 'chants')
         ?.content.flatMap((content) =>
           content.links
@@ -30,13 +35,23 @@ export class SongLyricsComponent implements OnInit {
         )
         .find((link) => link !== undefined) || undefined;
 
+    // For admin
+    if (songId) {
+      const songStorage = sessionStorage.getItem(songId);
+      if (songStorage) this.song = JSON.parse(songStorage);
+    }
     if (!this.song) {
       this.router.navigate(['page-introuvable']);
     }
   }
 
-  returnDashboard() { 
+  returnDashboard() {
     const memberName = this.routes.snapshot.paramMap.get('id') || null;
-    return['/espace-utilisateur', memberName, "chants"];
+
+    if (memberName !== 'admin') {
+      return ['/espace-utilisateur', memberName, 'chants'];
+    } else {
+      return ['/espace-utilisateur/admin/tableau-de-bord/gestions-ressources'];
+    }
   }
 }

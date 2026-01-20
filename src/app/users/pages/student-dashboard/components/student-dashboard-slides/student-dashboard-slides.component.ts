@@ -7,6 +7,7 @@ import { UsersDataModel } from '../../../../../datas-Back-end/models/UserData.mo
 import { StudentDashboardSlidesPdfComponent } from '../student-dashboard-slide-pdf/student-dashboard-slides-pdf.component';
 import { UsersDataSongModel } from '../../../../../datas-Back-end/models/UsersData-song.model';
 import { StudentDashboardSlideSongComponent } from '../student-dashboard-slide-song/student-dashboard-slide-song.component';
+import { SlidesResourcesService } from '../../../../../core/services/SlidesResources.service';
 
 @Component({
   selector: 'app-student-dashboard-slides',
@@ -14,29 +15,23 @@ import { StudentDashboardSlideSongComponent } from '../student-dashboard-slide-s
     StudentDashboardSlideVideoComponent,
     AuthPageRoutingModule,
     StudentDashboardSlidesPdfComponent,
-    StudentDashboardSlideSongComponent
-],
+    StudentDashboardSlideSongComponent,
+  ],
   templateUrl: './student-dashboard-slides.component.html',
   styleUrl: './student-dashboard-slides.component.scss',
 })
 export class StudentDashboardSlidesComponent {
   @Input() innerWidth!: number;
-  @Input() indexContent!: number;
-  @Input() StudentDashboardData!: UsersDataModel | undefined;
+  @Input() indexContent!: string;
+  @Input() dashboardData!: UsersDataModel | undefined;
   @Input() links: (UsersDataLinkModel | UsersDataPdfModel | UsersDataSongModel)[] = {} as (
     | UsersDataLinkModel
     | UsersDataPdfModel
     | UsersDataSongModel
   )[];
 
-  isVideo(link: UsersDataLinkModel | UsersDataPdfModel | UsersDataSongModel): link is UsersDataLinkModel {
-    return link.type === 'video';
-  }
-  isPdf(link: UsersDataLinkModel | UsersDataPdfModel | UsersDataSongModel): link is UsersDataPdfModel {
-    return link.type === 'pdf';
-  }
+  // If admin, change the end of slides show
+  @Input() choiceEndSlidesShow!: number;
 
-  isSong(link: UsersDataLinkModel | UsersDataPdfModel | UsersDataSongModel): link is UsersDataSongModel {
-    return link.type === 'song';
-  }
+  constructor(public slidesResourcesService: SlidesResourcesService){}
 }

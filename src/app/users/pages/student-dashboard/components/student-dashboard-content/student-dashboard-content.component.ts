@@ -1,3 +1,4 @@
+import { ManageResourcesService } from './../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
 import { UsersDataSongModel } from '../../../../../datas-Back-end/models/UsersData-song.model';
 import { UserService } from '../../../../services/user.service';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
@@ -8,6 +9,7 @@ import { StudentDashboardSlideShowComponent } from '../student-dashboard-slide-s
 import { UsersDataLinkModel } from '../../../../../datas-Back-end/models/UserData-link.model';
 import { UsersDataPdfModel } from '../../../../../datas-Back-end/models/UserData-pdf.model';
 import { UserDataContentModel } from '../../../../../datas-Back-end/models/UserData-content.model';
+import { ManageResourcesFormService } from '../../../admin-dashboard/pages/manage-resources/services/ManageResources-form.service';
 
 @Component({
   selector: 'app-student-dashboard-content',
@@ -21,28 +23,32 @@ export class StudentDashboardContentComponent {
   innerWidth: number = window.innerWidth;
   category!: string | undefined;
   grade!: string | undefined;
-  StudentDashboardData!: UsersDataModel | undefined;
+  dashboardData!: UsersDataModel | undefined;
 
-  constructor(public toggleContentUser: ToggleContentUser, private userService: UserService) {
-  effect(() => {
-    this.category = this.userService.category();
-    this.grade = this.userService.grade();
-    this.StudentDashboardData = this.updateContent();
-
-    // Scroll during the content change
-    setTimeout(() => {
-      if (this.content?.nativeElement) {
-        this.content.nativeElement.scrollTop = 0;
-      }
-    }, 0);
-  });
-}
+  constructor(
+    public toggleContentUser: ToggleContentUser,
+    private userService: UserService,
+    public manageResourcesService: ManageResourcesService,
+    public manageResourcesFormService: ManageResourcesFormService
+  ) {
+    effect(() => {
+      this.category = this.userService.category();
+      this.grade = this.userService.grade();
+      this.dashboardData = this.updateContent();
+      // Scroll during the content change
+      setTimeout(() => {
+        if (this.content?.nativeElement) {
+          this.content.nativeElement.scrollTop = 0;
+        }
+      }, 0);
+    });
+  }
 
   private updateContent(): UsersDataModel | undefined {
     const originalData = this.toggleContentUser.contentArray();
     if (!originalData) return undefined;
 
-    const contentFilter = this.filterContent(originalData);
+    const contentFilter = originalData.content;
     const suggestionData = this.displaySuggestions(originalData);
 
     const newContent: UserDataContentModel[] = suggestionData
@@ -53,48 +59,41 @@ export class StudentDashboardContentComponent {
       ...originalData,
       content: newContent,
     };
-
     return filteredData;
   }
 
-  filterContent(originalData: UsersDataModel): UserDataContentModel[] {
-    // A teen can have a child's or adult's rope
-    if (
-      this.grade?.includes('cinza') &&
-      (originalData.id === 'fiches-examen' || originalData.id === 'mouvements') &&
-      this.category === 'teen'
-    )
-      this.category = 'child';
-
-    // Filters category associated
-    const filters = UserDataFilterCategoryData.find(
-      (categories) => categories.id === this.category
-    );
-
-    return (
-      filters?.categories.flatMap((category) =>
-        originalData.content.filter((item) => item.category === category)
-      ) ?? []
-    );
-  }
-
   displaySuggestions(originalData: UsersDataModel): UserDataContentModel | null {
-    const suggestionsContent: (UsersDataLinkModel | UsersDataPdfModel | UsersDataSongModel)[] = originalData.content
+    const suggestionsContent = originalData.content
       .flatMap((item) => item.links)
-      .filter((link) => this.comparedGrade(link.grade));
+      .filter(
+        (link): link is UsersDataLinkModel | UsersDataPdfModel | UsersDataSongModel =>
+          this.hasGrade(link) && this.comparedGrade(link.grade),
+      );
 
-      if (suggestionsContent.length > 0) {
-      return new UserDataContentModel('Suggestions', '', 'all', suggestionsContent);
+    if (suggestionsContent.length > 0 && !this.manageResourcesService.isAdmin) {
+      return new UserDataContentModel(
+        'suggestions',
+        'Suggestions',
+        '',
+        ['child', 'teen', 'adult'],
+        suggestionsContent,
+      );
     } else {
       return null;
     }
   }
 
+  hasGrade(
+    link: UsersDataLinkModel | UsersDataPdfModel | UsersDataSongModel,
+  ): link is UsersDataLinkModel | UsersDataPdfModel {
+    return 'grade' in link && typeof (link as any).grade === 'string';
+  }
+
   comparedGrade(linkGrade: string): boolean {
-    if(this.category === "adult") {
-      return linkGrade === this.grade
+    if (this.category === 'adult') {
+      return linkGrade === this.grade;
     } else {
-     return linkGrade.includes(this.grade || '')
+      return linkGrade.includes(this.grade || '');
     }
   }
 }

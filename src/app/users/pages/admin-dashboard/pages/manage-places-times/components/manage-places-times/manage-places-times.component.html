@@ -15,11 +15,11 @@
           <img src="{{ card.src }}" alt="{{ card.alt }}" />
         </a>
 
-        <button class="button-pencil" (click)="updateLocationCard(card.id)">
+        <button class="update" (click)="updateLocationCard(card.id)">
           <img src="/assets/icons/pencil.svg" alt="Icon pour modifier" />
         </button>
 
-        <button class="button-trash" (click)="deleteLocationCard(card.id)">
+        <button class="delete" (click)="deleteLocationCard(card.id)">
           <img src="/assets/icons/trash.svg" alt="Icon pour supprimer" />
         </button>
       </li>

@@ -22,7 +22,7 @@ export class RedirectionPage {
     if (isUser && user) {
       if (user.type === 'student') {
         if (user.members?.length === 1) {
-          return `/espace-utilisateur/${user.members[0].memberName}/presentation`;
+          return `/espace-utilisateur/${user.members[0].memberName}/Présentation`;
         } else if (user.members?.length > 1) {
           return `/espace-utilisateur/espace-membres/${user.email}`;
         }

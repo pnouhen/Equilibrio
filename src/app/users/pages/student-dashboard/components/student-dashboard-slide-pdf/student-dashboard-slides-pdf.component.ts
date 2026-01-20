@@ -9,11 +9,12 @@ import { UsersDataPdfModel } from '../../../../../datas-Back-end/models/UserData
 })
 export class StudentDashboardSlidesPdfComponent {
   @Input() link!: UsersDataPdfModel;
+  @Input() isCreate: boolean = false;
 
   downloadPdf(url: string, nameDownLoad: string): void {
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${nameDownLoad}.pdf`;
+    a.download = `${nameDownLoad}`;
     a.target = '_blank';
     document.body.appendChild(a);
     a.click();

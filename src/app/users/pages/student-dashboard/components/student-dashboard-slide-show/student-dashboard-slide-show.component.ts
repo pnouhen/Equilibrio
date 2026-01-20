@@ -1,8 +1,9 @@
+import { ManageResourcesService } from './../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
 import { UserDataContentModel } from '../../../../../datas-Back-end/models/UserData-content.model';
 import { UsersDataModel } from '../../../../../datas-Back-end/models/UserData.model';
-import { StudentDashboardSlidesComponent } from "../student-dashboard-slides/student-dashboard-slides.component";
+import { StudentDashboardSlidesComponent } from '../student-dashboard-slides/student-dashboard-slides.component';
 
 @Component({
   selector: 'app-student-dashboard-slide-show',
@@ -11,8 +12,8 @@ import { StudentDashboardSlidesComponent } from "../student-dashboard-slides/stu
   styleUrl: './student-dashboard-slide-show.component.scss',
 })
 export class StudentDashboardSlideShowComponent implements OnInit {
-  @Input() StudentDashboardData!: UsersDataModel | undefined;
-  @Input() indexContent!: number;
+  @Input() dashboardData!: UsersDataModel | undefined;
+  @Input() indexContent!: string;
 
   private _contentData!: UserDataContentModel;
 
@@ -26,12 +27,11 @@ export class StudentDashboardSlideShowComponent implements OnInit {
       // Resets the state of the buttons
       this.carouselButtonStates.set(value, {
         prev: true,
-        next: (value.links?.length ?? 0) > 1 ? false : true
+        next: (value.links?.length ?? 0) > 1 ? false : true,
       });
 
       // Update the position so that the display corresponds to index 0
-      const index = this.indexContent ?? 0;
-      this.updateSlidePosition(value, index);
+      this.updateSlidePosition(value, this.indexContent);
     }
   }
 
@@ -41,24 +41,36 @@ export class StudentDashboardSlideShowComponent implements OnInit {
 
   innerWidth: number = window.innerWidth;
 
-  constructor(public toggleContentUser: ToggleContentUser) {}
+  constructor(
+    public toggleContentUser: ToggleContentUser,
+    public manageResourcesService: ManageResourcesService
+  ) {}
 
-  // Map pour stocker l'index courant de chaque carousel
+  // Map to store the current index of each carousel
   carouselIndices = new Map<UserDataContentModel, number>();
 
-  // Map pour stocker l'état des boutons de chaque carousel
+  // Map to store the state of the buttons in each carousel
   carouselButtonStates = new Map<UserDataContentModel, { prev: boolean; next: boolean }>();
+
+  // For admin
+  choiceEndSlidesShow!: number
 
   ngOnInit(): void {
     const array = this.toggleContentUser.contentArray();
     array?.content.forEach((content: UserDataContentModel) => {
-      // Initialisation des indices et des boutons pour tous les contenus au premier rendu
+      // Initialize hints and buttons for all content on first render
       this.carouselIndices.set(content, 0);
-      this.carouselButtonStates.set(content, { prev: true, next: (content.links?.length ?? 0) > 1 ? false : true });
+      this.carouselButtonStates.set(content, {
+        prev: true,
+        next: (content.links?.length ?? 0) > 1 ? false : true,
+      });
     });
+
+    // If admin, change the end of slides show
+    this.choiceEndSlidesShow = this.manageResourcesService.isAdmin ? 1 : 2
   }
 
-  scrollPrev(content: UserDataContentModel, index: number) {
+  scrollPrev(content: UserDataContentModel, index: string) {
     const current = this.carouselIndices.get(content) ?? 0;
     const state = this.carouselButtonStates.get(content)!;
 
@@ -71,9 +83,10 @@ export class StudentDashboardSlideShowComponent implements OnInit {
     }
   }
 
-  scrollNext(content: UserDataContentModel, index: number) {
+  scrollNext(content: UserDataContentModel, index: string) {
     const current = this.carouselIndices.get(content) ?? 0;
-    const maxIndex = content.links.length - 2;
+    
+    const maxIndex = content.links.length - this.choiceEndSlidesShow;
 
     if (!this.carouselButtonStates.has(content)) {
       this.carouselButtonStates.set(content, { prev: true, next: false });
@@ -89,10 +102,10 @@ export class StudentDashboardSlideShowComponent implements OnInit {
     }
   }
 
-  updateSlidePosition(content: UserDataContentModel, index: number) {
-    const container = document.getElementById(index.toString());
+  updateSlidePosition(content: UserDataContentModel, index: string) {
+    const container = document.getElementById(index);
     if (container) {
-       // Retrieves the width of the first slide + gap to calculate the offset
+      // Retrieves the width of the first slide + gap to calculate the offset
       const slide = container.querySelector('.slide') as HTMLElement;
       const slideWidth = slide.offsetWidth + parseInt(getComputedStyle(container).gap);
       const current = this.carouselIndices.get(content) ?? 0;

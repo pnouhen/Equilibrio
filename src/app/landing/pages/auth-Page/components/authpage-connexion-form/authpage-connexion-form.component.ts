@@ -58,7 +58,7 @@ export class AuthpageConnexionFormComponent implements OnInit {
           this.router.navigate([`espace-utilisateur/espace-membres/${userFind.email}`]);
         } else if (userFind.members.length === 1) {
           this.router.navigate([
-            `espace-utilisateur/${userFind.members[0].memberName}/presentation`,
+            `espace-utilisateur/${userFind.members[0].memberName}/Présentation`,
           ]);
         }
       } else if (userFind.type === 'teacher') {

@@ -82,7 +82,8 @@ fieldset {
       padding: 1.25rem;
 
       @include trainingCardBackground;
-      @include updateDeleteButton;
+      @include updateDeleteButtonDisplay;
+      @include updateDeleteButtonPosition;
 
       .memberName {
         @include trainingCardTitle;

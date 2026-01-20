@@ -1,7 +1,6 @@
 import { computed, Injectable } from '@angular/core';
 import { UsersModel } from '../../../../../../datas-Back-end/models/Users.model';
 import { UsersDataService } from '../../../../../../core/services/UsersData.service';
-import { UsersDisplay } from '../models/UsersDisplay.model';
 import { MemberDisplayModel } from '../models/MemberDisplay.model';
 
 @Injectable({

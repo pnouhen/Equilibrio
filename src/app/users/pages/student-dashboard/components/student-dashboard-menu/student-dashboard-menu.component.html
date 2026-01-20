@@ -12,15 +12,15 @@
     }
   </div>
 
-  <nav [class.active]="isMenu">
-    <ul>
-      @for(button of allButtons; track button.id) {
+  <nav  [class.active]="isMenu">
+    <ul #listButtons>
+      @for(button of allButtons; track button) {
       <li>
         <button
-          [class.active]="toggleContentUser.contentRoute() === button.route"
-          (click)="displayContentUser(button.route)"
+          [class.active]="toggleContentUser.contentRoute() === button"
+          (click)="displayContentUser(button)"
         >
-          {{ button.title }}
+          {{ button }}
         </button>
       </li>
       }

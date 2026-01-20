@@ -10,7 +10,7 @@
     <p class="label">Cliquer sur le ou les concerné(s) :</p>
 
     <ul>
-      @for (category of categoriesSchedule; track $index) {
+      @for (category of categoriesData; track $index) {
       <li>
         <label [class.active]="category.add">
           <input type="checkbox" [(ngModel)]="category.add" id="{{ category.id }}" />

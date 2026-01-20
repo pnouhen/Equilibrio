@@ -1,4 +1,4 @@
-import { LinkMenuModel } from '../../student-dashboard/models/LinkMenuModel.model';
+import { LinkMenuModel } from '../../../../core/models/LinkMenuModel.model';
 
 export const LinkAdminMenuData: LinkMenuModel[] = [
   new LinkMenuModel(

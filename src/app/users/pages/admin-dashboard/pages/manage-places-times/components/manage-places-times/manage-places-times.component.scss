@@ -20,33 +20,10 @@ section {
     @include locations-times;
 
     ul {
-
       li {
         position: relative;
-
-        button {
-          position: absolute;
-          top: 0.5rem;
-          padding: 0;
-          height: 1.5rem;
-          background-color: transparent;
-          border: 0;
-          cursor: pointer;
-
-          img {
-            border-radius: 0 !important;
-          }
-        }
-
-        .button-pencil {
-          left: 0.5rem;
-          aspect-ratio: 1;
-        }
-
-        .button-trash {
-          right: 0.5rem;
-          aspect-ratio: 0.888;
-        }
+        @include updateDeleteButtonDisplay;
+        @include updateDeleteButtonPosition;
       }
     }
   }

@@ -1,6 +1,7 @@
 <div class="slideShow">
-  @if(contentData.links.length > 2 && innerWidth >= 768) {
+  @if(contentData.links.length > choiceEndSlidesShow && innerWidth >= 768) {
   <button
+  class="scrollPrev"
     [class.inactive]="carouselButtonStates.get(contentData)?.prev"
     (click)="scrollPrev(contentData, indexContent)"
   >
@@ -10,20 +11,22 @@
 
   <div
     class="slideShow_container"
-    [class.no-slideShow]="contentData.links.length <= 2 || innerWidth <= 768"
+    [class.no-slideShow]="contentData.links.length <= choiceEndSlidesShow || innerWidth <= 768"
   >
     <div class="slides">
       <app-student-dashboard-slides
         [innerWidth]="innerWidth"
         [indexContent]="indexContent"
         [links]="contentData.links"
-        [StudentDashboardData]="StudentDashboardData"
+        [dashboardData]="dashboardData"
+        [choiceEndSlidesShow]="choiceEndSlidesShow"
       />
     </div>
   </div>
 
-  @if(contentData.links.length > 2 && innerWidth >= 768) {
+  @if(contentData.links.length > choiceEndSlidesShow && innerWidth >= 768) {
   <button
+  class="scrollNext"
     [class.inactive]="carouselButtonStates.get(contentData)?.next"
     (click)="scrollNext(contentData, indexContent)"
   >

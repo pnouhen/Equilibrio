@@ -30,6 +30,16 @@ export class HeaderUsersComponent implements OnInit {
     if (user) {
       sessionStorage.removeItem('user');
     }
+
+    const users = sessionStorage.getItem('users');
+    if (users) {
+      sessionStorage.removeItem('users');
+    }
+
+    const usersDashboard = sessionStorage.getItem('usersDashboard');
+    if (usersDashboard) {
+      sessionStorage.removeItem('usersDashboard');
+    }
   }
 
   displayOtherMembers() {
@@ -44,8 +54,8 @@ export class HeaderUsersComponent implements OnInit {
 
   navigateUser(member: UsersMembers) {
     this.isOtherMembers = false;
-    this.router.navigate(['/espace-utilisateur', member.memberName, 'presentation']);
-    this.toggleContentUser.toggleContent('presentation');
+    this.router.navigate(['/espace-utilisateur', member.memberName, 'Présentation']);
+    this.toggleContentUser.toggleContent('Présentation');
     this.userService.setUser(member);
     this.userService.setOtherUser();
   }

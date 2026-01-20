@@ -6,7 +6,21 @@
     @include layout;
   }
 
-  h2,
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    .buttonsAdmin {
+      margin-right: 1.25rem;
+      display: flex;
+      gap: 2rem;
+      @include updateDeleteButtonDisplay;
+    }
+  }
+
+  .title,
   .content {
     @media (max-width: 768px) {
       grid-column: 2/12;
@@ -14,34 +28,6 @@
   }
 
   .content {
-    height: calc($heightDashboardContainerOverflow + 1.25rem);
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 1.25rem;
-
-    @media (max-width: 768px) {
-      height: 100%;
-      grid-template-columns: repeat(10, 1fr);
-    }
-
-    .content_container {
-      grid-column: 1/10;
-      margin-bottom: 1.25rem;
-
-      @media (max-width: 768px) {
-        grid-column: 1/11;
-      }
-
-      h3,
-      .description {
-        margin: 0 7.5rem 0.5rem 2rem;
-
-        @media (max-width: 768px) {
-           margin: 0 0 0.5rem 0;
-        }
-      }
-    }
+    @include studentDashboardContent;
   }
 }

@@ -10,6 +10,8 @@ import { UsersDataLinkModel } from '../../../../../datas-Back-end/models/UserDat
   styleUrl: './student-dashboard-slide-video.component.scss',
 })
 export class StudentDashboardSlideVideoComponent {
-  @Input() link!: UsersDataLinkModel
+  @Input() link!: UsersDataLinkModel;
+  @Input() isCreate: boolean = false
+
   constructor(public videoYoutube: VideoYoutube) {}
 }

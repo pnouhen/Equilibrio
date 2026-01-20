@@ -12,7 +12,7 @@ import { TrainingScheduleCityModel } from '../../models/TrainingScheduleCity.mod
 import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
 import { MemberDisplayModel } from '../../models/MemberDisplay.model';
-import { CategoriesScheduleData } from '../../../../datas/CategoriesSchedule.data';
+import { CategoriesData } from '../../../../datas/Categories.data';
 
 @Component({
   selector: 'app-manage-users-form-members',
@@ -83,7 +83,7 @@ export class ManageUsersFormMembersComponent implements OnInit {
     this.gradeData = newGrades;
 
     // For Cities
-    const categoryId = CategoriesScheduleData.find((cate) => cate.value === category)?.id;
+    const categoryId = CategoriesData.find((cate) => cate.value === category)?.id;
 
     const citiesSelected = this.citiesService
       .Cities()

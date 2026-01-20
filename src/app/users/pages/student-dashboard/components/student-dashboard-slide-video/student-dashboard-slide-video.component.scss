@@ -3,6 +3,11 @@
 .slide {
   height: 100%;
   aspect-ratio: 1.77;
+
+  &.active {
+    height: auto;
+  }
+
   .video {
     margin-bottom: 0.25rem;
     display: block;

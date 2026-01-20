@@ -14,6 +14,11 @@ $padding: 0.5rem;
   box-shadow: 0rem 0rem $spread 0 black;
   overflow: auto;
 
+  &.admin {
+    height: auto;
+    margin: 0;
+  }
+
   @media (max-width: 768px) {
     height: auto;
     overflow: visible;

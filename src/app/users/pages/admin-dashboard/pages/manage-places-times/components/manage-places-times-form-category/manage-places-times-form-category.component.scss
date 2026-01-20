@@ -9,23 +9,11 @@ fieldset {
     margin: 1.25rem 0;
     display: flex;
     gap: 1rem;
+    
+    @include multipleChoice;
 
     @media (max-width: 768px) {
       flex-wrap: wrap;
-    }
-
-    ul {
-      padding: 0;
-      width: 19rem;
-      display: flex;
-      justify-content: space-between;
-      list-style: none;
-
-      li {
-        label {
-          @include multipleChoice;
-        }
-      }
     }
   }
 }

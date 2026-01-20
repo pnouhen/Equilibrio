@@ -29,8 +29,8 @@ export class StudentManagmentComponent implements OnInit {
       this.router.navigate(['page-introuvable']);
       return;
     } else {
-      this.displayUserMembers.isUserMembers.set(true);
-      this.toggleContentUser.toggleContent('presentation')
+      this.displayUserMembers.isUserMembers.set(false);
+      this.toggleContentUser.toggleContent('Présentation')
     }
   }
 }

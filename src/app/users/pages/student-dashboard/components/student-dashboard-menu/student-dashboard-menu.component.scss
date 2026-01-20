@@ -8,6 +8,7 @@
 }
 
 .container {
+  position: relative;
   @include grid3Colums;
 
   .title {
@@ -35,7 +36,7 @@
   }
 
   nav {
-    grid-column: 2/4;
+    grid-column: 2;
     position: relative;
 
     @media (max-width: 768px) {

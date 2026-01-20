@@ -1,0 +1,117 @@
+<fieldset>
+  <legend>Contenu</legend>
+
+  <div class="labelInput">
+    <label for="subtitle">Sous-titre *</label>
+    <input
+      type="text"
+      id="subtitle"
+      name="subtitle"
+      [(ngModel)]="manageResourcesFormService.subtitle"
+    />
+  </div>
+
+  <div class="labelInput">
+    <label for="description">Description</label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      [(ngModel)]="manageResourcesFormService.description"
+    />
+  </div>
+
+  <div class="multipleChoice">
+    <p class="label">Sélectionner la ou les catégorie(s) *</p>
+
+    <ul>
+      @for (categoryContent of manageResourcesFormService.categoriesContent; track $index) {
+        <li>
+          <label [class.active]="categoryContent.add">
+            <input type="checkbox" id="categoryContent-{{ $index }}" name="categoryContent-{{ $index }}" [(ngModel)]="categoryContent.add" />
+            {{ categoryContent.value }}
+          </label>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="type labelInput">
+    <p class="label">Type de ressource *</p>
+
+    <button type="button" class="input" (click)="selectedTypeUserDataContent.toggleSelected()">
+      <p>{{ manageResourcesFormService.typeLinkText }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon pour sélectionner"
+        [class.active]="selectedTypeUserDataContent.isSelectedDisplay"
+      />
+    </button>
+
+    <div class="selected" [class.active]="selectedTypeUserDataContent.isSelectedDisplay">
+      <app-input-selected
+        [dataSelected]="typeLinkData"
+        [selected]="selectedTypeUserDataContent"
+        (inputValueChange)="manageResourcesFormService.typeLinkText = $event"
+        [onAction]="changeTypeResource"
+      />
+    </div>
+  </div>
+
+  <div class="create-resource">
+    @if (manageResourcesFormService.typeLinkText === 'Vidéo') {
+      <app-manage-resources-form-video [gradeData]="gradeData" />
+    } @else if (manageResourcesFormService.typeLinkText === 'PDF') {
+      <app-manage-resources-form-pdf [gradeData]="gradeData" />
+    } @else if (manageResourcesFormService.typeLinkText === 'Musique') {
+      <app-manage-resources-form-song />
+    } @else {
+      <p class="messageChoiceType">Choisir le type de ressource pour pouvoir le créer</p>
+    }
+
+    <div class="resource-created">
+      <p class="title">Ressource(s) créée(s) :</p>
+
+      <ul>
+        @for (link of manageResourcesFormService.links; track link.id) {
+          <li>
+            <button class="delete" type="button" (click)="deleteResource(link.id)">
+              <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
+            </button>
+            @if (slidesResourcesService.isVideo(link)) {
+              <app-student-dashboard-slides-videos [link]="link" [isCreate]="true" />
+            }
+            @if (slidesResourcesService.isPdf(link)) {
+              <app-student-dashboard-slides-pdf [link]="link" [isCreate]="true" />
+            }
+            @if (slidesResourcesService.isSong(link)) {
+              <app-student-dashboard-slide-song [link]="link" [isCreate]="true" />
+            }
+            @if (slidesResourcesService.isVideo(link) || slidesResourcesService.isPdf(link)) {
+              <div class="grade">
+                <p class="label">Grade recommandé :</p>
+                <p>{{ link.grade }}</p>
+              </div>
+            }
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <button type="submit" class="buttonSubmit" (click)="onSubmitContent()">
+    Enregrister le contenu
+  </button>
+
+  @if (manageResourcesFormService.isSubmittedContent) {
+    <app-message-form
+      [isSubmitted]="manageResourcesFormService.isSubmittedContent"
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
+  }
+</fieldset>
+
+<app-manage-resources-form-content-created />

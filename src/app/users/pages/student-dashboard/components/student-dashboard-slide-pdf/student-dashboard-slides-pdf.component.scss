@@ -3,6 +3,10 @@
 .file {
   height: 100%;
   aspect-ratio: 1.77;
+  
+  &.active {
+    height: auto;
+  }
 
   button {
     position: relative;

@@ -6,6 +6,7 @@ import { SelectedStatut } from '../../../users/pages/admin-dashboard/pages/manag
 import { SelectedCategory } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedCategory.service';
 import { SelectedGrade } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedGrade.service';
 import { SelectedCityUsers } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedCityUsers.service';
+import { SelectedCategoryUserDataContent } from '../../../users/pages/admin-dashboard/pages/manage-resources/services/SelectedCategoryUserDataContent.service';
 @Component({
   selector: 'app-input-selected',
   imports: [],
@@ -22,7 +23,8 @@ export class InputSelectedComponent {
     | SelectedStatut
     | SelectedCategory
     | SelectedGrade
-    | SelectedCityUsers;
+    | SelectedCityUsers
+    | SelectedCategoryUserDataContent;
 
   @Output() inputValueChange = new EventEmitter<string>();
   @Input() onAction?: (newValue: string) => void;

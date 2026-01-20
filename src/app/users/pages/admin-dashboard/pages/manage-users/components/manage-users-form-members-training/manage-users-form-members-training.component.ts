@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CitiesService } from '../../../../../../../core/services/cities.service';
 import { SelectedCityUsers } from '../../services/SelectedCityUsers.service';
 import { InputSelectedComponent } from '../../../../../../../core/components/input-selected/input-selected.component';
-import { CategoriesScheduleData } from '../../../../datas/CategoriesSchedule.data';
+import { CategoriesData } from '../../../../datas/Categories.data';
 import { CityInfo } from '../../../../../../../core/models/CityInfo.model';
 import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
@@ -43,7 +43,7 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
   }
 
   blockCityChoice(): boolean {
-    const choiceCategoryText = CategoriesScheduleData.flatMap((category) => category.value);
+    const choiceCategoryText = CategoriesData.flatMap((category) => category.value);
 
     if (choiceCategoryText.includes(this.categoryText)) {
       return true;
@@ -63,7 +63,7 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
     const city = this.citiesService.Cities().find((city) => city.city === newCity);
 
     // Search category of schedules
-    const categorySchedule = CategoriesScheduleData.find(
+    const categorySchedule = CategoriesData.find(
       (category) => category.value === this.categoryText
     );
 

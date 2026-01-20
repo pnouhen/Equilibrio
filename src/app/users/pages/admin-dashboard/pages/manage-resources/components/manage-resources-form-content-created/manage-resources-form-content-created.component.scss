@@ -1,0 +1,52 @@
+@use '../../../../../../../../mixins' as *;
+@use '../../../../../../../../variables' as *;
+
+.content-create {
+  margin: 1.25rem;
+
+  .title {
+    @include managePlaceTimesFormTitleCreate;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    .content {
+      padding: 2.5rem 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      @include trainingCardBackground;
+      @include updateDeleteButtonDisplay;
+      @include updateDeleteButtonPosition;
+      
+      p {
+        strong {
+          margin-right: 0.5rem;
+          color: $red;
+        }
+      }
+
+      .links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+
+        p {
+          grid-column: 1/4;
+        }
+
+        .link {
+          .grade {
+            margin-top: 0.75rem;
+            display: flex;
+            gap: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

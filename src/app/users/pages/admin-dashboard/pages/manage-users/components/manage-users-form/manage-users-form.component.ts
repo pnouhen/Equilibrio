@@ -7,7 +7,7 @@ import { ManageUsersFormMembersComponent } from '../manage-users-form-members/ma
 import { FormsModule } from '@angular/forms';
 import { checkEmail } from '../../../../../../../landing/services/checkEmail';
 import { UsersModel } from '../../../../../../../datas-Back-end/models/Users.model';
-import { CategoriesScheduleData } from '../../../../datas/CategoriesSchedule.data';
+import { CategoriesData } from '../../../../datas/Categories.data';
 import { TrainingScheduleCityModel } from '../../models/TrainingScheduleCity.model';
 import { UserDataTrainingModel } from '../../../../../../../datas-Back-end/models/UserData-training.model';
 import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
@@ -115,7 +115,7 @@ export class ManageUsersFormComponent implements OnInit {
   }
 
   formatCategory(categorieDisplay: string): string {
-    const categoryCorrespondent = CategoriesScheduleData.find(
+    const categoryCorrespondent = CategoriesData.find(
       (cateogry) => cateogry.value === categorieDisplay
     );
 

@@ -1,0 +1,7 @@
+@use '../../../../../../../../mixins' as *;
+@use '../../../../../../../../variables' as *;
+
+.container {
+    border: 2px solid black;
+     @include studentDashboardContainer;
+  }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UsersDataSongModel } from '../../../../../datas-Back-end/models/UsersData-song.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ManageResourcesService } from '../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
 
 @Component({
   selector: 'app-student-dashboard-slide-song',
@@ -11,11 +12,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class StudentDashboardSlideSongComponent {
   @Input() link!: UsersDataSongModel;
   @Input() index!: number;
+  @Input() isCreate: boolean = false;
 
-  constructor(public routes: ActivatedRoute, public router: Router) {}
+  constructor(
+    public routes: ActivatedRoute,
+    public router: Router,
+    public manageResourcesService: ManageResourcesService
+  ) {}
 
-  displayLyrics(songId: string) { 
+  displayLyrics(songId: string) {
     const memberName = this.routes.snapshot.paramMap.get('id') || null;
-    this.router.navigate(['/espace-utilisateur', memberName, 'chants', songId]);
+
+    if (!this.manageResourcesService.isAdmin) {
+      this.router.navigate(['/espace-utilisateur', memberName, 'chants', songId]);
+    } else {
+      this.router.navigate(['/espace-utilisateur', 'admin', 'chants', songId]);
+    }
   }
 }

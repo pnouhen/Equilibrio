@@ -2,7 +2,7 @@
   <legend>Entraînement</legend>
 
   <div class="cities labelInput" [class.active]="selectedCityUsers.isSelectedDisplay">
-    <p class="label">Sélectionner la ville :</p>
+    <p class="label">Sélectionner la ville *</p>
 
     <button
       [class.inactive]="!blockCityChoice()"
@@ -35,7 +35,7 @@
   }
 
   <div class="multipleChoice">
-    <p class="label">Sélectionner le ou les horaire(s) :</p>
+    <p class="label">Sélectionner le ou les horaire(s) *</p>
 
     @if(schedulesSelected.length > 0){
     <ul>
@@ -71,7 +71,7 @@
 </fieldset>
 
 <div class="trainingSchedule-create">
-  <p class="title-create">Ville et entraînement(s) associés :</p>
+  <p class="title-create">Ville et entraînement(s) associés *</p>
 
   @if(trainingSchedulesDisplay.length > 0){
   <div class="cards-create">

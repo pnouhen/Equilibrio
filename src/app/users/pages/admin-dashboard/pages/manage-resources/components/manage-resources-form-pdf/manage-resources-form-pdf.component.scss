@@ -1,0 +1,53 @@
+@use '../../../../../../../../mixins' as *;
+@use '../manage-resources-form/manage-resources-form.component.scss' as *;
+
+fieldset {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    height: $heightInput;
+  }
+
+  input[type='file'] {
+    @media (max-width: 768px) {
+      width: calc(100% - 0.625rem * 2);
+    }
+  }
+
+  input,
+  .input {
+    @include input;
+  }
+
+  .input {
+    @include buttonSelected;
+  }
+
+  .grade {
+    @include selected;
+
+    .selected {
+      top: 5.3125rem;
+
+      &.active {
+        top: 5.8125rem;
+      }
+    }
+  }
+
+  .link,
+  .buttonSubmit {
+    grid-column: 1/3;
+  }
+
+  .buttonSubmit {
+    margin-top: 1.25rem;
+  }
+}

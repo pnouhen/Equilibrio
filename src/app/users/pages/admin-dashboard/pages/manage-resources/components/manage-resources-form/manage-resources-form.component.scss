@@ -1,0 +1,21 @@
+@use '../../../../../../../../mixins' as *;
+
+$heightInput: 2rem;
+
+form {
+  fieldset {
+    input {
+      height: $heightInput;
+      @include input;
+    }
+
+    .multipleChoice {
+      margin-top: 1.25rem;
+    @include multipleChoice;
+
+    ul {
+      margin-top: 1rem;
+    }
+  }
+  }
+}

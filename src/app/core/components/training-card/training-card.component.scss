@@ -15,8 +15,8 @@ ul {
     @include trainingCardBackground;
 
     @media (max-width: 768px) {
-        width: 100%;
-      }
+      width: 100%;
+    }
 
     .category {
       padding: 1.5rem;
@@ -30,7 +30,8 @@ ul {
       }
 
       .container {
-        @include updateDeleteButton;
+        @include updateDeleteButtonDisplay;
+        @include updateDeleteButtonPosition;
 
         .title {
           @include trainingCardTitle;

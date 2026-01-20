@@ -1,0 +1,40 @@
+@use '../../../../../../../../mixins' as *;
+@use '../manage-resources-form/manage-resources-form.component.scss' as *;
+
+fieldset {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input,
+  textarea {
+    @include input;
+  }
+
+  input[type='file'] {
+    @media (max-width: 768px) {
+      width: calc(100% - 0.625rem * 2);
+    }
+  }
+
+  .messageFormSubmit,
+  .lyrics,
+  .buttonSubmit {
+    grid-column: 1/3;
+  }
+
+  .lyrics {
+    textarea {
+      height: 10rem;
+    }
+  }
+
+  .buttonSubmit {
+    margin-top: 1.25rem;
+  }
+}

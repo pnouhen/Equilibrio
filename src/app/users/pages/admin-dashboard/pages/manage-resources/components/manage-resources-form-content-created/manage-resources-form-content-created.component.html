@@ -1,0 +1,61 @@
+<div class="content-create">
+  <p class="title">Contenu(s) créé(s) :</p>
+
+  <div class="container">
+    @for (content of manageResourcesFormService.contentCreated; track $index) {
+      <div class="content">
+        <button class="update" type="button" (click)="updateContent(content)">
+          <img src="/assets/icons/pencil.svg" alt="Boutton pour supprimer" />
+        </button>
+
+        <button class="delete" type="button" (click)="deleteContent(content.id)">
+          <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
+        </button>
+
+        <p><strong>Sous-titre :</strong>{{ content.subTitle }}</p>
+
+        <p><strong>Description :</strong>{{ content.description }}</p>
+
+        <p>
+          <strong>Catégory :</strong>
+          @for (category of content.categories; track $index) {
+            {{ category }}
+            @if (content.categories.length > $index + 1) {
+              -
+            }
+          }
+        </p>
+
+        <div class="links">
+          <p><strong>Les ressources :</strong></p>
+
+          @for (link of content.links; track $index) {
+            <div class="link">
+              @if (slidesResourcesService.isVideo(link)) {
+                <app-student-dashboard-slides-videos [link]="link" [isCreate]="true" />
+              }
+
+              @if (slidesResourcesService.isPdf(link)) {
+                <app-student-dashboard-slides-pdf [link]="link" [isCreate]="true" />
+              }
+
+              @if (slidesResourcesService.isSong(link)) {
+                <app-student-dashboard-slide-song
+                  [link]="link"
+                  [index]="$index + 1"
+                  [isCreate]="true"
+                />
+              }
+              @if (slidesResourcesService.isVideo(link) || slidesResourcesService.isPdf(link)) {
+                <div class="grade">
+                  <p class="label">Grade recommandé :</p>
+                  <p>{{ link.grade }}</p>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
