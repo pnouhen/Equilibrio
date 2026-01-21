@@ -1,4 +1,4 @@
-@use '../../../../../../../../mixins' as *;
+@use '../../../../../../../../styles/mixins' as *;
 
 fieldset {
   display: grid;
@@ -68,7 +68,7 @@ fieldset {
     margin-top: 2.5rem;
   }
 
-  .messageForm {
+  .formMessage {
     grid-column: 1/4;
   }
 }

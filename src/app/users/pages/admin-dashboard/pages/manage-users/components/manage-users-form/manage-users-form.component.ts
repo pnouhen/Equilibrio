@@ -5,13 +5,13 @@ import { Component, OnInit } from '@angular/core';
 import { InputSelectedComponent } from '../../../../../../../core/components/input-selected/input-selected.component';
 import { ManageUsersFormMembersComponent } from '../manage-users-form-members/manage-users-form-members.component';
 import { FormsModule } from '@angular/forms';
-import { checkEmail } from '../../../../../../../landing/services/checkEmail';
+import { checkEmail } from '../../../../../../../core/services/checkEmail';
 import { UsersModel } from '../../../../../../../datas-Back-end/models/Users.model';
 import { CategoriesData } from '../../../../datas/Categories.data';
 import { TrainingScheduleCityModel } from '../../models/TrainingScheduleCity.model';
 import { UserDataTrainingModel } from '../../../../../../../datas-Back-end/models/UserData-training.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 import { UserDataCityScheduleModel } from '../../../../../../../datas-Back-end/models/UserData-city-schedule.model';
 
 @Component({
@@ -21,7 +21,7 @@ import { UserDataCityScheduleModel } from '../../../../../../../datas-Back-end/m
     InputSelectedComponent,
     ManageUsersFormMembersComponent,
     FormsModule,
-    MessageFormComponent,
+    FormMessageComponent,
   ],
   templateUrl: './manage-users-form.component.html',
   styleUrl: './manage-users-form.component.scss',
@@ -32,12 +32,13 @@ export class ManageUsersFormComponent implements OnInit {
   // Disappears when form is valid
   isSubmittedMembers: boolean = false;
 
-  // Message Form
+  // Managing the display of the message after submit 
+ // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  messageForm: MessageForm[] = [
-    new MessageForm("L'adhérant a bien été ajouté", 'messageFormTrue'),
-    new MessageForm('Au moins un des élément(s) est manquant', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel("L'adhérant a bien été ajouté", 'formMessageTrue'),
+    new FormMessageModel('Au moins un des élément(s) est manquant', 'formMessageFalse'),
   ];
 
   constructor(
@@ -87,8 +88,8 @@ export class ManageUsersFormComponent implements OnInit {
           sessionStorage.setItem('users', JSON.stringify(this.manageUsersService.users()));
         }
 
-        // Message form
-        this.messageForm[0].text = 'La mise à jour a fonctionné';
+        // Managing the display of the message after submit
+        this.formMessage[0].text = 'La mise à jour a fonctionné';
       } else {
         const newUser: UsersModel = {
           id: `${Date()}`,
@@ -104,8 +105,8 @@ export class ManageUsersFormComponent implements OnInit {
         this.usersDataService.UsersData.set(newUsersData);
         sessionStorage.setItem('users', JSON.stringify(newUsersData));
 
-        // Message form
-        this.messageForm[0].text = "L'adhérant a bien été ajouté";
+        // Managing the display of the message after submit
+        this.formMessage[0].text = "L'adhérant a bien été ajouté";
       }
 
       this.resetForm();

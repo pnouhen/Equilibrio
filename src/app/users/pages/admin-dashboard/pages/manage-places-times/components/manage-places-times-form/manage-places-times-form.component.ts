@@ -1,4 +1,4 @@
-import { TrainingCategoryDisplayModel } from './../../../../../../../core/models/TrainingCategory-display.model';
+import { TrainingCategoryDisplayModel } from '../../../../../../../core/models/TrainingCategoryDisplay.model';
 import { ImagesService } from './../../../../../../../core/services/Images.service';
 import { TrainingCategory } from '../../../../../../../core/models/TrainingCategory.model';
 import { CitiesService } from './../../../../../../../core/services/cities.service';
@@ -11,7 +11,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { UpdatePhoneNumbers } from '../../../../../../../core/services/allowOnlyNumbers.service';
+import { ManagePhoneNumbersService } from '../../../../../../../core/services/ManagePhoneNumbers.service';
 import {
   FormBuilder,
   FormGroup,
@@ -20,11 +20,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ManagePlacesTimesFormCategoryComponent } from '../manage-places-times-form-category/manage-places-times-form-category.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { CityInfo } from '../../../../../../../core/models/CityInfo.model';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { CityInfoModel } from '../../../../../../../core/models/CityInfo.model';
 import { LocationsCard } from '../../../../../../../core/models/LocationsCard.model';
-import { UpdateCategoriesLocationService } from '../../../../../../../core/services/updateCategoriesLocation.service';
+import { UpdateCategoriesLocationService } from '../../../../../../../core/services/UpdateCategoriesLocation.service';
 
 @Component({
   selector: 'app-manage-places-times-form',
@@ -34,15 +34,15 @@ import { UpdateCategoriesLocationService } from '../../../../../../../core/servi
     FormsModule,
     ManagePlacesTimesFormCategoryComponent,
     ReactiveFormsModule,
-    MessageFormComponent,
+    FormMessageComponent,
   ],
 })
 export class ManagePlacesTimesFormComponent implements OnChanges {
   @Output() locationCardsChange = new EventEmitter<LocationsCard[]>();
   @Input() locationCards: LocationsCard[] = [];
 
-  @Output() cityUpdateChange = new EventEmitter<CityInfo>();
-  @Input() cityUpdate!: CityInfo | undefined;
+  @Output() cityUpdateChange = new EventEmitter<CityInfoModel>();
+  @Input() cityUpdate!: CityInfoModel | undefined;
 
   @Output() selectedFileChange = new EventEmitter<File>();
   @Input() selectedFile!: File | null;
@@ -68,17 +68,18 @@ export class ManagePlacesTimesFormComponent implements OnChanges {
   });
 
   constructor(
-    public updatePhoneNumbers: UpdatePhoneNumbers,
+    public managePhoneNumbersService: ManagePhoneNumbersService,
     public citiesService: CitiesService,
     public imagesService: ImagesService,
     public updateCategoriesLocationService: UpdateCategoriesLocationService
   ) {}
-
+ 
+ // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm('La création a bien été faite', 'messageFormTrue'),
-    new MessageForm("Au moins l'un des champs n'est pas rempli correctement", 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('La création a bien été faite', 'formMessageTrue'),
+    new FormMessageModel("Au moins l'un des champs n'est pas rempli correctement", 'formMessageFalse'),
   ];
 
   ngOnChanges(changes: SimpleChanges) {
@@ -107,7 +108,7 @@ export class ManagePlacesTimesFormComponent implements OnChanges {
   }
 
   formatPhoneNumber(event: Event) {
-    this.phoneNumber = this.updatePhoneNumbers.formatPhoneNumber(
+    this.phoneNumber = this.managePhoneNumbersService.formatPhoneNumber(
       (event.target as HTMLInputElement).value
     );
   }
@@ -145,7 +146,7 @@ export class ManagePlacesTimesFormComponent implements OnChanges {
   }
 
   updateCities(img: string) {
-    const newCity: CityInfo = {
+    const newCity: CityInfoModel = {
       id: `${Date()}`,
       city: this.cityForm.value.city,
       nameRoom: this.cityForm.value.nameRoom,
@@ -162,7 +163,7 @@ export class ManagePlacesTimesFormComponent implements OnChanges {
     if (this.cityUpdate) newCity.id = this.cityUpdate.id;
 
     // Update Cities
-    let newCities: CityInfo[] = [];
+    let newCities: CityInfoModel[] = [];
 
     // Update LocationCard
     const newLocationCard = {

@@ -1,15 +1,15 @@
-@use '../../../../variables' as *;
-@use '../../../../mixins' as *;
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
-.messageForm {
+.formMessage {
   margin-top: 2rem;
   font-weight: bold;
 }
 
-.messageFormTrue {
+.formMessageTrue {
   color: $green;
 }
 
-.messageFormFalse {
+.formMessageFalse {
   color: black;
 }

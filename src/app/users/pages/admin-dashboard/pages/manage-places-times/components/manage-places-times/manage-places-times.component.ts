@@ -4,7 +4,7 @@ import { LocationsCard } from '../../../../../../../core/models/LocationsCard.mo
 import { CitiesService } from '../../../../../../../core/services/cities.service';
 import { AdminDashboardRoutingModule } from '../../../../admin-dashboard-routing';
 import { ManagePlacesTimesFormComponent } from '../manage-places-times-form/manage-places-times-form.component';
-import { CityInfo } from '../../../../../../../core/models/CityInfo.model';
+import { CityInfoModel } from '../../../../../../../core/models/CityInfo.model';
 
 @Component({
   selector: 'app-manage-places-times',
@@ -18,7 +18,7 @@ import { CityInfo } from '../../../../../../../core/models/CityInfo.model';
 })
 export class ManagePlacesTimesComponent implements OnInit {
   locationCards!: LocationsCard[];
-  cityUpdate!: CityInfo | undefined;
+  cityUpdate!: CityInfoModel | undefined;
   selectedFile: File | null = null;
 
   constructor(public citiesService: CitiesService) {}

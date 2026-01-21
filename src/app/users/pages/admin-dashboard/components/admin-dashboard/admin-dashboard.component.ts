@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersModel } from '../../../../../datas-Back-end/models/Users.model';
 import { UserService } from '../../../../services/user.service';
 import { Router, RouterLink } from '@angular/router';
-import { LinkMenuModel } from '../../../../../core/models/LinkMenuModel.model';
+import { LinkMenuModel } from '../../../../../core/models/LinkMenu.model';
 import {LinkAdminMenuData} from "../../datas/LinkAdminMenu.datas"
 
 @Component({

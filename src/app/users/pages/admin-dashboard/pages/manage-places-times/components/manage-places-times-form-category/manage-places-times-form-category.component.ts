@@ -1,12 +1,12 @@
-import { UpdateCategoriesLocationService } from './../../../../../../../core/services/updateCategoriesLocation.service';
+import { UpdateCategoriesLocationService } from '../../../../../../../core/services/UpdateCategoriesLocation.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ManagePlacesTimesFormScheduleComponent } from '../manage-places-times-form-schedule/manage-places-times-form-schedule.component';
 import { TrainingSchedule } from '../../../../../../../core/models/TrainingSchedule.model';
 import { TrainingCategory } from '../../../../../../../core/models/TrainingCategory.model';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { TrainingCategoryDisplayModel } from '../../../../../../../core/models/TrainingCategory-display.model';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { TrainingCategoryDisplayModel } from '../../../../../../../core/models/TrainingCategoryDisplay.model';
 import { CateogriesModel } from '../../../../models/Categories.model';
 import { CategoriesData } from '../../../../datas/Categories.data';
 import { TrainingCardComponent } from '../../../../../../../core/components/training-card/training-card.component';
@@ -16,7 +16,7 @@ import { TrainingCardComponent } from '../../../../../../../core/components/trai
   imports: [
     FormsModule,
     ManagePlacesTimesFormScheduleComponent,
-    MessageFormComponent,
+    FormMessageComponent,
     TrainingCardComponent,
   ],
   templateUrl: './manage-places-times-form-category.component.html',
@@ -39,9 +39,9 @@ export class ManagePlacesTimesFormCategoryComponent implements OnInit {
   @Input() isSubmitted: boolean = false;
   @Output() isSubmittedChange = new EventEmitter<boolean>();
   isFormValid: boolean = false;
-  formMessage: MessageForm[] = [
-    new MessageForm('Entraînement créé', 'messageFormTrue'),
-    new MessageForm('Titre absent ou aucun horaire créé', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('Entraînement créé', 'formMessageTrue'),
+    new FormMessageModel('Titre absent ou aucun horaire créé', 'formMessageFalse'),
   ];
 
   constructor(public updateCategoriesLocationService: UpdateCategoriesLocationService) {}

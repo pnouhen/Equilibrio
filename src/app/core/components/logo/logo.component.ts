@@ -1,4 +1,4 @@
-import { RedirectionPage } from '../../services/redirectionPage.service';
+import { RedirectionPageService } from '../../services/RedirectionPage.service';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DisplayNavService } from '../../services/displayNav.service';
@@ -13,8 +13,8 @@ import { DisplayUserMembers } from '../../../users/services/displayUserMembers.s
 export class LogoComponent {
   constructor(
     public displayNavService: DisplayNavService,
-    private redirectionPage: RedirectionPage,
-    public displayUserMembers: DisplayUserMembers
+    private redirectionPageService: RedirectionPageService,
+    public displayUserMembers: DisplayUserMembers,
   ) {}
 
   removeMenuBurger(): void {
@@ -25,6 +25,6 @@ export class LogoComponent {
   }
 
   routerLink(): string {
-    return this.redirectionPage.routerLink();
+    return this.redirectionPageService.routerLink();
   }
 }

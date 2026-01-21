@@ -1,19 +1,18 @@
-import { MessageForm } from "../../models/MessageForm.model";
+import { FormMessageModel } from '../../models/FormMessage.model';
 import { Component, input, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-message-form',
+  selector: 'app-form-message',
   imports: [],
   templateUrl: `./message-form.component.html`,
   styleUrl: `./message-form.component.scss`,
 })
-export class MessageFormComponent {
-  isSubmitted = input.required<boolean>(); // Here for message-form.component.html
+export class FormMessageComponent {
   isFormValid = input.required<boolean>();
-  canSubmit = input.required<MessageForm>();
-  cannotSubmit = input.required<MessageForm>();
+  canSubmit = input.required<FormMessageModel>();
+  cannotSubmit = input.required<FormMessageModel>();
 
-  @Input() array!: MessageForm[];
+  @Input() array!: FormMessageModel[];
 
   isFormValidText(): string {
     if (this.isFormValid()) {

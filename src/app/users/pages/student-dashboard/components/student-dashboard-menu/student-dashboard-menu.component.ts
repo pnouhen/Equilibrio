@@ -2,7 +2,7 @@ import { Component, effect, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { UsersDashboardData } from './../../../../../core/services/UsersDashboard.service';
+import { UsersDashboardDataService } from './../../../../../core/services/UsersDashboard.service';
 import { UserService } from '../../../../services/user.service';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
 import { ManageResourcesService } from '../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
@@ -27,13 +27,13 @@ export class StudentDashboardMenuComponent {
     public toggleContentUser: ToggleContentUser,
     public router: Router,
     public route: ActivatedRoute,
-    public usersDashboardData: UsersDashboardData,
+    public usersDashboardDataService: UsersDashboardDataService,
     public userService: UserService,
     public manageResourcesService: ManageResourcesService,
   ) {
     // Updates the list and scrolls to the top with each change
     effect(() => {
-      const data = this.usersDashboardData.UsersDashboardData();
+      const data = this.usersDashboardDataService.UsersDashboardDataService();
       this.allButtons = this.filterCategories(data);
 
       // We are waiting for the DOM to be updated

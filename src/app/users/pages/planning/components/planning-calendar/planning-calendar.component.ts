@@ -3,24 +3,25 @@ import { StudentRegularity } from '../../../../services/StudentRegularityService
 import { PlanningService } from '../../../../services/PlanningService.service';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MessageForm } from '../../../../../core/models/MessageForm.model';
-import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
+import { FormMessageComponent } from '../../../../../core/components/message-form/message-form.component';
 
 @Component({
   selector: 'app-planning-calendar',
-  imports: [FormsModule, MessageFormComponent],
+  imports: [FormsModule, FormMessageComponent],
   templateUrl: './planning-calendar.component.html',
   styleUrl: './planning-calendar.component.scss',
 })
 export class PlanningCalendarComponent implements OnInit {
   dateDisplay!: string;
   attendanceStates: boolean[] = [];
-
+ 
+ // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm("L'enregistrement du planning a reussi", 'messageFormTrue'),
-    new MessageForm("L'enregistrement du planning a échoué", 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel("L'enregistrement du planning a reussi", 'formMessageTrue'),
+    new FormMessageModel("L'enregistrement du planning a échoué", 'formMessageFalse'),
   ];
 
   constructor(
@@ -63,7 +64,7 @@ export class PlanningCalendarComponent implements OnInit {
       present: this.attendanceStates[index] ?? user.present,
     }));
 
-    // MessageForm display
+    // formMessage display
     this.isSubmitted = true;
 
     if (attendanceData.length > 0) {

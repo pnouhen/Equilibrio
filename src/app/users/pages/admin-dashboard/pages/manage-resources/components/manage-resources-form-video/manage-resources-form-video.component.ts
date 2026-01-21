@@ -3,13 +3,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputSelectedComponent } from '../../../../../../../core/components/input-selected/input-selected.component';
 import { SelectedGrade } from '../../services/SelectedGradeservice';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { UsersDataLinkModel } from '../../../../../../../datas-Back-end/models/UserData-link.model';
 
 @Component({
   selector: 'app-manage-resources-form-video',
-  imports: [FormsModule, InputSelectedComponent, MessageFormComponent],
+  imports: [FormsModule, InputSelectedComponent, FormMessageComponent],
   templateUrl: './manage-resources-form-video.component.html',
   styleUrl: './manage-resources-form-video.component.scss',
 })
@@ -21,9 +21,9 @@ export class ManageResourcesFormVideoComponent implements OnInit {
 
   // FormMessage
   isFormValid: boolean = false;
-  formMessage: MessageForm[] = [
-    new MessageForm('La vidéo a bien été ajouté', 'messageFormTrue'),
-    new MessageForm('Au moins un des champs ne correspond pas', 'messageFormFasle'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('La vidéo a bien été ajouté', 'formMessageTrue'),
+    new FormMessageModel('Au moins un des champs ne correspond pas', 'formMessageFasle'),
   ];
 
   constructor(

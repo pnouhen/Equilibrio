@@ -107,7 +107,7 @@
         id="phone"
         formControlName="phone"
         [value]="phoneNumber"
-        (keypress)="updatePhoneNumbers.allowOnlyNumbers($event)"
+        (keypress)="managePhoneNumbersService.allowOnlyNumbers($event)"
         (input)="formatPhoneNumber($event)"
       />
     </div>
@@ -137,14 +137,13 @@
     <button class="buttonSubmit" (click)="onSubmitForm()">Envoyer</button>
   </form>
 
-  @if(isSubmitted){
-  <div class="messageFormSubmit">
-    <app-message-form
-      [isSubmitted]="isSubmitted"
-      [isFormValid]="isFormValid"
-      [canSubmit]="formMessages[0]"
-      [cannotSubmit]="formMessages[1]"
-    />
-  </div>
+  @if (isSubmitted) {
+    <div class="formMessageSubmit">
+      <app-form-message
+        [isFormValid]="isFormValid"
+        [canSubmit]="formMessage[0]"
+        [cannotSubmit]="formMessage[1]"
+      />
+    </div>
   }
 </section>

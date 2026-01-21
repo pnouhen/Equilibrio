@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
   constructor(public citiesService: CitiesService) {}
 
   ngOnInit(): void {
-    this.trainingResumes = this.citiesService.TrainingResumes().map((city)=> ({
+    this.trainingResumes = this.citiesService.TrainingResumes().map((city) => ({
       place: city.place,
-      day: this.formattedDate(city.day)
-    }))
+      day: this.formattedDate(city.day),
+    }));
   }
 
   formattedDate(value: string): string {

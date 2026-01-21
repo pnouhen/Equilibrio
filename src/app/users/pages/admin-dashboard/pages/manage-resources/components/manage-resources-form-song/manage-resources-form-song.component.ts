@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ManageResourcesFormService } from '../../services/ManageResources-form.service';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { UsersDataSongModel } from '../../../../../../../datas-Back-end/models/UsersData-song.model';
 
 @Component({
   selector: 'app-manage-resources-form-song',
-  imports: [FormsModule, MessageFormComponent],
+  imports: [FormsModule, FormMessageComponent],
   templateUrl: './manage-resources-form-song.component.html',
   styleUrl: './manage-resources-form-song.component.scss',
 })
@@ -20,9 +20,9 @@ export class ManageResourcesFormSongComponent implements OnInit {
 
   // FormMessage
   isFormValid: boolean = false;
-  formMessage: MessageForm[] = [
-    new MessageForm('La musique a bien été ajouté', 'messageFormTrue'),
-    new MessageForm('Au moins un des champs ne correspond pas', 'messageFormFasle'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('La musique a bien été ajouté', 'formMessageTrue'),
+    new FormMessageModel('Au moins un des champs ne correspond pas', 'formMessageFasle'),
   ];
 
   constructor(public manageResourcesFormService: ManageResourcesFormService) {}

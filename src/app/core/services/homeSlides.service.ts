@@ -1,7 +1,7 @@
 import { ImagesService } from './Images.service';
 import { PicturesInitialData } from './../../landing/pages/home/data/PicturesInitial.data';
 import { Injectable, signal } from '@angular/core';
-import { Image } from '../models/Image.model';
+import { ImageModel } from '../models/Image.model';
 import { PicturesInitialModel } from '../../landing/pages/home/models/PicturesInitial.model';
 
 @Injectable({
@@ -12,22 +12,22 @@ export class HomeSlides {
   imageSlideShow = signal<PicturesInitialModel[]>([
     new PicturesInitialModel(
       this.displayPicture('firstPicture').title,
-      new Image(this.displayPicture('firstPicture').src, this.displayPicture('firstPicture').alt)
+      new ImageModel(this.displayPicture('firstPicture').src, this.displayPicture('firstPicture').alt)
     ),
 
     new PicturesInitialModel(
       this.displayPicture('secondPicture').title,
-      new Image(this.displayPicture('secondPicture').src, this.displayPicture('secondPicture').alt)
+      new ImageModel(this.displayPicture('secondPicture').src, this.displayPicture('secondPicture').alt)
     ),
 
     new PicturesInitialModel(
       this.displayPicture('thirdPicture').title,
-      new Image(this.displayPicture('thirdPicture').src, this.displayPicture('thirdPicture').alt)
+      new ImageModel(this.displayPicture('thirdPicture').src, this.displayPicture('thirdPicture').alt)
     ),
 
     new PicturesInitialModel(
       this.displayPicture('fourthPicture').title,
-      new Image(this.displayPicture('fourthPicture').src, this.displayPicture('fourthPicture').alt)
+      new ImageModel(this.displayPicture('fourthPicture').src, this.displayPicture('fourthPicture').alt)
     ),
   ]);
 

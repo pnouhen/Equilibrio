@@ -1,4 +1,4 @@
-import { UsersDashboardData } from './../../../../../../core/services/UsersDashboard.service';
+import { UsersDashboardDataService } from './../../../../../../core/services/UsersDashboard.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UsersDataSongModel } from '../../../../../../datas-Back-end/models/UsersData-song.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -18,14 +18,14 @@ export class SongLyricsComponent implements OnInit {
   constructor(
     public routes: ActivatedRoute,
     public router: Router,
-    public usersDashboardData: UsersDashboardData
+    public usersDashboardDataService: UsersDashboardDataService
   ) {}
   ngOnInit(): void {
     const songId = this.routes.snapshot.paramMap.get('song') || null;
 
     this.song =
-      this.usersDashboardData
-        .UsersDashboardData()
+      this.usersDashboardDataService
+        .UsersDashboardDataService()
         .find((category) => category.id === 'chants')
         ?.content.flatMap((content) =>
           content.links

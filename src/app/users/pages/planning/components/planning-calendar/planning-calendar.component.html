@@ -22,25 +22,25 @@
       </tr>
     </thead>
     <tbody>
-      @for(user of planningService.users(); track $index) {
-      <tr>
-        <td>
-          <label for="checkbox-{{ $index }}">{{ user.memberName }}</label>
-        </td>
-        <td>
-          <div class="td-checkbox">
-            <input
-              type="checkbox"
-              id="checkbox-{{ $index }}"
-              [(ngModel)]="user.present"
-              name="attendance-{{ $index }}"
-            />
-          </div>
-        </td>
-        <td>
-          <p class="regularity">{{ user.numberTrainningSessions }}</p>
-        </td>
-      </tr>
+      @for (user of planningService.users(); track $index) {
+        <tr>
+          <td>
+            <label for="checkbox-{{ $index }}">{{ user.memberName }}</label>
+          </td>
+          <td>
+            <div class="td-checkbox">
+              <input
+                type="checkbox"
+                id="checkbox-{{ $index }}"
+                [(ngModel)]="user.present"
+                name="attendance-{{ $index }}"
+              />
+            </div>
+          </td>
+          <td>
+            <p class="regularity">{{ user.numberTrainningSessions }}</p>
+          </td>
+        </tr>
       }
     </tbody>
   </table>
@@ -48,10 +48,10 @@
   <button class="buttonSubmit" type="submit">Enregistrer</button>
 </form>
 
-@if(isSubmitted){
-<app-message-form
-  [isSubmitted]="isSubmitted"
-  [isFormValid]="isFormValid"
-  [canSubmit]="formMessages[0]"
-  [cannotSubmit]="formMessages[1]"
-/>}
+@if (isSubmitted) {
+  <app-form-message
+    [isFormValid]="isFormValid"
+    [canSubmit]="formMessage[0]"
+    [cannotSubmit]="formMessage[1]"
+  />
+}

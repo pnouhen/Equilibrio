@@ -1,16 +1,16 @@
 import { ImagesService } from './../../../../../../../core/services/Images.service';
-import { MessageFormService } from './../../../../../../../core/services/messageForm.service';
+import { FormMessageService} from '../../../../../../../core/services/FormMessage.service';
 import { Component, OnInit } from '@angular/core';
 import { HomeSlides } from '../../../../../../../core/services/homeSlides.service';
 import { ReturnAdminDashboardComponent } from '../../../../components/return-admin-dashboard/return-admin-dashboard.component';
 import { FormsModule, NgForm } from '@angular/forms';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { PicturesInitialModel } from '../../../../../../../landing/pages/home/models/PicturesInitial.model';
 
 @Component({
   selector: 'app-update-slides-shows-pictures',
-  imports: [ReturnAdminDashboardComponent, FormsModule, MessageFormComponent],
+  imports: [ReturnAdminDashboardComponent, FormsModule, FormMessageComponent],
   templateUrl: './update-slides-shows-pictures.component.html',
   styleUrl: './update-slides-shows-pictures.component.scss',
 })
@@ -21,15 +21,15 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
   isSubmittedArray!: boolean[];
   isFormValidArray!: boolean[];
 
-  formMessages: MessageForm[] = [
-    new MessageForm("L'image a été mise à jour", 'messageFromTrue'),
-    new MessageForm('Au moins un des champs est incorrect', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel("L'image a été mise à jour", 'messageFromTrue'),
+    new FormMessageModel('Au moins un des champs est incorrect', 'formMessageFalse'),
   ];
 
   constructor(
     public homeSlides: HomeSlides,
     public imagesService: ImagesService,
-    public messageFormService: MessageFormService
+    public formMessageService: FormMessageService
   ) {}
 
   ngOnInit(): void {
@@ -46,9 +46,9 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
     // Initializes the file array
     this.selectedFiles = new Array(this.imageSlidesShow.length).fill(null);
 
-    // Initialize boolean MessageForm
-    this.isSubmittedArray = this.messageFormService.createArrayBoolean(this.imageSlidesShow.length);
-    this.isFormValidArray = this.messageFormService.createArrayBoolean(this.imageSlidesShow.length);
+    // Initialize boolean formMessage
+    this.isSubmittedArray = this.formMessageService.createArrayBoolean(this.imageSlidesShow.length);
+    this.isFormValidArray = this.formMessageService.createArrayBoolean(this.imageSlidesShow.length);
   }
 
   onDownloadImg(event: Event, index: number) {

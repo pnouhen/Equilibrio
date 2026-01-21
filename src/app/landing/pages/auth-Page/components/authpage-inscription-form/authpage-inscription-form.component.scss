@@ -1,4 +1,4 @@
-@use '../../../../../../mixins' as *;
+@use '../../../../../../styles/mixins' as *;
 
 .inscription_container {
   grid-column: 2/12;
@@ -18,7 +18,7 @@
   }
 
   form,
-  .messageFormSubmit {
+  .formMessageSubmit {
     @media (max-width: 768px) {
       grid-column: 2/12;
     }

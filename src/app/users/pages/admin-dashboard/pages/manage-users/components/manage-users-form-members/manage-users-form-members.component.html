@@ -72,9 +72,8 @@
   </button>
 
   @if(isSubmitted){
-  <div class="messageForm">
-    <app-message-form
-      [isSubmitted]="isSubmitted"
+  <div class="formMessage">
+    <app-form-message
       [isFormValid]="isFormValid"
       [canSubmit]="formMessage[0]"
       [cannotSubmit]="formMessage[1]"

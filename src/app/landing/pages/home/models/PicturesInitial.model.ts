@@ -1,6 +1,6 @@
-import { Image } from './../../../../core/models/Image.model';
+import { ImageModel } from './../../../../core/models/Image.model';
 
 
 export class PicturesInitialModel {
-    constructor(public title: string, public img: Image){}
+    constructor(public title: string, public img: ImageModel){}
 }

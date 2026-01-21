@@ -1,5 +1,5 @@
 import { CategoriesService } from './../../../../../services/Categories.service';
-import { UsersDashboardData } from './../../../../../../core/services/UsersDashboard.service';
+import { UsersDashboardDataService } from './../../../../../../core/services/UsersDashboard.service';
 import { Injectable } from '@angular/core';
 import { UsersDataLinkModel } from '../../../../../../datas-Back-end/models/UserData-link.model';
 import { UsersDataPdfModel } from '../../../../../../datas-Back-end/models/UserData-pdf.model';
@@ -102,7 +102,7 @@ export class ManageResourcesFormService {
   isSubmittedLink: boolean = false;
 
   constructor(
-    public usersDashboardData: UsersDashboardData,
+    public usersDashboardDataService: UsersDashboardDataService,
     public categoriesService: CategoriesService,
   ) {}
 
@@ -130,8 +130,8 @@ export class ManageResourcesFormService {
     if (id) {
       this.idUpdateData = id;
 
-      const dataUpdate = this.usersDashboardData
-        .UsersDashboardData()
+      const dataUpdate = this.usersDashboardDataService
+        .UsersDashboardDataService()
         .find((data) => data.id === id);
 
       if (dataUpdate) {
@@ -147,13 +147,13 @@ export class ManageResourcesFormService {
 
   deleteResource(id: string | undefined) {
     if (id) {
-      this.usersDashboardData.UsersDashboardData.set(
-        this.usersDashboardData.UsersDashboardData().filter((data) => data.id !== id),
+      this.usersDashboardDataService.UsersDashboardDataService.set(
+        this.usersDashboardDataService.UsersDashboardDataService().filter((data) => data.id !== id),
       );
 
       sessionStorage.setItem(
         'usersDashboard',
-        JSON.stringify(this.usersDashboardData.UsersDashboardData()),
+        JSON.stringify(this.usersDashboardDataService.UsersDashboardDataService()),
       );
     }
   }

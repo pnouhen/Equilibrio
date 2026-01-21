@@ -45,7 +45,7 @@
         type="text"
         id="numberPhone"
         [value]="phoneNumber"
-        (keypress)="updatePhoneNumbers.allowOnlyNumbers($event)"
+        (keypress)="managePhoneNumbersService.allowOnlyNumbers($event)"
         (input)="formatPhoneNumber($event)"
         formControlName="numberPhone"
       />
@@ -62,8 +62,9 @@
         (change)="onFileSelected($event)"
         [class.active]="imgUpdate !== '' && !selectedFile"
       />
-      @if(imgUpdate !== "" && !selectedFile){
-      <span [class.active]="imgUpdate !== ''">Image chargée</span>}
+      @if (imgUpdate !== '' && !selectedFile) {
+        <span [class.active]="imgUpdate !== ''">Image chargée</span>
+      }
     </div>
   </fieldset>
 
@@ -78,13 +79,12 @@
   </button>
 </form>
 
-<button class="resetForm buttonSubmit"(click)="resetForm()">
-    Annuler
-  </button>
+<button class="resetForm buttonSubmit" (click)="resetForm()">Annuler</button>
 
-<app-message-form
-  [isSubmitted]="isSubmitted"
-  [isFormValid]="isFormValid"
-  [canSubmit]="formMessages[0]"
-  [cannotSubmit]="formMessages[1]"
-/>
+@if (isSubmitted) {
+  <app-form-message
+    [isFormValid]="isFormValid"
+    [canSubmit]="formMessage[0]"
+    [cannotSubmit]="formMessage[1]"
+  />
+}

@@ -1,6 +1,6 @@
 @use '../manage-users-users/manage-users-users.component.scss' as *;
-@use "../../../../../../../../mixins" as *;
-@use "../../../../../../../../variables" as *;
+@use "../../../../../../../../styles/mixins" as *;
+@use "../../../../../../../../styles/variables" as *;
 
 .slideShow {
   .container {

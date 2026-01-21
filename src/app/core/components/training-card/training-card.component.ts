@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TrainingCategoryDisplayModel } from '../../models/TrainingCategory-display.model';
+import { TrainingCategoryDisplayModel } from '../../models/TrainingCategoryDisplay.model';
 import { TrainingScheduleCityModel } from '../../../users/pages/admin-dashboard/pages/manage-users/models/TrainingScheduleCity.model';
 
 @Component({

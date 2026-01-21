@@ -1,5 +1,5 @@
 <div class="slide" [class.active]="isCreate">
-  <youtube-player class="video" [videoId]="videoYoutube.getVideoId(link.url)" />
+  <youtube-player class="video" [videoId]="videoYoutubeService.getVideoId(link.url)" />
 
   <span>{{ link.title }}</span>
 </div>

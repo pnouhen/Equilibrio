@@ -1,10 +1,9 @@
-import { UserService } from './../../../../../users/services/user.service';
-import { SelectedConnexion } from '../../services/SelectedConnexion.service';
+import { SelectedConnexionService } from '../../services/SelectedConnexion.service';
 import { UsersModel } from './../../../../../datas-Back-end/models/Users.model';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { MessageForm } from '../../../../../core/models/MessageForm.model';
-import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
+import { FormMessageComponent } from '../../../../../core/components/message-form/message-form.component';
 import { UsersData } from '../../../../../datas-Back-end/data/Users.data';
 import { Router, RouterLink } from '@angular/router';
 import { InputSelectedComponent } from '../../../../../core/components/input-selected/input-selected.component';
@@ -12,7 +11,7 @@ import { UsersDataService } from '../../../../../core/services/UsersData.service
 
 @Component({
   selector: 'app-authpage-connexion-form',
-  imports: [FormsModule, MessageFormComponent, RouterLink, InputSelectedComponent],
+  imports: [FormsModule, FormMessageComponent, RouterLink, InputSelectedComponent],
   templateUrl: './authpage-connexion-form.component.html',
   styleUrl: './authpage-connexion-form.component.scss',
 })
@@ -23,27 +22,28 @@ export class AuthpageConnexionFormComponent implements OnInit {
   pathForgotPassword: string = 'mot-de-passe-oublie';
 
   constructor(
-    public selectedConnexion: SelectedConnexion,
+    public selectedConnexionService: SelectedConnexionService,
     private router: Router,
-    public usersDataService: UsersDataService
+    public usersDataService: UsersDataService,
   ) {}
 
+  // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm('', ''),
-    new MessageForm('Au moins un des champs est incorrect', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('', ''),
+    new FormMessageModel('Au moins un des champs est incorrect', 'formMessageFalse'),
   ];
 
   ngOnInit(): void {
     this.emailMembers = UsersData.filter((user) => user.password === this.passwordValue).map(
-      (user) => user.email
+      (user) => user.email,
     );
   }
 
   toggleSelectedKeydown(event: KeyboardEvent) {
     if (event.key === 'Enter') {
-      this.selectedConnexion.toggleSelected();
+      this.selectedConnexionService.toggleSelected();
     }
   }
 

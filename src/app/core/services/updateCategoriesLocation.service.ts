@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TrainingCategoryDisplayModel } from '../models/TrainingCategory-display.model';
+import { TrainingCategoryDisplayModel } from '../models/TrainingCategoryDisplay.model';
 import { TrainingCategory } from '../models/TrainingCategory.model';
 
 @Injectable({

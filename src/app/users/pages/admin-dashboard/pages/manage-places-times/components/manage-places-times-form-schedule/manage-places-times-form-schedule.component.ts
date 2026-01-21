@@ -5,12 +5,12 @@ import { SelectedDay } from '../../services/SelectedDay.service';
 import { SelectedCondtion } from '../../services/SelectedCondtion.service';
 import { FormsModule } from '@angular/forms';
 import { TrainingSchedule } from '../../../../../../../core/models/TrainingSchedule.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 
 @Component({
   selector: 'app-manage-places-times-form-schedule',
-  imports: [InputSelectedComponent, FormsModule, MessageFormComponent],
+  imports: [InputSelectedComponent, FormsModule, FormMessageComponent],
   templateUrl: './manage-places-times-form-schedule.component.html',
   styleUrl: './manage-places-times-form-schedule.component.scss',
 })
@@ -25,15 +25,15 @@ export class ManagePlacesTimesFormScheduleComponent implements OnInit {
   conditions!: string[];
   conditionSelect: string = '';
 
-  // Message Form
+  // Managing the display of the message after submit
   @Input() isSubmitted: boolean = false;
   @Output() isSubmittedChange = new EventEmitter<boolean>()
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm("L'horaire a bien été ajouté.", 'messageFormTrue'),
-    new MessageForm(
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel("L'horaire a bien été ajouté.", 'formMessageTrue'),
+    new FormMessageModel(
       'Le jour ou l’une des heures (début ou fin) n’est pas indiquée.',
-      'messageFormFasle'
+      'formMessageFasle'
     ),
   ];
 

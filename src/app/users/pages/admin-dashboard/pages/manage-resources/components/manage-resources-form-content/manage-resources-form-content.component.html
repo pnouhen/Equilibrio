@@ -105,11 +105,10 @@
   </button>
 
   @if (manageResourcesFormService.isSubmittedContent) {
-    <app-message-form
-      [isSubmitted]="manageResourcesFormService.isSubmittedContent"
+    <app-form-message
       [isFormValid]="isFormValid"
-      [canSubmit]="formMessages[0]"
-      [cannotSubmit]="formMessages[1]"
+      [canSubmit]="formMessage[0]"
+      [cannotSubmit]="formMessage[1]"
     />
   }
 </fieldset>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { VideoYoutube } from '../../../../../core/services/videoYoutube.service';
+import { VideoYoutubeService } from '../../../../../core/services/VideoYoutube.service';
 import { YouTubePlayer } from '@angular/youtube-player';
 import { UsersDataLinkModel } from '../../../../../datas-Back-end/models/UserData-link.model';
 
@@ -13,5 +13,5 @@ export class StudentDashboardSlideVideoComponent {
   @Input() link!: UsersDataLinkModel;
   @Input() isCreate: boolean = false
 
-  constructor(public videoYoutube: VideoYoutube) {}
+  constructor(public videoYoutubeService: VideoYoutubeService) {}
 }

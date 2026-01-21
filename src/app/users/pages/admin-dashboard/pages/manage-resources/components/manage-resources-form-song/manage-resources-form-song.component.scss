@@ -1,4 +1,4 @@
-@use '../../../../../../../../mixins' as *;
+@use '../../../../../../../../styles/mixins' as *;
 @use '../manage-resources-form/manage-resources-form.component.scss' as *;
 
 fieldset {
@@ -22,7 +22,7 @@ fieldset {
     }
   }
 
-  .messageFormSubmit,
+  .formMessageSubmit,
   .lyrics,
   .buttonSubmit {
     grid-column: 1/3;

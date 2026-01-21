@@ -1,34 +1,39 @@
-import { MessageFormService } from './../../../../../../../core/services/messageForm.service';
+import { FormMessageService } from '../../../../../../../core/services/FormMessage.service';
 import { Component, OnInit } from '@angular/core';
 import { ReturnAdminDashboardComponent } from '../../../../components/return-admin-dashboard/return-admin-dashboard.component';
 import { TrainingResume } from '../../../../../../../landing/pages/home/models/TrainingResume.model';
 import { CitiesService } from '../../../../../../../core/services/cities.service';
 import { FormsModule, NgForm } from '@angular/forms';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 
 @Component({
   selector: 'app-update-training-resumes',
-  imports: [ReturnAdminDashboardComponent, FormsModule, MessageFormComponent],
+  imports: [ReturnAdminDashboardComponent, FormsModule, FormMessageComponent],
   templateUrl: './update-training-resumes.component.html',
   styleUrl: './update-training-resumes.component.scss',
 })
 export class UpdateTrainingResumesComponent implements OnInit {
   trainingResumes!: TrainingResume[];
+
+  // Managing the display of the message after submit
   isSubmittedArray!: boolean[];
   isFormValidArray!: boolean[];
-  formMessages: MessageForm[] = [
-    new MessageForm('La date a été mise à jour', 'messageFormTrue'),
-    new MessageForm('La date indiquée est incorrecte.', 'messageFormFalse'),
+  formMessages: FormMessageModel[] = [
+    new FormMessageModel('La date a été mise à jour', 'messageFormTrue'),
+    new FormMessageModel('La date indiquée est incorrecte.', 'messageFormFalse'),
   ];
-  constructor(public citiesService: CitiesService, public messageFormService: MessageFormService) {}
+  constructor(
+    public citiesService: CitiesService,
+    public formMessageService: FormMessageService,
+  ) {}
 
   ngOnInit(): void {
     this.trainingResumes = this.citiesService.TrainingResumes();
 
-    // Initialize boolean MessageForm
-    this.isSubmittedArray = this.messageFormService.createArrayBoolean(this.trainingResumes.length);
-    this.isFormValidArray = this.messageFormService.createArrayBoolean(this.trainingResumes.length);
+    // Initialize boolean FormMessage
+    this.isSubmittedArray = this.formMessageService.createArrayBoolean(this.trainingResumes.length);
+    this.isFormValidArray = this.formMessageService.createArrayBoolean(this.trainingResumes.length);
   }
 
   onSubmit(form: NgForm, index: number, place: string) {

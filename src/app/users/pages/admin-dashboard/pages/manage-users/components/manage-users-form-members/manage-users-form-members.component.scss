@@ -1,5 +1,5 @@
-@use '../../../../../../../../mixins' as *;
-@use '../../../../../../../../variables' as *;
+@use '../../../../../../../../styles/mixins' as *;
+@use '../../../../../../../../styles/variables' as *;
 @use '../manage-users-form/manage-users-form.component.scss' as *;
 
 fieldset {
@@ -50,7 +50,7 @@ fieldset {
     width: 100%;
   }
 
-  .messageForm {
+  .formMessage {
     grid-column: 1/4;
   }
 }

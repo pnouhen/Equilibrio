@@ -5,15 +5,15 @@ import { CitiesService } from '../../../../../../../core/services/cities.service
 import { SelectedCityUsers } from '../../services/SelectedCityUsers.service';
 import { InputSelectedComponent } from '../../../../../../../core/components/input-selected/input-selected.component';
 import { CategoriesData } from '../../../../datas/Categories.data';
-import { CityInfo } from '../../../../../../../core/models/CityInfo.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { CityInfoModel } from '../../../../../../../core/models/CityInfo.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 import { TrainingScheduleCityModel } from '../../models/TrainingScheduleCity.model';
 import { TrainingCardComponent } from '../../../../../../../core/components/training-card/training-card.component';
 
 @Component({
   selector: 'app-manage-users-form-members-training',
-  imports: [FormsModule, InputSelectedComponent, MessageFormComponent, TrainingCardComponent],
+  imports: [FormsModule, InputSelectedComponent, FormMessageComponent, TrainingCardComponent],
   templateUrl: './manage-users-form-members-training.component.html',
   styleUrl: './manage-users-form-members-training.component.scss',
 })
@@ -27,13 +27,13 @@ export class ManageUsersFormMembersTrainingComponent implements OnInit {
   citySelected: string = 'Sélectionner';
   schedulesSelected: TrainingScheduleAddModel[] = [];
 
-  // Message Form
+  // Managing the display of the message after submit
   @Input() isSubmitted: boolean = false;
   @Output() isSubmittedChange = new EventEmitter<boolean>();
   isFormValid: boolean = false;
-  formMessage: MessageForm[] = [
-    new MessageForm('Entraînement(s) ajouté(s)', 'messageFormTrue'),
-    new MessageForm('Au moins un des champs est manquant', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('Entraînement(s) ajouté(s)', 'formMessageTrue'),
+    new FormMessageModel('Au moins un des champs est manquant', 'formMessageFalse'),
   ];
 
   constructor(public citiesService: CitiesService, public selectedCityUsers: SelectedCityUsers) {}

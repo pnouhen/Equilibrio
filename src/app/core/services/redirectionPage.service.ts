@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class RedirectionPage {
+export class RedirectionPageService {
   chekcedUser(): boolean {
     const user = sessionStorage.getItem('user');
     if (user) {

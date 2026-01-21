@@ -9,8 +9,8 @@ import { SelectedCategory } from '../../services/SelectedCategory.service';
 import { SelectedGrade } from '../../services/SelectedGrade.service';
 import { ManageUsersFormMembersTrainingComponent } from '../manage-users-form-members-training/manage-users-form-members-training.component';
 import { TrainingScheduleCityModel } from '../../models/TrainingScheduleCity.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 import { MemberDisplayModel } from '../../models/MemberDisplay.model';
 import { CategoriesData } from '../../../../datas/Categories.data';
 
@@ -20,7 +20,7 @@ import { CategoriesData } from '../../../../datas/Categories.data';
     FormsModule,
     InputSelectedComponent,
     ManageUsersFormMembersTrainingComponent,
-    MessageFormComponent,
+    FormMessageComponent,
   ],
   templateUrl: './manage-users-form-members.component.html',
   styleUrl: './manage-users-form-members.component.scss',
@@ -45,9 +45,9 @@ export class ManageUsersFormMembersComponent implements OnInit {
   @Input() isSubmitted: boolean = false;
   @Output() isSubmittedChange = new EventEmitter<boolean>();
   isFormValid: boolean = false;
-  formMessage: MessageForm[] = [
-    new MessageForm('Le membre a bien été ajouté', 'messageFormTrue'),
-    new MessageForm('Au moins un des élements est manquant', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('Le membre a bien été ajouté', 'formMessageTrue'),
+    new FormMessageModel('Au moins un des élements est manquant', 'formMessageFalse'),
   ];
 
   constructor(
@@ -128,7 +128,7 @@ export class ManageUsersFormMembersComponent implements OnInit {
           memberUpdate.grade = this.gradeText;
           memberUpdate.trainings = this.trainingsDisplay;
 
-          // Message Form
+          // Managing the display of the message after submit
           this.formMessage[0].text = 'La mise à jour a fonctionné';
         }
       } else {
@@ -144,7 +144,7 @@ export class ManageUsersFormMembersComponent implements OnInit {
           newMemberDisplay,
         ];
 
-        // Message Form
+        // Managing the display of the message after submit
         this.formMessage[0].text = 'Le membre a bien été ajouté';
       }
       // Reset all

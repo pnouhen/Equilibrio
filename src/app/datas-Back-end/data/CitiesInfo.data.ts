@@ -1,10 +1,10 @@
-import { CityInfo } from '../../core/models/CityInfo.model';
+import { CityInfoModel } from '../../core/models/CityInfo.model';
 import { TrainingCategory } from '../../core/models/TrainingCategory.model';
 import { TrainingSchedule } from '../../core/models/TrainingSchedule.model';
 
-export const CITIES: CityInfo[] = [
+export const CITIES: CityInfoModel[] = [
   // LIMOGES
-  new CityInfo(
+  new CityInfoModel(
     'limoges',
     'Limoges',
     'Capoeira Equilibrio LIMOGES',
@@ -62,7 +62,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // Couzeix
-  new CityInfo(
+  new CityInfoModel(
     'couzeix',
     'Couzeix',
     'Complexe sportif de Couzeix',
@@ -94,7 +94,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // Panazol
-  new CityInfo(
+  new CityInfoModel(
     'panazol',
     'Panazol',
     'Stade de Morpienas',
@@ -117,7 +117,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   //Saint-Junien
-  new CityInfo(
+  new CityInfoModel(
     'st-junien',
     'Saint-Junien',
     'Cité de la danse',
@@ -145,7 +145,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // Brive
-  new CityInfo(
+  new CityInfoModel(
     'brive',
     'Brive-la-Gaillarde',
     'Gymnase Louis Pons',
@@ -191,7 +191,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // Tulle
-  new CityInfo(
+  new CityInfoModel(
     'tulle',
     'Tulle',
     'Dojo municipal Roger Lager',
@@ -221,7 +221,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // La Souterraine
-  new CityInfo(
+  new CityInfoModel(
     'la-souterraine',
     'La Souterraine',
     'Batiment Saint Joseph',
@@ -246,7 +246,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // Gueret
-  new CityInfo(
+  new CityInfoModel(
     'gueret',
     'Guéret',
     'Batiment Saint Joseph',
@@ -274,7 +274,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // Neuvic-Entier
-  new CityInfo(
+  new CityInfoModel(
     'neuvic-entier',
     'Neuvic-Entier',
     'Salle polyvalente',
@@ -297,7 +297,7 @@ export const CITIES: CityInfo[] = [
   ),
 
   // Châteauneuf-la-Forêt
-  new CityInfo(
+  new CityInfoModel(
     'chateauneuf-la-foret',
     'Châteauneuf-la-Forêt',
     'Salle polyvalente',

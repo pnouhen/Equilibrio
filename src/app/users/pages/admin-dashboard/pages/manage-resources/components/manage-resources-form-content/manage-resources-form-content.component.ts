@@ -12,9 +12,9 @@ import { GradesData } from '../../../manage-users/datas/Grade.data';
 import { StudentDashboardSlidesPdfComponent } from '../../../../../student-dashboard/components/student-dashboard-slide-pdf/student-dashboard-slides-pdf.component';
 import { SelectedGrade } from '../../services/SelectedGradeservice';
 import { StudentDashboardSlideSongComponent } from '../../../../../student-dashboard/components/student-dashboard-slide-song/student-dashboard-slide-song.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 import { UserDataContentModel } from '../../../../../../../datas-Back-end/models/UserData-content.model';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { ManageResourcesFormContentCreatedComponent } from '../manage-resources-form-content-created/manage-resources-form-content-created.component';
 import { CategoriesData } from '../../../../datas/Categories.data';
 import { SlidesResourcesService } from '../../../../../../../core/services/SlidesResources.service';
@@ -30,7 +30,7 @@ import { SlidesResourcesService } from '../../../../../../../core/services/Slide
     StudentDashboardSlideVideoComponent,
     StudentDashboardSlidesPdfComponent,
     StudentDashboardSlideSongComponent,
-    MessageFormComponent,
+    FormMessageComponent,
     ManageResourcesFormContentCreatedComponent,
   ],
   templateUrl: './manage-resources-form-content.component.html',
@@ -42,9 +42,9 @@ export class ManageResourcesFormContentComponent implements OnInit {
 
   // Form Message
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm('La création a fonctionné', 'messageFormTrue'),
-    new MessageForm('Au moins un des éléments est manquant', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('La création a fonctionné', 'formMessageTrue'),
+    new FormMessageModel('Au moins un des éléments est manquant', 'formMessageFalse'),
   ];
 
   isSubmittedLink: boolean = false;
@@ -118,7 +118,7 @@ export class ManageResourcesFormContentComponent implements OnInit {
             (updateContent.categories = isCategoriesContent.map((categorie) => categorie.value)),
             (updateContent.links = this.manageResourcesFormService.links));
 
-          this.formMessages[0].text = 'La modification a fonctionné';
+          this.formMessage[0].text = 'La modification a fonctionné';
         } else {
           this.isFormValid = false;
         }

@@ -5,6 +5,6 @@ export class TrainingCategory {
     public id: string,
     public categories: string[],
     public title: string,
-    public trainingSchedule: TrainingSchedule[] = []
+    public trainingSchedule: TrainingSchedule[] = [],
   ) {}
 }

@@ -13,17 +13,17 @@
       <img
         src="/assets/icons/chevron-down.svg"
         alt="Accèder aux Suggestions"
-        (click)="selectedConnexion.toggleSelected()"
+        (click)="selectedConnexionService.toggleSelected()"
         (keydown)="toggleSelectedKeydown($event)"
-        [class.active]="selectedConnexion.isSelectedDisplay"
+        [class.active]="selectedConnexionService.isSelectedDisplay"
         tabindex="0"
       />
 
-      <div class="selected" [class.active]="selectedConnexion.isSelectedDisplay">
+      <div class="selected" [class.active]="selectedConnexionService.isSelectedDisplay">
         <app-input-selected
           [dataSelected]="emailMembers"
           (inputValueChange)="emailValue = $event"
-          [selected]="selectedConnexion"
+          [selected]="selectedConnexionService"
         />
       </div>
     </div>
@@ -37,14 +37,13 @@
     <button class="buttonSubmit" type="submit">Envoyer</button>
   </form>
 
-  @if(isSubmitted){
-  <div class="messageFormSubmit">
-    <app-message-form
-      [isSubmitted]="isSubmitted"
-      [isFormValid]="isFormValid"
-      [canSubmit]="formMessages[0]"
-      [cannotSubmit]="formMessages[1]"
-    />
-  </div>
+  @if (isSubmitted) {
+    <div class="formMessageSubmit">
+      <app-form-message
+        [isFormValid]="isFormValid"
+        [canSubmit]="formMessage[0]"
+        [cannotSubmit]="formMessage[1]"
+      />
+    </div>
   }
 </div>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class UpdatePhoneNumbers {
+export class ManagePhoneNumbersService {
   allowOnlyNumbers(event: KeyboardEvent) {
     const allowedKeys = [
       '0',

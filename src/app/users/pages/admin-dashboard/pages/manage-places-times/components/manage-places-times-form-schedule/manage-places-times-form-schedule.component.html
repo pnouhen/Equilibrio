@@ -63,12 +63,11 @@
   </div>
 
   @if(isSubmitted){
-  <div class="messageFormSubmit">
-    <app-message-form
-      [isSubmitted]="isSubmitted"
+  <div class="formMessageSubmit">
+    <app-form-message
       [isFormValid]="isFormValid"
-      [canSubmit]="formMessages[0]"
-      [cannotSubmit]="formMessages[1]"
+      [canSubmit]="formMessage[0]"
+      [cannotSubmit]="formMessage[1]"
     />
   </div>
   }

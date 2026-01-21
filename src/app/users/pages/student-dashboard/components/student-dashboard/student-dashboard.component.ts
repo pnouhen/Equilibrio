@@ -1,4 +1,4 @@
-import { UsersDashboardData } from './../../../../../core/services/UsersDashboard.service';
+import { UsersDashboardDataService } from './../../../../../core/services/UsersDashboard.service';
 import { ManageResourcesService } from './../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
 import { UserService } from '../../../../services/user.service';
@@ -25,7 +25,7 @@ export class StudentDashboardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public usersDashboardData: UsersDashboardData,
+    public usersDashboardDataService: UsersDashboardDataService,
     private router: Router,
     public userService: UserService,
     private displayUserMembers: DisplayUserMembers,
@@ -46,8 +46,8 @@ export class StudentDashboardComponent implements OnInit {
     const urlCategory = this.route.snapshot.paramMap.get('category') || null;
 
     if (urlCategory) {
-      const found = this.usersDashboardData
-        .UsersDashboardData()
+      const found = this.usersDashboardDataService
+        .UsersDashboardDataService()
         .find((data) => data.title === urlCategory);
 
       if (found) {
@@ -56,7 +56,7 @@ export class StudentDashboardComponent implements OnInit {
     }
 
     // Display content by category
-    const dataForMember = this.usersDashboardData.UsersDashboardData().map((data) => ({
+    const dataForMember = this.usersDashboardDataService.UsersDashboardDataService().map((data) => ({
       title: data.title,
       categories: data.categories,
     }));

@@ -31,9 +31,8 @@
   </button>
 
   @if(manageResourcesFormService.isSubmittedLink){
-  <div class="messageFormSubmit">
-    <app-message-form
-      [isSubmitted]="manageResourcesFormService.isSubmittedLink"
+  <div class="formMessageSubmit">
+    <app-form-message
       [isFormValid]="isFormValid"
       [canSubmit]="formMessage[0]"
       [cannotSubmit]="formMessage[1]"

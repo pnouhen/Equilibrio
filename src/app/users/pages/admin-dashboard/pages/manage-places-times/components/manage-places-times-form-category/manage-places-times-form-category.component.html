@@ -29,8 +29,7 @@
   </button>
 
   @if(isSubmitted) {
-  <app-message-form
-    [isSubmitted]="isSubmitted"
+  <app-form-message
     [isFormValid]="isFormValid"
     [canSubmit]="formMessage[0]"
     [cannotSubmit]="formMessage[1]"

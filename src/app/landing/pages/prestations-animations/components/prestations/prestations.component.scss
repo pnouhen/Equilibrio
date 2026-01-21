@@ -1,5 +1,5 @@
-@use '../../../../../../mixins' as *;
-@use '../../../../../../variables' as *;
+@use '../../../../../../styles/mixins' as *;
+@use '../../../../../../styles/variables' as *;
 
 section {
   @include layout;
@@ -70,7 +70,7 @@ section {
   }
 
   form,
-  .messageFormSubmit {
+  .formMessageSubmit {
     grid-column: 4/10;
     width: 100%;
 

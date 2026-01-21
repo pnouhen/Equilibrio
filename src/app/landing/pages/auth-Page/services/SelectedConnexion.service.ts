@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class SelectedConnexion {
+export class SelectedConnexionService {
   isSelectedDisplay: boolean = false;
 
   toggleSelected() {

@@ -3,32 +3,33 @@ import { ManageResourcesFormService } from './../../services/ManageResources-for
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ManageResourcesFormContentComponent } from '../manage-resources-form-content/manage-resources-form-content.component';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 import { UsersDataModel } from '../../../../../../../datas-Back-end/models/UserData.model';
-import { UsersDashboardData } from '../../../../../../../core/services/UsersDashboard.service';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { UsersDashboardDataService } from '../../../../../../../core/services/UsersDashboard.service';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { CategoriesService } from '../../../../../../services/Categories.service';
 import { UserDataContentModel } from '../../../../../../../datas-Back-end/models/UserData-content.model';
 
 @Component({
   selector: 'app-manage-resources-form',
-  imports: [FormsModule, ManageResourcesFormContentComponent, MessageFormComponent],
+  imports: [FormsModule, ManageResourcesFormContentComponent, FormMessageComponent],
   templateUrl: './manage-resources-form.component.html',
   styleUrl: './manage-resources-form.component.scss',
 })
 export class ManageResourcesFormComponent implements OnInit {
   constructor(
     public manageResourcesFormService: ManageResourcesFormService,
-    public usersDashboardData: UsersDashboardData,
+    public usersDashboardDataService: UsersDashboardDataService,
     public categoriesService: CategoriesService,
   ) {}
 
-  // Form Message
+  // Form Message 
+ // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm('La création a fonctionné', 'messageFormTrue'),
-    new MessageForm('Au moins un des éléments est manquant', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('La création a fonctionné', 'formMessageTrue'),
+    new FormMessageModel('Au moins un des éléments est manquant', 'formMessageFalse'),
   ];
 
   ngOnInit(): void {
@@ -71,13 +72,13 @@ export class ManageResourcesFormComponent implements OnInit {
           content: contentWidthCategoriesData,
         };
 
-        this.usersDashboardData.UsersDashboardData.set([
-          ...this.usersDashboardData.UsersDashboardData(),
+        this.usersDashboardDataService.UsersDashboardDataService.set([
+          ...this.usersDashboardDataService.UsersDashboardDataService(),
           newData,
         ]);
       } else {
         // Replace the data so that the dashboard updates immediately.
-        const newUsersDashboard = this.usersDashboardData.UsersDashboardData().map((item) =>
+        const newUsersDashboard = this.usersDashboardDataService.UsersDashboardDataService().map((item) =>
           item.id === this.manageResourcesFormService.idUpdateData
             ? {
                 ...item,
@@ -88,14 +89,14 @@ export class ManageResourcesFormComponent implements OnInit {
             : item,
         );
 
-        this.usersDashboardData.UsersDashboardData.set(newUsersDashboard);
+        this.usersDashboardDataService.UsersDashboardDataService.set(newUsersDashboard);
 
-        this.formMessages[0].text = 'La modification a fonctionné';
+        this.formMessage[0].text = 'La modification a fonctionné';
       }
 
       sessionStorage.setItem(
         'usersDashboard',
-        JSON.stringify(this.usersDashboardData.UsersDashboardData()),
+        JSON.stringify(this.usersDashboardDataService.UsersDashboardDataService()),
       );
 
       this.resetAll();

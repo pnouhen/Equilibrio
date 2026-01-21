@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SelectedConnexion } from '../../../landing/pages/auth-Page/services/SelectedConnexion.service';
+import { SelectedConnexionService } from '../../../landing/pages/auth-Page/services/SelectedConnexion.service';
 import { SelectedCityPlanning } from '../../../users/services/SelectedCityPlanning.service';
 import { SelectedDay } from '../../../users/pages/admin-dashboard/pages/manage-places-times/services/SelectedDay.service';
 import { SelectedStatut } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedStatut.service';
@@ -16,10 +16,9 @@ import { SelectedCategoryUserDataContent } from '../../../users/pages/admin-dash
 export class InputSelectedComponent {
   @Input() dataSelected!: string[];
   @Input() selected!:
-    | SelectedConnexion
+    | SelectedConnexionService
     | SelectedCityPlanning
     | SelectedDay
-    | SelectedConnexion
     | SelectedStatut
     | SelectedCategory
     | SelectedGrade

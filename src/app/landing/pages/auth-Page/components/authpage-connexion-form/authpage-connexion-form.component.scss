@@ -1,5 +1,5 @@
-@use '../../../../../../mixins' as *;
-@use '../../../../../../variables' as *;
+@use '../../../../../../styles/mixins' as *;
+@use '../../../../../../styles/variables' as *;
 
 .connexion_container {
   grid-column: 2/12;
@@ -46,7 +46,7 @@
   }
 
   form,
-  .messageFormSubmit {
+  .formMessageSubmit {
     @media (max-width: 768px) {
       grid-column: 2/12;
     }

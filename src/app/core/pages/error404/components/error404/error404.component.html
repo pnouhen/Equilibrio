@@ -1,7 +1,7 @@
-@if(!isUser) {
-<app-header />
+@if (!isUser) {
+  <app-header />
 } @else {
-<app-header-users />
+  <app-header-users />
 }
 
 <main>
@@ -14,14 +14,19 @@
 
     <div class="link">
       <a [routerLink]="routerLink()"
-        >Accéder à la page @if(!isUser) {d'accueil} @else {principale de votre compte}</a
-      >
+        >Accéder à la page
+        @if (!isUser) {
+          d'accueil
+        } @else {
+          principale de votre compte
+        }
+      </a>
     </div>
   </section>
 </main>
 
-@if(!isUser) {
-<app-footer />
+@if (!isUser) {
+  <app-footer />
 } @else {
-<app-footer-users />
+  <app-footer-users />
 }

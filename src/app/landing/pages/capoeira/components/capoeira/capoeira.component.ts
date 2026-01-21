@@ -1,4 +1,4 @@
-import { VideoYoutube } from '../../../../../core/services/videoYoutube.service';
+import { VideoYoutubeService } from '../../../../../core/services/VideoYoutube.service';
 import { Component } from '@angular/core';
 import { YouTubePlayer } from '@angular/youtube-player';
 
@@ -9,5 +9,5 @@ import { YouTubePlayer } from '@angular/youtube-player';
   styleUrl: './capoeira.component.scss',
 })
 export class CapoeiraComponent {
-  constructor(public videoYoutube: VideoYoutube) {}
+  constructor(public videoYoutubeService: VideoYoutubeService) {}
 }

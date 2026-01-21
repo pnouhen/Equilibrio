@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
-import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
-import { MessageForm } from '../../../../../core/models/MessageForm.model';
-import { checkEmail } from '../../../../services/checkEmail';
+import { FormMessageComponent } from '../../../../../core/components/message-form/message-form.component';
+import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
+import { checkEmail } from '../../../../../core/services/checkEmail';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
-  imports: [FormsModule, MessageFormComponent],
+  imports: [FormsModule, FormMessageComponent],
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss',
 })
 export class ForgotPasswordComponent {
   userEmail!: string;
 
+  // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm(
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel(
       'Si cet e-mail est bien enregistré, vous recevrez un message pour réinitialiser votre mot de passe.',
-      'messageFormTrue'
+      'formMessageTrue',
     ),
-    new MessageForm('Email non conforme', 'messageFormFalse'),
+    new FormMessageModel('Email non conforme', 'formMessageFalse'),
   ];
 
   onSubmit(): void {

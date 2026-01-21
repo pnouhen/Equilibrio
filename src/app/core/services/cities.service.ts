@@ -1,19 +1,19 @@
 import { LocationsCard } from '../models/LocationsCard.model';
 import { TrainingResume } from './../../landing/pages/home/models/TrainingResume.model';
 import { Injectable, signal } from '@angular/core';
-import { CityInfo } from '../models/CityInfo.model';
+import { CityInfoModel } from '../models/CityInfo.model';
 import { CITIES } from '../../datas-Back-end/data/CitiesInfo.data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CitiesService {
-  Cities = signal<CityInfo[]>(this.downloadCities());
+  Cities = signal<CityInfoModel[]>(this.downloadCities());
   TrainingResumes = signal<TrainingResume[]>(this.displayTrainingResumes());
   LocationsCards = signal<LocationsCard[]>(this.displayLocationCards());
   Condition = signal<string[]>(this.downloadConditions());
 
-  downloadCities(): CityInfo[] {
+  downloadCities(): CityInfoModel[] {
     const citiesStorage = sessionStorage.getItem('cities');
 
     if (citiesStorage) {

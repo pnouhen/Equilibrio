@@ -1,22 +1,22 @@
-import { checkEmail } from '../../../../services/checkEmail';
-import { MessageForm } from '../../../../../core/models/MessageForm.model';
+import { checkEmail } from '../../../../../core/services/checkEmail';
+import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
-import { UpdatePhoneNumbers } from '../../../../../core/services/allowOnlyNumbers.service';
+import { FormMessageComponent } from '../../../../../core/components/message-form/message-form.component';
+import { ManagePhoneNumbersService } from '../../../../../core/services/ManagePhoneNumbers.service';
 
 @Component({
   selector: 'app-prestations',
-  imports: [ReactiveFormsModule, MessageFormComponent],
+  imports: [ReactiveFormsModule, FormMessageComponent],
   templateUrl: './prestations.component.html',
   styleUrl: './prestations.component.scss',
 })
 export class PrestationsComponent {
-  phoneNumber: string = "";
-  
+  phoneNumber: string = '';
+
   private formBuilder: FormBuilder = inject(FormBuilder);
 
-  constructor(public updatePhoneNumbers: UpdatePhoneNumbers) {}
+  constructor(public managePhoneNumbersService: ManagePhoneNumbersService) {}
 
   contactForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
@@ -27,11 +27,15 @@ export class PrestationsComponent {
     message: ['', [Validators.required]],
   });
 
+  // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm('La demande a bien été envoyée', 'messageFormTrue'),
-    new MessageForm("Au moins l'un des champs n'est pas rempli correctement", 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('La demande a bien été envoyée', 'formMessageTrue'),
+    new FormMessageModel(
+      "Au moins l'un des champs n'est pas rempli correctement",
+      'formMessageFalse',
+    ),
   ];
 
   onSubmitForm(): void {
@@ -51,6 +55,8 @@ export class PrestationsComponent {
   }
 
   formatPhoneNumber(event: Event) {
-    this.phoneNumber = this.updatePhoneNumbers.formatPhoneNumber((event.target as HTMLInputElement).value);
+    this.phoneNumber = this.managePhoneNumbersService.formatPhoneNumber(
+      (event.target as HTMLInputElement).value,
+    );
   }
 }

@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './legales-mentions.component.html',
   styleUrl: './legales-mentions.component.scss',
 })
-export class LegalesMentionsComponent {
-
-}
+export class LegalesMentionsComponent {}

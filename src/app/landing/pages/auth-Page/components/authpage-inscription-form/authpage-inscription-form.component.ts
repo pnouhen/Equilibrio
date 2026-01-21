@@ -1,23 +1,24 @@
-import { MessageForm } from '../../../../../core/models/MessageForm.model';
+import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { checkEmail } from '../../../../services/checkEmail';
-import { MessageFormComponent } from '../../../../../core/components/message-form/message-form.component';
+import { checkEmail } from '../../../../../core/services/checkEmail';
+import { FormMessageComponent } from '../../../../../core/components/message-form/message-form.component';
 
 @Component({
   selector: 'app-authpage-inscription-form',
-  imports: [FormsModule, MessageFormComponent],
+  imports: [FormsModule, FormMessageComponent],
   templateUrl: './authpage-inscription-form.component.html',
   styleUrl: './authpage-inscription-form.component.scss',
 })
 export class AuthpageInscriptionFormComponent {
   userEmail!: string;
 
+  // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessages: MessageForm[] = [
-    new MessageForm('Email envoyé', 'messageFormTrue'),
-    new MessageForm('Email non valide', 'messageFormFalse'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('Email envoyé', 'formMessageTrue'),
+    new FormMessageModel('Email non valide', 'formMessageFalse'),
   ];
   onSubmit(): void {
     this.isSubmitted = true;

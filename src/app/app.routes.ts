@@ -9,19 +9,21 @@ export const routes: Routes = [
 
   {
     path: 'espace-utilisateur',
-    loadChildren: () =>
-      import('./users/users-module').then((m) => m.UsersModule),
+    loadChildren: () => import('./users/users-module').then((m) => m.UsersModule),
   },
 
   {
-    path: 'reset-password',
+    path: 'reinitialiser-le-mot-de-passe',
     loadChildren: () =>
-      import('./core/reset-password/reset-password-module').then((m) => m.ResetPasswordModule),
+      import('./landing/pages/reset-password/reset-password-module').then(
+        (m) => m.ResetPasswordModule,
+      ),
   },
 
   // Error404
   {
     path: '**',
-    loadChildren: () => import('./core/error404/error404-module').then((m) => m.Error404Module),
+    loadChildren: () =>
+      import('./core/pages/error404/error404-module').then((m) => m.Error404Module),
   },
 ];

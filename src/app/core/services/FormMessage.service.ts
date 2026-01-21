@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
     providedIn: "root"
 })
 
-export class MessageFormService{
+export class FormMessageService{
     createArrayBoolean(length: number): boolean[] {
     return new Array(length).fill(false);
 }

@@ -5,8 +5,8 @@ import { UsersDataModel } from '../../datas-Back-end/models/UserData.model';
 @Injectable({
   providedIn: 'root',
 })
-export class UsersDashboardData {
-  UsersDashboardData = signal<UsersDataModel[]>(this.generateUsersData());
+export class UsersDashboardDataService {
+  UsersDashboardDataService = signal<UsersDataModel[]>(this.generateUsersData());
 
   private generateUsersData(): UsersDataModel[] {
     const storedData = sessionStorage.getItem('usersDashboard');

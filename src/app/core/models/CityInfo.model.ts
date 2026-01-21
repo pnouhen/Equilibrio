@@ -1,6 +1,6 @@
 import { TrainingCategory } from './TrainingCategory.model';
 
-export class CityInfo {
+export class CityInfoModel {
   constructor(
     public id: string,
     public city: string,

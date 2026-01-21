@@ -9,21 +9,20 @@ import { PicturesInitialModel } from '../../models/PicturesInitial.model';
   standalone: true,
 })
 export class HomeSlidesShowComponent implements OnInit, AfterViewInit, OnDestroy {
-  imageSlidesShow!: PicturesInitialModel[];
+  @ViewChild('slidesShow', { static: false }) slidesShow!: ElementRef<HTMLDivElement>;
 
+  imageSlidesShow!: PicturesInitialModel[];
   stopSlideShow: boolean = false;
   indexMainImage: number = 0;
   translateX: number = 0;
 
   private slideInterval!: any;
 
-  @ViewChild('slidesShow', { static: false }) slidesShow!: ElementRef<HTMLDivElement>;
-
   constructor(public homeSlides: HomeSlides) {}
 
   ngOnInit(): void {
     const isPicturesSessionStorage = this.homeSlides.allPicturesLink.filter((link) =>
-      sessionStorage.getItem(link)
+      sessionStorage.getItem(link),
     );
 
     if (isPicturesSessionStorage.length !== 4) {
@@ -49,7 +48,7 @@ export class HomeSlidesShowComponent implements OnInit, AfterViewInit, OnDestroy
     if (!this.slidesShow) return;
 
     const slides = this.slidesShow.nativeElement.querySelectorAll(
-      'img'
+      'img',
     ) as NodeListOf<HTMLImageElement>;
     if (!slides.length) return;
 

@@ -2,14 +2,14 @@ import { PdfService } from '../../../../../../../core/services/PdfService.servic
 import { Component, Input, OnInit } from '@angular/core';
 import { SelectedGrade } from '../../services/SelectedGradeservice';
 import { ManageResourcesFormService } from '../../services/ManageResources-form.service';
-import { MessageForm } from '../../../../../../../core/models/MessageForm.model';
+import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 import { InputSelectedComponent } from '../../../../../../../core/components/input-selected/input-selected.component';
-import { MessageFormComponent } from '../../../../../../../core/components/message-form/message-form.component';
+import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
 import { UsersDataPdfModel } from '../../../../../../../datas-Back-end/models/UserData-pdf.model';
 
 @Component({
   selector: 'app-manage-resources-form-pdf',
-  imports: [InputSelectedComponent, MessageFormComponent],
+  imports: [InputSelectedComponent, FormMessageComponent],
   templateUrl: './manage-resources-form-pdf.component.html',
   styleUrl: './manage-resources-form-pdf.component.scss',
 })
@@ -20,9 +20,9 @@ export class ManageResourcesFormPdfComponent implements OnInit {
 
   // FormMessage
   isFormValid: boolean = false;
-  formMessage: MessageForm[] = [
-    new MessageForm('Le fichier a bien été ajouté', 'messageFormTrue'),
-    new MessageForm('Au moins un des champs ne correspond pas', 'messageFormFasle'),
+  formMessage: FormMessageModel[] = [
+    new FormMessageModel('Le fichier a bien été ajouté', 'formMessageTrue'),
+    new FormMessageModel('Au moins un des champs ne correspond pas', 'formMessageFasle'),
   ];
 
   constructor(

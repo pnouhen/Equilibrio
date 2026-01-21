@@ -1,4 +1,4 @@
-import { Image } from "../models/Image.model";
+import { ImageModel } from '../models/Image.model';
 import { Injectable, signal } from '@angular/core';
 
 @Injectable({
@@ -7,12 +7,12 @@ import { Injectable, signal } from '@angular/core';
 export class DisplayNavService {
   isNavOpen: boolean = false;
 
-  iconGrid: Image[] = [
-    new Image('bars-solid', 'ouvrir'),
-    new Image('xmark-solid', 'fermer'),
+  iconGrid: ImageModel[] = [
+    new ImageModel('bars-solid', 'ouvrir'),
+    new ImageModel('xmark-solid', 'fermer'),
   ];
 
-  navigationIcon = signal<Image>(this.iconGrid[0]);
+  navigationIcon = signal<ImageModel>(this.iconGrid[0]);
 
   toggleMenuBurger(): void {
     this.isNavOpen = !this.isNavOpen;

@@ -1,15 +1,14 @@
-import { UpdateCategoriesLocationService } from './../../services/updateCategoriesLocation.service';
+import { UpdateCategoriesLocationService } from '../../services/UpdateCategoriesLocation.service';
 import { CitiesService } from '../../services/cities.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
-import { CityInfo } from '../../models/CityInfo.model';
-import { TrainingSchedule } from '../../models/TrainingSchedule.model';
+import { CityInfoModel } from '../../models/CityInfo.model';
 
 import { LocationsTimesLocationMapComponent } from '../locations-times-location-map/locations-times-location-map.component';
 import { UsersModel } from '../../../datas-Back-end/models/Users.model';
-import { TrainingCategoryDisplayModel } from '../../models/TrainingCategory-display.model';
-import { TrainingCardComponent } from "../training-card/training-card.component";
+import { TrainingCategoryDisplayModel } from '../../models/TrainingCategoryDisplay.model';
+import { TrainingCardComponent } from '../training-card/training-card.component';
 
 @Component({
   selector: 'app-locations-times-location',
@@ -19,31 +18,31 @@ import { TrainingCardComponent } from "../training-card/training-card.component"
 })
 export class LocationsTimesLocationComponent implements OnInit {
   id: string | null = null;
-  info: CityInfo | undefined;
+  citiyInfo: CityInfoModel | undefined;
   categories!: TrainingCategoryDisplayModel[];
 
   constructor(
     private route: ActivatedRoute,
     public citiesService: CitiesService,
     private router: Router,
-    private updateCategoriesLocationService: UpdateCategoriesLocationService
+    private updateCategoriesLocationService: UpdateCategoriesLocationService,
   ) {}
 
   ngOnInit(): void {
     // Retrieve ID
     this.id = this.route.snapshot.paramMap.get('city');
 
-    // Retrieve city info
-    this.info = this.id
+    // Retrieve city in CitiyInfo
+    this.citiyInfo = this.id
       ? this.citiesService.Cities().find((city) => city.id === this.id)
       : undefined;
 
-    if (!this.info) {
+    if (!this.citiyInfo) {
       this.router.navigate(['page-introuvable']);
       return;
     }
 
-    this.categories = this.updateCategoriesLocationService.update(this.info.TrainingCategory);
+    this.categories = this.updateCategoriesLocationService.update(this.citiyInfo.TrainingCategory);
   }
 
   // Admin view Cards after create or Update
@@ -56,16 +55,6 @@ export class LocationsTimesLocationComponent implements OnInit {
       return '/lieux-et-horaires';
     }
   }
-
-  changeClassCategories(categoriesLength: number): string {
-    if (categoriesLength === 1) return 'categories oneCategory';
-    if (categoriesLength === 2) return 'categories twoCategories';
-    if (categoriesLength === 3) return 'categories threeCategories';
-    if (categoriesLength === 4) return 'categories thridCategories';
-
-    return 'categories';
-  }
-
   numberPhoneLink(phone: string | undefined): string {
     if (!phone) return '';
     return phone.replace(/\D/g, '').replace(/^0/, '');

@@ -3,22 +3,19 @@
 /></a>
 
 <section>
-  <h2>{{ info?.city }}</h2>
+  <h2>{{ citiyInfo?.city }}</h2>
 
   <div class="categories">
-    <app-training-card
-      [cards]="categories"
-    />
+    <app-training-card [cards]="categories" />
   </div>
-  
 
   <div class="mapAdress">
     <div class="map">
       <h2>Localisation :</h2>
 
       <app-locations-times-location-map
-        [lat]="info?.coord?.[0] ?? 0"
-        [lng]="info?.coord?.[1] ?? 0"
+        [lat]="citiyInfo?.coord?.[0] ?? 0"
+        [lng]="citiyInfo?.coord?.[1] ?? 0"
       />
     </div>
 
@@ -27,19 +24,23 @@
 
       <ul>
         <li class="name">
-          {{ info?.nameRoom }}
-          @if(info?.comment) { * }
+          {{ citiyInfo?.nameRoom }}
+          @if (citiyInfo?.comment) {
+            *
+          }
         </li>
 
-        <li>{{ info?.adress }}</li>
+        <li>{{ citiyInfo?.adress }}</li>
 
-        <li>{{ info?.postalCode }} {{ info?.city }}</li>
+        <li>{{ citiyInfo?.postalCode }} {{ citiyInfo?.city }}</li>
 
         <li>
-          <a [href]="'tel:' + numberPhoneLink(info?.numberPhone)">{{ info?.numberPhone }}</a>
+          <a [href]="'tel:' + numberPhoneLink(citiyInfo?.numberPhone)">{{
+            citiyInfo?.numberPhone
+          }}</a>
         </li>
-        @if(info?.comment) {
-        <li class="comment">* {{ info?.comment }}</li>
+        @if (citiyInfo?.comment) {
+          <li class="comment">* {{ citiyInfo?.comment }}</li>
         }
       </ul>
     </div>

@@ -20,12 +20,11 @@
       </form>
 
       @if(isSubmittedArray[$index]){
-      <div class="messageFormSubmit">
-        <app-message-form
-          [isSubmitted]="isSubmittedArray[$index]"
+      <div class="formMessageSubmit">
+        <app-form-message
           [isFormValid]="isFormValidArray[$index]"
-          [canSubmit]="formMessages[0]"
-          [cannotSubmit]="formMessages[1]"
+          [canSubmit]="formMessage[0]"
+          [cannotSubmit]="formMessage[1]"
         />
       </div>
       }

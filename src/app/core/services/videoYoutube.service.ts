@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class VideoYoutube {
+export class VideoYoutubeService {
   getVideoId(url: string): string {
     // Keep only the ID
     const match = url.match(/(?:v=|\/embed\/)([^&?/]+)/);

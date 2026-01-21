@@ -31,9 +31,8 @@
   <button type="button" class="buttonSubmit" (click)="onSubmit(fileInput)">Enregister la ressource</button>
 
   @if(manageResourcesFormService.isSubmittedLink) {
-  <div class="messageForm">
-    <app-message-form
-      [isSubmitted]="manageResourcesFormService.isSubmittedLink"
+  <div class="formMessage">
+    <app-form-message
       [isFormValid]="isFormValid"
       [canSubmit]="formMessage[0]"
       [cannotSubmit]="formMessage[1]"
