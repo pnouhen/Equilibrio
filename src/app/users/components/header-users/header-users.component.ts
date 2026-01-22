@@ -1,7 +1,7 @@
 import { ToggleContentUser } from '../../pages/student-dashboard/services/ToggleContentUser.service';
 import { Router } from '@angular/router';
-import { DisplayUserMembers } from '../../services/displayUserMembers.service';
-import { UserService } from '../../services/user.service';
+import { DisplayUserMembersService } from '../../../core/services/DisplayUserMembers.service';
+import { UserService } from '../../services/User.service';
 import { Component, OnInit } from '@angular/core';
 import { LogoComponent } from '../../../core/components/logo/logo.component';
 import { UsersMembers } from '../../../datas-Back-end/models/Users-members';
@@ -18,7 +18,7 @@ export class HeaderUsersComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    public displayUserMembers: DisplayUserMembers,
+    public displayUserMembersService: DisplayUserMembersService,
     public router: Router,
     public toggleContentUser: ToggleContentUser
   ) {}

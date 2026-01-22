@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UsersDataSongModel } from '../../../../../datas-Back-end/models/UsersData-song.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ManageResourcesService } from '../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
+import { ManageResourcesService } from '../../../admin-pages/pages/manage-resources/services/ManageResources.service';
 
 @Component({
   selector: 'app-student-dashboard-slide-song',

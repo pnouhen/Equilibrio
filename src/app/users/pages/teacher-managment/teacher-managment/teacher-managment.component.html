@@ -3,7 +3,7 @@
 
   <ul class="container">
     <li>
-      <a [routerLink]="UsersRouting.navigatePlanning(user.email)">
+      <a [routerLink]="UsersRoutingService.navigatePlanning(user.email)">
         <img src="/assets/icons/calendar.svg" alt="Icon d'un calendrier" />
 
         <p>Planning</p>
@@ -11,7 +11,7 @@
     </li>
 
     <li>
-      <a [routerLink]="UsersRouting.navigateEspaceMember(user.email)">
+      <a [routerLink]="UsersRoutingService.navigateEspaceMember(user.email)">
         <img src="/assets/icons/photo-member.svg" alt="Photo de l'adhérent" />
 
         <p>Espace adhérents</p>

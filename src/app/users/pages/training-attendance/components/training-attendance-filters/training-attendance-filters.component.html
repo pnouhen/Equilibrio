@@ -1,0 +1,62 @@
+<h3>Filtres :</h3>
+
+<div class="container">
+  <div class="filter">
+    <h4>Choisir la ville :</h4>
+
+    <div class="content city">
+      <button (click)="toggleSelectedCity()">
+        <p>{{ trainingAttendanceService.citySelected() }}</p>
+
+        <img
+          src="/assets/icons/chevron-down.svg"
+          alt="Accèder aux Suggestions"
+          [class.active]="selectedCityTrainingAttendanceService.isSelectedDisplay"
+        />
+      </button>
+
+      <div
+        #city
+        class="selected"
+        style="display: none"
+        [class.active]="selectedCityTrainingAttendanceService.isSelectedDisplay"
+      >
+        <app-input-selected
+          [dataSelected]="cities"
+          (inputValueChange)="inputCityChange($event)"
+          [selected]="selectedCityTrainingAttendanceService"
+          [onAction]="handleScheduleFilter"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="filter">
+    <h4>Choisir l'horaire :</h4>
+
+    <div class="content schedule">
+      <button (click)="toggleSelectedSchedules()">
+        <p>{{ trainingAttendanceService.scheduleSelected }}</p>
+
+        <img
+          src="/assets/icons/chevron-down.svg"
+          alt="Accèder aux Suggestions"
+          [class.active]="selectedSchedulesServices.isSelectedDisplay"
+        />
+      </button>
+
+      <div
+        #schedule
+        class="selected"
+        style="display: none"
+        [class.active]="selectedSchedulesServices.isSelectedDisplay"
+      >
+        <app-input-selected
+          [dataSelected]="schedules"
+          (inputValueChange)="inputScheduleChange($event)"
+          [selected]="selectedSchedulesServices"
+        />
+      </div>
+    </div>
+  </div>
+</div>

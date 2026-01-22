@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { UsersDashboardDataService } from './../../../../../core/services/UsersDashboard.service';
-import { UserService } from '../../../../services/user.service';
+import { UserService } from '../../../../services/User.service';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
-import { ManageResourcesService } from '../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
+import { ManageResourcesService } from '../../../admin-pages/pages/manage-resources/services/ManageResources.service';
 import { UsersDataModel } from '../../../../../datas-Back-end/models/UserData.model';
 
 @Component({

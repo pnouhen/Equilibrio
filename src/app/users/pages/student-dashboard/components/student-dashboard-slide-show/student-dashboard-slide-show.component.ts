@@ -1,4 +1,4 @@
-import { ManageResourcesService } from './../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
+import { ManageResourcesService } from './../../../admin-pages/pages/manage-resources/services/ManageResources.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
 import { UserDataContentModel } from '../../../../../datas-Back-end/models/UserData-content.model';

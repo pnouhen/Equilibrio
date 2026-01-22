@@ -1,4 +1,4 @@
-import { UsersLayoutComponent } from './users-layout/users-layout/users-layout.component';
+import { UsersLayoutComponent } from './users-layout/components/users-layout/users-layout.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -18,15 +18,15 @@ const route: Routes = [
       {
         path: 'admin/tableau-de-bord',
         loadChildren: () =>
-          import('./pages/admin-dashboard/admin-dashboard-module').then(
-            (m) => m.AdminDashboardModule
+          import('./pages/admin-pages/admin-pages-module').then(
+            (m) => m.AdminMenuModule
           ),
       },
 
       {
         path: 'admin/tableau-de-bord/modification-photos-carousel',
         loadChildren: () =>
-          import('./pages/admin-dashboard/pages/update-slides-shows-pictures/update-slides-shows-pictures-module').then(
+          import('./pages/admin-pages/pages/update-slides-shows-pictures/update-slides-shows-pictures-module').then(
             (m) => m.UpdateSlidesShowsPicturesModule
           ),
       },
@@ -34,7 +34,7 @@ const route: Routes = [
        {
         path: 'admin/tableau-de-bord/modification-dates-reprises-entrainement',
         loadChildren: () =>
-          import('./pages/admin-dashboard/pages/update-training-resumes/update-training-resumes-module').then(
+          import('./pages/admin-pages/pages/update-training-resumes/update-training-resumes-module').then(
             (m) => m.UpdateTrainingResumesModule
           ),
       },
@@ -42,7 +42,7 @@ const route: Routes = [
        {
         path: 'admin/tableau-de-bord/gestion-lieux-horaires',
         loadChildren: () =>
-          import('./pages/admin-dashboard/pages/manage-places-times/manage-places-times-module').then(
+          import('./pages/admin-pages/pages/manage-places-times/manage-places-times-module').then(
             (m) => m.ManagePlacesTimesModule
           ),
       },
@@ -50,7 +50,7 @@ const route: Routes = [
        {
         path: 'admin/tableau-de-bord/gestion-adherants',
         loadChildren: () =>
-          import('./pages/admin-dashboard/pages/manage-users/manage-users-module').then(
+          import('./pages/admin-pages/pages/manage-users/manage-users-module').then(
             (m) => m.ManageUsersModule
           ),
       },
@@ -58,7 +58,7 @@ const route: Routes = [
        {
         path: 'admin/tableau-de-bord/gestions-ressources',
         loadChildren: () =>
-          import('./pages/admin-dashboard/pages/manage-resources/manage-resources-module').then(
+          import('./pages/admin-pages/pages/manage-resources/manage-resources-module').then(
             (m) => m.ManageResourcesModule
           ),
       },
@@ -74,7 +74,7 @@ const route: Routes = [
       {
         path: 'espace-professeur/:id/planning',
         loadChildren: () =>
-          import('./pages/planning/planning-module').then((m) => m.PlanningModule),
+          import('./pages/training-attendance/training-attendance-module').then((m) => m.TrainingAttendanceModule),
       },
 
       {

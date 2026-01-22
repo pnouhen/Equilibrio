@@ -1,5 +1,5 @@
 import { ToggleContentUser } from '../../student-dashboard/services/ToggleContentUser.service';
-import { DisplayUserMembers } from '../../../services/displayUserMembers.service';
+import { DisplayUserMembersService } from '../../../../core/services/DisplayUserMembers.service';
 import { Component, OnInit } from '@angular/core';
 import { UsersModel } from '../../../../datas-Back-end/models/Users.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -14,7 +14,7 @@ export class StudentManagmentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private displayUserMembers: DisplayUserMembers,
+    private displayUserMembersService: DisplayUserMembersService,
     private toggleContentUser: ToggleContentUser
   ) {}
 
@@ -29,7 +29,7 @@ export class StudentManagmentComponent implements OnInit {
       this.router.navigate(['page-introuvable']);
       return;
     } else {
-      this.displayUserMembers.isUserMembers.set(false);
+      this.displayUserMembersService.isUserMembers.set(false);
       this.toggleContentUser.toggleContent('Présentation')
     }
   }

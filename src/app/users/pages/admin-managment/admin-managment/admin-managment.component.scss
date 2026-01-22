@@ -1,9 +1,0 @@
-@use '../../../../../styles/mixins' as *;
-
-section {
-  @include card-layout;
-
-  a {
-    height: 13.5625rem;
-  }
-}

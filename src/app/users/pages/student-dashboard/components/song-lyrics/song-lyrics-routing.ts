@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
-import { SongLyricsComponent } from "./song-lyrics/song-lyrics.component";
+import { SongLyricsComponent } from "./components/song-lyrics/song-lyrics.component";
 import { NgModule } from "@angular/core";
 
 

@@ -1,0 +1,42 @@
+<fieldset>
+  <legend>Ajouter une chanson</legend>
+
+  <div class="labelInput">
+    <label for="titleSong">Titre *</label>
+    <input type="text" id="titleSong" name="titleSong" [(ngModel)]="titleSong" />
+  </div>
+
+  <div class="labelInput">
+    <label for="author">Auteur *</label>
+    <input type="text" id="author" name="author" [(ngModel)]="author" />
+  </div>
+
+  <div class="labelInput">
+    <label for="interpreter">Interprète *</label>
+    <input type="text" id="interpreter" name="interpreter" [(ngModel)]="interpreter" />
+  </div>
+
+  <div class="labelInput">
+    <label for="song">Musique *</label>
+    <input #fileInput type="file" id="song" accept="audio/*" (change)="onFileSelected($event)" />
+  </div>
+
+  <div class="labelInput lyrics">
+    <label for="lyrics">Paroles *</label>
+    <textarea id="lyrics" name="lyrics" [(ngModel)]="lyrics"></textarea>
+  </div>
+
+  <button type="submit" class="buttonSubmit" (click)="onSubmit(fileInput)">
+    Enregistrer la ressource
+  </button>
+
+  @if(manageResourcesFormService.isSubmittedLink){
+  <div class="formMessageSubmit">
+    <app-form-message
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
+  </div>
+  }
+</fieldset>

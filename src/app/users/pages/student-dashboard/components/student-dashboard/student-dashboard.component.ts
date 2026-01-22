@@ -1,12 +1,12 @@
 import { UsersDashboardDataService } from './../../../../../core/services/UsersDashboard.service';
-import { ManageResourcesService } from './../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
+import { ManageResourcesService } from './../../../admin-pages/pages/manage-resources/services/ManageResources.service';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
-import { UserService } from '../../../../services/user.service';
+import { UserService } from '../../../../services/User.service';
 import { UsersModel } from '../../../../../datas-Back-end/models/Users.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersMembers } from '../../../../../datas-Back-end/models/Users-members';
-import { DisplayUserMembers } from '../../../../services/displayUserMembers.service';
+import { DisplayUserMembersService } from '../../../../../core/services/DisplayUserMembers.service';
 import { StudentDashboardMenuComponent } from '../student-dashboard-menu/student-dashboard-menu.component';
 import { StudentDashboardContentComponent } from '../student-dashboard-content/student-dashboard-content.component';
 
@@ -28,7 +28,7 @@ export class StudentDashboardComponent implements OnInit {
     public usersDashboardDataService: UsersDashboardDataService,
     private router: Router,
     public userService: UserService,
-    private displayUserMembers: DisplayUserMembers,
+    private displayUserMembersService: DisplayUserMembersService,
     public toggleContentUser: ToggleContentUser,
     public manageResourcesService: ManageResourcesService,
   ) {}
@@ -56,14 +56,16 @@ export class StudentDashboardComponent implements OnInit {
     }
 
     // Display content by category
-    const dataForMember = this.usersDashboardDataService.UsersDashboardDataService().map((data) => ({
-      title: data.title,
-      categories: data.categories,
-    }));
+    const dataForMember = this.usersDashboardDataService
+      .UsersDashboardDataService()
+      .map((data) => ({
+        title: data.title,
+        categories: data.categories,
+      }));
     let contentFilters: string[] = [];
 
     if (this.userMember) {
-      const category = this.userMember.category
+      const category = this.userMember.category;
 
       contentFilters = dataForMember
         .filter((data) => data.categories.includes(category))
@@ -73,7 +75,7 @@ export class StudentDashboardComponent implements OnInit {
     if (!this.userMember || !this.category || !contentFilters.includes(this.category)) {
       this.router.navigate(['page-introuvable']);
       return;
-    }  else {
+    } else {
       this.toggleContentUser.toggleContent(this.category);
     }
 
@@ -84,7 +86,7 @@ export class StudentDashboardComponent implements OnInit {
       if (this.user?.members.length > 1) {
         this.userService.setOtherUser();
 
-        this.displayUserMembers.isUserMembers.set(true);
+        this.displayUserMembersService.isUserMembers.set(true);
       }
     }
 

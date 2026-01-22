@@ -1,5 +1,5 @@
 import { UpdateCategoriesLocationService } from '../../services/UpdateCategoriesLocation.service';
-import { CitiesService } from '../../services/cities.service';
+import { CitiesService } from '../../services/Cities.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 

@@ -1,0 +1,46 @@
+<h2>Ajouter/Modifier une catégorie</h2>
+
+<form>
+  <fieldset>
+    <legend>Information générale</legend>
+
+    <div class="labelInput">
+      <label for="title">Titre :</label>
+      <input type="text" id="title" name="title" [(ngModel)]="manageResourcesFormService.title" />
+    </div>
+
+    <div class="multipleChoice">
+      <p class="label">Sélectionner la ou les catégorie(s) *</p>
+
+      <ul>
+        @for (categoryData of manageResourcesFormService.categoriesData; track $index) {
+          <li>
+            <label [class.active]="categoryData.add">
+              <input
+                type="checkbox"
+                id="categoryData-{{ $index }}"
+                name="categoryData-{{ $index }}"
+                [(ngModel)]="categoryData.add"
+              />
+              {{ categoryData.value }}
+            </label>
+          </li>
+        }
+      </ul>
+    </div>
+  </fieldset>
+
+  <app-manage-resources-form-content />
+
+  <button type="submit" class="buttonSubmit" (click)="onSubmit()">Enregistrer la catégorie</button>
+
+  <button type="submit" class="buttonSubmit" (click)="resetAll()">Annuler</button>
+</form>
+
+@if (isSubmitted) {
+  <app-form-message
+    [isFormValid]="isFormValid"
+    [canSubmit]="formMessages[0]"
+    [cannotSubmit]="formMessages[1]"
+  />
+}

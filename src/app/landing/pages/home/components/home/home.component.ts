@@ -1,4 +1,4 @@
-import { CitiesService } from './../../../../../core/services/cities.service';
+import { CitiesService } from '../../../../../core/services/Cities.service';
 import { Component, OnInit } from '@angular/core';
 import { HomeSlidesShowComponent } from '../home-slides-show/home-slides-show.component';
 import { TrainingResume } from '../../models/TrainingResume.model';

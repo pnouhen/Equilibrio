@@ -1,0 +1,47 @@
+<fieldset>
+  <legend>Créer une ressource vidéo</legend>
+
+  <div class="labelInput">
+    <label for="titleVideo">Titre *</label>
+    <input type="text" id="titleVideo" name="titleVideo" [(ngModel)]="title" />
+  </div>
+
+  <div class="labelInput grade">
+    <p class="label">Recommandé pour le grade *</p>
+
+    <button class="input" (click)="selectedLinkGrade.toggleSelected()">
+      <p>{{ gradeText }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon de suggestion"
+        [class.active]="selectedLinkGrade.isSelectedDisplay"
+      />
+    </button>
+
+    <div class="selected" [class.active]="selectedLinkGrade.isSelectedDisplay">
+      <app-input-selected
+        [dataSelected]="gradeData"
+        [selected]="selectedLinkGrade"
+        (inputValueChange)="gradeText = $event"
+      />
+    </div>
+  </div>
+
+  <div class="labelInput link">
+    <label for="link">Lien de la vidéo *</label>
+    <input type="text" id="link" name="link" [(ngModel)]="link" />
+  </div>
+
+  <button type="button" class="buttonSubmit" (click)="submitLink()">Enregister la ressource</button>
+
+  @if(manageResourcesFormService.isSubmittedLink) {
+  <div class="formMessage">
+    <app-form-message
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
+  </div>
+  }
+</fieldset>

@@ -2,7 +2,7 @@ import { LogoComponent } from '../../../core/components/logo/logo.component';
 import { Component, OnInit } from '@angular/core';
 import { NavItem } from './models/NavItem.model';
 import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-import { DisplayNavService } from '../../../core/services/displayNav.service';
+import { DisplayNavService } from '../../../core/services/DisplayNav.service';
 
 @Component({
   selector: 'app-header',

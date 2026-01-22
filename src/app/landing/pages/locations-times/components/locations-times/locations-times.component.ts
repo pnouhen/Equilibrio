@@ -1,4 +1,4 @@
-import { CitiesService } from './../../../../../core/services/cities.service';
+import { CitiesService } from '../../../../../core/services/Cities.service';
 import { RouterLink } from '@angular/router';
 import { LocationsCard } from '../../../../../core/models/LocationsCard.model';
 import { Component, OnInit } from '@angular/core';

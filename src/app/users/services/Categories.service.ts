@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CategoriesData } from '../pages/admin-dashboard/datas/Categories.data';
-import { CateogriesModel } from '../pages/admin-dashboard/models/Categories.model';
+import { CategoriesData } from '../pages/admin-pages/datas/Categories.data';
+import { CateogriesModel } from '../pages/admin-pages/models/Categories.model';
 
 @Injectable({ providedIn: 'root' })
 export class CategoriesService {

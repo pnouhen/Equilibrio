@@ -1,4 +1,4 @@
-import { CateogriesModel } from '../../users/pages/admin-dashboard/models/Categories.model';
+import { CateogriesModel } from '../../users/pages/admin-pages/models/Categories.model';
 import { UsersDataLinkModel } from './UserData-link.model';
 import { UsersDataPdfModel } from './UserData-pdf.model';
 import { UsersDataSongModel } from './UsersData-song.model';

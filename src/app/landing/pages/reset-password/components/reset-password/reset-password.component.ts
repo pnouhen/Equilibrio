@@ -16,7 +16,7 @@ export class ResetPasswordComponent {
  // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessage: FormMessageModel[] = [
+  formMessages: FormMessageModel[] = [
     new FormMessageModel('Le mot de passe a bien été modifié', 'formMessageTrue'),
     new FormMessageModel('Les mots de passe ne correspondent pas', 'formMessageFalse'),
   ];

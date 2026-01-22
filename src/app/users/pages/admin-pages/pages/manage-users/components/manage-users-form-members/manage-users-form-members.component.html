@@ -1,0 +1,144 @@
+<fieldset>
+  <legend>Membres</legend>
+
+  <div class="labelInput">
+    <label for="membreName">Prénom et Nom</label>
+
+    <input type="text" id="membreName" [(ngModel)]="memberName" />
+  </div>
+
+  <div class="type labelInput">
+    <p class="label">Categorie</p>
+
+    <button (click)="activeCategory($event)">
+      <p>{{ categoryText }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon afficher suggestions"
+        [class.active]="selectedCategoryService.isSelectedDisplay"
+      />
+    </button>
+
+    <div class="selected" [class.active]="selectedCategoryService.isSelectedDisplay">
+      <app-input-selected
+        (inputValueChange)="changeCategory($event)"
+        [dataSelected]="categoryData"
+        [selected]="selectedCategoryService"
+      />
+    </div>
+  </div>
+
+  <div class="labelInput">
+    <p class="label">Grade</p>
+
+    <button
+      class="input grade"
+      (click)="toggleGrade($event)"
+      [class.inactive]="gradeData.length === 0"
+      [tabindex]="gradeData.length > 0 ? 0 : -1"
+    >
+      <p>{{ gradeText }}</p>
+
+      <img
+        src="/assets/icons/chevron-down.svg"
+        alt="Icon afficher suggestions"
+        [class.active]="selectedGradeService.isSelectedDisplay"
+      />
+    </button>
+
+    @if(gradeData.length > 0){
+    <div class="selected" [class.active]="selectedGradeService.isSelectedDisplay">
+      <app-input-selected
+        (inputValueChange)="gradeText = $event"
+        [dataSelected]="gradeData"
+        [selected]="selectedGradeService"
+      />
+    </div>
+    }
+  </div>
+
+  <div class="training">
+    <app-manage-users-form-members-training
+      [categoryText]="categoryText"
+      [citiesName]="citiesName"
+      [(trainingSchedulesDisplay)]="trainingsDisplay"
+      [(isSubmitted)]="isSubmittedTraining"
+    />
+  </div>
+
+  <button type="button" class="buttonSubmit" (click)="onSubmitMember()">
+    Enregister le membre
+  </button>
+
+  @if(isSubmitted){
+  <div class="formMessage">
+    <app-form-message
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
+  </div>
+  }
+</fieldset>
+
+<div class="members-create">
+  <p class="title-create">Membre(s) créé(s) :</p>
+
+  @if(manageUsersService.membersDisplayForm.length > 0){
+  <ul class="members">
+    @for(member of manageUsersService.membersDisplayForm; track $index) {
+    <li class="member">
+      <button type="button" class="update" (click)="updateMember(member)">
+        <img src="/assets/icons/pencil.svg" alt="Icon pour modifier" />
+      </button>
+
+      <button type="button" class="delete" (click)="deleteMember(member)">
+        <img src="/assets/icons/trash.svg" alt="Icon pour supprimer" />
+      </button>
+
+      <p class="memberName">{{ member.memberName }}</p>
+
+      <div class="text">
+        <p class="subTitle">Categorie :</p>
+
+        <p>{{ member.category }}</p>
+      </div>
+
+      <div class="text">
+        <p class="subTitle">Grade :</p>
+
+        <p>{{ member.grade }}</p>
+      </div>
+
+      <div class="trainings">
+        <p class="subTitle">Lieu(x) et horaire(s) d'entraînement :</p>
+
+        <ul class="trainings_container">
+          @for(training of member.trainings; track $index) {
+          <li class="training">
+            <p class="city">{{ training.city }} :</p>
+
+            <ul class="trainingSchedules">
+              @for(trainingSchedule of training.trainingSchedule; track $index) {
+              <li>
+                <div class="schedules">
+                  <p class="day">{{ trainingSchedule.day }} :</p>
+
+                  <p class="times">
+                    {{ trainingSchedule.startTime }} -
+                    {{ trainingSchedule.endTime }}
+                  </p>
+                </div>
+              </li>
+              }
+            </ul>
+          </li>
+          }
+        </ul>
+      </div>
+    </li>
+    }
+  </ul>
+  }
+</div>

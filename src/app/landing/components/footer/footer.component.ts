@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LogoComponent } from '../../../core/components/logo/logo.component';
-import { DisplayNavService } from '../../../core/services/displayNav.service';
+import { DisplayNavService } from '../../../core/services/DisplayNav.service';
 import { RouterLink } from '@angular/router';
 
 @Component({

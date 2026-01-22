@@ -1,5 +1,5 @@
 import { ImagesService } from './Images.service';
-import { PicturesInitialData } from './../../landing/pages/home/data/PicturesInitial.data';
+import { PicturesInitialData } from '../../landing/pages/home/data/PicturesInitial.data';
 import { Injectable, signal } from '@angular/core';
 import { ImageModel } from '../models/Image.model';
 import { PicturesInitialModel } from '../../landing/pages/home/models/PicturesInitial.model';

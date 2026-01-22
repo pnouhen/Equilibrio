@@ -30,7 +30,7 @@ export class AuthpageConnexionFormComponent implements OnInit {
   // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessage: FormMessageModel[] = [
+  formMessages: FormMessageModel[] = [
     new FormMessageModel('', ''),
     new FormMessageModel('Au moins un des champs est incorrect', 'formMessageFalse'),
   ];

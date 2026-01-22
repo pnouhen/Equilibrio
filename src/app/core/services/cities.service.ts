@@ -1,5 +1,5 @@
 import { LocationsCard } from '../models/LocationsCard.model';
-import { TrainingResume } from './../../landing/pages/home/models/TrainingResume.model';
+import { TrainingResume } from '../../landing/pages/home/models/TrainingResume.model';
 import { Injectable, signal } from '@angular/core';
 import { CityInfoModel } from '../models/CityInfo.model';
 import { CITIES } from '../../datas-Back-end/data/CitiesInfo.data';

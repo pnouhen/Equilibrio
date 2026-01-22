@@ -1,0 +1,90 @@
+<h3>Ajouter ou modifier un lieu et ses horaires</h3>
+
+<form [formGroup]="cityForm">
+  <fieldset class="general">
+    <legend>Informations générales</legend>
+
+    <div class="nameRoom labelInput">
+      <label for="nameRoom">Nom de la salle</label>
+      <input type="text" id="nameRoom" formControlName="nameRoom" />
+    </div>
+
+    <div class="comment labelInput">
+      <label for="comment">Commentaire</label>
+      <input type="text" id="comment" formControlName="comment" />
+    </div>
+
+    <div class="adress labelInput">
+      <label for="adress">Adresse</label>
+      <input type="text" id="adress" formControlName="adress" />
+    </div>
+
+    <div class="postalCode labelInput">
+      <label for="postalCode">Code postal</label>
+      <input type="text" id="postalCode" formControlName="postalCode" />
+    </div>
+
+    <div class="city labelInput">
+      <label for="city">Ville</label>
+      <input type="text" id="city" formControlName="city" />
+    </div>
+
+    <div class="lat labelInput">
+      <label for="lat">Latitude</label>
+      <input type="number" id="lat" formControlName="lat" />
+    </div>
+
+    <div class="lng labelInput">
+      <label for="lng">Longitude</label>
+      <input type="number" id="lng" formControlName="lng" />
+    </div>
+
+    <div class="numberPhone labelInput">
+      <label for="numberPhone">Numéro de téléphone</label>
+      <input
+        type="text"
+        id="numberPhone"
+        [value]="phoneNumber"
+        (keypress)="managePhoneNumbersService.allowOnlyNumbers($event)"
+        (input)="formatPhoneNumber($event)"
+        formControlName="numberPhone"
+      />
+    </div>
+
+    <div class="img labelInput">
+      <label for="img">Télécharge l'image</label>
+
+      <input
+        type="file"
+        id="img"
+        formControlName="img"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+        [class.active]="imgUpdate !== '' && !selectedFile"
+      />
+      @if (imgUpdate !== '' && !selectedFile) {
+        <span [class.active]="imgUpdate !== ''">Image chargée</span>
+      }
+    </div>
+  </fieldset>
+
+  <app-manage-places-times-form-category
+    [(categories)]="categories"
+    [(categoriesDisplay)]="categoriesDisplay"
+    [(isSubmitted)]="isSubmittedCategory"
+  />
+
+  <button class="submitForm buttonSubmit" type="submit" (click)="onSubmitForm()">
+    Enregister le lieux et ses horaires
+  </button>
+</form>
+
+<button class="resetForm buttonSubmit" (click)="resetForm()">Annuler</button>
+
+@if (isSubmitted) {
+  <app-form-message
+    [isFormValid]="isFormValid"
+    [canSubmit]="formMessages[0]"
+    [cannotSubmit]="formMessages[1]"
+  />
+}

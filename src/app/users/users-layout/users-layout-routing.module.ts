@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import { UsersLayoutComponent } from './users-layout/users-layout.component';
+import { UsersLayoutComponent } from './components/users-layout/users-layout.component';
 import { NgModule } from '@angular/core';
 
 const route: Routes = [{ path: '', component: UsersLayoutComponent }];

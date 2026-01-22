@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormMessageComponent } from '../../../../../core/components/message-form/message-form.component';
 import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
-import { checkEmail } from '../../../../../core/services/checkEmail';
+import { checkEmail } from '../../../../../core/services/CheckEmail';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ export class ForgotPasswordComponent {
   // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessage: FormMessageModel[] = [
+  formMessages: FormMessageModel[] = [
     new FormMessageModel(
       'Si cet e-mail est bien enregistré, vous recevrez un message pour réinitialiser votre mot de passe.',
       'formMessageTrue',

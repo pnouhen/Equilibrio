@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class UsersRouting {
+export class UsersRoutingService {
   navigateEspaceMember(email: string): string {
     return `/espace-utilisateur/espace-membres/${email}`;
   }

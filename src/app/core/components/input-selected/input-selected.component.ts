@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SelectedConnexionService } from '../../../landing/pages/auth-Page/services/SelectedConnexion.service';
-import { SelectedCityPlanning } from '../../../users/services/SelectedCityPlanning.service';
-import { SelectedDay } from '../../../users/pages/admin-dashboard/pages/manage-places-times/services/SelectedDay.service';
-import { SelectedStatut } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedStatut.service';
-import { SelectedCategory } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedCategory.service';
-import { SelectedGrade } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedGrade.service';
-import { SelectedCityUsers } from '../../../users/pages/admin-dashboard/pages/manage-users/services/SelectedCityUsers.service';
-import { SelectedCategoryUserDataContent } from '../../../users/pages/admin-dashboard/pages/manage-resources/services/SelectedCategoryUserDataContent.service';
+import { SelectedCityTrainingAttendanceService } from '../../../users/pages/training-attendance/services/SelectedCityTrainingAttendanceService';
+import { SelectedDayService } from '../../../users/pages/admin-pages/pages/manage-places-times/services/SelectedDay.service';
+import { SelectedStatutService } from '../../../users/pages/admin-pages/pages/manage-users/services/SelectedStatut.service';
+import { SelectedCategoryService } from '../../../users/pages/admin-pages/pages/manage-users/services/SelectedCategory.service';
+import { SelectedGradeService } from '../../../users/pages/admin-pages/pages/manage-users/services/SelectedGrade.service';
+import { SelectedCityUsersService } from '../../../users/pages/admin-pages/pages/manage-users/services/SelectedCityUsers.service';
+import { SelectedCategoryUserDataContentService } from '../../../users/pages/admin-pages/pages/manage-resources/services/SelectedCategoryUserDataContent.service';
 @Component({
   selector: 'app-input-selected',
   imports: [],
@@ -17,13 +17,13 @@ export class InputSelectedComponent {
   @Input() dataSelected!: string[];
   @Input() selected!:
     | SelectedConnexionService
-    | SelectedCityPlanning
-    | SelectedDay
-    | SelectedStatut
-    | SelectedCategory
-    | SelectedGrade
-    | SelectedCityUsers
-    | SelectedCategoryUserDataContent;
+    | SelectedCityTrainingAttendanceService
+    | SelectedDayService
+    | SelectedStatutService
+    | SelectedCategoryService
+    | SelectedGradeService
+    | SelectedCityUsersService
+    | SelectedCategoryUserDataContentService;
 
   @Output() inputValueChange = new EventEmitter<string>();
   @Input() onAction?: (newValue: string) => void;

@@ -1,6 +1,6 @@
-import { UsersRouting } from '../../../services/UsersRouting.service';
+import { UsersRoutingService } from '../../../services/UsersRouting.service';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../services/User.service';
 import { Router, RouterLink } from '@angular/router';
 import { UsersModel } from '../../../../datas-Back-end/models/Users.model';
 
@@ -16,7 +16,7 @@ export class TeacherManagmentComponent implements OnInit {
   constructor(
     public userService: UserService,
     public router: Router,
-    public UsersRouting: UsersRouting
+    public UsersRoutingService: UsersRoutingService
   ) {}
 
   ngOnInit(): void {

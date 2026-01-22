@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TrainingCategoryDisplayModel } from '../../models/TrainingCategoryDisplay.model';
-import { TrainingScheduleCityModel } from '../../../users/pages/admin-dashboard/pages/manage-users/models/TrainingScheduleCity.model';
+import { TrainingScheduleCityModel } from '../../../users/pages/admin-pages/pages/manage-users/models/TrainingScheduleCity.model';
 
 @Component({
   selector: 'app-training-card',

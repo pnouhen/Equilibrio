@@ -1,6 +1,6 @@
-import { ManageResourcesService } from './../../../admin-dashboard/pages/manage-resources/services/ManageResources.service';
+import { ManageResourcesService } from './../../../admin-pages/pages/manage-resources/services/ManageResources.service';
 import { UsersDataSongModel } from '../../../../../datas-Back-end/models/UsersData-song.model';
-import { UserService } from '../../../../services/user.service';
+import { UserService } from '../../../../services/User.service';
 import { ToggleContentUser } from '../../services/ToggleContentUser.service';
 import { Component, effect, ElementRef, ViewChild } from '@angular/core';
 import { UsersDataModel } from '../../../../../datas-Back-end/models/UserData.model';
@@ -9,7 +9,7 @@ import { StudentDashboardSlideShowComponent } from '../student-dashboard-slide-s
 import { UsersDataLinkModel } from '../../../../../datas-Back-end/models/UserData-link.model';
 import { UsersDataPdfModel } from '../../../../../datas-Back-end/models/UserData-pdf.model';
 import { UserDataContentModel } from '../../../../../datas-Back-end/models/UserData-content.model';
-import { ManageResourcesFormService } from '../../../admin-dashboard/pages/manage-resources/services/ManageResources-form.service';
+import { ManageResourcesFormService } from '../../../admin-pages/pages/manage-resources/services/ManageResources-form.service';
 
 @Component({
   selector: 'app-student-dashboard-content',
@@ -29,7 +29,7 @@ export class StudentDashboardContentComponent {
     public toggleContentUser: ToggleContentUser,
     private userService: UserService,
     public manageResourcesService: ManageResourcesService,
-    public manageResourcesFormService: ManageResourcesFormService
+    public manageResourcesFormService: ManageResourcesFormService,
   ) {
     effect(() => {
       this.category = this.userService.category();

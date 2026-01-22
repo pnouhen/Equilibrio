@@ -1,0 +1,104 @@
+<fieldset>
+  <legend>Définir un horaire :</legend>
+
+  <div class="schedule-form">
+    <div class="day labelInput">
+      <p class="label">Jour</p>
+
+      <button (click)="selectedDayService.toggleSelected($event)">
+        <p>{{ day }}</p>
+        <img
+          src="/assets/icons/chevron-down.svg"
+          alt="Accèder aux Suggestions"
+          [class.active]="selectedDayService.isSelectedDisplay"
+        />
+      </button>
+
+      <div class="selected" [class.active]="selectedDayService.isSelectedDisplay">
+        <app-input-selected
+          [dataSelected]="days"
+          (inputValueChange)="day = $event"
+          [selected]="selectedDayService"
+        />
+      </div>
+    </div>
+
+    <div class="startTime labelInput">
+      <label for="startTime">Début</label>
+      <input type="text" id="startTime" [(ngModel)]="startTime" name="startTime" />
+    </div>
+
+    <div class="endTime labelInput">
+      <label for="endTime">Fin</label>
+      <input type="text" id="endTime" [(ngModel)]="endTime" name="endTime" />
+    </div>
+
+    <div class="condition labelInput">
+      <label for="condition">Condition</label>
+
+      <input type="text" id="condition" [(ngModel)]="conditionSelect" name="condition" />
+
+      <button
+        (click)="selectedCondtionService.toggleSelected($event)"
+        [class.active]="selectedCondtionService.isSelectedDisplay"
+      >
+        <img
+          src="/assets/icons/chevron-down.svg"
+          alt="Accèder aux Suggestions"
+          [class.active]="selectedCondtionService.isSelectedDisplay"
+        />
+      </button>
+      <div class="selected" [class.active]="selectedCondtionService.isSelectedDisplay">
+        <app-input-selected
+          [dataSelected]="conditions"
+          (inputValueChange)="conditionSelect = $event"
+          [selected]="selectedCondtionService"
+        />
+      </div>
+    </div>
+
+    <button class="buttonSubmit" type="submit" (click)="createSchedule()">
+      Enregister l'horaire
+    </button>
+  </div>
+
+  @if(isSubmitted){
+  <div class="formMessageSubmit">
+    <app-form-message
+      [isFormValid]="isFormValid"
+      [canSubmit]="formMessages[0]"
+      [cannotSubmit]="formMessages[1]"
+    />
+  </div>
+  }
+</fieldset>
+
+<div class="training-create">
+  <div class="schedules-container">
+    <p class="title-create">Horaire créé(s) :</p>
+    @if(schedules.length > 0){
+    <ul>
+      @for(schedule of schedules; track $index) {
+      <li>
+        <div class="schedules">
+          <p class="day">{{ schedule.day }} :</p>
+
+          <p class="times">
+            {{ schedule.startTime }} -
+            {{ schedule.endTime }}
+          </p>
+
+          @if(schedule.condition){
+          <p class="condition">{{ schedule.condition }}</p>
+          }
+
+          <button (click)="deleteSchedule(schedule)">
+            <img src="/assets/icons/trash.svg" alt="Boutton pour supprimer" />
+          </button>
+        </div>
+      </li>
+      }
+    </ul>
+    }
+  </div>
+</div>

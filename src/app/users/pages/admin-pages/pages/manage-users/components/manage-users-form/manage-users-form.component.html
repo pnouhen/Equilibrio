@@ -1,0 +1,52 @@
+<h2>Ajouter ou modifier un compte</h2>
+
+<form>
+  <fieldset>
+    <legend>Informations générales</legend>
+
+    <div class="email labelInput">
+      <label for="email">Email</label>
+
+      <input type="email" id="email" name="email" [(ngModel)]="manageUsersService.emailForm" />
+    </div>
+
+    <div class="type labelInput">
+      <p class="label">Statut</p>
+
+      <button (click)="selectedStatutService.toggleSelected($event)">
+        <p>{{ manageUsersService.statutTextForm }}</p>
+
+        <img
+          src="/assets/icons/chevron-down.svg"
+          alt="Icon afficher suggestions"
+          [class.active]="selectedStatutService.isSelectedDisplay"
+        />
+      </button>
+
+      <div class="selected" [class.active]="selectedStatutService.isSelectedDisplay">
+        <app-input-selected
+          [dataSelected]="statutData"
+          (inputValueChange)="manageUsersService.statutTextForm = $event"
+          [selected]="selectedStatutService"
+        />
+      </div>
+    </div>
+  </fieldset>
+
+  <app-manage-users-form-members [(isSubmitted)]="isSubmittedMembers" />
+
+  <button type="submit" class="buttonSubmit" (click)="onSubmitForm()">
+    Enregistrer l'adhérent
+  </button>
+  <button type="reset" class="buttonSubmit" (click)="cancelForm()">Annuler</button>
+</form>
+
+@if(isSubmitted){
+<div class="formMessage">
+  <app-form-message
+    [isFormValid]="isFormValid"
+    [canSubmit]="formMessages[0]"
+    [cannotSubmit]="formMessages[1]"
+  />
+</div>
+}

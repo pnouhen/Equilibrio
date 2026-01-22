@@ -1,4 +1,4 @@
-import { checkEmail } from '../../../../../core/services/checkEmail';
+import { checkEmail } from '../../../../../core/services/CheckEmail';
 import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -30,7 +30,7 @@ export class PrestationsComponent {
   // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessage: FormMessageModel[] = [
+  formMessages: FormMessageModel[] = [
     new FormMessageModel('La demande a bien été envoyée', 'formMessageTrue'),
     new FormMessageModel(
       "Au moins l'un des champs n'est pas rempli correctement",

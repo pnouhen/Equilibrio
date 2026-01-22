@@ -1,7 +1,7 @@
 import { FormMessageModel } from '../../../../../core/models/FormMessage.model';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { checkEmail } from '../../../../../core/services/checkEmail';
+import { checkEmail } from '../../../../../core/services/CheckEmail';
 import { FormMessageComponent } from '../../../../../core/components/message-form/message-form.component';
 
 @Component({
@@ -16,7 +16,7 @@ export class AuthpageInscriptionFormComponent {
   // Managing the display of the message after submit
   isSubmitted: boolean = false;
   isFormValid: boolean = false;
-  formMessage: FormMessageModel[] = [
+  formMessages: FormMessageModel[] = [
     new FormMessageModel('Email envoyé', 'formMessageTrue'),
     new FormMessageModel('Email non valide', 'formMessageFalse'),
   ];

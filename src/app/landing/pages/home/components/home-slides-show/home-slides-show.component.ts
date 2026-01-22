@@ -1,4 +1,4 @@
-import { HomeSlides } from './../../../../../core/services/homeSlides.service';
+import { HomeSlides } from '../../../../../core/services/HomeSlides.service';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { PicturesInitialModel } from '../../models/PicturesInitial.model';
 
