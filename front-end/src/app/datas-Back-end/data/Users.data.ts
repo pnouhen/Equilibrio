@@ -25,7 +25,7 @@ export const UsersData: UsersModel[] = [
   ]),
 
   // Admin
-  new UsersModel('3', 'pierre.nouhen@orange.fr', '123456789Pn!', 'admin', [
+  new UsersModel('3', 'admin@admin.fr', '123456789Pn!', 'admin', [
     new UsersMembers('Baby', 'baby', 'novato', new UserDataTrainingModel([], [])),
     new UsersMembers('Enfants', 'child', 'novato', new UserDataTrainingModel([], [])),
     new UsersMembers('Gus Ados', 'teen', 'novato', new UserDataTrainingModel([], [])),

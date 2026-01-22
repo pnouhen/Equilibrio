@@ -17,7 +17,7 @@ export class ManageUsersService {
   users = computed(() =>
     this.usersDataService
       .UsersData()
-      .filter((user) => user.email !== 'pierre.nouhen@orange.fr')
+      .filter((user) => user.email !== 'admin@admin.fr')
       .sort((a, b) => a.email.localeCompare(b.email))
   );
 
