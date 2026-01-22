@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  LINK_URL: ''
+  LINK_URL: 'http://pierre-nouhen-equilibrio.vercel'
 };
