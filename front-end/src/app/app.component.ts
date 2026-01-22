@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('equilibrio-front-end');
+  protected readonly title = signal('front-end');
 }

@@ -1,4 +1,4 @@
-/equilibrio-front-end
+/front-end
 /public: There is the asset folder which contains the icons, images and logo
 
     /src
