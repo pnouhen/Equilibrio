@@ -1,12 +1,12 @@
 import { ImagesService } from './../../../../../../../core/services/Images.service';
 import { FormMessageService } from '../../../../../../../core/services/FormMessage.service';
 import { Component, OnInit } from '@angular/core';
-import { HomeSlides } from '../../../../../../../core/services/HomeSlides.service';
 import { ReturnAdminMenuComponent } from '../../../../components/return-admin-menu/return-admin-menu.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FormMessageModel } from '../../../../../../../core/models/FormMessage.model';
 import { FormMessageComponent } from '../../../../../../../core/components/message-form/message-form.component';
-import { PicturesInitialModel } from '../../../../../../../landing/pages/home/models/PicturesInitial.model';
+import { ImageModel } from '../../../../../../../core/models/Image.model';
+import { SlideShowHomeService } from '../../../../../../../core/services/SlideShowHome.service';
 
 @Component({
   selector: 'app-update-slides-shows-pictures',
@@ -15,33 +15,24 @@ import { PicturesInitialModel } from '../../../../../../../landing/pages/home/mo
   styleUrl: './update-slides-shows-pictures.component.scss',
 })
 export class UpdateSlidesShowsPicturesComponent implements OnInit {
-  imageSlidesShow!: PicturesInitialModel[];
+  imageSlidesShow!: ImageModel[];
   selectedFiles: (File | null)[] = []; // Table for storing files
-  // TODO : liées avec la data du slideShow du home
   isSubmittedArray!: boolean[];
   isFormValidArray!: boolean[];
 
   formMessages: FormMessageModel[] = [
-    new FormMessageModel("L'image a été mise à jour", 'messageFromTrue'),
+    new FormMessageModel("L'image a été mise à jour", 'formMessageTrue'),
     new FormMessageModel('Au moins un des champs est incorrect', 'formMessageFalse'),
   ];
 
   constructor(
-    public homeSlides: HomeSlides,
+    public slideShowHomeService: SlideShowHomeService,
     public imagesService: ImagesService,
     public formMessageService: FormMessageService,
   ) {}
 
   ngOnInit(): void {
-    const isPicturesSessionStorage = this.homeSlides.allPicturesLink.filter((link) =>
-      sessionStorage.getItem(link),
-    );
-
-    if (isPicturesSessionStorage.length !== 4) {
-      this.homeSlides.initializePictures();
-    }
-
-    this.imageSlidesShow = this.homeSlides.imageSlideShow();
+    this.imageSlidesShow = this.slideShowHomeService.SlideShowHomeData();
 
     // Initializes the file array
     this.selectedFiles = new Array(this.imageSlidesShow.length).fill(null);
@@ -80,16 +71,23 @@ export class UpdateSlidesShowsPicturesComponent implements OnInit {
 
     this.isSubmittedArray[index] = true;
     if (file && description) {
-      this.imagesService.convertAndSaveImage(file).then((img) => {
-        const image = {
-          title: this.imageSlidesShow[index].title,
-          src: img,
-          alt: description,
-        };
-
-        sessionStorage.setItem(image.title, JSON.stringify(image));
-      });
       this.isFormValidArray[index] = true;
+
+      let imageUpdate = this.slideShowHomeService.SlideShowHomeData()[index];
+      if (imageUpdate) {
+        this.imagesService.convertAndSaveImage(file).then((img) => {
+          imageUpdate = {
+            src: img,
+            alt: description,
+          };
+
+          this.slideShowHomeService.SlideShowHomeData()[index] = imageUpdate;
+          sessionStorage.setItem(
+            'slideShowHomeImg',
+            JSON.stringify(this.slideShowHomeService.SlideShowHomeData()),
+          );
+        });
+      }
     } else {
       this.isFormValidArray[index] = false;
     }

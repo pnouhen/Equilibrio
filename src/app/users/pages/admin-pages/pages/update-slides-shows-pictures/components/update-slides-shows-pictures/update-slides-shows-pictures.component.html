@@ -5,44 +5,43 @@
 
   <h2>Modifier les photos du carousel</h2>
 
-  @for(image of imageSlidesShow; track $index) {
-  <article [class.odd]="($index + 1)! % 2" [class.even]="$index % 2">
-    <h3>Photo {{ $index + 1 }} {{ image.title }}</h3>
+  @for (image of imageSlidesShow; track $index) {
+    <article [class.odd]="($index + 1)! % 2" [class.even]="$index % 2">
+      <h3>Photo {{ $index + 1 }}</h3>
 
-    <form #submit="ngForm" (ngSubmit)="onSubmit(submit, $index)">
-      <div class="picture">
-        <img id="img-{{ $index }}" src="{{ image.img.src }}" alt="{{ image.img.alt }}" />
+      <form #submit="ngForm" (ngSubmit)="onSubmit(submit, $index)">
+        <div class="picture">
+          <img id="img-{{ $index }}" src="{{ image.src }}" alt="{{ image.alt }}" />
 
-        <label for="update-picture-{{ $index + 1 }}">Cliquer sur la photo pour la modifier</label>
+          <label for="update-picture-{{ $index + 1 }}">Cliquer sur la photo pour la modifier</label>
 
-        <input
-          type="file"
-          id="update-picture-{{ $index + 1 }}"
-          accept="image/*"
-          (change)="onDownloadImg($event, $index)"
-          name="file"
-        />
-      </div>
+          <input
+            type="file"
+            id="update-picture-{{ $index + 1 }}"
+            accept="image/*"
+            (change)="onDownloadImg($event, $index)"
+            name="file"
+          />
+        </div>
 
-      <div class="description labelInput">
-        <label for="description-picture-{{ $index + 1 }}">Description : </label>
+        <div class="description labelInput">
+          <label for="description-picture-{{ $index + 1 }}">Description : </label>
 
-        <input type="text" id="description-picture-{{ $index + 1 }}" ngModel name="description" />
-      </div>
+          <input type="text" id="description-picture-{{ $index + 1 }}" ngModel name="description" />
+        </div>
 
-      <button class="buttonSubmit" type="submit">Mettre à jour</button>
-    </form>
+        <button class="buttonSubmit" type="submit">Mettre à jour</button>
+      </form>
 
-    @if(isSubmittedArray[$index]){
-    <div class="formMessageSubmit">
-      <app-form-message
-        [isFormValid]="isFormValidArray[$index]"
-        [canSubmit]="formMessages[0]"
-        [cannotSubmit]="formMessages[1]"
-      />
-    </div>
-    }
-  </article>
-
+      @if (isSubmittedArray[$index]) {
+        <div class="formMessageSubmit">
+          <app-form-message
+            [isFormValid]="isFormValidArray[$index]"
+            [canSubmit]="formMessages[0]"
+            [cannotSubmit]="formMessages[1]"
+          />
+        </div>
+      }
+    </article>
   }
 </section>

@@ -1,6 +1,6 @@
-import { HomeSlides } from '../../../../../core/services/HomeSlides.service';
+import { SlideShowHomeService } from './../../../../../core/services/SlideShowHome.service';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { PicturesInitialModel } from '../../models/PicturesInitial.model';
+import { ImageModel } from '../../../../../core/models/Image.model';
 
 @Component({
   selector: 'app-home-slides-show',
@@ -11,26 +11,17 @@ import { PicturesInitialModel } from '../../models/PicturesInitial.model';
 export class HomeSlidesShowComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('slidesShow', { static: false }) slidesShow!: ElementRef<HTMLDivElement>;
 
-  imageSlidesShow!: PicturesInitialModel[];
+  imageSlidesShow!: ImageModel[];
   stopSlideShow: boolean = false;
   indexMainImage: number = 0;
   translateX: number = 0;
 
   private slideInterval!: any;
 
-  constructor(public homeSlides: HomeSlides) {}
+  constructor(public slideShowHomeService: SlideShowHomeService) {}
 
   ngOnInit(): void {
-    const isPicturesSessionStorage = this.homeSlides.allPicturesLink.filter((link) =>
-      sessionStorage.getItem(link),
-    );
-
-    if (isPicturesSessionStorage.length !== 4) {
-      this.homeSlides.initializePictures();
-      this.imageSlidesShow = this.homeSlides.imageSlideShow();
-    }
-
-    this.imageSlidesShow = this.homeSlides.imageSlideShow();
+    this.imageSlidesShow = this.slideShowHomeService.SlideShowHomeData()
   }
 
   ngAfterViewInit(): void {
@@ -90,7 +81,7 @@ export class HomeSlidesShowComponent implements OnInit, AfterViewInit, OnDestroy
     this.stopSlideShow = true;
 
     // Find the index of the clicked image using the alt key.
-    const index = this.imageSlidesShow.findIndex((picture) => picture.img.alt === image.alt);
+    const index = this.imageSlidesShow.findIndex((picture) => picture.alt === image.alt);
     if (index !== -1) {
       this.indexMainImage = index;
       this.updateSlidePosition();
